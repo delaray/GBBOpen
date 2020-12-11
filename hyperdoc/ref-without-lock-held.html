@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- without-lock-held</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-with-timeout.html"><img border="0" alt="with-timeout" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">without-lock-held</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">without-lock-held</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><code>(</code><var>lock</var> 
+<code>&#38;key</code>
+<var>whostate</var><code>)</code>
+<var>form</var>* 
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var>*</td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Temporarily release a <a href="ref-glossary.html#gl:lock">lock</a> or a <a href="ref-glossary.html#id194">recursive&nbsp;lock</a>,
+execute forms and then reacquire the lock.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>lock</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:lock">lock</a>, a <a href="ref-glossary.html#id194">recursive&nbsp;lock</a>, or a 
+<a href="ref-glossary.html#id27">condition&nbsp;variable</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>whostate</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string (default <nobr><code>"Without Lock Held"</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>forms</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An implicit <nobr><b>progn</b></nobr> of <a href="ref-glossary.html#gl:forms">forms</a> to be evaluated
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>results</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The values returned by evaluating the last <var>form</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The values returned by evaluating the last <var>form</var>.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />A <a href="ref-glossary.html#gl:thread">thread</a> attempts to release a <a href="ref-glossary.html#gl:lock">lock</a> that it does not
+hold.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-condition-variable.html"><b>make-condition-variable</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-lock.html"><b>make-lock</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-recursive-lock.html"><b>make-recursive-lock</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-thread-holds-lock-p.html"><b>thread-holds-lock-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-thread-whostate.html"><b>thread-whostate</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-lock-held.html"><b>with-lock-held</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br /><a name="id1">Acquire</a> and temporarily release a lock controlling access to several
+critical sections of code:
+<pre class="pretop">
+  (<a href="ref-with-lock-held.html">with-lock-held</a> (lock :whostate "Waiting for Critical Lock")
+    (critical-section-1)
+    (without-lock-held (lock :whostate "Doing non-critical stuff")
+      (non-critical-section))
+    (critical-section-2))
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />The <var>whostate</var> value is ignored by
+<a target="_top" href="http://sbcl.sourceforge.net">SBCL</a>.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-with-timeout.html"><img border="0" alt="with-timeout" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">without-lock-held</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

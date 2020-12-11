@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- * </title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-pseudo-probability-entities.html"><img border="0" alt="Pseudo Probabilities" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-divide-pprob.html"><img border="0" alt="/ " src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">*&#37;</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">*&#37;</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>pseudo-probability</var>*</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>pseudo-probability-product</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Returns the product of <nobr><var>numbers</var></nobr>, performing
+<a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>-normalization in the process.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>pseudo-probability</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code> <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>pseudo-probability-product</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr>
+<a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code> <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a> product of
+<nobr><var>numbers</var></nobr> or 1000 if no <nobr><var>numbers</var></nobr> are supplied.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-divide-pprob.html"><b>/&#37;</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-pprob2prob.html"><b>pprob2prob</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-prob2pprob.html"><b>prob2pprob</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /></p>
+<pre class="pretop">
+
+  &gt; (* 0.6 0.7)
+  0.42000002
+  &gt; (*&#37; 600 700)
+  420
+  &gt; (* 0.6 0.7 0.8)
+  0.33600003
+  &gt; (*&#37; 600 700 800)
+  336
+  &gt; (*&#37;)
+  1000
+  &gt; 
+</pre>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-pseudo-probability-entities.html"><img border="0" alt="Pseudo Probabilities" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-divide-pprob.html"><img border="0" alt="/ " src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">*&#37;</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

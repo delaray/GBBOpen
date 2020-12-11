@@ -1,0 +1,1449 @@
+%% -*- Mode:TeX; Fonts:(hl12fb) -*-
+%% *-* File: /usr/local/gbbopen/doc-source/glossary.tex *-*
+%% *-* Last-Edit: Wed Sep 14 17:21:38 2011; Edited-By: cork *-*
+%% *-* Machine: phoenix.corkills.org *-*
+
+%% Copyright (C) 2003-2011, Dan Corkill <corkill@GBBopen.org>
+%% Part of the GBBopen Project.
+%% Licensed under Apache License 2.0 (see LICENSE for license information).
+
+\begin{glossary-list}
+  
+%% ------------------------------------------------------------------------
+  
+\glent[alist]
+\index{alist|see{association list}}%
+%
+An \glref{association~list}.
+
+%% ------------------------------------------------------------------------
+
+\glent[association~list]
+\index{association list}%
+%
+A list of \glref{conses} representing an association of keys with values. The
+\glref{car} of each \glref{cons} is the key and the \glref{cdr} is the value
+associated with that key.
+
+%% ------------------------------------------------------------------------
+
+\glent[atomic~operation]
+\index{atomic operation}%
+%
+A computation that, once started, is completed without being interrupted by
+another \glref{thread}.
+
+%% ------------------------------------------------------------------------
+
+\glent[autorun~forms]
+\index{autorun form, module}%
+%
+Forms in a \glref{module} file that are to be evaluated conditionally when the
+file is loaded based on the value of \nobr{\textbf{\entlink{*autorun-modules*}}}.
+Part of the \reflink{Module Manager Facility}{sec:module-manager}.
+
+%% ------------------------------------------------------------------------
+
+\glent[blackboard~repository]
+\index{blackboard repository}%
+%
+The internal storage containing all \glref{unit~instance} and
+\glref{space~instance} objects and associated retrieval data structures.
+
+%% ------------------------------------------------------------------------
+
+\glent[boolean~dimension]
+\gllabel{boolean~dimensions}%
+\index{boolean dimension}%
+\index{dimension type!boolean}%
+%
+A \glref{dimension} of \code{:boolean} \glref{dimension~type} where
+\code{:boolean} \glref{dimension~values} are either true (non-\nil) or
+false (\nil).
+
+%% ------------------------------------------------------------------------
+
+\glent[broadcast~streamer] 
+\index{broadcast streamer}%
+\index{streamer!broadcast}%
+%
+An object that is used as a saving or sending destination for multiple
+\glref{journal~} and \glref{network~}\glref{streamers}.
+
+%% ------------------------------------------------------------------------
+
+\glent[circular~list]
+\index{circular list}%
+%
+A list that has no termination because it includes an earlier portion of
+itself in its successive sublists.
+
+%% ------------------------------------------------------------------------
+
+\glent[class]
+\gllabel{classes}%
+\index{class}%
+%
+An object that uniquely (directly or indirectly) determines the structure and
+behavior of a set of other objects. Members of this set are called
+\glref{instances} of the class.
+
+%% ------------------------------------------------------------------------
+
+\glent[class~designator]
+\index{class designator}%
+\indexit{class}%
+\indexit{class object}%
+%
+A \glref{class} or a symbol that names a \glref{class}.
+
+%% ------------------------------------------------------------------------
+
+\glent[class~option]
+\index{class!option}%
+%
+An option that refers to a \glref{class} as a whole or to all the slots of the
+\glref{class}.
+
+%% ------------------------------------------------------------------------
+
+\glent[comparison~type]
+\gllabel{comparison-type}
+\index{comparison-type, of dimension values}%
+\index{dimension value!comparison-type}%
+\codeindexit{number}%
+\codeindexit{fixnum}%
+\codeindexit{short-float}%
+\codeindexit{single-float}%
+\codeindexit{double-float}%
+\codeindexit{double-float}%
+\codeindexit{long-float}%
+\codeindexit{eq}%
+\codeindexit{eql}%
+\codeindexit{equal}%
+\codeindexit{equalp}%
+%
+A symbol that indicates the way that \glref{dimension~values} are compared.
+For an \code{:ordered} dimension value, one of: \code{number},
+\code{fixnum}, \code{short-float}, \code{single-float}, \code{double-float},
+or \code{long-float}.  For an \code{:enumerated} dimension value, one of:
+\code{eq}, \code{eql}, \code{equal}, or \code{equalp}.  For a \code{:boolean}
+dimension value: \code{t}.
+
+%% ------------------------------------------------------------------------
+
+\glent[composite~dimension~value]
+\index{composite dimension!value}% 
+%
+A dimension value that is a set, sequence, or series of
+\glref{dimension~values}.
+
+%% ------------------------------------------------------------------------
+
+\glent[condition~variable]
+\gllabel{condition~variables}%
+\gllabel{condition-variable}%
+\index{POSIX-style, condition variable}% 
+%
+A condition variable provides an atomic means for a \glref{thread} to release
+a \glref{lock} (or \glref{recursive~lock}) that it holds and go to sleep until
+it is awakened by another thread.  Once awakened, the lock that it was holding
+is reacquired atomically before the awakened thread is allowed to do anything
+else.  A Portable Threads condition-variable object includes the lock that is
+associated with the condition variable, and the condition-variable object can
+be used directly as a lock.
+
+%% ------------------------------------------------------------------------
+
+\glent[cons]
+\gllabel{car}%
+\gllabel{cdr}%
+\gllabel{conses}%
+\bfindex{cons}%
+\bfindex{car}%
+\bfindex{cdr}%
+%
+An object with two components called the \textbf{car} and the \textbf{cdr}.
+Conses are used to construct lists.
+
+%% ------------------------------------------------------------------------
+
+\glent[dimension] 
+\gllabel{dimensions}%
+%
+A conceptual extent within which values that share some
+relationship can be placed.  GBBopen uses dimensionality to relate the
+extent representations of \glref{unit~instances},
+\glref{space~instances}, and \glref{retrieval~patterns}.
+
+GBBopen supports three \glref{dimension~types}:
+\begin{tightenumerate}
+\item \glref{ordered~dimensions} (\code{:ordered})
+\item \glref{enumerated~dimensions} (\code{:enumerated})
+\item \glref{boolean~dimensions} (\code{:boolean})
+\end{tightenumerate}
+
+Real-world dimensions (such as time and location) can be represented as
+\glref{ordered~dimensions}.
+
+%% ------------------------------------------------------------------------
+
+\glent[dimension~name]
+\gllabel{dimension-name}%
+\index{dimension name}%
+%
+A symbol used to identify a \glref{dimension}.  In general, two
+\glref{dimensions} with different \glref{dimension~types} should not be given
+the same dimension name.
+
+%% ------------------------------------------------------------------------
+
+\glent[dimension~type]
+\gllabel{dimension-type}%
+\gllabel{dimension~types}%
+\index{dimension type}%
+\index{type!dimension}%
+%
+The interpretation associated with a \glref{dimension} of a
+\glref{unit~class}, a \glref{space~instance}, or a \glref{retrieval~pattern};
+one of \code{:ordered}, \code{:enumerated}, or \code{:boolean}.
+
+%% ------------------------------------------------------------------------
+
+\glent[dimension~value]
+\gllabel{dimension~values}%
+\index{dimension value}%
+%
+The value that can be used to position a \glref{unit~instance} on a
+\glref{dimension} in one or more \glref{space~instances}.
+
+%% ------------------------------------------------------------------------
+
+\glent[dimension-value~type]
+\gllabel{dimension-value~types}%
+\index{dimension value!type}%
+\index{type!dimension value}%
+\codeindexit{:point}%
+\codeindexit{:interval}%
+\codeindexit{:mixed}%
+\codeindexit{:element}%
+\codeindexit{:boolean}%
+%
+The interpretation associated with a \glref{dimension~value} of a
+\glref{unit~instance}; one of \code{:point}, \code{:interval}, \code{:mixed}
+(both points and intervals), \code{:element}, or \code{:boolean}.  
+The dimension-value types \code{:point}, \code{:interval}, and
+\code{:mixed} indicate values in an \glref{ordered~dimension},
+\code{:element} indicates a value in an \glref{enumerated~dimension}, and
+\code{:boolean} indicates a value in a \glref{boolean~dimension}.
+
+%% ------------------------------------------------------------------------
+
+\glent[dimensional~extent]
+\index{dimensional extent, of a space instance}%
+\index{space instance!dimensional extent}%
+%
+The \glref{dimensions} of a \glref{space~instance}.
+
+%% ------------------------------------------------------------------------
+
+\glent[dotted~list]
+\index{dotted list}%
+\index{list!dotted}%
+%
+A list that is terminated by a non-\nil{} atom rather than the empty list,
+\nil.
+
+%% ------------------------------------------------------------------------
+
+\glent[enumerated~dimension]
+\gllabel{enumerated~dimensions}%
+\index{enumerated dimension}%
+\index{dimension type!enumerated}%
+%
+A \glref{dimension} of \code{:enumerated} \glref{dimension~type} where
+\code{:element} \glref{dimension~values} are individual elements from an
+extensible set of discrete elements.
+
+%% ------------------------------------------------------------------------
+  
+\glent[ESET]
+\gllabel{ESETs}%
+%
+A keys-only table that automatically transitions between list and hash-table
+implementations.  The keys are compared using \code{eq}.
+
+%% ------------------------------------------------------------------------
+  
+\glent[ET]
+%
+A key-and-value table that automatically transitions between list and hash-table
+implementations.  The keys are compared using \code{eq}.
+
+%% ------------------------------------------------------------------------
+
+\glent[event]
+\gllabel{events}%
+\index{event}%
+%
+An activity that is noticed, and signaled, by GBBopen.
+
+%% ------------------------------------------------------------------------
+
+\glent[event~class]
+\gllabel{event-class}%
+\gllabel{event~classes}%
+\index{event class}%
+\index{class!event}%
+\bfindexit{standard-event-class}%
+%
+An object that is a subclass of \nobr{\textbf{\entlinknoex{standard-event-class}}}.
+
+%% ------------------------------------------------------------------------
+
+\glent[event~function]
+\gllabel{event-function}%
+\gllabel{event~functions}%
+\index{event function}%
+\index{function!event}%
+%
+A \glref{function} that is associated with one or more event specifications
+and is called whenever such an event occurs.  (See
+\nobr{\textbf{\entlink{signal-event}}} for the required event-function arguments for
+each event metaclass.
+
+%% ------------------------------------------------------------------------
+
+\glent[event~instance] 
+\gllabel{event-instance}%
+\gllabel{event~instances}%
+\index{event instance}%
+\index{instance!event}%
+\bfindexit{standard-event-instance}%
+%
+An object whose class is a subclass of
+\nobr{\textbf{\entlinknoex{standard-event-instance}}}.
+
+%% ------------------------------------------------------------------------
+
+\glent[event~metaclass]
+\gllabel{event-metaclass}%
+\index{event metaclass}%
+\index{metaclass!event}%
+%
+One of five ``types'' of \glref{event}.  Every \glref{event~class} has
+one of the following event metaclasses:
+\code{non-instance-event-class}, \code{instance-event-class},
+\code{space-instance-event-class}, \code{nonlink-slot-event-class}, or
+\code{link-slot-event-class}.
+
+%% ------------------------------------------------------------------------
+
+\glent[executable~KS~activation]
+\gllabel{executable~KSA}%
+\gllabel{executable~KSAs}%
+\index{executable knowledge-source activation}%
+\index{KS activation!executable}%
+\index{KSA!executable}%
+%
+A \glref{pending~KS~activation} that meets the criteria for execution, such as
+having a \glref{rating} above the minimum KSA execution rating in effect for
+the control shell.
+
+%% ------------------------------------------------------------------------
+
+\glent[executed~KS~activation]
+\gllabel{executed~KSA}%
+\gllabel{executed~KSAs}%
+\index{executed knowledge-source activation}%
+\index{KS activation!executed}%
+\index{KSA!executed}%
+%
+A \glref{KS~activation} that has completed execution and will, therefore, not
+be operated on again by the control shell.
+
+%% ------------------------------------------------------------------------
+
+\glent[extended~event-class~specification]
+\index{extended event-class specification}%
+\index{event class!extended event-class specification}%
+%
+A specification of one or more \glref{event~classes} as indicated by
+one of the following:
+\begin{tightitemize}
+\item a \glref{event~class}
+\item a symbol naming a \glref{event~class}
+\item
+\codeindex{:plus-subevents}%
+\codeindex{:no-subevents}%
+a list containing one of the above followed by the \glref{keyword}
+\code{:plus-subevents} or the \glref{keyword} \code{:no-subevents}
+\item the symbol \code{t}, which is equivalent to
+  \code{(standard-event-instance :plus-subevents)} 
+\end{tightitemize}
+
+%% ------------------------------------------------------------------------
+
+\glent[extended~unit-class~specification]
+\index{extended unit-class specification}%
+\index{unit class!extended unit-class specification}%
+%
+A specification of one or more \glref{unit~classes} as indicated by
+one of the following:
+\begin{tightitemize}
+\item a \glref{unit~class}
+\item a symbol naming a \glref{unit~class}
+\item
+\codeindex{:plus-subclasses}%
+\codeindex{:no-subclasses}%
+a list containing one of the above followed by the \glref{keyword}
+\code{:plus-subclasses} or the \glref{keyword} \code{:no-subclasses}
+\item the symbol \code{t}, which is equivalent to
+  \code{(standard-unit-instance :plus-subclasses)} 
+\end{tightitemize}
+
+%% ------------------------------------------------------------------------
+
+\glent[extended~unit-class~or~instance~specification]
+\index{extended unit-class specification}%
+\index{unit instance!specification}%
+\index{unit class!extended unit-class specification}%
+%
+A specification of one or more \glref{unit~instances} or one or more
+\glref{unit~classes} as indicated by one of the following:
+\begin{tightitemize}
+\item a \glref{unit~class}
+\item a symbol naming a \glref{unit~class}
+\item
+\codeindex{:plus-subclasses}%
+\codeindex{:no-subclasses}%
+a list containing one of the above followed by the \glref{keyword}
+\code{:plus-subclasses} or the \glref{keyword} \code{:no-subclasses}
+\item the symbol \code{t}, which is equivalent to
+  \code{(standard-unit-instance :plus-subclasses)} 
+\item a \glref{unit~instance}
+\item a list of \glref{unit~instances}
+\end{tightitemize}
+
+%% ------------------------------------------------------------------------
+
+\glent[extended~unit-classes~specification]
+\gllabel{extended~unit-classes~specifications}%
+\index{extended unit-classes specification}%
+\index{unit class!extended unit-classes specification}%
+%
+A specification of one or more \glref{unit~classes} as indicated by
+one of the following:
+\begin{tightitemize}
+\item a \glref{unit~class}
+\item a symbol naming a \glref{unit~class}
+\item
+\codeindex{:plus-subclasses}%
+\codeindex{:no-subclasses}%
+a list containing one of the above followed by the \glref{keyword}
+\code{:plus-subclasses} or the \glref{keyword} \code{:no-subclasses}
+\item a list of one or more of the above
+\item the symbol \code{t}, which is equivalent to
+  \code{(standard-unit-instance :plus-subclasses)} 
+\end{tightitemize}
+
+%% ------------------------------------------------------------------------
+
+\glent[feature]
+\index{feature}%
+\bfindexit{*features*}%
+%
+A symbol in the list value of the variable \textbf{*features*}.  The features
+in this features list are used to control conditional compilation and
+implementation-specific behaviors.
+
+%% ------------------------------------------------------------------------
+
+\glent[form]
+\gllabel{forms}%
+\gllabel{Form}%
+\gllabel{forms}%
+\index{form}%
+%
+An object (including an expression) to be evaluated.
+
+%% ------------------------------------------------------------------------
+
+\glent[function~designator]
+\gllabel{function}%
+\index{function designator}%
+\indexit{function}%
+\indexit{function object}%
+%
+An object that specifies a function.  Either: a symbol (denoting the function
+named by that symbol in the global environment), or a \glref{function~object}
+(denoting itself).  The term ``function'' is often used to denote a
+function designator, with the term ``function object'' used when referring
+specifically to a \glref{function~object}.
+
+%% ------------------------------------------------------------------------
+
+\glent[function~object]
+\index{function object}%
+%
+An object of type \code{function}.  The term ``function'' is often
+used to denote a \glref{function~designator}, with the term ``function
+object'' used when referring specifically to a function object.
+
+%% ------------------------------------------------------------------------
+
+\glent[fixnum]
+\gllabel{fixnums}%
+\index{fixnum}%
+%
+An integer between \code{most-negative-fixnum} and
+\code{most-positive-fixnum} inclusive.
+
+%% ------------------------------------------------------------------------
+
+\glent[generalized~boolean]
+\gllabel{generalized-boolean}%
+\index{generalized boolean}%
+\index{boolean, generalized}%
+%
+An object used as a truth value, where \nil{} represents false and all other
+objects represent true.
+
+%% ------------------------------------------------------------------------
+
+\glent[generalized~reference]
+\index{generalized reference}%
+\index{reference, generalized}%
+%
+A reference to a location storing a value as if to a variable.
+
+%% ------------------------------------------------------------------------
+
+\glent[generic~function]
+\index{generic function}%
+%
+A \glref{function} whose behavior depends on the classes or identities of the
+arguments supplied to it.
+
+%% ------------------------------------------------------------------------
+
+\glent[incomplete~unit~instance]
+\gllabel{incomplete}%
+\index{unit instance!incomplete}%
+\index{incomplete unit instance}%
+%
+A forward-referenced \glref{unit~instance} created during the loading of a
+blackboard repository or journal file or the reading of a
+\glref{network~stream}.  An incomplete unit instance does not reside on any
+\glref{space~instance} or have all of its saved/sent slot values present until
+it becomes "complete" by loading or receiving a form containing the instance's
+full details.
+
+%% ------------------------------------------------------------------------
+
+\glent[incomposite~dimension~value]
+\index{incomposite dimension value}%
+\index{dimension value!incomposite}%
+%
+A \glref{dimension~value} that is a single point, interval, element, or
+boolean (i.e., not a \glref{composite~dimension~value}).
+
+%% ------------------------------------------------------------------------
+
+\glent[initialization~argument~list]
+\gllabel{initialization~arguments}%
+\index{initialization argument list}%
+\index{list!initialization arguments}%
+%
+A list of alternating names and values used to initialize or reinitialize
+\glref{instances} of \glref{classes}.  If more than one name and value pair
+has the same name, only the first such pair is used to provide the value.
+
+%% ------------------------------------------------------------------------
+
+\glent[instance]
+\gllabel{instances}%
+\index{instance}%
+%
+An object whose structure and behavior is uniquely (directly or indirectly)
+determined by a \glref{class} object.
+
+%% ------------------------------------------------------------------------
+
+\glent[instance~name]
+\gllabel{instance-name}%
+\gllabel{instance~names}%
+\index{instance name}%
+%
+An object that uniquely identifies an \glref{instance} of a
+\glref{unit~class}.  The same object can be used to identify instances of
+different unit classes, but the same instance name cannot be used with two
+instances of the same class.
+
+%% ------------------------------------------------------------------------
+
+\glent[interval] 
+\gllabel{intervals}%
+\index{interval}%
+%
+A \glref{cons}, two-element list, or two-element array containing the start
+and end value representing the set of real numbers between them, inclusive.
+
+%% ------------------------------------------------------------------------
+
+\glent[journal] 
+\index{journal}%
+%
+A file containing changes made to the \glref{blackboard~repository} that can
+be loaded in order to perform the recorded changes.
+
+%% ------------------------------------------------------------------------
+
+\glent[journal~streamer] 
+\gllabel{journal-streamer}%
+\gllabel{journal~}%
+\index{journal streamer}%
+\index{streamer!journal}%
+%
+An object that is used as a saving destination for
+\glref{journaling} functions.
+
+%% ------------------------------------------------------------------------
+
+\glent[journaling] 
+\index{journaling}%
+%
+Writing changes made to the \glref{blackboard~repository} to a file that can
+be loaded in order to perform the recorded changes.  Journaling can be used
+with or without repository saving to recreate a blackboard repository.
+
+%% ------------------------------------------------------------------------
+
+\glent[keyword~symbol]
+\gllabel{keyword}%
+\gllabel{keywords}%
+\index{keyword symbol}%
+\index{symbol!keyword}%
+%
+A symbol whose home package is the \code{keyword} package.
+
+%% ------------------------------------------------------------------------
+
+\glent[knowledge~source]
+\gllabel{knowledge-source}%
+\gllabel{KS}%
+\gllabel{KSs}%
+\index{knowledge source}%
+%
+The expertise associated with a collaborating computational entity in
+a blackboard application (often abbreviated as ``KS''). More
+specifically, a KS is an object containing the expertise and other
+information associated with a computational entity. A \code{ks} object
+is also a \glref{unit~instance}, but KSs are normally described
+by their more specific categorization.
+
+%% ------------------------------------------------------------------------
+
+\glent[KS~activation]
+\gllabel{KSA}%
+\gllabel{KSAs}%
+\gllabel{KS~activation}%
+\gllabel{KS~activations}%
+\gllabel{activation}%
+\gllabel{activations}%
+\index{knowledge source!activation}%
+\index{KS!activation}%
+%
+The application of a \glref{KS} to a specific computational context
+(often abbreviated as ``KSA'').  More specifically, a KSA is a
+\glref{ksa-class} object representing the \glref{KS} activation.  A
+\code{ksa} is also a \glref{unit~instance}, but they are normally
+described by their more specific categorization.
+
+%% ------------------------------------------------------------------------
+
+\glent[KS~execution]
+\gllabel{KS-execution}%
+\gllabel{KS~executions}%
+\index{knowledge source!execution}%
+\index{KS!execution}%
+%
+The execution of a \glref{KS~activation}.
+
+%% ------------------------------------------------------------------------
+
+\glent[ks~class]
+\gllabel{ks-class}%
+\gllabel{ks~classes}%
+\index{ks class}%
+\index{class!ks}%
+%
+An object that is a subclass of
+\nobr{\textbf{\entlinknoex{standard-unit-class}}} that is used to represent a
+\glref{KS}.
+
+%% ------------------------------------------------------------------------
+
+\glent[ksa~class]
+\gllabel{ksa-class}%
+\gllabel{ksa~classes}%
+\index{ksa class}%
+\index{class!ksa}%
+%
+An object that is a subclass of
+\nobr{\textbf{\entlinknoex{standard-ksa-class}}} that is used to represent a
+\glref{KSA}.
+
+%% ------------------------------------------------------------------------
+
+\glent[left-leaning~red-black~tree]
+\index{left-leaning red-black tree|see{LLRB tree}}%
+%
+An \glref{LLRB~tree}.
+
+%% ------------------------------------------------------------------------
+
+\glent[LLRB~tree]
+\gllabel{LLRB}%
+\index{LLRB tree}%
+%
+A binary search tree that is roughly balanced, keeping the worst-case time for
+operations such as inserting, deleting, and finding values proportional to the
+height of the tree. Left-leaning red-black (LLRB) trees are a simpler version
+of red-black trees introduced by Sedgewick in 2008 where all red links must
+lean left except during inserts and deletes.
+
+%% ------------------------------------------------------------------------
+
+\glent[link]
+\gllabel{links}%
+\index{link}%
+%
+A bi-directional relationship between two \glref{unit~instances} represented
+by a pair of pointers, one at each unit instance pointing to the other unit
+instance.  GBBopen's link operators maintain the bi-directional consistency of
+link pointers.
+
+%% ------------------------------------------------------------------------
+
+\glent[link~slot]
+\gllabel{link-slot}%
+\index{link slot}%
+%
+A \glref{slot} designated for the outgoing pointers of \glref{links}
+associated with that \glref{slot}.
+
+%% ------------------------------------------------------------------------
+
+\glent[link-pointer~object] 
+\gllabel{link-pointer-object}%
+\gllabel{link-pointer~objects}%
+\index{link-pointer object}%
+\index{object!link-pointer}%
+\indexit{link slot}%
+\indexit{unit instance}%
+\bfindexit{link-instance-of}%
+%
+An object that can be used as a pointer in a \nobr{\glref{link~slot}}.  A
+link-pointer object must have a \nobr{\textbf{\entlink{link-instance-of}}}
+method defined for it whose result returns the \glref{unit~instance} to be
+used as the link pointer.
+
+%% ------------------------------------------------------------------------
+
+\glent[link-slot~place]
+\gllabel{link-slot-place}%
+\index{link slot!place}%
+\index{place!link slot}%
+%
+A form which is suitable for use as a \glref{generalized~reference} to a
+\glref{link~slot}.  Typical examples of link-slot-place forms include:
+%
+\W\supp\notpretop
+\T\vspace{4pt}
+\begin{example}
+  (\var{slot-accessor unit-instance\/})
+  (slot-value \var{unit-instance slot-name\/})
+\end{example}
+where:
+\W\\~\\
+\begin{args}{unit-instance}
+\arg[slot-accessor] is a symbol specifying an accessor \glref{function} for
+  a link slot
+\arg[unit-instance] is a \glref{unit~instance}
+\arg[slot-name] is a symbol naming a \glref{link~slot} in
+\var{unit-instance\/} 
+\end{args}
+
+%% ------------------------------------------------------------------------
+
+\glent[lock] 
+\gllabel{locks}%
+\index{lock}%
+\index{lock!non-recursive}%
+%
+A mutual-exclusion object that allows multiple \glref{threads} to
+synchronize activities or access to shared resources. A lock has two
+states, unlocked or locked by a specific \glref{thread}. Once a lock
+is held by a \glref{thread}, any other \glref{threads} attempting to
+lock it will block. When the lock-holding \glref{thread} unlocks
+(releases) the lock, one of the blocked \glref{threads} will acquire
+(lock) it and proceed.  If the \glref{thread} that is holding the lock
+attempts to re-acquire it, an error is signaled (see
+\glref{recursive~lock}).
+
+%% ------------------------------------------------------------------------
+
+\glent[metaobject]
+\index{metaobject}%
+%
+An \glref{instance} of a \glref{metaobject~class}.
+
+%% ------------------------------------------------------------------------
+
+\glent[metaobject~class]
+\gllabel{metaobject-class}%
+\index{class!metaobject}%
+%
+A \glref{class} object that is a subclass of exactly one of the following
+classes: \code{class}, \code{slot-definition}, \code{generic-function},
+\code{method}, and \code{method-combination}.
+
+%% ------------------------------------------------------------------------
+
+\glent[module]
+\gllabel{modules}%
+\index{module}%
+%
+A set of related files that form a component, library, or application.
+Part of the \reflink{Module Manager Facility}{sec:module-manager}.
+
+%% ------------------------------------------------------------------------
+
+\glent[namestring]
+\index{namestring}%
+%
+A string that represents a filename.
+
+%% ------------------------------------------------------------------------
+
+\glent[network~streamer] 
+\gllabel{network-streamer}
+\gllabel{network~streamers}
+\gllabel{network~}%
+\index{network streamer}%
+\index{streamer!network}%
+%
+An object that is used as a sending destination for
+\glref{network~streaming} functions.
+
+%% ------------------------------------------------------------------------
+
+\glent[network~streaming] 
+\gllabel{network-streaming}%
+\gllabel{network~stream}%
+\index{network streaming}%
+%
+Sending \glref{unit~instances} (and \glref{space~instances}, changes made to
+the \glref{blackboard~repository}, and commands to a \glref{streamer~node}
+(typically in another Common Lisp image).
+
+%% ------------------------------------------------------------------------
+
+\glent[non-keyword~symbol]
+\index{non-keyword symbol}%
+\index{symbol!non-keyword}%
+%
+A symbol whose home package is not the \code{keyword} package.
+
+%% ------------------------------------------------------------------------
+
+\glent[obviated~KS~activation]
+\gllabel{obviated~KSA}%
+\gllabel{obviated~KSAs}%
+\gllabel{obviated}%
+\gllabel{obviation}%
+\index{obviated knowledge-source activation}%
+\index{KS activation!obviated}%
+\index{KSA!obviated}%
+%
+An unexecuted \glref{KS~activation} that has been deemed unnecessary and will
+therefore never be executed.
+
+%% ------------------------------------------------------------------------
+
+\glent[Offset~Universal~Time]
+\index{Offset Universal Time}%
+%
+A non-negative integer number of seconds measured from the beginning of a time
+base later than the year 1900 (ignoring leap seconds).  Offset Universal Time
+is \glref{Universal~Time} that is offset by an integer time-base value so that
+the most often used Offset Universal Time values in an application are
+\glref{fixnums}.
+
+
+%% ------------------------------------------------------------------------
+
+\glent[ordered~dimension]
+\gllabel{ordered-dimension}%
+\gllabel{ordered~dimensions}%
+\index{ordered dimension}%
+\index{dimension type!ordered}%
+%
+A \glref{dimension} of \code{:ordered} \glref{dimension~type} where
+\code{:point}, \code{:interval}, and \code{:mixed} \glref{dimension~values}
+are points or intervals on a continuous, real-number extent.
+
+%% ------------------------------------------------------------------------
+
+\glent[ordering~dimension]
+\index{ordering dimension}%
+%
+The \glref{dimension} whose \glref{dimension~values} are used to order a
+\glref{series-composite~dimension~value}.
+
+%% ------------------------------------------------------------------------
+
+\glent[ordered~queue]
+\gllabel{ordered~queues}
+\index{ordered queue}%
+\index{queue!ordered}%
+\bfindexit{ordered-queue}%
+%
+A doubly linked, ordered queue.  A GBBopen queue is headed by an object that
+is a subclass of \nobr{\textbf{\entlinknoex{ordered-queue}}}.
+
+%% ------------------------------------------------------------------------
+
+\glent[package~designator]
+\index{package!designator}%
+%
+A \glref{string~designator} (denoting a string that designates the name or
+nickname of a package) or a package (denoting itself).
+
+%% ------------------------------------------------------------------------
+
+\glent[passive~socket]
+\index{socket!passive}%
+%
+A socket that is used to accept a connection initiation to a specific service
+port.
+
+%% ------------------------------------------------------------------------
+
+\glent[patch]
+\gllabel{patches}%
+\index{patch}%
+%
+A modification to the existing code of an application that is loaded after the
+regular application code, either at startup or into an executing application.
+
+%% ------------------------------------------------------------------------
+
+\glent[path~expression]
+\gllabel{path-expression}%
+\index{path!expression}%
+\index{path!space instances expression}%
+%
+A regular expression representing one or more \glref{space-instance~paths}.
+
+%% ------------------------------------------------------------------------
+
+\glent[pathname]
+\index{pathname}%
+%
+A structured representation of the name of a file. A pathname has six
+components: host, device, directory, name, type, and version.
+
+%% ------------------------------------------------------------------------
+
+\glent[pathname~designator]
+\index{pathname!designator}%
+
+A \glref{namestring} (denoting the corresponding \glref{pathname}), a stream
+associated with a file (denoting the \glref{pathname} used to open the file),
+or a \glref{pathname} (denoting itself).
+
+%% ------------------------------------------------------------------------
+
+\glent[pending~KS~activation]
+\gllabel{pending~KSA}%
+\gllabel{pending~KSAs}%
+\index{pending knowledge-source activation}%
+\index{KS activation!pending}%
+\index{KSA!pending}%
+A \glref{KS~activation} that has not been executed or \glref{obviated}.
+
+%% ---------------------------------------------------------------------------
+
+\glent[periodic~function]
+\gllabel{periodic-function}%
+\gllabel{periodic~functions}%
+\gllabel{periodic}%
+
+A \glref{function} of no arguments that is run repeatedly at a specified
+interval, at a resolution as brief as supported by \code{sleep}. A separate
+\glref{thread} is spawned to manage the periodic invocations of the specified
+function.
+
+A count can also be provided for the periodic function. When specified, this
+value is decremented prior to each invocation of the function and, when it is
+no longer positive, the periodic-function thread is terminated.
+
+%% ------------------------------------------------------------------------
+
+\glent[predicate~function]
+\gllabel{predicate-function}%
+\index{predicate function}%
+\index{function!predicate}%
+A \glref{function} that returns a \glref{generalized-boolean} value.
+
+%% ------------------------------------------------------------------------
+
+\glent[proper~list]
+\index{proper list}%
+\index{list!proper}%
+A list terminated by the empty list. (The empty list is a proper list.)
+
+%% ------------------------------------------------------------------------
+
+\glent[property]
+\gllabel{properties}%
+\index{property, of a property list}%
+(of a \glref{property~list}) 1. A pair of elements in a \glref{property~list}
+representing the name of a property and its associated value. 2. The value of
+a property.
+
+%% ------------------------------------------------------------------------
+
+\glent[property~list]
+\index{property list}%
+\index{list!property list}%
+A list containing an even number of elements that represent alternating names
+(sometimes called indicators or keys) and their associated values.
+
+%% ------------------------------------------------------------------------
+
+\glent[pseudo-probability]
+
+A discretized \code{\glref{fixnum}} representation for probability values that
+maps probability values in the range [0.0..1.0] to integers in the range
+[0..1000].
+
+%% ------------------------------------------------------------------------
+
+\glent[pseudo-probability-ln]
+
+A discretized \code{\glref{fixnum}} representation for the natural logarithm
+of a \glref{pseudo-probability} value.  Pseudo-probability-ln values range
+from [-6907756..0].
+
+%% ------------------------------------------------------------------------
+
+\glent[queue]
+\index{queue}%
+\index{doubly-linked queue}%
+A doubly linked queue.  A GBBopen queue is headed by an object that is a
+subclass of \textbf{\entlinknoex{queue}}.  GBBopen queues that maintain a
+sorted ordering of \glref{queue~elements} are provided by
+\glref{ordered~queues}.
+
+%% ------------------------------------------------------------------------
+
+\glent[queue~element]
+\gllabel{queue-element}%
+\gllabel{queue~elements}%
+\index{queue element}%
+An object that is a subclass of \nobr{\textbf{\entlinknoex{queue-element}}}.
+
+%% ------------------------------------------------------------------------
+
+\glent[quiescence]
+\index{agenda Shell!quiescence}%
+\index{control shell!quiescence}%
+A control-shell state when no more \glref{executable~KSAs} are in the queue of
+\glref{pending~KSAs}.
+
+%% ------------------------------------------------------------------------
+
+\glent[rating]
+\index{rating!of a KSA}%
+An integer between -32768 and 32767 inclusive, used by the Agenda Shell to
+order \glref{pending~KSAs} (see \textbf{\entlinknoex{rating}}).
+
+%% ------------------------------------------------------------------------
+
+\glent[recursive~lock] 
+\gllabel{recursive-lock}%
+\gllabel{recursive~locks}%
+\index{recursive lock}%
+\index{lock!recursive}%
+%
+A mutual-exclusion object that allows multiple \glref{threads} to synchronize
+activities or access to shared resources. A recursive lock has two states,
+unlocked or locked by a specific \glref{thread}. Once a recursive lock is held
+by a \glref{thread}, any other \glref{threads} attempting to lock it will
+block. When the lock-holding \glref{thread} unlocks (releases) the recursive
+lock, one of the blocked \glref{threads} will acquire (lock) it and proceed.
+If the \glref{thread} that is holding the recursive lock attempts to
+re-acquire it, that \glref{thread} is allowed to proceed as if it had acquired
+the lock (without error or blocking, see \glref{lock}).
+
+%% ------------------------------------------------------------------------
+
+\glent[relative~directory]
+\gllabel{relative-directory}%
+\gllabel{relative~directories}%
+\index{relative directory}%
+\index{directory!relative}%
+%
+A directory defined in relation to another directory definition.
+Part of the \reflink{Module Manager Facility}{sec:module-manager}.
+
+%% ------------------------------------------------------------------------
+
+\glent[REPL~command] 
+\gllabel{command}%
+\gllabel{commands}%
+\gllabel{keyword~command}%
+\gllabel{keyword-command}%
+\gllabel{keyword~commands}%
+\gllabel{REPL~commands}%
+\index{REPL command}%
+\index{command!REPL}%
+%
+A \glref{keyword} command that can be entered at the top level read-eval-print
+loop (REPL) in your Common Lisp environment.  REPL commands (some with
+arguments) provide convenient shortcuts for often-used operations.
+
+%% ------------------------------------------------------------------------
+
+\glent[retrieval~pattern]
+\gllabel{retrieval~patterns}%
+\index{retrieval!pattern}%
+\index{pattern!retrieval}%
+\bfindexit{filter-instances}%
+\bfindexit{find-instances}%
+\bfindexit{map-instances-on-space-instances}%
+%
+A list argument to \nobr{\textbf{\entlinknoex{filter-instances}}},
+\nobr{\textbf{\entlinknoex{find-instances}}}, and
+\nobr{\textbf{\entlinknoex{map-instances-on-space-instances}}} specifying the
+\glref{dimension~value} requirements for selecting \glref{unit~instances} to
+be returned.
+
+%% ------------------------------------------------------------------------
+
+\glent[required~module]
+\gllabel{required-module}%
+\gllabel{required~modules}%
+\index{module}%
+%
+A sequence of \glref{modules} that must be compiled (if needed) and loaded, in
+order, before the requiring \glref{module} is compiled (if needed) and loaded.
+Part of the \reflink{Module Manager Facility}{sec:module-manager}.
+
+%% ------------------------------------------------------------------------
+
+\glent[root~directory]
+\gllabel{root-directory}%
+\gllabel{root}%
+\gllabel{Root}%
+\gllabel{Root~directories}%
+\index{root directory}%
+\index{directory!root}%
+%
+A fixed anchor directory for a tree of relative directory definitions.
+Part of the \reflink{Module Manager Facility}{sec:module-manager}.
+
+%% ---------------------------------------------------------------------------
+
+\glent[scheduled~function]
+\gllabel{scheduled~functions}%
+\gllabel{Scheduled~functions}%
+\gllabel{scheduled-function}%
+\gllabel{scheduled}%
+%
+An object that contains a \glref{function} that may be scheduled to run at an
+absolute or relative time. When that specified time arrives, the function
+is invoked with a single argument: the scheduled-function object.
+
+A repeat interval can also be specified for the scheduled
+function. When specified, this value is used whenever the function is
+invoked to schedule the function again at a new time relative to the
+current invocation.
+
+Scheduled functions can be scheduled to a resolution of one second.  Periodic
+function invocations at brief time intervals are provided by
+\glref{periodic~functions}.
+
+%% ------------------------------------------------------------------------
+
+\glent[series-composite~dimension~value]
+\gllabel{series-composite~dimension~values}%
+\index{composite dimension!value, series}% 
+\index{series-composite dimension!value}% 
+%
+A \glref{dimension~value} that is a series of \glref{dimension~values} that
+are ordered by the \glref{dimension~values} of another \glref{dimension} (the
+\glref{series-composite~ordering~dimension}).
+
+%% ------------------------------------------------------------------------
+
+\glent[series-composite~ordering~dimension]
+\index{composite dimension!ordering dimension, of a series-composite 
+  dimension}% 
+\index{series-composite dimension!ordering dimension}% 
+\index{ordering dimension, of a series-composite dimension}% 
+%
+The \glref{dimension} whose values are used to order a
+\glref{series-composite~dimension~value}.
+
+%% ------------------------------------------------------------------------
+
+\glent[sequence-composite~dimension~value]
+\index{composite dimension!value, sequence}% 
+\index{sequence-composite dimension!value}% 
+%
+A dimension value that is a sequence of \glref{dimension~values}.
+
+%% ------------------------------------------------------------------------
+
+\glent[set-composite~dimension~value]
+\index{composite dimension!value, set}% 
+\index{set-composite dimension!value}% 
+%
+A dimension value that is a set of \glref{dimension~values}.
+
+%% ------------------------------------------------------------------------
+
+\glent[slot]
+\index{slot}%
+\index{object!slot}%
+%
+A component of an object that can store a value.
+
+%% ------------------------------------------------------------------------
+
+\glent[space]
+\index{space!class}%
+\index{space!instance}%
+\index{instance!space instance}%
+%
+Pertaining to a \glref{space~class} or \glref{space~instance}.
+
+%% ------------------------------------------------------------------------
+
+\glent[space~class]
+\gllabel{space~classes}%
+\index{class!space}%
+\index{space!class}%
+\bfindexit{standard-space-class}%
+%
+An object that is a subclass of \nobr{\textbf{\entlinknoex{standard-space-class}}}.
+
+%% ------------------------------------------------------------------------
+
+\glent[space~instance]
+\gllabel{space-instance}%
+\gllabel{space~instances}%
+\index{space!instance}%
+\index{instance!space instance}%
+\bfindexit{standard-space-instance}%
+%
+An object whose class is a subclass of
+\nobr{\textbf{\entlinknoex{standard-space-instance}}}.  A space instance is also a
+\glref{unit~instance}, but space instances are normally described by their
+more specific categorization.
+
+%% ------------------------------------------------------------------------
+
+\glent[space-instance~path] 
+\gllabel{space-instance~paths}%
+\index{space instance!path}%
+\index{path!space instance}%
+%
+A complete list of space-instance names, starting with the most distant
+indirect parent space-instance name, that uniquely identifies a
+\glref{space~instance} in the \glref{blackboard~repository}.
+
+%% ------------------------------------------------------------------------
+
+\glent[standard-gbbopen-instance]
+\bfindexit{standard-gbbopen-instance}%
+%
+An object whose class is a subclass of 
+\nobr{\textbf{\entlinknoex{standard-gbbopen-instance}}}. It is a superclass of
+\nobr{\textbf{\entlink{standard-event-instance}}} and
+\nobr{\textbf{\entlink{standard-unit-instance}}}.
+
+%% ------------------------------------------------------------------------
+
+\glent[storage~specification]
+\index{storage specification}%
+\index{space instance!storage specification}%
+%
+A specification of how \glref{unit~instances} are to be stored on a
+\glref{space~instance}.
+
+%% ------------------------------------------------------------------------
+
+\glent[streamer] 
+\gllabel{streamers} 
+\index{streamer}%
+%
+An object that is used as a saving or sending destination for
+\glref{journaling} or \glref{network-streaming} functions.
+
+%% ------------------------------------------------------------------------
+
+\glent[streamer~node] 
+\gllabel{streamer~nodes}
+\gllabel{streamer-node}
+\index{streamer node}%
+\index{node!streamer}%
+%
+A logical ``host'' for sending and receiving streamed updates to
+\glref{unit~instances} and to the \glref{blackboard~repository}.  Each
+streaming node is resolved uniquely by \textit{host\/} and \textit{port\/} and
+should be defined with a unique \textit{name\/}. Although multiple streaming
+nodes can be defined for the same Common Lisp image, typically only one
+streaming node is defined per image.
+
+%% ------------------------------------------------------------------------
+
+\glent[streamer~queue] 
+\index{streamer queue}%
+%
+A \glref{thread~local} queue of changes associated with a \glref{streamer}
+that are being held until in memory until the queue is written or cleared.
+
+%% ------------------------------------------------------------------------
+
+\glent[string~designator]
+\index{string designator}%
+%
+An object that denotes a string. One of: a character (denoting a
+singleton string that has the character as its only element), a symbol
+(denoting the string that is its name), or a string (denoting itself).
+
+%% ------------------------------------------------------------------------
+
+\glent[subclasses]
+\index{unit class!subclasses}%
+\index{class!subclasses}%
+%
+The classes that inherit from a \glref{class}.
+
+%% ------------------------------------------------------------------------
+
+\glent[subevents]
+\index{event class!subevents}%
+%
+The classes that inherit from an \glref{event~class}.
+
+%% ------------------------------------------------------------------------
+
+\glent[system~name] \gllabel{system}%
+\index{system-name, keyword symbol}%
+%
+A \glref{keyword} associating a set of REPL commands, directory
+definitions, and module definitions with a specific library or application.
+
+%% ------------------------------------------------------------------------
+
+\glent[thread] 
+\gllabel{threads}%
+\index{thread}%
+%
+A thread in a multi-threaded Common Lisp implementation or a Lisp process in a
+Common Lisp that provides multiprocessing.
+
+%% ------------------------------------------------------------------------
+
+\glent[thread-local binding] 
+\gllabel{thread~local}
+\gllabel{thread-local}
+\index{thread-local binding}%
+%
+A dynamic binding that is visible only to a single \glref{thread}.
+
+%% ------------------------------------------------------------------------
+
+\glent[three-way~comparison~test] 
+\index{thread}%
+%
+A function of two arguments that returns: a negative \glref{fixnum} if the
+first argument is less than the second argument, zero if the two arguments are
+equal, and a positive \glref{fixnum} if the first argument is greater than the
+second argument.
+
+%% ------------------------------------------------------------------------
+
+\glent[time~zone]
+\index{time zone}%
+%
+A rational number between -24 (inclusive) and 24 (inclusive) that represents a
+time zone as a number of hours offset from Greenwich Mean Time. A non-integral
+time zone must be a multiple of 
+%
+\W1/3600.  
+\T$\frac{1}{3600}$.
+
+%% ------------------------------------------------------------------------
+
+\glent[unit]
+\index{unit!class}%
+\index{unit instance}%
+\index{class!unit}%
+\index{instance!unit}%
+%
+Pertaining to a \glref{unit~class} or \glref{unit~instance}.
+
+%% ------------------------------------------------------------------------
+
+\glent[unit~class]
+\gllabel{unit-class}%
+\gllabel{Unit~classes}%
+\gllabel{unit~classes}%
+\index{unit!class}%
+\index{class!unit}%
+\bfindexit{standard-unit-class}%
+%
+An object that is a subclass of \nobr{\textbf{\entlinknoex{standard-unit-class}}}.
+
+%% ------------------------------------------------------------------------
+
+\glent[unit~instance] 
+\gllabel{unit~instances}%
+\gllabel{Unit~instances}%
+\gllabel{unit-instance}%
+\gllabel{instance}%
+\gllabel{instances}%
+\index{unit instance}%
+\index{instance!unit}%
+\bfindexit{standard-unit-instance}%
+%
+An object whose class is a subclass of
+\nobr{\textbf{\entlinknoex{standard-unit-instance}}}. A \glref{space~instance} is
+also a unit instance, but \glref{space~instances} are normally described by
+their more specific categorization.
+
+%% ------------------------------------------------------------------------
+
+\glent[Universal~Time]
+\index{Universal Time}%
+%
+A non-negative integer number of seconds measured from the beginning of the
+year 1900 (ignoring leap seconds).
+
+%% ------------------------------------------------------------------------
+
+\glent[variable~symbol]
+\index{variable symbol}%
+%
+A symbol that can accept a binding.
+
+\end{glossary-list}
+
+%% ========================================================================

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- map-queue</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-queue.html"><img border="0" alt="make-queue" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-queue-entities.html"><img border="0" alt="Queue Management" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-next-queue-element.html"><img border="0" alt="next-queue-element" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">map-queue</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">map-queue</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>function queue</var></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Apply a <a href="ref-glossary.html#gl:function">function</a> to each <a href="ref-glossary.html#id188">queue&nbsp;element</a> on the
+specified <nobr><var>queue</var></nobr>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>map-queue</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>function</var> <code>t)</code>
+<code>(</code><var>queue</var> <code>queue)</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:queue</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of one argument
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>queue</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A GBBopen <a href="ref-glossary.html#gl:queue">queue</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br />The <var>function</var> is applied to the
+<a href="ref-glossary.html#gl:queue-element">queue&nbsp;elements</a> in queue order (first to last).
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-do-queue.html"><b>do-queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-queue.html"><b>queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-ordered-queue.html"><b>ordered-queue</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br /><a name="id1">Count</a> the number of <a href="ref-glossary.html#id173">pending&nbsp;KSAs</a> that were triggered by
+<code>hyp</code>: 
+<pre class="pretop">
+  &gt; (let ((count 0))
+      (map-queue #'(lambda (ksa)
+                     (when (<a href="ref-memq.html">memq</a> hyp (<a href="ref-collect-trigger-instances.html">collect-trigger-instances</a> ksa))
+                       (<a href="ref-declared-numerics.html">incf&amp;</a> count)))
+                 pending-ksas)
+       count)
+  31
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-queue.html"><img border="0" alt="make-queue" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-queue-entities.html"><img border="0" alt="Queue Management" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-next-queue-element.html"><img border="0" alt="next-queue-element" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">map-queue</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

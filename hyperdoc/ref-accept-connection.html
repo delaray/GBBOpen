@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- accept-connection</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-portable-socket-entities.html"><img border="0" alt="Portable Sockets" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-close-passive-socket.html"><img border="0" alt="close-passive-socket" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">accept-connection</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">accept-connection</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>passive-socket</var>
+<nobr><code>&#38;key</code> <var>wait</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>socket-stream</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Accept a socket-stream connection.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-sockets</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-sockets</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>passive-socket</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id162">passive&nbsp;socket</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>wait</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>t</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>socket-stream</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A socket stream
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />A socket stream.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-shutdown-socket-stream.html"><b>shutdown-socket-stream</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-start-connection-server.html"><b>start-connection-server</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Example</span> <br />Accept a connection made to a newly created passive socket:
+<pre class="pretop">
+  &gt; (let* ((passive-socket (<a href="ref-make-passive-socket.html">make-passive-socket</a> 5555))
+           (connection (accept-connection passive-socket)))
+       (<a href="ref-close-passive-socket.html">close-passive-socket</a> passive-socket)
+       connection)
+  #&lt;socket stream connected from localhost/5555 to localhost/59946&gt;
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />Connections should always be closed using <nobr><b>close</b></nobr> (from
+both sides) to free up operating-system resources when they are no longer
+needed.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-portable-socket-entities.html"><img border="0" alt="Portable Sockets" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-close-passive-socket.html"><img border="0" alt="close-passive-socket" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">accept-connection</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

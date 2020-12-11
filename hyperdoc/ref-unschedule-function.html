@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- unschedule-function</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-spawn-periodic-function.html"><img border="0" alt="spawn-periodic-function" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-entities.html"><img border="0" alt="Scheduled and Periodic Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">unschedule-function</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">unschedule-function</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>name-or-scheduled-function</var></nobr>
+<nobr><code>&#38;key</code> <var>marker warnp verbose</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>boolean</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Cancel the upcoming invocation (and subsequent repeat-interval
+scheduling) of a currently scheduled <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>name-or-scheduled-function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object (typically a string or a
+symbol) naming a currently scheduled <a href="ref-glossary.html#id206">scheduled&nbsp;function</a> or a
+<nobr><code>scheduled-function</code></nobr> object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>marker</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>verbose</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> 
+(default is <nobr><b><a href="ref-schedule-function-verbose-var.html">*schedule-function-verbose*</a></b></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>warnp</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>t</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>boolean</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <a href="ref-glossary.html#id206">scheduled&nbsp;function</a> if it was unscheduled; <code>nil</code> if the 
+<a href="ref-glossary.html#id206">scheduled&nbsp;function</a> was not currently scheduled or was not found.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />Threads (multiprocessing) is not supported on the
+Common Lisp implementation.
+</p>
+<p><span class="fndoclabel">Description</span> <br />If the <nobr><var>scheduled-function</var></nobr> object is currently
+scheduled, either the <nobr><code>scheduled-function</code></nobr> object or the optional
+<var>name</var> value that was specified when the
+<nobr><code>scheduled-function</code></nobr> object was created with
+<nobr><b><a href="ref-make-scheduled-function.html">make-scheduled-function</a></b></nobr> can be specified as the
+<nobr><var>name-or-scheduled-function</var></nobr> value.  If a name is specified as
+the <nobr><var>name-or-scheduled-function</var></nobr> value and more than one
+<nobr><a href="ref-glossary.html#id206">scheduled&nbsp;function</a></nobr> with the specified <var>name</var> is currently
+scheduled, the <nobr><a href="ref-glossary.html#id206">scheduled&nbsp;function</a></nobr> with the earliest invocation
+time is selected.  If an optional <var>marker</var> value was specified along
+with <var>name</var> when the <nobr><code>scheduled-function</code></nobr> object was created
+with <nobr><b><a href="ref-make-scheduled-function.html">make-scheduled-function</a></b></nobr>, the <var>marker</var>
+value can also be specified to restrict the selected
+<nobr><a href="ref-glossary.html#id206">scheduled&nbsp;function</a></nobr> to the one with the earliest invocation time
+that matches both the <var>name</var> and <var>marker</var> values.  The selected
+<nobr><a href="ref-glossary.html#id206">scheduled&nbsp;function</a></nobr> is removed from the list of currently
+scheduled <a href="ref-glossary.html#gl:scheduled">scheduled&nbsp;functions</a>.
+</p>
+<p>If <var>warnp</var> is true, a warning is issued if the <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>
+was not currently scheduled or was not found.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-schedule-function-verbose-var.html"><b>*schedule-function-verbose*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-all-scheduled-functions.html"><b>all-scheduled-functions</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-scheduled-function.html"><b>make-scheduled-function</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-schedule-function.html"><b>schedule-function</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-schedule-function-relative.html"><b>schedule-function-relative</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Unschedule the <nobr><code>quitting-time</code></nobr> <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>:
+<pre class="pretop">
+  &gt; (unschedule-function 'quitting-time)
+  #&lt;scheduled-function quitting-time [unscheduled]&gt;
+  &gt;
+</pre>
+<a name="id1">Unschedule</a> all currently scheduled <a href="ref-glossary.html#gl:scheduled">scheduled&nbsp;functions</a>:
+<pre>
+  &gt; (<a href="ref-all-scheduled-functions.html">all-scheduled-functions</a>)
+  (#&lt;scheduled-function nil [Jan 1, 2010 00:00:00]&gt;)
+  &gt; (mapc #'unschedule-function (<a href="ref-all-scheduled-functions.html">all-scheduled-functions</a>))
+  (#&lt;scheduled-function nil [unscheduled]&gt;)
+  &gt; (<a href="ref-all-scheduled-functions.html">all-scheduled-functions</a>)
+  nil
+  &gt;
+</pre>
+Unschedule a non-existent <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>:
+<pre>
+  &gt; (unschedule-function 'non-existent)
+  ;; Warning: Scheduled-function non-existent was not scheduled; no action taken.
+  nil
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-spawn-periodic-function.html"><img border="0" alt="spawn-periodic-function" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-entities.html"><img border="0" alt="Scheduled and Periodic Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">unschedule-function</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- describe-space-instance</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-describe-blackboard-repository.html"><img border="0" alt="describe-blackboard-repository" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-space-instance-storage.html"><img border="0" alt="describe-space-instance-storage" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">describe-space-instance</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">describe-space-instance</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>space-instance-or-path</var></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Describe a <a href="ref-glossary.html#id222">space&nbsp;instance</a>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>describe-space-instance</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>space-instance-path</var> <code>cons)</code>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>describe-space-instance</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>space-instance</var> <code>standard-space-instance)</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>space-instance-or-path</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id222">space&nbsp;instance</a> or a 
+<a href="ref-glossary.html#id224">space-instance&nbsp;path</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id1">The</a> description is printed to the <b>*standard-output*</b> stream.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-describe-instance.html"><b>describe-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-describe-space-instance-storage.html"><b>describe-space-instance-storage</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-space-instance.html"><b>make-space-instance</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Describe the <code>hyps</code> <a href="ref-glossary.html#id222">space&nbsp;instance</a>:
+<pre class="pretop">
+  &gt; (describe-space-instance '(bb hyps))
+    Standard-space-instance #&lt;standard-space-instance (bb hyps)&gt;
+      Path: (bb hyps)
+      Allowed unit classes:
+        (hyp :plus-subclasses)
+      Dimensions:
+        (belief (:ordered number))
+        (velocity-range (:ordered number))
+        (color (:enumerated eq))
+        (classification (:enumerated eq))
+        (x (:ordered fixnum))
+        (y (:ordered fixnum))
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">REPL Note</span> <br /><a name="id2"></a><b>Describe-space-instance</b> can be invoked using the <a href="ref-glossary.html#id198">REPL&nbsp;command</a>:
+<pre class="pretop">
+  :dsi &#123;<var>space-instance</var> | <var>space-instance-path</var>&#125;
+</pre>
+which also sets <code>=</code> to the described <a href="ref-glossary.html#id222">space&nbsp;instance</a>.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-describe-blackboard-repository.html"><img border="0" alt="describe-blackboard-repository" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-space-instance-storage.html"><img border="0" alt="describe-space-instance-storage" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">describe-space-instance</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

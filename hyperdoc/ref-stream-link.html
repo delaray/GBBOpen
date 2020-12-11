@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- stream-link</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-stream-instances-on-space-instances.html"><img border="0" alt="stream-instances-on-space-instances" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-streaming-entities.html"><img border="0" alt="Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-stream-nonlink-slot-update.html"><img border="0" alt="stream-nonlink-slot-update" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">stream-link</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">stream-link</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>unit-instance slot other-unit-instances streamer</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>other-unit-instances</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Write links added between a <a href="ref-glossary.html#id256">unit&nbsp;instance</a> and one
+or more <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> to a <a href="ref-glossary.html#gl:streamer">streamer</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:streaming</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>unit-instance</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id256">unit&nbsp;instance</a> (or <a href="ref-glossary.html#id222">space&nbsp;instance</a>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slot</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a> naming the link slot or a slot meta object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>other-unit-instances</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id256">unit&nbsp;instance</a>, a 
+<a href="ref-glossary.html#id130">link-pointer&nbsp;object</a>, or a list of <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> and 
+<a href="ref-glossary.html#gl:link-pointer-object">link-pointer&nbsp;objects</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>streamer</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:streamer">streamer</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The supplied <var>other-unit-instances</var>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-stream-nonlink-slot-update.html"><b>stream-nonlink-slot-update</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-stream-unlink.html"><b>stream-unlink</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Stream adding a link of <code>support-hyp</code> to the
+<nobr><code>supporting-hyps</code></nobr> <a href="ref-glossary.html#id128">link&nbsp;slot</a> of the <code>hyp</code>
+<a href="ref-glossary.html#id256">unit&nbsp;instance</a> <nobr><code>unit-instance</code></nobr> to <a href="ref-glossary.html#gl:streamer">streamer</a>
+<code>*streamer*</code>:
+<pre class="pretop">
+  &gt; (stream-link unit-instance 'supporting-hyps support-hyp *streamer*)
+  #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-stream-instances-on-space-instances.html"><img border="0" alt="stream-instances-on-space-instances" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-streaming-entities.html"><img border="0" alt="Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-stream-nonlink-slot-update.html"><img border="0" alt="stream-nonlink-slot-update" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">stream-link</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

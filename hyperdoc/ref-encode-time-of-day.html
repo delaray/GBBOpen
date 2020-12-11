@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- encode-time-of-day</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-encode-date-and-time.html"><img border="0" alt="encode-date-and-time" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-full-date-and-time.html"><img border="0" alt="full-date-and-time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">encode-time-of-day</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">encode-time-of-day</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>second minute hour</var> 
+<nobr><code>&#38;optional</code> <var>universal-time</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var><nobr>universal-time</nobr></var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return a <a href="ref-glossary.html#id258">Universal&nbsp;Time</a> representing a specified
+time-of-day.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> (or <code>:portable-threads</code> if Portable
+Threads is used without GBBopen Tools)
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> (or <code>:portable-threads</code> if Portable
+Threads is used without GBBopen Tools)
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>second</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer between 0 and 59, inclusive
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>minute</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer between 0 and 59, inclusive
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>hour</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer between 0 and 23, inclusive
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>universal-time</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id258">Universal&nbsp;Time</a> (default is <code>nil</code>,
+which is equivalent to the value returned by
+<nobr><code>(get-universal-time)</code></nobr>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br />If the specified time-of-date has already passed (relative to
+the <nobr><var>universal-time</var></nobr> value), the next day is assumed.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-encode-date-and-time.html"><b>encode-date-and-time</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Examples</span> <br />Schedule a <a href="ref-glossary.html#id206">scheduled&nbsp;function</a> that prints <nobr><code>"It's quitting time!"</code></nobr> 
+every day at 5pm:
+<pre class="pretop">
+  &gt; (<a href="ref-schedule-function.html">schedule-function</a>
+      (<a href="ref-make-scheduled-function.html">make-scheduled-function</a>
+        #'(lambda (scheduled-function)
+            (declare (ignore scheduled-function))
+            (print "It's quitting time!"))
+        :name 'quitting-time)
+       (encode-time-of-day 0 0 17) :repeat-interval #.(* 24 60 60))
+  &gt;
+</pre>
+</p>
+<p><a name="id2">Verbosely</a> change <nobr><code>quitting-time</code></nobr> to 5:30pm every day:
+<pre class="pretop">
+  &gt; (<a href="ref-schedule-function.html">schedule-function</a> 'quitting-time (encode-time-of-day 0 30 17)
+      :repeat-interval #.(* 24 60 60)
+      :verbose 't)
+  ;; Unscheduling #&lt;scheduled-function quitting-time [17:00:00]&gt;...
+  ;; Scheduling #&lt;scheduled-function quitting-time [17:30:00]&gt; 
+  ;; as the next scheduled-function...
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-encode-date-and-time.html"><img border="0" alt="encode-date-and-time" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-full-date-and-time.html"><img border="0" alt="full-date-and-time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">encode-time-of-day</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

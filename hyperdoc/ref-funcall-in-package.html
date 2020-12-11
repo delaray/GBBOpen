@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- funcall-in-package</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-define-repl-command.html"><img border="0" alt="define-repl-command" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-starting-up.html"><img border="0" alt="Starting Up" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-startup-module.html"><img border="0" alt="startup-module" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">funcall-in-package</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">funcall-in-package</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>symbol package-name</var>
+<nobr><code>&#38;rest</code> <var>args</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Apply a function to arguments when the package containing the
+function may not exist until execution time.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:common-lisp-user</code> (not exported)
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;Defined in <nobr><code>initiate.lisp</code></nobr> (or in
+<nobr><code>startup.lisp</code>,</nobr> if <nobr><code>initiate.lisp</code></nobr> is not used to
+initiate GBBopen)
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>symbol</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A symbol
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>package-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A package name
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>args</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Arguments to the function
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br />This function provides a convenient means of applying a
+function to arguments, when the package containing the function may not exist
+until execution time. The function to be applied is determined at runtime by
+using the name of <var>symbol</var> to find the symbol with the same name in
+<var>package</var> and using it as the function designator.
+</p>
+<p><span class="fndoclabel">Example</span> <br /><a name="id1">Define</a> a <a href="ref-glossary.html#id198">REPL&nbsp;command</a> named <nobr><code>:my-app</code></nobr> that compiles and
+loads the <a href="ref-glossary.html#gl:module">module</a> <nobr><code>:my-app</code></nobr>, sets the current package to
+the <nobr><code>:gbbopen-user</code></nobr> package, and then calls the function
+<nobr><code>startup</code></nobr> in the package <nobr><code>:my-app-package</code></nobr> that is
+defined when the <nobr><code>:my-app</code></nobr> module is loaded:
+<pre class="pretop">
+  (<a href="ref-define-repl-command.html">define-repl-command</a> :my-app (&amp;rest options)
+    "Compile and load my GBBopen application module"
+    (startup-module :my-app options :gbbopen-user)
+    ;; Call the startup function:
+    (funcall-in-package '#:startup :my-app-package))
+</pre> 
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-define-repl-command.html"><img border="0" alt="define-repl-command" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-starting-up.html"><img border="0" alt="Starting Up" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-startup-module.html"><img border="0" alt="startup-module" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">funcall-in-package</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

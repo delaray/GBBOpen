@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- queue-length</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-queue-element.html"><img border="0" alt="queue-element" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-queue-entities.html"><img border="0" alt="Queue Management" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-remove-from-queue.html"><img border="0" alt="remove-from-queue" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">queue-length</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">queue-length</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>queue</var>
+<nobr><code>&#38;optional</code> <var>recount-p</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>integer</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return the length of <nobr><var>queue</var></nobr>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>queue-length</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>queue</var> <code>queue)</code>
+<code>&#38;optional</code> <var>recount-p</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>integer</var>
+</td></tr></table> 
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:queue</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>queue</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A GBBopen <a href="ref-glossary.html#gl:queue">queue</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>recount-p</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> If true, actually counts the individual
+<a href="ref-glossary.html#gl:queue-element">queue&nbsp;elements</a> (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>integer</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <var>queue</var> length.
+</p>
+<p><span class="fndoclabel">Description</span> <br />Normally <nobr><b>queue-length</b></nobr> simply returns a count
+that is maintained with the queue.  Although highly unlikely, this count could
+become inaccurate if <a href="ref-glossary.html#gl:queue-element">queue-element</a> insertion or deletion operations
+are aborted in process. If <nobr><var>recount-p</var></nobr> is true, the elements are
+actually counted and then the count maintained with the queue is updated and
+returned.
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Return the number of <a href="ref-glossary.html#gl:activations">KSAs</a> in the queue <nobr><code>pending-ksas</code></nobr>:
+<pre class="pretop">
+  &gt; (queue-length pending-ksas)
+  896
+  &gt;
+</pre>
+Count and then return the actual number of <a href="ref-glossary.html#gl:activations">KSAs</a> in the
+queue <nobr><code>pending-ksas</code></nobr>:
+<pre>
+  &gt; (queue-length pending-ksas 't)
+  896
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-queue-element.html"><img border="0" alt="queue-element" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-queue-entities.html"><img border="0" alt="Queue Management" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-remove-from-queue.html"><img border="0" alt="remove-from-queue" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">queue-length</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

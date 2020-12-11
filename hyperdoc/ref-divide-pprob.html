@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- / </title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-multiply-pprob.html"><img border="0" alt="* " src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-pseudo-probability-entities.html"><img border="0" alt="Pseudo Probabilities" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-exp-pprob.html"><img border="0" alt="exp " src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">/&#37;</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">/&#37;</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var><nobr>pseudo-probability-numerator</nobr>
+<nobr>pseudo-probability-denominator</nobr>*</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>quotient</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Returns the quotient of dividing
+<nobr><var>pseudo-probability-numerator</var></nobr> by all of the
+<nobr><var>pseudo-probability-denominators</var></nobr>, performing
+<a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>-normalization in the process.
+</p>
+<p><span class="fndoclabel">Alternate syntax</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>/&#37;</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<var>pseudo-probability-numerator</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>reciprocal</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>pseudo-probability-numerator</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code> 
+<a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>pseudo-probability-denominator</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code> 
+<a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>quotient</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>-normalized 
+<nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>reciprocal</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>-normalized 
+<nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>-normalized
+<nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr> quotient (if one or more
+<nobr><var>pseudo-probability-denominators</var></nobr> is specified; otherwise the
+<a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>-normalized <nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr> reciprocal
+of <nobr><var>pseudo-probability-numerator</var></nobr>.
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>-normalization is performed by <b>/&#37;</b>, but the
+<nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr> result may not be a <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>.
+It is an error to specify more than one
+<nobr><var>pseudo-probability-denominator</var></nobr> value that leads to an
+intermediate result that is larger than a <nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-multiply-pprob.html"><b>*&#37;</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-pprob2prob.html"><b>pprob2prob</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-prob2pprob.html"><b>prob2pprob</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /></p>
+<pre class="pretop">
+
+  &gt; (/ 0.6 0.8)
+  0.75
+  &gt; (/&#37; 600 800)
+  750
+  &gt; (/ 0.6 0.8 0.9)
+  0.8333334
+  &gt; (/&#37; 600 800 900)
+  833
+  &gt; (/ 0.8 0.5)
+  1.6          ; not a probability
+  &gt; (/&#37; 800 500)
+  1600         ; not a <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>
+  &gt; (/ 5.0)    ; not a probability
+  0.2          
+  &gt; (/&#37; 5000)  ; not a <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>
+  200          
+  &gt; (/ 0.5)
+  2.0          ; not a probability
+  &gt; (/&#37; 500)
+  2000         ; not a <a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a>
+  &gt; 
+</pre>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-multiply-pprob.html"><img border="0" alt="* " src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-pseudo-probability-entities.html"><img border="0" alt="Pseudo Probabilities" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-exp-pprob.html"><img border="0" alt="exp " src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">/&#37;</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

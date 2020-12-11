@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- print-object-for-saving/sending</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-omitted-slots-for-saving-sending.html"><img border="0" alt="omitted-slots-for-saving/sending" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-saving-sending-entities.html"><img border="0" alt="Saving and Sending" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-print-slot-for-saving-sending.html"><img border="0" alt="print-slot-for-saving/sending" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">print-object-for-saving/sending</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">print-object-for-saving/sending</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>object stream</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Write the printed representation of <nobr><var>object</var></nobr> to
+<nobr><var>stream</var></nobr> when saving or sending.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>array)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>bit-vector)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>cons)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>function)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>generic-function)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>hash-table)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>package)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>standard-class)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>standard-generic-function)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>standard-object)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>standard-unit-instance)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>string)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>structure-object)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>vector)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-object-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>object</var> <code>t)</code>
+<var>stream</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>object</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> (the <a href="ref-glossary.html#gl:instances">unit-instance</a> method is added by
+<nobr><code>:gbbopen-core</code></nobr>)
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>object</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>stream</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A stream
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <var>object</var>.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />A call to <nobr><b>print-object-for-saving/sending</b></nobr> was made outside the
+dynamic scope of a <nobr><b><a href="ref-with-saving-sending-block.html">with-saving/sending-block</a></b></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-print-object-for-sending-var.html"><b>*print-object-for-sending*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-omitted-slots-for-saving-sending.html"><b>omitted-slots-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-print-slot-for-saving-sending.html"><b>print-slot-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-save-blackboard-repository.html"><b>save-blackboard-repository</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-saving-sending-block.html"><b>with-saving/sending-block</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Define a method to save/send compiled-function references,
+when possible:
+<pre class="pretop">
+  (defmethod print-object-for-saving/sending ((fn function)
+                                              stream)
+    (flet ((save/send-error ()
+             (let ((*print-readably* nil))
+               (error "Unable to save/send ~s reliably." fn))))
+      (typecase fn
+        (compiled-function
+         (multiple-value-bind (lambda-expression closure-p name)
+             (function-lambda-expression fn)
+           (declare (ignore lambda-expression)
+                    #+(or cmu sbcl)
+                    (ignore closure-p))
+           (when (or 
+                  ;; CMUCL and SBCL always return that
+                  ;; closure-p is true, so we ignore their
+                  ;; closure-p value and risk that `fn' might
+                  ;; be a non-trivial closure that can't be
+                  ;; represented externally:
+                  #-(or cmu sbcl)
+                  closure-p
+                  ;; Implementations are free to always return
+                  ;; nil as name or return an object that is
+                  ;; not valid for use as a name in function.
+                  ;; Fortunately, implementations usually
+                  ;; provide a useful name value:
+                  (not (symbolp name))
+                  (not name))
+             (save/send-error))
+           (format stream "#'~s" name)))
+        (otherwise (save/send-error))))
+    fn)
+</pre>
+Note that the above method is not without risk, but it will work in
+many situations.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-omitted-slots-for-saving-sending.html"><img border="0" alt="omitted-slots-for-saving/sending" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-saving-sending-entities.html"><img border="0" alt="Saving and Sending" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-print-slot-for-saving-sending.html"><img border="0" alt="print-slot-for-saving/sending" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">print-object-for-saving/sending</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

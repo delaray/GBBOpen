@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- load-blackboard-repository</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-initialize-saved-sent-instance.html"><img border="0" alt="initialize-saved/sent-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-saving-sending-entities.html"><img border="0" alt="Saving and Sending" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-omitted-slots-for-saving-sending.html"><img border="0" alt="omitted-slots-for-saving/sending" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">load-blackboard-repository</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">load-blackboard-repository</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>pathname</var>
+<code>&#38;key</code> 
+<var><nobr>class-name-translations</nobr>
+<nobr>coalesce-strings</nobr>
+<nobr>confirm-if-not-empty</nobr>
+<nobr>disable-events</nobr>
+<nobr>estimated-peak-forward-references</nobr>
+<nobr>external-format</nobr>
+<nobr>readtable</nobr>
+<nobr>read-eval</nobr>
+<nobr>retain-classes</nobr>
+<nobr>retain-event-functions</nobr>
+<nobr>retain-event-printing</nobr></var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>pathname, saved-time, saved-value</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Load the blackboard repository (all <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> and
+<a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>) that has been saved to a file previously by
+<nobr><b><a href="ref-save-blackboard-repository.html">save-blackboard-repository</a></b></nobr>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>pathname</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id170">pathname&nbsp;designator</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>class-name-translations</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id3">association&nbsp;list</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>coalesce-strings</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>confirm-if-not-empty</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is true)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>disable-events</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>t</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>estimated-peak-forward-references</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer (default is
+<nobr><code>*default-estimated-peak-forward-references*</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>external-format</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An external-file-format designator (default is
+<nobr><code>:default</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>readtable</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A readtable (default is 
+<nobr><code>*reading-saved/sent-objects-readtable*</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>read-eval</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>retain-classes</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id73">extended&nbsp;unit-classes&nbsp;specification</a>
+(see below)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>retain-event-functions</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>retain-event-printing</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>pathname</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:pathname">pathname</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>saved-time</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id258">Universal&nbsp;Time</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>saved-value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />Three values: the <a href="ref-glossary.html#gl:pathname">pathname</a> of the saved blackboard-repository data
+file, the time when the blackboard-repository data file was saved, and the
+save value specified when the repository was saved. If replacing a non-empty
+blackboard repository is not confirmed, <code>nil</code> is returned.
+</p>
+<p><span class="fndoclabel">Events</span> <br /><a name="id1">If</a> <var>disable-events</var> is <code>nil</code>, the following events may be signaled (in
+order) as <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> and <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> are deleted prior
+to loading:
+</p>
+<p><ul class="tight"><li><code>delete-instance-event</code>
+<li><code>unlink-event</code>
+<li><nobr><code>instance-removed-from-space-instance-event</code></nobr>
+<li><code>instance-deleted-event</code>
+</ul>
+</p>
+<p><span class="fndoclabel">Description</span> <br />If <var>pathname</var> does not specify a file type, the type
+<code>bb</code> is added to it.  Then, <nobr><code>(user-homedir-pathname)</code></nobr> is used
+to supply any missing components to <nobr><var>pathname</var></nobr>.
+</p>
+<p>The <nobr><var>class-name-translations</var></nobr> <a href="ref-glossary.html#id3">association&nbsp;list</a>, if
+specified, should contain <a href="ref-glossary.html#gl:conses">conses</a> of the form:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><tt>(<var>class-name</var> . <var>new-class-name</var>)</tt></nobr><br />for any <a href="ref-glossary.html#gl:class">class</a> translations that should occur during repository
+loading.
+</p>
+<p>If <var>coalesce-strings</var> is true, loaded strings that are
+<nobr><code>equal</code></nobr> become shared (<code>eq</code>).  This coalescing is performed
+using a temporary hash table whose initial size can be specified by providing
+an integer value for <nobr><var>coalesce-strings</var></nobr>.  If a hash table is
+provided as the value for <nobr><var>coalesce-strings</var></nobr>, it is used in place
+of the temporary hash table.
+</p>
+<p>If <nobr><var>confirm-if-not-empty</var></nobr> is true, the user must confirm loading
+when the current blackboard repository contains <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a>.
+</p>
+<p><a href="ref-glossary.html#gl:instances">Unit&nbsp;instances</a> that are referenced before they are defined are
+recorded using a temporary hash table whose initial size can be specified by
+providing an integer value for <nobr><var>estimated-peak-forward-references</var></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-confirm-if-blackboard-repository-not-empty-p.html"><b>confirm-if-blackboard-repository-not-empty-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-save-blackboard-repository.html"><b>save-blackboard-repository</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-reading-saved-sent-objects-block.html"><b>with-reading-saved/sent-objects-block</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Load the GBBopen Tutorial Example application (without running it)
+and then load a blackboard repository that was saved previously:
+<pre class="pretop">
+  &gt; :tutorial-example :noautorun 
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  &gt; (load-blackboard-repository "tutorial")
+  ;; 35 temporarily forward-referenced instances (peak count)
+  #P"<var>&lt;homedir&gt;</var>/tutorial.bb"
+  3429178245
+  #&lt;path 1&gt;
+  &gt;
+</pre>
+Try loading the repository again:
+<pre>
+  &gt; (load-blackboard-repository "tutorial")
+  The blackboard repository is not empty.
+  Continue anyway (the current contents will be deleted) [y or n]? n
+  nil
+  &gt;
+</pre>
+Define a new <a href="ref-glossary.html#id254">unit&nbsp;class</a>, <nobr><code>new-location</code></nobr>, and then load the
+repository again, translating all <nobr><code>location</code></nobr>
+<a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> to <nobr><code>new-location</code></nobr> <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a>:
+<pre>
+  &gt; (define-unit-class new-location (location) ())
+  #&lt;standard-unit-class new-location&gt;
+  &gt; (load-blackboard-repository "tutorial"
+      :class-name-translations '((location . new-location))
+      :confirm-if-not-empty nil)
+  ;; 35 temporarily forward-referenced instances (peak count)
+  #P"<var>&lt;homedir&gt;</var>/tutorial.bb"
+  3429178245
+  #&lt;path 1&gt;
+  &gt; :dsbb
+
+  Space Instance                Contents
+  --------------                --------
+  known-world                   54 instances (53 new-location; 1 path)
+
+  Unit Class                    Instances
+  ----------                    ---------
+  control-shell                         1 *
+  ks                                    4 +
+  ksa-queue                             2 +
+  new-location                         53  
+  ordered-ksa-queue                     1 +
+  path                                  1  
+  standard-space-instance               1  
+                                ---------
+                                       63 instances
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-initialize-saved-sent-instance.html"><img border="0" alt="initialize-saved/sent-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-saving-sending-entities.html"><img border="0" alt="Saving and Sending" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-omitted-slots-for-saving-sending.html"><img border="0" alt="omitted-slots-for-saving/sending" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">load-blackboard-repository</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- dosublists</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-dosequence.html"><img border="0" alt="dosequence" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-dotted-length.html"><img border="0" alt="dotted-length" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">dosublists</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">dosublists</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr>(<var>var list-form</var> [<var>result-form</var>])</nobr>
+<nobr><var>declaration</var>*</nobr>
+<nobr>&#123;<var>tag</var> | <var>form</var>&#125;*</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var>*or <code>nil</code></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />A <code>dolist</code>-style iterator for successive sublists of a list.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>var</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id260">variable&nbsp;symbol</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>list-form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a> that evaluates to a <a href="ref-glossary.html#id178">proper&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>result-form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>declarations</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A declare expression (not evaluated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>tag</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code>go</code> tag (not evaluated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>results</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The values returned by evaluating the last <var>form</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />If a <code>return</code> or <nobr><code>return-from</code></nobr> form is executed,
+then the values passed from that form are returned; otherwise, the values
+returned by evaluating the <nobr><var>result-form</var></nobr> are returned, or <code>nil</code>
+if there is no <nobr><var>result-form</var></nobr>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />The body of <nobr><b>dosublists</b></nobr> is like a
+<nobr><code>tagbody</code></nobr>.  <nobr><b>Dosublists</b></nobr> evaluates
+<nobr><var>list-form</var></nobr>, which should produce a <a href="ref-glossary.html#id178">proper&nbsp;list</a>. It then executes
+the body once for each successive sublist in the list, with <var>var</var> bound
+to the sublist.
+</p>
+<p>The scope of the binding of <var>var</var> does not include the
+<nobr><var>list-form</var></nobr>, but it does include the <nobr><var>result-form</var></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-dosequence.html"><b>dosequence</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (dosublists (sublist '(1 2 3)) (print sublist))
+  (1 2 3)
+  (2 3) 
+  (3) 
+  nil
+  &gt; (dosublists (sublist '(1 2 3) (print "Done")) (print sublist))
+  (1 2 3)
+  (2 3) 
+  (3) 
+  "Done"
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-dosequence.html"><img border="0" alt="dosequence" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-dotted-length.html"><img border="0" alt="dotted-length" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">dosublists</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

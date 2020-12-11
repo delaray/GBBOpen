@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- save-blackboard-repository</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-print-slot-for-saving-sending.html"><img border="0" alt="print-slot-for-saving/sending" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-saving-sending-entities.html"><img border="0" alt="Saving and Sending" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-with-reading-saved-sent-objects-block.html"><img border="0" alt="with-reading-saved/sent-objects-block" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">save-blackboard-repository</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">save-blackboard-repository</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>pathname</var>
+<code>&#38;key</code> 
+<var><nobr>external-format</nobr>
+package
+<nobr>read-default-float-format</nobr>
+value</var> 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>saved-repository-pathname</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Save the blackboard repository (all <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> and
+<a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>) to a file.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>pathname</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id170">pathname&nbsp;designator</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>external-format</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An external-file-format designator (default is
+<nobr><code>:default</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>package</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id160">package&nbsp;designator</a> indicating the package to be used
+when saving and loading the blackboard repository (default is
+<nobr><code>:common-lisp</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>read-default-float-format</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of the atomic type specifiers
+<nobr><code>short-float</code></nobr>, <nobr><code>single-float</code></nobr>,
+<nobr><code>double-float</code></nobr>, or <nobr><code>long-float</code></nobr> to be used when saving
+and loading the blackboard repository (default is <nobr><code>single-float</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object to be saved with the repository and returned when the
+repository is loaded (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>saved-repository-pathname</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:pathname">pathname</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <a href="ref-glossary.html#gl:pathname">pathname</a> of the saved blackboard-repository data file.
+</p>
+<p><span class="fndoclabel">Description</span> <br />If <var>pathname</var> does not specify a file type, the type
+<code>bb</code> is added to it.  Then, <nobr><code>(user-homedir-pathname)</code></nobr> is used
+to supply any missing components to <nobr><var>pathname</var></nobr>.
+</p>
+<p>The size of the blackboard-repository data file can be reduced by specifying a
+<nobr><var>package</var></nobr> containing the majority of the symbols that are written
+to the file.
+</p>
+<p>A <nobr><b><a href="ref-with-saving-sending-block.html">with-saving/sending-block</a></b></nobr>, with the
+<nobr><var>package</var></nobr> and <nobr><var>read-default-float-format</var></nobr> values, is
+established when saving the blackboard repository.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-load-blackboard-repository.html"><b>load-blackboard-repository</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-omitted-slots-for-saving-sending.html"><b>omitted-slots-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-print-object-for-saving-sending.html"><b>print-object-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-print-slot-for-saving-sending.html"><b>print-slot-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-saving-sending-block.html"><b>with-saving/sending-block</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Run the GBBopen Tutorial Example application and then save the
+resulting blackboard repository:
+<pre class="pretop">
+  &gt; :tutorial-example
+      <span 
+    style="font-family: serif; font-style: normal">...</span>
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 63 cycles completed
+  ;; Run time: 0.04 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  &gt; (save-blackboard-repository "tutorial" :package ':tutorial)
+  #P"<var>&lt;homedir&gt;</var>/tutorial.bb"
+  &gt;
+</pre>
+Save the repository again, this time with a value to be returned when the
+repository is loaded:
+<a name="id1"></a><pre>
+  &gt; (save-blackboard-repository "tutorial" 
+      :package ':tutorial
+      :value (<a href="ref-find-instance-by-name.html">find-instance-by-name</a> 1 'path))
+  #P"<var>&lt;homedir&gt;</var>/tutorial.bb"
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-print-slot-for-saving-sending.html"><img border="0" alt="print-slot-for-saving/sending" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-saving-sending-entities.html"><img border="0" alt="Saving and Sending" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-with-reading-saved-sent-objects-block.html"><img border="0" alt="with-reading-saved/sent-objects-block" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">save-blackboard-repository</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

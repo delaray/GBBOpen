@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: tutorial.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Tutorial -- Application Startup and Event Functions</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-control-shell.html"><img border="0" alt="Using a Control Shell" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-another-ks.html"><img border="0" alt="Add Another KS" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Application Startup and Event Functions</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h1>Application Startup and Event Functions</h1>
+<p>In the last exercise, we needed to create the <nobr><code>known-world</code></nobr> space
+instance, with <code>x</code> and <code>y</code> dimensions, before we started the Agenda
+Shell.  We also needed to call <nobr><b>delete-blackboard-repository</b></nobr>
+before calling <nobr><b>start-control-shell</b></nobr> to execute another run of
+our developing application.  It is convenient to have these activities
+performed automatically whenever the control shell is started, so we'll do so
+in this exercise.
+</p>
+<p><hr color="99CCCC">
+This exercise shows you how to:
+</p>
+<p><ul class="tight"><li>Define a function to perform all application-specific
+initialization and re-execution activities
+<li>Automatically invoke the initialization/re-execution function at 
+control-shell startup using GBBopen's event-function capabilities
+<li>Restrict the classes of unit instances that can be stored on a space 
+instance
+<li>Specify the dimensionality of a space instance relative to the
+dimensional specifications of a unit class
+</ul>
+</p>
+<hr color="99CCCC">
+<h2><a name="id1">Prerequisites</a></h2>
+<p><ul class="tight"><li>The <nobr><code>tutorial-example.lisp</code></nobr> file as modified thus far:
+</ul>
+<pre class="pretop">
+  (in-package :gbbopen-user)
+
+  (define-unit-class location ()
+    (x y)
+    (:dimensional-values
+      (x :point x)
+      (y :point y))
+    (:initial-space-instances (known-world)))
+
+  (defmethod print-instance-slots ((location location) stream)
+    (call-next-method)
+    (when (and (slot-boundp location 'x)
+               (slot-boundp location 'y))
+      (format stream " (~s ~s)"
+              (x-of location)
+              (y-of location))))
+
+  ;;; ====================================================================
+  ;;;   Startup KS
+
+  (defun startup-ks-function (ksa)
+    (declare (ignore ksa))
+    ;; Create an initial location unit instance at (0,0):
+    (make-instance 'location :x 0 :y 0))
+
+  (define-ks startup-ks
+      :trigger-events ((control-shell-started-event))
+      :execution-function 'startup-ks-function)
+</pre>
+</p>
+<p><ul class="tight"><li>The <nobr><code>:agenda-shell-user</code></nobr> module is loaded
+</ul>
+</p>
+<h2><a name="id2">Step 1: Define an initialization function</a></h2><p>
+Edit your <nobr><code>tutorial-example.lisp</code></nobr> file and add the following
+function definition at the end of the file:
+<pre class="pretop">
+  (defun initializations (event-name &amp;key &amp;allow-other-keys)
+    (declare (ignore event-name))
+    ;; Clean up any previous run:
+    (delete-blackboard-repository)
+    ;; Make a new known-world space instance:
+    (make-space-instance 
+     '(known-world)
+     :dimensions '((x :ordered) (y :ordered))))
+</pre>
+</p>
+<p>The first thing to note about the function definition is the argument
+signature: <nobr><code>initializations</code></nobr> is to be invoked with an event name
+(which is ignored in our function) and possibly other keyword arguments
+(indicated by the <code>&#38;key</code> and <nobr><code>&#38;allow-other-keys</code></nobr> lambda
+list keywords).  This argument signature conforms to GBBopen's event-function
+capabilities, which will be introduced in the next step in this exercise.
+</p>
+<p>When <nobr><code>initializations</code></nobr> executes, it deletes all of our application
+unit and space instances from the blackboard repository.  Only <code>ks</code>,
+<nobr><code>ksa-queue</code></nobr>, and <nobr><code>ordered-ksa-queue</code></nobr> unit instances,
+which are defined by the control shell as retained, are not deleted by
+<nobr><b>delete-blackboard-repository</b></nobr>.  Then
+<nobr><code>initializations</code></nobr> creates a new <nobr><code>(known-world)</code></nobr> space
+instance with ordered dimensions <code>x</code> and <code>y</code>.
+</p>
+<h2><a name="id3">Step 2: Add an event function</a></h2><p>
+GBBopen allows you to attach functions, called <i>event functions</i>, that
+are called whenever a specific event is signaled.  Each event function must
+accept the arguments associated with every event class to which it is
+added. In addition, the function should accept additional arguments that are
+associated with all subevents of the specified event classes. This is achieved
+by specifying <nobr><code>&#38;allow-other-keys</code></nobr> in the lambda list of the
+function.
+</p>
+<p>Here are GBBopen's defined event classes when the Agenda Shell has
+been loaded:
+<br>
+<img align="center" src="agenda-shell-events.png">
+<br clear="both">
+Event classes shown within rectangles are abstract event classes that cannot
+be signaled.  Nevertheless, abstract event classes are very convenient if we
+wish to attach an event function to an entire subtree of event classes.  We
+used abstract event classes to advantage earlier when we enabled display of
+all control-shell events by evaluating:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; (enable-event-printing '(control-shell-event :plus-subevents))
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+or the shorthand equivalent:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; (enable-event-printing '(control-shell-event +))
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Add the following form at the end of your <nobr><code>tutorial-example.lisp</code></nobr>
+file:
+<pre class="pretop">
+  (add-event-function 'initializations 'control-shell-started-event
+                      ;; Initializations should be done first!
+                      :priority 100)
+</pre>
+(We'll place the <nobr><b>add-event-function</b></nobr> form immediately after the
+<nobr><code>initializations</code></nobr> function definition in our file, but this choice
+of location is purely a code organizational style preference&mdash;the form could
+be placed anywhere relative to the function definition.)
+</p>
+<h2><a name="id4">Step 3: Run the application</a></h2><p>
+Start a fresh Common Lisp session, compile and load the
+<nobr><code>tutorial-example.lisp</code></nobr> file directly from the editor buffer
+(using <nobr><code>C-c C-k</code></nobr> in SLIME; <nobr><code>C-c C-b</code></nobr> in ELI) and start
+the Agenda Shell again:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(start-control-shell)</font>
+  ;; Control shell 1 started
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 3 cycles completed
+  ;; Run time: 0 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Note that our developing application performs the same as it did in the last
+exercise, but now our <nobr><code>initializations</code></nobr> event function is taking
+care of all the details of starting up our application.  We no longer have to
+remember to create the <nobr><code>known-world</code></nobr> space instance or to delete
+the blackboard repository before running the application another time.
+</p>
+<h2><a name="id5">Step 4: Run it Again</a></h2><p>
+Let's verify that we can re-run our application. Without doing anything else,
+start the Agenda Shell again:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(start-control-shell)</font>
+  ;; Control shell 1 started
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 3 cycles completed
+  ;; Run time: 0 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>As before, our <nobr><code>initializations</code></nobr> event function took care of all
+the details of starting up our application.
+</p>
+</p>
+<h2><a name="id6">Step 5: It's a new world<i>...</i></a></h2><p>
+GBBopen allows us to restrict the classes of unit instances that can be stored
+on a space instance.  For example, we can limit the <nobr><code>known-world</code></nobr>
+to <nobr><code>location</code></nobr> unit instances by specifying an
+<nobr><code>:allowed-unit-classes</code></nobr> value to
+<nobr><b>make-space-instance</b></nobr>:
+<pre class="pretop">
+<font color="#667f66">  (defun initializations (event-name &amp;key &amp;allow-other-keys)
+    (declare (ignore event-name))
+    ;; Clean up any previous run:
+    (delete-blackboard-repository)
+    ;; Make a new known-world space instance:
+    (make-space-instance 
+     '(known-world)
+     <font color="#000000">:allowed-unit-classes '(location)</font>
+     :dimensions '((x :ordered) (y :ordered))))</font>
+</pre>
+Attempting to add any unit-instance that is not a <nobr><code>location</code></nobr> to
+<nobr><code>known-world</code></nobr> will now generate an error.
+</p>
+<p>It is often convenient to specify the dimensions of a space-instance relative
+to those of one or more unit classes.  Edit the definition of
+<nobr><code>initializations</code></nobr>, removing the <code>x</code> and <code>y</code> dimensions
+specification:
+<pre class="pretop">
+<font color="#667f66">  (defun initializations (event-name &amp;key &amp;allow-other-keys)
+    (declare (ignore event-name))
+    ;; Clean up any previous run:
+    (delete-blackboard-repository)
+    ;; Make a new known-world space instance:
+    (make-space-instance 
+     '(known-world)
+     :allowed-unit-classes '(location)
+     :dimensions <font color="#ff0000">'((x :ordered) (y :ordered))</font>))</font>
+</pre>
+and replacing it with a call of <nobr><b>dimensions-of</b></nobr> to obtain the
+dimensions associated with instances of the <nobr><code>location</code></nobr> unit class:
+<pre>
+<font color="#667f66">  (defun initializations (event-name &amp;key &amp;allow-other-keys)
+    (declare (ignore event-name))
+    ;; Clean up any previous run:
+    (delete-blackboard-repository)
+    ;; Make a new known-world space instance:
+    (make-space-instance 
+     '(known-world)
+     :allowed-unit-classes '(location)
+     :dimensions <font color="#000000">(dimensions-of 'location)</font>))</font>
+</pre>
+</p>
+<h2><a name="id7">Step 6: Run the application again</a></h2><p>
+Compile and load the <nobr><code>tutorial-example.lisp</code></nobr> file directly from
+the editor buffer (using <nobr><code>C-c C-k</code></nobr> in SLIME; <nobr><code>C-c C-b</code></nobr>
+in ELI) and start the Agenda Shell again:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(start-control-shell)</font>
+  ;; Control shell 1 started
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 3 cycles completed
+  ;; Run time: 0 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id8">Verify</a> the dimensionality of the <nobr><code>known-world</code></nobr> space instance by
+evaluating:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-space-instance '(known-world))</font>
+  Standard-space-instance #&lt;standard-space-instance (known-world)&gt;
+    Allowed unit classes: t
+    Dimensions:
+      (x :ordered)
+      (y :ordered)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-control-shell.html"><img border="0" alt="Using a Control Shell" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-another-ks.html"><img border="0" alt="Add Another KS" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Application Startup and Event Functions</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

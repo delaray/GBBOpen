@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- memq</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-keyword.html"><img border="0" alt="make-keyword" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-multiple-value-setf.html"><img border="0" alt="multiple-value-setf" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">memq</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">memq</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>item list</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>tail</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Search for <var>item</var> in <var>list</var> using <code>eq</code> as the
+comparison function.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>item</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>list</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id178">proper&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>tail</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id178">proper&nbsp;list</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The tail of <var>list</var> beginning with <var>item</var> if
+<var>item</var> is present; <code>nil</code> otherwise.
+</p>
+<p><span class="fndoclabel">Description</span> <br /><b>Memq</b> is a convenient shorthand for:
+<pre class="pretop">
+  (member <var>item</var> (the list <var>list</var>) :test #'eq)
+</pre>
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-counted-delete.html"><b>counted-delete</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-assq.html"><b>assq</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delq.html"><b>delq</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delq-one.html"><b>delq-one</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (memq 'b '(a b c b))
+  (b c b)
+  &gt; (memq 'x '(a b c b))
+  nil
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-keyword.html"><img border="0" alt="make-keyword" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-multiple-value-setf.html"><img border="0" alt="multiple-value-setf" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">memq</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

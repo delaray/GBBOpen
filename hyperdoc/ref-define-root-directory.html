@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- define-root-directory</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-define-relative-directory.html"><img border="0" alt="define-relative-directory" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-module.html"><img border="0" alt="describe-module" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-root-directory</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">define-root-directory</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>name <nobr>directory-specification</nobr></var>
+<nobr><code>&#38;rest</code> <var>subdirectories</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Define a <a href="ref-glossary.html#id204">root&nbsp;directory</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id110">keyword&nbsp;symbol</a> naming the <a href="ref-glossary.html#id204">root&nbsp;directory</a> or a list
+containing the keyword-symbol name and, optionally, an
+application-version-identifier string
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>directory-specification</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of the following:
+</p>
+<p><ul class="tight"><li>A <a href="ref-glossary.html#gl:pathname">pathname</a> specifying the <a href="ref-glossary.html#id204">root&nbsp;directory</a>
+<li>A <a href="ref-glossary.html#gl:keywords">keyword</a> naming a previously defined <a href="ref-glossary.html#id204">root&nbsp;directory</a>
+<li>A string specifying the <a href="ref-glossary.html#id204">root&nbsp;directory</a> (only if a
+<nobr><var>documentation</var></nobr> string is supplied; otherwise, convert the
+<a href="ref-glossary.html#id204">root&nbsp;directory</a> string to a <a href="ref-glossary.html#gl:pathname">pathname</a>)
+<li>A symbol whose value is one of the above
+</ul>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>subdirectories</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One or more strings specifying, in order, subdirectories
+from <nobr><var>directory-specification</var></nobr> to the <a href="ref-glossary.html#id204">root&nbsp;directory</a>. (The
+<a href="ref-glossary.html#gl:keywords">keyword</a> <code>:up</code> or <code>:back</code> can also be supplied in addition to any of
+these strings, indicating to go upward one semantic or syntactic level of
+directory structure, respectively.)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a href="ref-glossary.html#gl:Root">Root</a> and <a href="ref-glossary.html#id196">relative&nbsp;directory</a> definitions are
+used to isolate file-system details from <a href="ref-glossary.html#gl:module">module</a> definitions.
+<a href="ref-glossary.html#gl:Root">Root&nbsp;directories</a> specify a fixed anchor directory for a tree of
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a> definitions.  If the <a href="ref-glossary.html#id204">root&nbsp;directory</a> is
+redefined to a new location, all <a href="ref-glossary.html#gl:relative-directory">relative&nbsp;directories</a> beneath it are
+updated automatically.
+</p>
+<p>Note: When a <a href="ref-glossary.html#id204">root&nbsp;directory</a> is used as the
+<nobr><var>directory-specification</var></nobr> for a new <a href="ref-glossary.html#id204">root&nbsp;directory</a>, the
+new <a href="ref-glossary.html#gl:Root">root-directory</a> location will not be changed if the location of the
+source <a href="ref-glossary.html#id204">root&nbsp;directory</a> is changed.
+</p>
+<p>When an application-version-identifier string is supplied in
+<nobr><var>name</var></nobr>, it is concatenated to the standard
+<nobr><var>&lt;platform-dir&gt;</var></nobr> compiled-directory name for all compiled module
+files that are defined relative to this <a href="ref-glossary.html#gl:Root">root-directory</a>.
+</p>
+<p>The <nobr><var>documentation</var></nobr> string associated with a
+<a href="ref-glossary.html#id204">root&nbsp;directory</a> can be accessed and set by using Common Lisp's
+<nobr><code>documentation</code></nobr> generic function with the directory's
+<var>name</var> and the <nobr><var>doc-type</var></nobr> <code>directory</code>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-relative-directory.html"><b>define-relative-directory</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-get-directory.html"><b>get-directory</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-get-root-directory.html"><b>get-root-directory</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-show-defined-directories.html"><b>show-defined-directories</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-system-name.html"><b>with-system-name</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Define a <a href="ref-glossary.html#id204">root&nbsp;directory</a> named <nobr><code>:my-app-root</code></nobr>:
+<pre class="pretop">
+  (define-root-directory :my-app-root 
+    "The installation directory for My App"
+    (make-pathname :directory "~/my-app"))
+</pre>
+Define a <a href="ref-glossary.html#id204">root&nbsp;directory</a> named <nobr><code>:my-app-root</code></nobr> to be the
+directory containing the file containing the
+<nobr><b>define-root-directory</b></nobr> form:
+<pre>
+  (define-root-directory :my-app-root 
+    "The installation directory for My App"
+    *load-truename*)
+</pre>
+Define a <a href="ref-glossary.html#id204">root&nbsp;directory</a> named <nobr><code>:my-app-root</code></nobr> to be the
+directory containing the file containing the
+<nobr><b>define-root-directory</b></nobr> form, but if the
+<nobr><code>:my-app-preprelease</code></nobr> feature is present, place the compiled files
+in a separate &#8220;beta&#8221; compile tree:
+<pre>
+  (define-root-directory '(:my-app-root #+my-app-prerelease "beta")
+    "The installation directory for My App"
+    *load-truename*)
+</pre>
+</p>
+<p><a name="id1">Retrieve</a> and then modify the documentation string of the <a href="ref-glossary.html#id204">root&nbsp;directory</a>
+named <nobr><code>:my-app-root</code></nobr>:
+<pre class="pretop">
+  &gt; (documentation ':my-app-root 'directory)
+  "The installation directory for My App"
+  &gt; (setf (documentation ':my-app-root 'directory) 
+     "The installation directory for my way cool application")
+  "The installation directory for my way cool application"
+  &gt; (documentation ':my-app-root 'directory)
+  "The installation directory for my way cool application"
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-define-relative-directory.html"><img border="0" alt="define-relative-directory" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-module.html"><img border="0" alt="describe-module" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-root-directory</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

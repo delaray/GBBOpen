@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- find-all-instances-by-name</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-filter-instances.html"><img border="0" alt="filter-instances" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-retrieval-entities.html"><img border="0" alt="Instance Retrieval" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-find-instance-by-name.html"><img border="0" alt="find-instance-by-name" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">find-all-instances-by-name</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">find-all-instances-by-name</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>instance-name</var>
+<nobr><code>&#38;optional</code> <var>unit-class-specifier</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>unit-instances</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Retrieve <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> with a given <var>name</var>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>instance-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The <a href="ref-glossary.html#id100">instance&nbsp;name</a> for the retrieval
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>unit-class-specifier</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id67">extended&nbsp;unit-class&nbsp;specification</a>
+(see below; default is <code>t</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>unit-instances</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id178">proper&nbsp;list</a> of <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />A list of the <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> with the specified
+<var>name</var> of the specified <var>classes</var> if any exist; <code>nil</code> otherwise.
+</p>
+<p><span class="fndoclabel">Detailed syntax</span><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>unit-class-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>atomic-unit-class</var> |
+<code>(</code><var>atomic-unit-class subclassing-specifier</var><code>)</code> |
+<code>t</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>atomic-unit-class</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>unit-class</var> | 
+<var>unit-class-name</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>subclassing-specifier</var> ::=</nobr> 
+<a name="id1"></a></td><td valign="baseline" colspan="1" align="left"> <code>:plus-subclasses</code> | <code>:no-subclasses</code> | 
+<code>+</code> | <code>=</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>The shorthand <code>+</code> subclasses specifier is equivalent to
+<code>:plus-subclasses</code> and <code>=</code> to <code>:no-subclasses</code>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />The <nobr><code>:instance-name-comparison-test</code></nobr> function
+(<code>eq</code>, <code>eql</code>, <nobr><code>equal</code></nobr>, or <nobr><code>equalp</code></nobr>)
+specified in <nobr><b><a href="ref-define-unit-class.html">define-unit-class</a></b></nobr> is used to match
+<nobr><var>instance-name</var></nobr> with the <a href="ref-glossary.html#gl:instances">unit-instance</a>'s instance name.
+If you are using strings as the names of unit instances, you should specify
+<nobr><code>equal</code></nobr> (case sensitive) or <nobr><code>equalp</code></nobr> (case
+insensitive) as the comparison <a href="ref-glossary.html#gl:function">function</a> in the <a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a> of
+those unit instances.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-unit-class.html"><b>define-unit-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-filter-instances.html"><b>filter-instances</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-all-instances-by-name.html"><b>find-all-instances-by-name</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-instance-by-name.html"><b>find-instance-by-name</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-instances.html"><b>find-instances</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Find all <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> (of any <a href="ref-glossary.html#id254">unit&nbsp;class</a>) that are named
+419:
+<pre class="pretop">
+  &gt; (find-instances-by-name 419 't)
+  (#&lt;hyp 419 (1835 4791) 0.85 [5..35]&gt;)
+  &gt;
+</pre>
+Find all <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> (of any <a href="ref-glossary.html#id254">unit&nbsp;class</a>) that are named
+419:
+<pre>
+  &gt; (find-instances-by-name 419 '(hyp :plus-subclasses))
+  (#&lt;hyp 419 (1835 4791) 0.85 [5..35]&gt;)
+  &gt;
+</pre>
+or simply:
+<pre>
+  &gt; (find-instances-by-name 419 '(hyp +))
+  (#&lt;hyp 419 (1835 4791) 0.85 [5..35]&gt;)
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-filter-instances.html"><img border="0" alt="filter-instances" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-retrieval-entities.html"><img border="0" alt="Instance Retrieval" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-find-instance-by-name.html"><img border="0" alt="find-instance-by-name" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">find-all-instances-by-name</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

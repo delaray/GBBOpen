@@ -1,0 +1,1799 @@
+%% -*- Mode:TeX; Fonts:(hl12fb) -*-
+%% *-* File: /usr/local/gbbopen/doc-source/common.tex *-*
+%% *-* Last-Edit: Fri Jan 11 12:56:54 2013; Edited-By: cork *-*
+%% *-* Machine: phoenix.corkills.org *-*
+
+%% Copyright (C) 2003-2013, Dan Corkill <corkill@GBBopen.org>
+%% Part of the GBBopen Project.
+%% Licensed under Apache License 2.0 (see LICENSE for license information).
+%%
+%% ========================================================================
+%%  The LaTeX and hyperlatex code used in producing GBBopen documentation
+%%  is placed under and covered by  the GBBopen software license that 
+%%  accompanies each GBBopen distribution and is also available at
+%%  http://GBBopen.org/downloads/LICENSE. 
+%% ========================================================================
+
+%% Timezone & Daylight Savings:
+\newcommand{\timezone}{EST}
+%\newcommand{\timezone}{EDT}
+
+%% Html declarations: output directory and filenames, node title
+\newcommand{\gbbopenversion}{1.5}
+\newcommand{\portablethreadsversion}{2.4}
+\newcommand{\runningtitle}{GBBopen \gbbopenversion{} \docname}
+\htmltitle{\runningtitle}
+\W\newcommand{\HlxFramesNavigationLogo}{\xml{img align="left" src="GBBopen-logo-sm.png"}}
+
+\newcommand{\noargs}{$<$no arguments$>$}
+\T\newcommand{\bkslash}{$\backslash$}
+\W\newcommand{\bkslash}{\backslash}
+\T\newcommand{\vbar}{$|$}
+\W\newcommand{\vbar}{|}
+\T\newcommand{\superstar}{\raisebox{2pt}{*}}
+\W\newcommand{\superstar}{*}
+\T\newcommand{\superplus}{\raisebox{4pt}{+}}
+\W\newcommand{\superplus}{\xml{sup}+\xml{/sup}}
+\definecolor{rulegray}{gray}{.75}
+\definecolor{darkergray}{rgb}{.4,.5,.4}
+\definecolor{darkgreen}{rgb}{.0,.7,.0}
+\definecolor{verydarkgreen}{rgb}{.0,.5,.0}
+\definecolor{caution}{rgb}{.8,.6,.0}
+
+%% ----------------------------------------------------------------------------
+%%   Margins
+
+\T\headsep 26pt
+\T\footskip 36pt
+\T\topmargin -40pt
+\T\oddsidemargin 0pt
+\T\evensidemargin 0pt
+\T\textwidth 470pt
+\T\textheight 630pt
+
+%% ----------------------------------------------------------------------------
+%%   Headings/Footings
+
+\W\begin{iftex}
+\fancyhf{} % clear all
+\fancyhead[er,ol]{\textcolor{darkergray}{\rightmark}}
+\fancyfoot[er,ol]{\textcolor{darkergray}{\runningtitle}
+                \\\textcolor{darkergray}{\nouppercase{\leftmark}}}
+\fancyfoot[el,or]{~\\\thepage}
+
+\makeatletter
+
+%% from fancyhdr
+\def\ps@fancy{%
+\@ifundefined{@chapapp}{\let\@chapapp\chaptername}{}%for amsbook
+%
+% Define \MakeUppercase for old LaTeXen.
+% Note: we used \def rather than \let, so that \let\uppercase\relax (from
+% the version 1 documentation) will still work.
+%
+\@ifundefined{MakeUppercase}{\def\MakeUppercase{\uppercase}}{}%
+\@ifundefined{chapter}{\def\sectionmark##1{\markboth
+{\ifnum \c@secnumdepth>\z@
+ \thesection\hskip 1em\relax \fi ##1}{}}%
+\def\subsectionmark##1{\markboth {\ifnum \c@secnumdepth >\@ne
+ \thesubsection\hskip 1em\relax \fi ##1}{}}}%
+{\def\chaptermark##1{\markboth {\MakeUppercase{\ifnum \c@secnumdepth>\m@ne
+ \@chapapp\ \thechapter. \ \fi ##1}}{}}%
+\def\sectionmark##1{\markboth{\ifnum \c@secnumdepth >\z@
+ \thesection. \ \fi ##1}{}}}%
+\ps@@fancy
+\gdef\ps@fancy{\@fancyplainfalse\ps@@fancy}%
+\ifdim\headwidth<0sp
+    \global\advance\headwidth123456789sp\global\advance\headwidth\textwidth
+\fi}
+\def\ps@fancyplain{\ps@fancy \let\ps@plain\ps@plain@fancy}
+\def\ps@plain@fancy{\@fancyplaintrue\ps@@fancy}
+\let\ps@@empty\ps@empty
+
+%% mod of \headrule from fancyhdr.sty (to make rule gray):
+\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+    \vskip-0.8\baselineskip % tighten rule to \rightmark
+    \textcolor{rulegray}{\hrule\@height\headrulewidth\@width\headwidth 
+    \vskip-\headrulewidth}}}
+
+%% mod of \ps@@fancy from fancyhdr.sty:
+\def\ps@fancybottom{%
+\def\@mkboth{\protect\markboth}%
+\def\@oddhead{}%
+\def\@oddfoot{\@fancyfoot\fancy@Oolf\f@ncyolf\f@ncyocf\f@ncyorf\fancy@Oorf}%
+\def\@evenhead{}%
+\def\@evenfoot{\@fancyfoot\fancy@Oelf\f@ncyelf\f@ncyecf\f@ncyerf\fancy@Oerf}%
+}
+\makeatother
+\W\end{iftex}
+
+\T\begin{ifhtml}
+\newcommand\entities{\textbf{\large Entities}}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  LaTeX Modifications
+
+\W\begin{iftex}
+\newcommand{\goodpagebreak}{\pagebreak[0]}
+\makeatletter
+
+% article.cls
+\renewcommand\@idxitem{\par\hangindent 30\p@}
+\renewcommand\subitem{\@idxitem \hspace*{10\p@}}
+\renewcommand\subsubitem{\@idxitem \hspace*{20\p@}}
+% ppar
+\newcommand{\ppar}[1]{\paragraph*{#1}~\\[0.5\baselineskip]%
+  \addcontentsline{toc}{subsection}{{#1}}}
+% psubpar (used in Portable Threads section)
+\newcommand{\psubpar}[1]{\paragraph*{#1}~\\[0.5\baselineskip]}
+% Tighten up example environment (uses atbeginend.sty):
+\AfterBegin{example}{\vspace*{-0.8\baselineskip}}
+% Tighten up example environment (uses atbeginend.sty):
+\AfterBegin{smallexample}{\vspace*{-0.8\baselineskip}}
+
+% fndocsec
+\newcommand{\fndocsec}{\@startsection{subparagraph}{5}{\z@}%
+                          {1.25ex \@plus1ex \@minus.1ex}%
+                          {-1em}%
+                          {\normalfont\large\sffamily\bfseries}}
+% from article.cls - Increase TOC font for sections and subsections
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{1.0em \@plus\p@}%
+    \setlength\@tempdima{2.0em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      {\large #1}\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss\large #2}\par
+    \endgroup
+    \addvspace{.5em \@plus\p@}%
+  \fi}
+\renewcommand*\l@subsection[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{0.4em \@plus\p@}%
+    \setlength\@tempdima{2.3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+    \addvspace{.2em \@plus\p@}%
+  \fi}
+
+% from article.cls - Decrease TOC leftmargin for subsubsections
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{3.3em}{2.3em}}
+
+% from index.sty - Remove section* and more
+\renewenvironment{theindex}{%
+% \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
+  \if@twocolumn
+  \@restonecolfalse
+  \else
+  \@restonecoltrue
+  \fi
+  \columnseprule \z@
+  \columnsep 35\p@
+% \twocolumn[%
+% \section*{\indexname}%
+% \ifx\index@prologue\@empty\else
+%     \index@prologue
+%     \bigskip
+% \fi
+% ]%
+  \@mkboth{\MakeUppercase\indexname}%
+          {\MakeUppercase\indexname}%
+% \thispagestyle{plain}%
+  \parindent\z@
+  \parskip\z@ \@plus .3\p@\relax
+  \let\item\@idxitem
+}{%
+  \if@restonecol
+    \onecolumn
+  \else
+    \clearpage
+  \fi
+}
+
+\makeatother
+\W\end{iftex}
+
+%% ----------------------------------------------------------------------------
+%%  HyperLaTeX Modifications
+
+\T\begin{ifhtml}
+
+  %% No easy CSS hook for this (we don't want to mess up the navbar
+  %% alignment):
+  \xmlattributes{td}{valign="baseline"}
+
+  \newcommand{\textrm}[1]{\xml{span 
+    style="font-family: serif; font-style: normal"}{#1}\xml{/span}}
+  \newcommand{\textsf}[1]{\xml{span 
+    style="font-family: sans-serif; font-style: normal"}{#1}\xml{/span}}
+
+  %% This should be the URL for the icons used in the navigation panels
+  %% must end with a slash, unless you leave it empty
+  %% (empty means the icons are in the same directory as the HTML file)
+  \renewcommand{\HlxIcons}{}
+  \renewcommand{\HlxStyleSheet}{}
+
+  \renewcommand{\HlxMeta}{\xml{link rel="SHORTCUT ICON" href="favicon.ico"}}
+
+  %% Switch `Next' and `Previous' on Panel
+  \renewcommand{\HlxTopPanel}{\EmptyP{\HlxSeqPrevUrl\HlxUpUrl\HlxSeqNextUrl}{%
+    \xml*{table width="100%" cellpadding="0" cellspacing="2"}\xml{tr}
+    \xml*{td bgcolor="##99ccff"}%
+    \EmptyP{\HlxSeqPrevUrl}{\xlink{\HlxImage{\HlxSeqPrevTitle}{previous.png}}%
+      {\HlxSeqPrevUrl}}%
+    {\htmlimg{\HlxIcons{}blank.png}{}}%
+    \xml*{/td}%
+    \xml*{td bgcolor="##99ccff"}%
+    \EmptyP{\HlxUpUrl}
+    {\xlink{\HlxImage{\HlxUpTitle}{up.png}}%
+      {\HlxUpUrl}}%
+    {\htmlimg{\HlxIcons{}blank.png}{}}%
+    \xml*{/td}%
+    \xml*{td bgcolor="##99ccff"}%
+    \EmptyP{\HlxSeqNextUrl}{\xlink{\HlxImage{\HlxSeqNextTitle}{next.png}}%
+      {\HlxSeqNextUrl}}%
+    {\htmlimg{\HlxIcons{}blank.png}{}}%
+    \xml*{/td}%
+    \xml*{td align="center" bgcolor="##99ccff" width="100%"}%
+    \textbf{\HlxThisTitle}%
+    \xml*{/td}%
+    \HlxPanelFields
+    \xml*{/tr}%
+    \xml*{/table}}{}}
+
+  %% Add `GoTo Top' to Panel
+  \renewcommand{\HlxPanelFields}{\xml*{td bgcolor="##99ccff"}%
+    \GoToTopTarget%
+    \HlxImage{GoTo Top}{top.png}%
+    \xml{/a}%
+    \xml*{/td}}
+
+  \newcommand{\HlxAddressDatetime}{}
+
+  %% Rename frames as "left" and "right"):
+  \renewcommand{\HlxFramesDescription}[2]{
+  \xml{frameset rows="100%" cols="25%,75%"}
+    \xml{frame src="#1_toc#2" name="left" marginwidth="5"
+      marginheight="5" scrolling="auto" border="0"}
+    \xml{frame src="#1_0#2" name="right" marginwidth="20" 
+      marginheight="20"}
+    \xml{noframes}
+    This document uses frames to assist navigation.
+    Your browser is currently not supporting the use of frames, but you 
+    may still access the 
+    \xml{a target="_top" href="#1_0#2"}non-framed version\xml{/a}.
+    \xml{/noframes}
+    \xml{/frameset}}
+  
+  %% Add logo to Navigation Panel (and rename frame as "left"):
+  \renewcommand{\HlxFramesNavigation}{%
+    \HlxTocName
+    \htmlpanel{0}%
+    \HlxSection{-5}{}*{%
+    \HlxFramesNavigationLogo%
+    \xml{/h1}\xml{br clear="left"}\xml{h1 class="navname"}%
+    {\large \navigationname}}%
+  % \xml{base target="right"}% IE requires base to be in <HEAD>
+  \htmlmenu[0]{1}
+  \renewcommand{\HlxAddressDatetime}{,\xml{nobr}~\today{}\xml{/nobr}
+    \xml{nobr}\hhmm~\timezone\xml{/nobr}}
+  \renewcommand{\bottommatter}{}}
+
+\renewcommand{\HlxBottomMatter}{%
+  \HlxBlk\htmlrule\EmptyP{\HlxAddress}%
+  {\xml{address}\HlxAddress%
+  \EmptyP{\HlxAddressDatetime}{\HlxAddressDatetime}{}%
+  \HlxBlk\xml{/address}\\}{}}
+
+\T\end{ifhtml}
+
+% Things to skip/fake in HyperLaTeX
+\W\newcommand{\vspace}[1]{}
+\W\newcommand{\bigskip}{\\}
+\W\newcommand{\medskip}{\\}
+\W\newcommand{\smallskip}{\\}
+\W\newcommand{\vfill}{\\}
+\W\newcommand{\hfill}{\xml{p align="right"}}
+\W\newcommand{\normalbaselines}{}
+\W\newcommand{\^}{\xmlent{##94}}
+\W\newcommand{\infty}{\xmlent{##8734}}
+\W\newcommand{\goodpagebreak}{}
+%\W\NotSpecial{\do\^}
+
+%% ----------------------------------------------------------------------------
+%%  Special link & index commands
+%%
+%%  Note that \entlink and index commands can insert a space in hyperlatex
+%%  format
+
+\T\newcommand{\removePct}[1]{\convertchar[q]{#1}{\%}{Pct}}%
+\T\newcommand{\safelabel}[1]{\removePct{#1}\label{\thestring}}
+\T\newcommand{\safepageref}[1]{\removePct{#1}\pageref{\thestring}}
+\W\newcommand{\safepageref}[1]{\pageref{#1}}
+
+% The following doesn't work in LaTeX example environments, due to 
+% kerning/hyphenation:
+%\T\newcommand{\entlink}[1]{\hyperref[ent:#1]{#1}}
+% This doesn't get there either, but shows the problem with already
+% kerned hyphen in the example environment:
+%\T\newcommand{\entlink}[1]{\bgroup\let\-\@@hyph\typeout{ent:#1}#1\egroup}
+\newcommand{\entlink}[1]{\link{#1}{ent:#1}}
+\T\newcommand{\safeentlink}[1]{\removePct{#1}\link{#1}{ent:\thestring}}
+\W\newcommand{\safeentlink}[1]{\link{#1}{ent:#1}}
+% Special non-example \entlink for LaTeX:
+\T\newcommand{\entlinknoex}[1]{\hyperref[ent:#1]{#1}}
+\W\newcommand{\entlinknoex}[1]{\entlink{#1}}
+%
+\newcommand{\indexit}[1]{\index{#1|itidx}}
+\newcommand{\bfindex}[1]{\index{#1@\textbf{#1}}}
+\newcommand{\bfindexit}[1]{\index{#1@\textbf{#1}|itidx}}
+\T\newcommand{\bfindexstart}[1]{\index{#1@\textbf{#1}|(}} %match |
+\T\newcommand{\bfindexend}[1]{\index{#1@\textbf{#1}|)}}
+\newcommand{\codeindex}[1]{\cindex[#1]{\code{#1}}}
+\newcommand{\codeindexqual}[2]{\index{#1, #2@\code{#1}, #2}}
+\newcommand{\codeindexsub}[2]{\index{#1,#2@\code{#1}!#2}}
+\newcommand{\codeindexit}[1]{\index{#1@\code{#1}|itidx}}
+\newcommand{\codeindexqualit}[2]{\index{#1, #2@\code{#1}, #2|itidx}}
+\newcommand{\codeindexsubit}[2]{\index{#1,#2@\code{#1}!#2|itidx}}
+\newcommand{\REPLindex}[1]{\index{#1@\textbf{#1} REPL command}%
+                           \index{REPL command!#1@\textbf{#1}}}
+\newcommand{\REPLindexit}[1]{\index{#1@\textbf{#1} REPL command|itidx}
+                             \index{REPL command!#1@\textbf{#1}|itidx}}
+\newcommand{\REPLindexnd}[2]{%
+  \index{#1@\textbf{#1} REPL command (#2)|see{the GBBopen Tutorial}}%
+  \index{REPL command!#1@\textbf{#1} (#2)|see{the GBBopen Tutorial}}}
+\W\newcommand{\itidx}[2]{\xlink{\textcolor{verydarkgreen}{\textit{#1}}}{#2}}
+\T\newcommand{\itidx}[1]{\textcolor{verydarkgreen}{\textit{#1}}}
+
+%% Internal links (includes paper-format \ref references)
+\W\newcommand{\reflink}[2]{\link{#1}{#2}}
+\T\newcommand{\reflink}[2]{\link{#1}{#2} (see page~\pageref{#2})}
+\W\newcommand{\refsectionlink}[2]{\link{#1}{#2}}
+\T\newcommand{\refsectionlink}[2]{\link{#1}{#2} (Section~\ref{#2})}
+
+%% X-links (tutorial to hyperdoc)
+\T\begin{ifhtml}
+  \newcommand{\xentlink}[2]{\xml{a target="_top"
+                                   href="../hyperdoc/#2.html"}#1\xml{/a}}
+\T\end{ifhtml}
+\T\newcommand{\xentlink}[2]{} % working version needed
+
+\newcommand{\xreflink}[2]{#1} % working versions needed
+%\W\newcommand{\xreflink}[2]{} 
+%\T\newcommand{\xreflink}[2]{}
+
+%% Links to external sites
+\W\newcommand{\xsitelink}[2]{\xml{a target="_top" href="#2"}#1\xml{/a}}
+\T\newcommand{\xsitelink}[2]{\href{#2}{#1}}
+
+%% ----------------------------------------------------------------------------
+%%  Useful Lengths
+
+\T\newlength{\tlengtha}  %% These are temporaries used in 
+\T\newlength{\tlengthb}  %% functiondoc environment and
+\T\newlength{\tlengthc}  %% elsewhere.
+
+%% ----------------------------------------------------------------------------
+%% nobr
+\T\newcommand{\nobr}[1]{\mbox{#1}}
+\W\newcommand{\nobr}[1]{\xml{nobr}#1\xml{/nobr}}
+
+%% ----------------------------------------------------------------------------
+%% ppar
+\W\newcommand{\ppar}[1]{\endpar\xml{h4}#1\xml{/h4}}
+%% psubpar
+\W\newcommand{\psubpar}[1]{\endpar\xml{h4}#1\xml{/h4}}
+
+%% ----------------------------------------------------------------------------
+
+\newcommand{\entered}[1]{\textcolor{darkgreen}{[\textit{{#1} entered}]}}
+
+%% ----------------------------------------------------------------------------
+%%  Function Documentation
+
+\newenvironment{functiondoc}[4][]{\dofndoc[#1]{#2}{#3}{#4}{black}}%
+{\endfndoc}
+
+\newenvironment{depfunctiondoc}[4][]{\dofndoc[#1]{Deprecated~#2}{#3}{#4}{red}}%
+{\endfndoc}
+
+\T\begin{ifhtml}
+  \newcommand{\fnidxoff}{}
+  \newcommand{\subsubentities}{}
+  \newcommand{\nofndocindex}{\renewcommand{\fnidxoff}{t}}
+  
+  \newcommand{\dofndoc}[5][]{\renewcommand{\fntype}{#2}%
+    \renewcommand{\fnname}{\textcolor{#5}{#3}}%
+    \renewcommand{\fnarglist}{#4}%
+    \EmptyP{#1}{\xname{ref-#1}}{\xname{ref-#3}}%
+    \EmptyP{\subsubentities}{\subsubsection*[\textcolor{#5}{#3}]{}}%
+                            {\subsection*[\textcolor{#5}{#3}]{}}%
+    \label{ent:#3}%
+    \EmptyP{\fnidxoff}{\newcommand{\fnidxoff}{}}{\bfindex{#3}}}
+  
+  \newcommand{\endfndoc}{}
+  
+  \newcommand{\fnsyntax}{\endpar\par
+    \xml{table class="tight" width="100%"}
+      \xml{tr valign="top"}%
+      \xml{td align="left"%}
+      \xml{nobr}\textbf{\fnname}\xml{/nobr}%
+      \xml{/td}%
+      \xml{td} \xmlent{nbsp} \xml{/td}%
+      \xml{td align="left" width="99%"}%
+        \fnarglist
+        \xml{/td}%
+        \xml{td align="right"}%
+        [\textit{\fntype}]
+        \xml{/td}%
+        \xml{/tr}%
+        \xml{/table}%
+        \endpar}
+
+ \newcommand{\alternatetarted}{}
+
+ \newcommand{\fnalternate}[2]{%
+     \EmptyP{\alternatestarted}{\xml{table class="tight" width="100%"}}%
+      {\xml{table class="tightertop" width="100%"}}
+      \renewcommand{\alternatestarted}{*}%
+      \xml{tr valign="top"}%
+      \xml{td align="left"}%
+      \xml{nobr}#1\xml{/nobr}%
+      \xml{/td}%
+      \xml{td}\xmlent{nbsp} \xml{/td}%
+      \xml{td align="left" width="99%"}
+        #2
+      \xml{/td}%
+      \xml{/tr}%
+      \xml{/table}}
+  \newcommand{\endfnalternate}{}
+
+  \newcommand{\fnsetfsyntax}[3]{\xml{table class="tighttop" width="100%"}
+      \xml{tr valign="top"}
+      \xml{td align="left"}
+        \xml{nobr}(setf (#1\xml{/nobr}
+        \xml{/td}
+        \xml{td}\xmlent{nbsp} \xml{/td}
+        \xml{td align="left" width="99%"}
+          #2) #3) 
+         \xml{nobr}\returns{} #3\xml{/nobr}
+         \xml{/td}
+         \xml{/tr}
+         \xml{/table}}
+  \newcommand{\endfnsetfsyntax}{}
+
+\T\end{ifhtml}
+
+\W\begin{iftex}
+\makeatletter
+
+\newcounter{fnpartctr}
+
+\newcommand{\ckfnpartctr}[2]{\ifnum\the\value{fnpartctr}>#1\errmessage{#2 is
+  out of sequence}\fi
+  \setcounter{fnpartctr}{#1}}
+
+\def\fndocrule{\textcolor{rulegray}{\rule[2pt]{\textwidth}{2pt}}}
+\newcounter{fnstartpage}
+\newif\iffnidx\fnidxtrue
+\newcommand{\nofndocindex}{\fnidxfalse}
+
+\newcommand{\dofndoc}[5][]{\thispagestyle{fancybottom}%
+% \global\def\fnfile{#1}%
+  \global\def\fntype{#2}%
+  \global\def\fnname{#3}%
+  \global\def\fnarglist{#4}%
+  \global\def\fnnamecolor{#5}%
+  \setcounter{fnpartctr}{0}%
+  \setcounter{fnstartpage}{\c@page}%
+  \if \fnnamecolor black
+    \addcontentsline{toc}{subsubsection}{\textbf{#3}}%
+  \else
+    \addcontentsline{toc}{subsubsection}{\textcolor{\fnnamecolor}{\textbf{#3}}}%
+  \fi
+  \markright{#3}%
+  \iffnidx\bfindexstart{#3}\fi}
+
+\def\fnsyntax{\fndocrule\\[2pt]
+  \settowidth{\tlengtha}{\textbf{\fnname}}%      % length of function-name
+  \settowidth{\tlengthb}{[\textit{\fntype\/}]}%  % length of [type] part
+  \setlength{\tlengthc}{\hsize}%
+  \addtolength{\tlengthc}{-\tlengtha}%           % subtract function-name length
+  \addtolength{\tlengthc}{-\tlengthb}%           % subtract [function] part
+  \addtolength{\tlengthc}{-10pt}%                % subtract a bit more whitespace
+  \if \fnnamecolor black
+    \mbox{\textbf{\fnname}}~{\parbox[t]{\tlengthc}%
+      {\nohyphenation\raggedright\textrm{\frenchspacing\fnarglist\hfil}}}%
+  \else
+    \mbox{\textcolor{\fnnamecolor}{\textbf{\fnname}}}~{\parbox[t]{\tlengthc}%
+      {\nohyphenation\raggedright\textrm{\frenchspacing\fnarglist\hfil}}}%
+  \fi
+  \hfill[\textit{\fntype\/}]\\[2pt]\fndocrule\\
+  %% Optimize by only using safelabel scanning for percent characters when
+  %% an alternate html filename was specified:
+  %\ifx\fnfile\@undefined
+  %  \label{ent:\fnname}
+  %\else
+  %  \safelabel{ent:\fnname}
+  %\fi
+  \safelabel{ent:\fnname}}%
+
+\def\fnalternate#1#2{%
+  \settowidth{\tlengtha}{#1}%                    % length of function-name
+  \setlength{\tlengthc}{\hsize}%
+  \addtolength{\tlengthc}{-\tlengtha}%           % subtract function-name length  
+  \vskip -3pt
+  \par
+  \mbox{#1}~{\parbox[t]{\tlengthc}%
+    {\nohyphenation\raggedright\textrm{\frenchspacing #2\hfil}}}}%
+
+\def\fnsetfsyntax#1#2#3{%
+  \settowidth{\tlengtha}{(setf (#1}%             % length of function-name
+  \setlength{\tlengthc}{\hsize}%
+  \addtolength{\tlengthc}{-\tlengtha}%           % subtract function-name length  
+  \par
+  \mbox{(setf (#1}~{\parbox[t]{\tlengthc}%
+    {\nohyphenation\raggedright\textrm{\frenchspacing #2) #3)
+        \mbox{\returns{} #3}\hfil}}}}%
+
+\def\endfndoc{\nopagebreak\fndocrule\\\nopagebreak
+  \ifnum\value{fnstartpage}=\c@page\else
+  \if@twoside 
+    \ifodd\c@page
+      \hspace*{1in}\hfill\textcolor{darkergray}{\textbf{\fnname}}%
+    \else
+    \textcolor{darkergray}{\textbf{\fnname}}%
+  \fi\fi\fi
+  \iffnidx\bfindexend{\fnname}\else\global\fnidxtrue\fi
+  \clearpage}
+
+\makeatother
+\W\end{iftex}
+
+%% ----------------------------------------------------------------------------
+
+\W\begin{iftex}
+\makeatletter
+
+\def\functionsyntax#1#2{%
+  \leftindentby[\exampleindent]%
+  \settowidth{\tlengtha}{\textbf{#1}}%           % length of function-name
+  \setlength{\tlengthc}{\linewidth}%
+  \addtolength{\tlengthc}{-\tlengtha}%           % subtract function-name length
+  \addtolength{\tlengthc}{-3pt}%                 % subtract a bit more whitespace
+  \vskip -\baselineskip
+  \mbox{\textbf{#1}~{\parbox[t]{\tlengthc}%
+      {\baselineskip 0.85\baselineskip
+        \nohyphenation\raggedright\textrm{\frenchspacing #2\hfil}}}}%
+  \hfill\par\endleftindent}
+
+\makeatother
+\W\end{iftex}
+
+%% ----------------------------------------------------------------------------
+
+\T\newcommand{\returns}{$\Rightarrow${}}
+\W\newcommand{\returns}{\textrm{=>}}
+\T\newcommand{\expands}{$\Longrightarrow${}}
+\W\newcommand{\expands}{\textrm{==>}}
+\newcommand{\nil}{\code{nil}}
+\newcommand{\percent}{{\char 58}}
+
+
+\W\begin{iftex}
+%% This is the desired order in each functiondoc entry
+\newcommand{\fnpurpose}{\ckfnpartctr{1}{Purpose}%
+ \fndocsec{Purpose}~\\[2pt]\nopagebreak}
+\newcommand{\fnaltsyntax}{\ckfnpartctr{2}{Alternate syntax}%
+  \fndocsec{Alternate syntax}~\\[4pt]\nopagebreak}
+\newcommand{\fnsetf}{\ckfnpartctr{2}{Setf}%
+  \fndocsec{Setf syntax}~\\[2pt]\nopagebreak}
+\newcommand{\fnmethods}{\ckfnpartctr{3}{Method signatures}%
+  \fndocsec{Method signatures}~\\[4pt]\nopagebreak}
+\newcommand{\fnpackage}{\ckfnpartctr{4}{Package}%
+  \fndocsec{Package}}
+\newcommand{\fnmodule}{\ckfnpartctr{5}{Module}%
+  \fndocsec{Module}}
+\newcommand{\fnvaluetype}{\ckfnpartctr{5}{Value type}%
+  \fndocsec{Value type}}
+\newcommand{\fnvalue}{\ckfnpartctr{6}{value}%
+  \fndocsec{Value}}
+\newcommand{\fninitialvalue}{\ckfnpartctr{6}{Initial value}%
+  \fndocsec{Initial value}}
+\newcommand{\fnargs}{\ckfnpartctr{7}{Arguments and values}%
+  \fndocsec{Arguments}~\\[-2pt]\nopagebreak}
+\newcommand{\fnreturns}{\ckfnpartctr{8}{Returns}%
+  \fndocsec{Returns}~\\[2pt]\nopagebreak}
+\newcommand{\fnevents}{\ckfnpartctr{9}{Events}%
+  \fndocsec{Events}~\\[2pt]\nopagebreak}
+\newcommand{\fnerrors}{\ckfnpartctr{10}{Errors}%
+  \fndocsec{Errors}~\\[2pt]\nopagebreak}
+\newcommand{\fndsyntax}{\ckfnpartctr{11}{Detailed syntax}%
+  \fndocsec{Detailed syntax}~\\[2pt]\nopagebreak}
+\newcommand{\fndsyntaxwgray}{\ckfnpartctr{11}{Detailed syntax}%
+  \fndocsec{Detailed syntax}~\\[2pt]\nopagebreak
+  \hfil\textsf{\footnotesize\textcolor{darkergray}{[Syntax shown in gray is
+        not supported in GBBopen Version~\gbbopenversion, but will become
+        available in a future release.]}}\\[6pt]}
+\newcommand{\fnterms}{\ckfnpartctr{12}{Terms}%
+  \fndocsec{Terms}~\\[2pt]\nopagebreak}
+\newcommand{\fndescription}{\ckfnpartctr{13}{Description}%
+  \fndocsec{Description}~\\[2pt]\nopagebreak}
+\newcommand{\fnalsos}{\ckfnpartctr{14}{See also}%
+  \fndocsec{See also}~\\[2pt]\nopagebreak}
+\newcommand{\fnexample}{\ckfnpartctr{14}{Example}%
+  \fndocsec{Example}~\\[2pt]\nopagebreak} 
+\newcommand{\fnexamples}{\ckfnpartctr{15}{Examples}%
+  \fndocsec{Examples}~\\[2pt]\nopagebreak}
+\newcommand{\fnnote}{\ckfnpartctr{16}{Notes}%
+  \fndocsec{Note}~\\[2pt]\nopagebreak}
+\newcommand{\fnnotes}{\ckfnpartctr{16}{Notes}%
+  \fndocsec{Notes}~\\[2pt]\nopagebreak}
+\newcommand{\replnote}{\ckfnpartctr{16}{Notes}%
+  \fndocsec{REPL Note}~\\[2pt]\nopagebreak}
+
+\let\syntaxsep=\par
+
+\newenvironment{args}[1]{%
+  \settowidth{\tlengtha}{{\var{#1\/}}}%
+  \tlengthb=\tlengtha
+  \advance\tlengthb by 0.5em
+  \list{}{\topsep=5pt
+    \partopsep=5pt
+    \labelsep=0.5em
+    \itemsep=-2pt
+    \parskip=0pt
+    \labelwidth=\tlengtha
+    \leftmargin=\tlengthb
+    \let\arg=\item
+    \let\makelabel=\var}}{\endlist}
+
+\newenvironment{keywords}[1]{%
+  \settowidth{\tlengtha}{{\code{#1}}}%
+  \tlengthb=\tlengtha
+  \advance\tlengthb by 0.5em
+  \list{}{\topsep=5pt
+    \partopsep=5pt
+    \labelsep=0.5em
+    \itemsep=-2pt
+    \parskip=0pt
+    \labelwidth=\tlengtha
+    \leftmargin=\tlengthb
+    \let\arg=\item
+    \let\makelabel=\code}}{\endlist}
+
+\newcommand{\keyword}[1][]{\item[#1]}%
+
+\newenvironment{alsos}[1]{\fnalsos
+  \settowidth{\tlengtha}{{\textbf{#1}}}%
+  \tlengthb=\tlengtha
+  \advance\tlengthb by 0.5em
+  \advance\tlengthb by \parindent
+  \list{}{\topsep=5pt
+    \partopsep=5pt
+    \labelsep=0.5em
+    \itemsep=-2pt
+    \parskip=0pt
+    \labelwidth=\tlengtha
+    \leftmargin=\tlengthb
+    \let\makelabel=\textbf}}{\endlist}
+
+\newcommand{\also}[1][]{\item[#1] (page~\safepageref{ent:#1})}%
+
+\newcommand{\secalso}[2][]{\item[\rm #1\hfil] (page~\pageref{#2})}%
+
+\makeatletter
+\newcommand\fndspar{\@startsection{paragraph}{4}{\z@}%
+  {-1ex \@plus -.2ex \@minus -.1ex}%
+  {1pt}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
+\W\end{iftex}
+
+\T\begin{ifhtml}
+\newcommand{\separ}{\par\endpar}
+
+\newcommand{\fnpurpose}{\par
+  \xml{span class="fndoclabel"}Purpose\xml{/span} \\}
+\newcommand{\fnaltsyntax}{\separ
+  \renewcommand{\alternatestarted}{}%
+  \xml{span class="fndoclabel"}Alternate syntax\xml{/span}} 
+\newcommand{\fnsetf}{\separ
+  \xml{span class="fndoclabel"}Setf syntax\xml{/span}} 
+\newcommand{\fnmethods}{\separ
+  \renewcommand{\alternatestarted}{}%
+  \xml{span class="fndoclabel"}Method signatures\xml{/span}}
+\newcommand{\fnpackage}{\separ
+  \xml{span class="fndoclabel"}Package\xml{/span}~~~}
+\newcommand{\fnmodule}{\separ
+  \xml{span class="fndoclabel"}Module\xml{/span}~~~}
+\newcommand{\fnvaluetype}{\separ
+  \xml{span class="fndoclabel"}Value type\xml{/span}~~~} 
+\newcommand{\fnvalue}{\separ
+  \xml{span class="fndoclabel"}Value\xml{/span}~~~} 
+\newcommand{\fninitialvalue}{\separ
+  \xml{span class="fndoclabel"}Initial value\xml{/span}~~~} 
+\newcommand{\fnargs}{\separ
+  \xml{span class="fndoclabel"}Arguments and values\xml{/span}} 
+\newcommand{\fnreturns}{\par
+  \xml{span class="fndoclabel"}Returns\xml{/span} \\} 
+\newcommand{\fnevents}{\par
+  \xml{span class="fndoclabel"}Events\xml{/span} \\} 
+\newcommand{\fnerrors}{\par
+  \xml{span class="fndoclabel"}Errors\xml{/span} \\} 
+\newcommand{\fndsyntax}{\par
+  \xml{span class="fndoclabel"}Detailed syntax\xml{/span}}  
+\newcommand{\fndsyntaxwgray}{\par
+  \xml{span class="fndoclabel"}Detailed syntax\xml{/span}\\
+  \xml{img height=14 width=0 src="shim.gif"}
+  \textsf{\small\textcolor{darkergray}{[Syntax shown in gray is
+        not supported in GBBopen Version~\gbbopenversion, but will become
+        available in a future release.]}}}
+\newcommand{\fnterms}{\separ
+  \xml{span class="fndoclabel"}Terms\xml{/span}}  
+\newcommand{\fndescription}{\par
+  \xml{span class="fndoclabel"}Description\xml{/span} \\} 
+% \fndetails is only for HyperLaTeX descriptions
+\newcommand{\fndetails}{\par
+  \xml{span class="fndoclabel"}Details\xml{/span} \\} 
+\newcommand{\fnalsos}{\separ
+  \xml{span class="fndoclabel"}See also\xml{/span}}
+\newcommand{\fnexample}{\separ
+  \xml{span class="fndoclabel"}Example\xml{/span} \\} 
+\newcommand{\fnexamples}{\separ
+  \xml{span class="fndoclabel"}Examples\xml{/span} \\} 
+\newcommand{\fnnote}{\par
+  \xml{span class="fndoclabel"}Note\xml{/span} \\} 
+\newcommand{\fnnotes}{\par
+  \xml{span class="fndoclabel"}Notes\xml{/span} \\} 
+\newcommand{\replnote}{\par
+  \xml{span class="fndoclabel"}REPL Note\xml{/span} \\} 
+\newcommand{\argstarted}{}
+\newcommand{\syntaxsep}{\\}
+\newenvironment{args}[1]{%
+  \xml{table class="tighttop"}%
+  \renewcommand{\argstarted}{}}%
+{\xml{/td}\xml{/tr}\xml{/table}}%
+\newcommand{\arg}[1][]{\EmptyP{\argstarted}{\xml{/td}\xml{/tr}}{}%
+  \renewcommand{\argstarted}{*}%
+  \xml{tr valign="top"}%
+  \xml{td nowrap}\xml{i}#1\xml{/i}\xml{/td}%
+  \xml{td}~~~~\xml{/td}%
+  \xml{td}}
+\newcommand{\keystarted}{}
+\newenvironment{keywords}[1]{%
+  \xml{table class="tight"}%
+  \renewcommand{\keystarted}{}}%
+{\xml{/td}\xml{/tr}\xml{/table}}%
+\newcommand{\keyword}[1][]{\EmptyP{\keystarted}{\xml{/td}\xml{/tr}}{}%
+  \renewcommand{\keystarted}{*}%
+  \xml{tr valign="top"}%
+  \xml{td}\xml{code}#1\xml{/code}\xml{/td}%
+  \xml{td}~\xml{/td}%
+  \xml{td}}
+\newenvironment{alsos}[1]{\fnalsos}{}%
+\newcommand{\also}[1][]{\xml{br}~~~~\link{\textbf{#1}}{ent:#1}}%
+\newcommand{\secalso}[2][]{\xml{br}~~~~\link{#1}{#2}}%
+\newcommand{\fndspar}[1]{\xml{p}\textbf{#1}\xml{/p}}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  Glossary
+
+\W\begin{iftex}
+\newenvironment{glossary-list}{
+  \list{}{\topsep=0pt
+    \labelsep=0.5em
+    \itemsep=0pt
+    \parskip=0pt
+    \let\makelabel=\textbf}}{\endlist}
+\newcommand{\glent}[1][]{\item[#1]~\\}
+\newcommand{\glref}[1]{#1}
+\newcommand{\gllabel}[1]{}
+\W\end{iftex}
+
+\T\begin{ifhtml}
+\newenvironment{glossary-list}{\begin{description}}{\end{description}}
+\newcommand{\glent}[1][]{\xml{p}\item [\label{gl:#1}\textbf{#1}]}
+\newcommand{\glref}[1]{\link{#1}{gl:#1}}
+\newcommand{\gllabel}[1]{\label{gl:#1}}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  smallexample environment -- obeys spaces and lines (in \small font)
+
+\W\begin{iftex}
+\makeatletter
+\def\smallexample{\list{}{\small\leftmargin\z@
+    \itemindent\z@ \rightmargin\z@ \parsep \z@ plus\p@}\item[]\tt
+  \turnon@spaces\turnon@lines\let\do\@makeother\Hlx@example}
+\let\endsmallexample=\endlist
+\makeatother
+\W\end{iftex}
+
+\T\begin{ifhtml}
+\HlxEval{
+(put 'smallexample    'hyperlatex 'hyperlatex-format-smallexample)
+(put 'endsmallexample 'hyperlatex 'hyperlatex-end-recursion)
+}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  tightitemize environment
+
+\W\begin{iftex}
+\makeatletter
+\def\tightitemize{%
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\def\makelabel##1{\hss\llap{##1}}%
+        \itemsep -1pt
+        \topsep\z@
+        \partopsep\z@
+        }%
+  \fi}
+\def\endtightitemize{\endlist}
+\makeatother
+\W\end{iftex}
+
+\T\begin{ifhtml}
+\newenvironment{tightitemize}{\endpar\HlxBlk\xml{ul class="tight"}\begingroup
+  \newcommand{\item}{\HlxBlk\xml{li}}\ignorespaces}{\endgroup
+  \HlxBlk\xml{/ul}}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  tightenumerate environment
+
+\W\begin{iftex}
+\makeatletter
+\def\tightenumerate{%
+  \ifnum \@enumdepth >\thr@@\@toodeep\else
+    \advance\@enumdepth\@ne
+    \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
+      \expandafter
+      \list
+        \csname label\@enumctr\endcsname
+        {\usecounter\@enumctr\def\makelabel##1{\hss\llap{##1}}%
+        \itemsep -1pt
+        \topsep\z@
+        \partopsep\z@
+        }%
+  \fi}
+\def\endtightenumerate{\endlist}
+\makeatother
+\W\end{iftex}
+
+\T\begin{ifhtml}
+\newenvironment{tightenumerate}{\endpar\HlxBlk\xml{ol class="tight"}\begingroup
+  \newcommand{\item}{\HlxBlk\xml{li}}\ignorespaces}{\endgroup
+  \HlxBlk\xml{/ol}}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  notebox environment
+
+
+%\begin{center}
+%   \fcolorbox{black}{red}{
+%         \begin{minipage}[t]{1.0\textwidth}
+%            text
+%         \end{minipage}
+%      }
+%\end{center}
+
+\W\begin{iftex}
+  \makeatletter
+  \definecolor{noteboxbg}{rgb}{1.0,0.99,0.98}
+  \newenvironment{notebox}[1]{%
+    \begin{lrbox}{\@tempboxa}
+      \begin{minipage}{0.9\linewidth}
+        \raggedright\sloppy
+        {\large\textbf{#1}}\\[10pt]}%
+    {\end{minipage}\end{lrbox}%
+    \fboxsep=10pt
+    \hfil\fcolorbox{black}{noteboxbg}{\usebox{\@tempboxa}}}
+  \makeatother
+\W\end{iftex}
+
+\T\begin{ifhtml}
+  \newenvironment{notebox}[1]{%
+    \xml{table width="90%" align="center" border="1" cellpadding="12"
+      bgcolor="##FFFFEA"}\xml{tr}\xml{td}\xml{table border="0"}
+    \xml{tr}\xml{td}\textbf{#1}\xml{/td}\xml{/tr}\xml{tr}\xml{td}}%
+    {\xml{/td}\xml{/tr}\xml{/table}\xml{/table}}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  NoHyphenation
+
+\W\begin{iftex}
+\makeatletter
+
+\def\nohyphenation{\pretolerance=10000\tolerance=10000}
+\def\nohyphenationpar{\par\nohyphenation}
+\def\endnohyphenationpar{\par}
+
+%% ----------------------------------------------------------------------------
+%%  AvoidHyphenation
+
+\def\avoidhyphenation{\@ifnextchar[{\@avoidhyphen}{\@avoidhyphen[4]}}
+\def\@avoidhyphen[#1]{\pretolerance=550\tolerance=550
+   \multiply \pretolerance #1
+   \multiply \tolerance #1}
+\def\avoidhyphenationpar{\@ifnextchar[{\par\@avoidhyphen}%
+   {\par\@avoidhyphen[4]}}
+\def\avoidnohyphenationpar{\par}
+
+\makeatother
+\W\end{iftex}
+
+%% ----------------------------------------------------------------------------
+%%  \hhmm Time of Day (from Nelson Beebe)
+
+\W\begin{iftex}
+\newcount\hh
+\newcount\mm
+\mm=\time
+\hh=\time
+\divide\hh by 60
+\divide\mm by 60
+\multiply\mm by 60
+\mm=-\mm
+\advance\mm by \time
+\def\hhmm{\number\hh:\ifnum\mm<10{}0\fi\number\mm}
+\W\end{iftex}
+
+%% ----------------------------------------------------------------------------
+%%  Hyperlatex Emacs-Debugging Help
+
+%\T\begin{ifhtml}
+%\HlxEval{
+%(defun hyperlatex-format-buffer-0 ()
+%  (progn 
+%    (hyperlatex-format-buffer-1)
+%    (hyperlatex-warning-summary)
+%    0))
+%}
+%\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%% Remove Hyperlatex Emacs version & date-and-time-string comment from
+%% each generated page (to reduce repository changes)
+
+\T\begin{ifhtml}
+\HlxEval{
+
+(defun hyperlatex-make-node-header (head)
+  "Creates header for new node, with filename, title etc."
+  (delete-region (point-min) (point))
+  (setq hyperlatex-current-filename
+	(concat hyperlatex-html-directory "/"
+		(hyperlatex-fullname hyperlatex-node-number)))
+  (setq hyperlatex-made-panel hyperlatex-make-panel)
+  ;; XML intro is user defined
+  (if hyperlatex-xml
+      ()
+    (hyperlatex-gen
+     (concat
+      "!DOCTYPE html")
+     "\n")
+    (hyperlatex-gen "html lang=en" "\n"))
+  (hyperlatex-gen
+   (concat "!-- XML file produced from " hyperlatex-produced-from
+	   "\n     using Hyperlatex v "
+	   hyperlatex-version " (c) Otfried Cheong"
+           ;; Remove Emacs version & current time string -- DDC
+	   ; "\n     on Emacs " emacs-version ", " (current-time-string) 
+           " --")
+   "\n")
+  (if hyperlatex-xml
+      (let ((start (point)))
+	(insert "\\HlxXmlIntro{}\n")
+	(hyperlatex-format-region start (point)))
+    (hyperlatex-gen (hyperlatex-get-attributes "head") "\n")
+    (hyperlatex-gen "meta charset=utf-8" "\n")
+    (hyperlatex-gen (hyperlatex-get-attributes "title"))
+    (insert hyperlatex-title 
+	    (hyperlatex-purify (if head (concat " -- " head) "")))
+    (hyperlatex-gen "/title" "\n")
+    (if hyperlatex-final-pass
+	(let ((start (point)))
+	  (insert "\\HlxStyleSheet{}\n\\HlxMetaFields{}\n")
+          (let ((nav-string "\274img"))
+            ;; add base to the Navigation (TOC) section:
+            (if (equal (and (>= (length head) 4)
+                            (substring head 0 4))
+                            nav-string)
+               ;; IE requires base to be in <HEAD>
+               (hyperlatex-gen "base target=\"right\"\n")))
+	  (hyperlatex-format-region start (point))))
+    (hyperlatex-gen "/head" "\n")
+    (hyperlatex-gen (hyperlatex-get-attributes "body") "\n"))
+  (setq hyperlatex-label-number 1)
+  (setq hyperlatex-node-section hyperlatex-sect-number)
+  (if (and hyperlatex-final-pass hyperlatex-made-panel)
+      (let ((start (point)))
+	(insert "\\HlxTopPanel{}\n")
+	(hyperlatex-format-region start (point))))
+  (hyperlatex-format-resumepars))
+
+(defun hyperlatex-make-frames-headers ()
+  "Creates frameset file."
+  ;; first we make the frameset
+  (delete-region (point-min) (point))
+  (hyperlatex-gen
+   (concat "!DOCTYPE html")
+   "\n")
+  (hyperlatex-gen "html lang=en" "\n")
+  (hyperlatex-gen
+   (concat "!-- XML file produced from " hyperlatex-produced-from
+	   "\n     using Hyperlatex v "
+	   hyperlatex-version " (c) Otfried Cheong"
+           ;; Remove Emacs version & current time string -- DDC
+	   ;"\n     on Emacs " emacs-version ", " (current-time-string) 
+           " --")
+   "\n")
+  (hyperlatex-gen (hyperlatex-get-attributes "head") "\n")
+  (hyperlatex-gen "meta charset=utf-8" "\n")
+  (hyperlatex-gen (hyperlatex-get-attributes "title"))
+  (insert hyperlatex-title)
+  (hyperlatex-gen "/title" "\n")
+  (hyperlatex-gen "/head")
+  (let ((begin (point)))
+    (insert "\\HlxFramesDescription{"
+	    hyperlatex-basename "}{" hyperlatex-html-ext "}")
+    (hyperlatex-gen "/html" "\n")
+    (let ((end (point-marker)))
+      (hyperlatex-format-region begin end)
+      (goto-char end)
+      (set-marker end nil)))
+;; RK's
+  (hyperlatex-debug-show-p-positions)
+;;
+  ;; save the node
+  (save-restriction
+    (narrow-to-region (point-min) (point))
+    (hyperlatex-final-substitutions)
+    (hyperlatex-write-region (point-min) (point-max)
+			     (concat hyperlatex-html-directory "/"
+				     hyperlatex-basename hyperlatex-html-ext))
+    (goto-char (point-max))))
+}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  Hyperlatex \hhmm
+
+\T\begin{ifhtml}
+\HlxEval{
+(put 'HlxHHMM 'hyperlatex 'hyperlatex-HHMM)
+
+(defun hyperlatex-HHMM ()
+   (let* ((date (decode-time))
+          (minutes (elt date 1))
+          (hours (elt date 2)))
+      (insert
+         (concat (int-to-string hours)
+             ":" (format "%02d" minutes)))))
+}
+\newcommand{\hhmm}{\HlxHHMM}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  Hyperlatex \par control hacks
+
+\T\begin{ifhtml}
+\HlxEval{
+(put 'supp 'hyperlatex 'Hlxsupp)
+(put 'notpretop 'hyperlatex 'Hlxnotpretop)
+
+(setq ddc-supp nil)
+(setq notpretop nil)
+
+(defun Hlxsupp ()
+  (setq ddc-supp t))
+
+(defun Hlxnotpretop ()
+  (setq notpretop t))
+
+(defun hyperlatex-leave-par ()
+;; Leave the current paragraph (if in any) and go into vertical mode.
+  (if ddc-supp
+      (progn (setq ddc-supp nil)
+             ;(hyperlatex-gen "br" "\n")
+             )
+      (if (not hyperlatex-in-b) nil
+        (if (hyperlatex-in-par-p) (hyperlatex-gen "/p" "\n"))
+        (if (hyperlatex-get-state) ; if state is defined the stack is non-empty
+          (hyperlatex-mode-set-state (cons hyperlatex-v-mode (point)))))))
+
+(defun hyperlatex-format-example ()
+  (hyperlatex-format-endpar)
+;; RK's
+  (hyperlatex-mode-level-up "example")
+;;
+  (if hyperlatex-in-body 
+      (progn
+	(hyperlatex-format-suspendpars)
+	(setq hyperlatex-verbatim-need-pars t))
+    (setq hyperlatex-verbatim-need-pars nil))
+  (hyperlatex-blk)
+ (hyperlatex-gen (if (not notpretop)
+                      "pre class=\"pretop\""
+                      (progn (setq notpretop nil)
+                             "pre")))
+  (let ((hyperlatex-special-chars-regexp
+	 (concat "[\\\\{}%" hyperlatex-meta-| "]"))
+	(hyperlatex-example-depth hyperlatex-recursion-depth)
+	(hyperlatex-active-space t))
+    ;; recursive call returns after processing \end{example}
+    (hyperlatex-format-region (point) (point-max) t))
+  (goto-char hyperlatex-command-start)
+;  (hyperlatex-delete-whitespace)
+  (hyperlatex-gen "/pre")
+;; RK's
+  (hyperlatex-mode-level-down "example")
+;;
+  (if hyperlatex-verbatim-need-pars
+      (hyperlatex-format-resumepars)))
+
+(defun hyperlatex-format-smallexample ()
+  (hyperlatex-format-endpar)
+;; RK's
+  (hyperlatex-mode-level-up "smallexample")
+;;
+  (if hyperlatex-in-body 
+      (progn
+	(hyperlatex-format-suspendpars)
+	(setq hyperlatex-verbatim-need-pars t))
+    (setq hyperlatex-verbatim-need-pars nil))
+  (hyperlatex-blk)
+  (hyperlatex-gen "small")
+  (hyperlatex-gen (if (not notpretop)
+                      "pre class=\"pretop\""
+                      (progn (setq notpretop nil)
+                             "pre")))
+  (let ((hyperlatex-special-chars-regexp
+	 (concat "[\\\\{}%" hyperlatex-meta-| "]"))
+	(hyperlatex-example-depth hyperlatex-recursion-depth)
+	(hyperlatex-active-space t))
+    ;; recursive call returns after processing \end{example}
+    (hyperlatex-format-region (point) (point-max) t))
+  (goto-char hyperlatex-command-start)
+;  (hyperlatex-delete-whitespace)
+  (hyperlatex-gen "/pre")
+  (hyperlatex-gen "/small")
+;; RK's
+  (hyperlatex-mode-level-down "smallexample")
+;;
+  (if hyperlatex-verbatim-need-pars
+      (hyperlatex-format-resumepars)))
+
+ (defun hyperlatex-format-verbatim ()
+  (hyperlatex-format-endpar)
+;; RK's
+  (hyperlatex-mode-level-up "format-verbatim")
+;; end-of-RK's
+  (if hyperlatex-in-body 
+      (progn
+	(hyperlatex-format-suspendpars)
+	(setq hyperlatex-verbatim-need-pars t))
+    (setq hyperlatex-verbatim-need-pars nil))
+  (hyperlatex-delete-|)
+  (let ((env-name (symbol-name (car hyperlatex-stack))))
+    (hyperlatex-blk)
+    (hyperlatex-gen (if (not notpretop)
+                        "pre class=\"pretop\""
+                        (progn (setq notpretop nil)
+                               "pre")))
+    (search-forward  (concat "\\end{" env-name "}"))
+    (goto-char (match-beginning 0))))
+
+}
+\newcommand{\supp}{\Hlxsupp}
+\newcommand{\notpretop}{\Hlxnotpretop}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  Hyperlatex tabular class="tight" Mod
+
+\T\begin{ifhtml}
+\HlxEval{
+(put 'tabletop 'hyperlatex 'Hlxtabletop)
+
+(setq tabletop nil)
+
+(defun Hlxtabletop ()
+   ;; DDC mod to switch table class (hack):
+   (setq tabletop 't))
+
+(defun hyperlatex-format-tabular ()
+  (hyperlatex-parse-optional-argument)
+  (setq hyperlatex-tabular-column-descr
+	(cons (cons 0 (hyperlatex-tabular-posn
+		       (hyperlatex-parse-required-argument)))
+	      hyperlatex-tabular-column-descr))
+  (hyperlatex-format-endpar)
+  (hyperlatex-blk)
+  ;; Add "tight" class DDC
+  ; (hyperlatex-gen (hyperlatex-get-attributes "table"))
+  (hyperlatex-gen (concat (hyperlatex-get-attributes "table")
+                          (if tabletop " class=\"tighttop\""
+                                       " class=\"tight\"")))
+  (setq tabletop nil)
+  ;; End "tight" class mod DDC
+  (hyperlatex-gen (hyperlatex-get-attributes "tbody"))
+  (hyperlatex-gen "tr" "\n")
+  ;; Do not put "\n" after <td> because it disturbs paragraph recognition.
+  ;; (A "\n" after <td> may precede one from the input, after \begin{tabular}, 
+  ;; which thus would mean a paragraph ending command.)
+  ;; Introducing a meta-character for "\n" would help for such cases.
+  (hyperlatex-gen
+   (format (concat "%s colspan=" hyperlatex-meta-dq "1" hyperlatex-meta-dq
+		   " align=" hyperlatex-meta-dq "%s" hyperlatex-meta-dq)
+	   (hyperlatex-get-attributes "td")
+	   (hyperlatex-tabular-cell-align)))
+;; RK's
+  (hyperlatex-mode-level-up "format-tabular")
+;; end of RK's
+  ;; put cell text into a group to restore attributes like \bf at its end
+  (hyperlatex-begin-group)
+  ;; put contents of >{...} in front of the cell
+  (hyperlatex-tabular-cell-front))
+}
+\newcommand{\tabletop}{\Hlxtabletop}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  Hyperlatex remove Navigation section from Navigation menu and force
+%%  inclusion of Tools and Core subsections:
+
+\T\begin{ifhtml}
+\HlxEval{
+(defun special-section-p (secname)
+  "DDC added predicate for GBBopen Reference `special' subsections" 
+  (member secname
+	  '(;; :gbbopen-tools
+            "CLOS and MOP"
+            "Declared Numerics"
+            "Pseudo Probabilities"
+            "Date and Time"
+            "Offset Universal Time"
+            "Transitioning Sets and Tables"
+            "Search Trees"
+            ;; Additional GBBopen Tools modules
+	    "Portable Threads"
+	    "Scheduled and Periodic Functions"
+	    "Polling Functions"
+	    "Portable Sockets"
+	    "OS Interface"
+	    "Double Metaphone"
+            ;; :gbbopen-core
+            "Links"
+            "Events"
+            "Intervals"
+            "Blackboard Repository"
+            "Instance Retrieval"
+            "Saving and Sending"
+	    "Queue Management"
+            ;; :gbbopen-extensions
+            "Streaming"
+            "Journaling"
+            "Network Streaming")))
+
+(defun hyperlatex-insert-menu (secnum depth)
+  "Insert a menu for section SECNUM of depth DEPTH."
+  (let ((sp hyperlatex-rev-sections))
+    (hyperlatex-blk)
+    ;; search sp for a secction numbered secnum
+    (while (/= (hyperlatex-sect-num (car sp)) secnum)
+      (setq sp (cdr sp)))
+    ;; sp points to section 
+    (let* ((vis nil) ;; visited levels of sp
+           (lev (hyperlatex-sect-level (car sp)))
+           ;; DDC added:
+	   (node-secname (third (car sp))))
+      (setq sp (cdr sp))
+      (while (and sp (> (hyperlatex-sect-level (car sp)) lev))
+        ;; sp points to a subsection of mine!
+        
+        ;; DDC mod ---
+;	(if (> (hyperlatex-sect-level (car sp)) (+ lev depth))
+	(let* ((secname (third (car sp)))
+               (special-section-p (special-section-p secname))
+               ;; The Navigation section starts with "<img":
+	       (nav-string "\274img")
+               (sect-level (hyperlatex-sect-level (car sp))))
+          (if (or (and (> sect-level (+ lev depth))
+                       (not special-section-p))
+                  ;; don't add the Navigation section itself to the 
+                  ;; navigation menu:
+                  (equal (and (>= (length secname) 4)
+                              (substring secname 0 4))
+                         nav-string)
+                  ;; don't add the special section entries to the entries
+                  ;; listed on these Tools & GBBopen Core pages:
+                  (and (or (string= node-secname "GBBopen Tools")
+                           (string= node-secname "Additional GBBopen Tools")
+                           (string= node-secname "GBBopen Core")
+                           (string= node-secname "GBBopen Extensions"))
+                       special-section-p))
+              ;; --- end DDC mod
+              
+              (setq sp (cdr sp)) ;; skip as too deep                     
+              ;; make a menu entry
+              (if (null vis)
+                  (progn
+                    (hyperlatex-gen (hyperlatex-get-attributes "ul") "\n")
+                    (hyperlatex-gen (hyperlatex-get-attributes "li"))
+                    (hyperlatex-insert-menu-item (car sp))
+                    (setq vis (cons (hyperlatex-sect-level (car sp)) nil))
+                    (setq sp (cdr sp)))
+                  (if (= (car vis) (hyperlatex-sect-level (car sp)))
+                      (progn
+                        (hyperlatex-gen "/li" "\n")
+                        (hyperlatex-gen (hyperlatex-get-attributes "li"))
+                        (hyperlatex-insert-menu-item (car sp))
+                        (setq sp (cdr sp)))
+                      (if (< (car vis) (hyperlatex-sect-level (car sp)))
+                          (progn
+                            (insert "\n")
+                            (hyperlatex-gen (hyperlatex-get-attributes "ul") "\n")
+                            (hyperlatex-gen (hyperlatex-get-attributes "li"))
+                            (hyperlatex-insert-menu-item (car sp))
+                            (setq vis (cons (hyperlatex-sect-level (car sp)) vis))
+                            (setq sp (cdr sp)))
+                          ;; else: (> (car vis) (hyperlatex-sect-level (car sp)))
+                          (progn
+                            (hyperlatex-gen "/li" "\n")
+                            (hyperlatex-gen "/ul" "\n")
+                            (setq vis (cdr vis))))))))
+        
+        ;; DDC mods ---
+        ;; match parens from above mod:
+        )
+      
+      (while vis
+        (hyperlatex-gen "/li" "\n")
+        (hyperlatex-gen "/ul" "\n")
+        (setq vis (cdr vis))))))
+}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+%%  Hyperlatex - Christopher League's dash and dquote mods
+
+\T\begin{ifhtml}
+\HlxEval{
+  (defvar hyperlatex-special-chars-basic-regexp
+     (concat "\\\\%{}]\\|---?\\|``?\\|''?\\|\\?`\\|!`\\|"
+	      hyperlatex-meta-|))
+ 
+  (put '-  'hyperlatex-active 'hyperlatex-active-dash)
+
+  (defun hyperlatex-active-tilde ()
+     (hyperlatex-gensym "nbsp"))
+ 
+  (defun hyperlatex-active-dash ()
+     (let ((prechar (char-before (1- (point)))))
+        (cond ((= prechar ?-)
+	       (delete-char -2)
+               (hyperlatex-gensym "mdash"))
+              (t
+               (delete-char -1)
+               (hyperlatex-gensym "ndash")))))
+
+  (defun hyperlatex-active-quote ()
+     (let ((prechar (preceding-char)))
+       (cond ((= prechar ?')
+              (delete-char -1)
+              (hyperlatex-gensym "#8221"))
+             (t
+              (hyperlatex-gensym "#8217")))))
+ 
+  (defun hyperlatex-active-backquote ()
+     (let ((prechar (preceding-char)))
+       (cond ((= prechar ?`)
+              (delete-char -1)
+              (hyperlatex-gensym "#8220"))
+             ((= prechar ??)
+              (delete-char -1)
+ 	      (hyperlatex-gensym "#191"))
+             ((= prechar ?!)
+              (delete-char -1)
+              (hyperlatex-gensym "#161"))
+             (t
+              (hyperlatex-gensym "#8216"))))) 
+}
+\T\end{ifhtml}
+
+%% ----------------------------------------------------------------------------
+
+%%  Hyperlatex makeidx.hlx extensions for subentry support 
+%%  Extensions Version 1.03
+%%  December 3 2004
+%%  Dan Corkill <corkill@cs.umass.edu>
+%%
+%%  The following changes to makeidx.hlx (Version 1.0) support hyperlatex
+%%  indexing with subentries (via "!" char) and commands (via "|" char).  As
+%%  with normal LaTeX indexing, the double-quote character can be used to
+%%  quote special characters.
+%%
+%%  To use, load this file after makeidx.hlx.
+%%
+%%  Note that since hyperlatex entries do not have page numbers
+%%  (unless hyperlatex-index-node-format is true--the new default),
+%%  entries involving a command do not generate an automatic \xlink
+%%  (so the ! command must handle the xlink arguments itself). 
+%%  For example, to do italic page numbers, \index{alpha|itidx},
+%%  the command definitions for itidx would be:
+%%     \W\newcommand{\itidx}[2]{\textit{\xlink{#1}{#2}}}
+%%     \T\newcommand{\itidx}[1]{\textit{#1}}
+%%  A command like \index{beta|see{alpha}} (where \see is already
+%%  defined for LaTeX indexing) would call \see with 3 arguments in
+%%  hyperlatex: (1) alpha, (2) beta, and (3) the url. (This definition
+%%  of \see appears below.)
+%%
+%%  Some examples:
+%%     \index{aaa"!bbb!ccc}%
+%%     \index{aaa!bbb"!ccc}%
+%%     \index{aaa!bbb!ccc@\textbf{ccc}}%
+%%     \index{aaa!bbb@\textbf{bbb}!ccc}%
+%%     \index{aaa@\textbf{aaa}!bbb!ccc}%
+%%     \cindex[aaa!bbb!ccc]{aaa!bbb!\textbf{ccc}}%
+%%     \cindex[aa!bb!cc]{aa!\textbf{bb}!\textit{cc}}%
+%%     \cindex[aa"!bb!cc]{aa"!\textbf{bb}!\textit{cc}}%
+%%     \index{aaa|see{aaa"!bbb}}%
+%%     \index{aaa|itidx}%
+%%     \index{aaa"!bbb"|ccc""ddd|see{wow}}%
+%%     \index{aaa"!bbb"|ccc""ddd@fff|see{wow}}%
+%%     \index{aaa"!bbb"|ccc""ddd"@fff|see{wow}}%
+
+\T\begin{ifhtml}
+%% \see definition for nil hyperlatex-index-node-format:
+%% \W\newcommand{\see}[3]{#2, \textit{see} #1}
+\W\newcommand{\see}[3]{\textit{see} #1}
+
+\HlxEval{
+(defvar hyperlatex-index-node-format t)
+
+(defun hyperlatex-se-format-index ()
+  "Adds an index entry."
+  (let ((opt (hyperlatex-single-line (hyperlatex-parse-optional-argument)))
+        (arg (hyperlatex-single-line (hyperlatex-parse-required-argument)))
+        (label (hyperlatex-drop-label)))
+    (unless hyperlatex-final-pass
+      (unless opt 
+        ;; If opt is specified, no @ commands should be present
+        (let ((entry arg)
+              (subentry nil)
+              (subsubentry nil)
+              entry-opt
+              subentry-opt
+              subsubentry-opt
+              (pos (subentry-match arg))) 
+          ;; break up entry into sub & subentries
+          (cond 
+           (pos (setq entry (substring arg 0 pos))
+                (setq arg (substring arg (+ 1 pos)))
+                (setq subentry arg)
+                (setq pos (subentry-match arg))
+                (cond
+                 (pos (setq subentry (substring arg 0 pos))
+                      (setq subsubentry (substring arg (+ 1 pos)))
+                      ;; check subsubentry for @
+                      (setq pos (atentry-match subsubentry))
+                      (cond
+                       (pos (setq subsubentry-opt 
+                              (substring subsubentry 0 pos))
+                            (setq subsubentry
+                              (substring subsubentry (+ 1 pos))))
+                       (t (setq subsubentry-opt subsubentry)))))
+                ;; check subentry for @
+                (setq pos (atentry-match subentry))
+                (cond
+                 (pos (setq subentry-opt 
+                        (substring subentry 0 pos))
+                      (setq subentry
+                        (substring subentry (+ 1 pos))))
+                 (t (setq subentry-opt subentry)))))
+          ;; check entry for @
+          (setq pos (atentry-match entry))
+          (cond
+           (pos (setq entry-opt 
+                  (substring entry 0 pos))
+                (setq entry
+                  (substring entry (+ 1 pos))))
+           (t (setq entry-opt entry)))
+          (cond 
+           (subsubentry
+            (setq arg (concat entry "!" subentry "!" subsubentry))
+            (setq opt (concat entry-opt "!" subentry-opt "!" subsubentry-opt)))
+           (subentry
+            (setq arg (concat entry "!" subentry))
+            (setq opt (concat entry-opt "!" subentry-opt)))
+           (t
+            (setq arg entry)
+            (setq opt entry-opt)))))
+      (setq hyperlatex-index
+        (cons (list (if opt opt arg) arg hyperlatex-node-number label)
+              hyperlatex-index)))))
+
+(defun hyperlatex-se-format-printindex ()
+  (if (not hyperlatex-final-pass)
+      ()
+    (setq hyperlatex-index
+          (sort (reverse hyperlatex-index)  ; Make sort more stable
+               'hyperlatex-se-index-compare))
+    (let ((indexelts hyperlatex-index)
+          (used-chars (make-vector 256 nil))
+          (toc-num    0)
+          (symbol-num 1)
+          (number-num 2)
+          (char-num   3)
+          (prev-num  -1)
+          (first-in-section? t)
+          (prev-entry "")
+          (entry1 nil)
+          (entry2 nil)
+          this-num
+          this-char)
+      ;;
+      ;; insert index body
+      ;;
+      (insert "\\begin{description}\n")
+      (while indexelts
+        (setq this-char (aref (upcase (car (car indexelts))) 0))
+        ;;
+        ;; determine entry type (numeric, alphabetic, symbol)
+        ;;
+        (cond ((and (<= ?0 this-char) (<= this-char ?9)
+                    (string-match "^[0-9]+$" (car (car indexelts))))
+               (setq this-num number-num))
+              ((and (<= ?A this-char) (<= this-char ?Z))
+               (setq this-num (+ (- this-char ?A) char-num)))
+              (t
+               (setq this-num symbol-num)))
+        ;;
+        ;; insert entry
+        ;;
+        (unless (= prev-num this-num)
+          (aset used-chars this-num t)
+          (let ((keyname this-char))
+            (cond ((= this-num symbol-num)
+                   (setq keyname "\\HlxIdxSymbols"))
+                  ((= this-num number-num)
+                   (setq keyname "\\HlxIdxNumbers")
+                   (if (= prev-num symbol-num)
+                       (insert "\\xml{p}"))))
+            (insert "\\item[")
+            (hyperlatex-se-insert-url toc-num this-num keyname)
+            (insert "]\n")
+            (setq first-in-section? t)
+            (setq entry1 nil entry2 nil)
+            (setq prev-num this-num)))
+        (let* ((el (nth 1 (car indexelts)))
+               (pos (subentry-match el))
+               entry)
+          (cond (pos
+                 (setq entry (substring el 0 pos))
+                 (unless (string= entry entry1)
+                   (subentry-indent nil nil first-in-section?)
+                   (setq first-in-section? nil)
+                   (insert (format "%s\n" 
+                                   (strip-quotes-from-string
+                                    (setq entry1 entry)))))
+                 (setq el (substring el (+ 1 pos)))
+                 ;; sub-sub-entry?
+                 (setq pos (subentry-match el))
+                 (cond (pos
+                        (setq entry (substring el 0 pos))
+                        (unless (string= entry entry2)
+                          (subentry-indent entry1 nil first-in-section?)
+                          (insert (format "%s\n" 
+                                          (strip-quotes-from-string
+                                           (setq entry2 entry)))))
+                        (setq el (substring el (+ 1 pos))))
+                       (t (setq entry2 nil))))
+                (t (setq entry1 nil)
+                   (setq entry2 nil)))
+          (let* ((pos (commandentry-match el))
+                 (node (nth 2 (car indexelts)))
+                 (url (hyperlatex-gen-url node
+                                          (nth 3 (car indexelts)))))
+            (cond (pos 
+                   (cond (hyperlatex-index-node-format
+                          (let ((ent 
+                                 (strip-quotes-from-string  
+                                  (substring el 0 pos))))
+                            (unless (string= ent prev-entry)
+                              (subentry-indent entry1 entry2 first-in-section?)
+                              (insert ent)
+                              (setq prev-entry ent)))
+                          (insert ", ")
+                          (insert (format "\\%s{%s}{%s}\n" 
+                                          (strip-quotes-from-string
+                                           (substring el (+ 1 pos)))
+                                            node
+                                            url)))
+                         (t (subentry-indent entry1 entry2 first-in-section?)
+                            (insert (format "\\%s{%s}{%s}\n" 
+                                            (strip-quotes-from-string
+                                             (substring el (+ 1 pos)))
+                                            (strip-quotes-from-string 
+                                             (substring el 0 pos))
+                                            url)))))
+                  (t (cond 
+                      (hyperlatex-index-node-format
+                       (let ((ent (strip-quotes-from-string el)))
+                         (unless (string= ent prev-entry)
+                           (subentry-indent entry1 entry2 first-in-section?)
+                           (insert ent)
+                           (setq prev-entry ent)))
+                       (insert ", \n")
+                       (insert (format "\\xlink{%s}{%s}" node url)))
+                      (t (subentry-indent entry1 entry2 first-in-section?)
+                         (insert (format "\\xlink{%s}{%s}"
+                                         (strip-quotes-from-string el)
+                                         url))))))))
+        (setq first-in-section? nil)
+        (setq indexelts (cdr indexelts)))
+      (insert "\\end{description}\n")
+      ;;
+      ;; insert index directory
+      ;;
+      (goto-char hyperlatex-command-start)
+      (insert "\\HlxBeginIndexDir{}")
+      (let ((sep "")
+            (name toc-num))
+        (if (aref used-chars symbol-num)
+            (progn
+              (insert sep "\\HlxIndexDirActive{")
+              (hyperlatex-se-insert-url symbol-num name "\\HlxIdxSymbols")
+              (insert "}")
+              (setq sep "\\HlxIndexDirSep{}")
+              (setq name nil)))
+        (if (aref used-chars number-num)
+            (progn
+              (insert sep "\\HlxIndexDirActive{")
+              (hyperlatex-se-insert-url number-num name "\\HlxIdxNumbers")
+              (insert "}")
+              (setq sep "\\HlxIndexDirSep{}")
+              (setq name nil)))
+        (setq this-char ?A)
+        (setq this-num char-num)
+        (while (<= this-char ?Z)
+          (if (aref used-chars this-num)
+              (progn
+                (insert sep "\\HlxIndexDirActive{")
+                (hyperlatex-se-insert-url this-num name
+                                          (char-to-string this-char))
+                (insert "}")
+                (setq name nil))
+            (insert sep "\\HlxIndexDirInactive{" this-char "}"))
+          (setq sep "\\HlxIndexDirSep{}")
+          (setq this-char (1+ this-char))
+          (setq this-num (1+ this-num))))
+      (insert "\\HlxEndIndexDir{}\n")
+      (goto-char hyperlatex-command-start)))
+  ;; allocate label numbers
+  (setq hyperlatex-label-number (+ hyperlatex-label-number 29)))
+
+(defun subentry-indent (entry1 entry2 first-in-section?)
+  (unless first-in-section? (insert "\\\\"))
+  (cond (entry2 (insert "~~~~~~~~~~~~"))
+        (entry1 (insert "~~~~~~"))))
+
+(defun atentry-match (str &optional start)
+  (let ((pos (string-match "@" str (or start 0))))
+    (cond ((and pos (char-equal ?\" (aref str (- pos 1))))
+           (atentry-match str (+ pos 1)))
+          (t pos))))
+
+(defun subentry-match (str &optional start)
+  (let ((pos (string-match "!" str (or start 0))))
+    (cond ((and pos (char-equal ?\" (aref str (- pos 1))))
+           (subentry-match str (+ pos 1)))
+          (t pos))))
+
+(defun commandentry-match (str &optional start)
+  (let ((pos (string-match "|" str (or start 0))))
+    (cond ((and pos (char-equal ?\" (aref str (- pos 1))))
+           (commandentry-match str (+ pos 1)))
+          (t pos))))
+
+(defun strip-quotes-from-string (str)
+  (let* ((ptr 0)
+         (end (length str))
+         (offset 0))
+    (while (< ptr end)
+      (let ((char (aref str (+ ptr offset))))
+        (when (and (char-equal ?\" char) 
+                   ; ignore an erroneous quote at end of string
+                   (< ptr (decf end)))
+          (incf offset)
+          (setq char (aref str (+ ptr offset))))
+        (aset str ptr char)
+        (incf ptr)))
+    (substring str 0 end)))
+
+;;; From makeindex(1):
+;;;
+;;; Modified to compare hyperlatex-index-node numbers on identitcal
+;;; matches
+;;;
+;;; Numbers are always sorted in numeric order. Letters are first
+;;; sorted without regard to case; when words are identical, the
+;;; uppercase version precedes its lowercase counterpart.
+;;;  
+;;; A special symbol is defined here to be any character not appearing
+;;; in the union of digits and the English alphabetic characters.
+;;; Patterns starting with special symbols precede numbers, which
+;;; precede patterns starting with letters. As a special case, a string
+;;; starting with a digit but mixed with non-digits is considered to be
+;;; a pattern starting with a special character.
+
+(defun hyperlatex-se-index-compare (a b)
+  (let* ((au (upcase (car a)))
+         (bu (upcase (car b)))
+         (a0 (aref au 0))
+         (b0 (aref bu 0)))
+    (cond
+     ;; a is a number
+     ((and (<= ?0 a0) (<= a0 ?9) (string-match "^[0-9]+$" au))
+      (cond
+       ((and (<= ?0 b0) (<= b0 ?9)      ; b is a number
+             (string-match "^[0-9]+$" bu))
+        (or (< (string-to-number au)
+               (string-to-number bu))
+            (and (= (string-to-number au)
+                    (string-to-number bu))
+                 ;; differentiate on node number
+                 (< (nth 2 a) (nth 2 b)))))
+       ((and (<= ?A b0) (<= b0 ?Z)) t)  ; b0 is alphabetic
+       (t nil)))                        ; b0 is a symbol
+     ;; a0 is alphabetic
+     ((and (<= ?A a0) (<= a0 ?Z))
+      (cond
+       ((and (<= ?A b0) (<= b0 ?Z))     ; b0 is alphabetic
+        (or (string< au bu)
+            (and (string= au bu)
+                 (or (string< (car a) (car b))
+                     (and (string= (car a) (car b))
+                          ;; differentiate on node number
+                          (< (nth 2 a) (nth 2 b)))))))
+       (t nil)))                        ; b0 is a digit or symbol
+     ;; a0 is a symbol
+     (t
+      (cond
+       ((and (<= ?0 b0) (<= b0 ?9)) t)  ; b0 is a digit
+       ((and (<= ?A b0) (<= b0 ?Z)) t)  ; b0 is alphabetic
+       (t (or (string< (car a) (car b)) ; b0 is a symbol
+              (and (string= (car a) (car b))
+                   ; differentiate  on node number
+                   (< (nth 2 a) (nth 2 b))))))))))
+
+}
+\T\end{ifhtml}
+  
+%%% Local Variables: 
+%%% mode: latex
+%%% End: 

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: tutorial.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Tutorial -- Add Another KS</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-application-startup.html"><img border="0" alt="Application Startup and Event Functions" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-connections.html"><img border="0" alt="Making Connections" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Add Another KS</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h1>Add Another KS</h1>
+<p>The last exercise made it easy to initialize and run our application
+repeatedly by simply starting the Agenda Shell.  We also specified the
+dimensionality of our <nobr><code>known-world</code></nobr> space instance relative to the
+dimensional specifications of the <nobr><code>location</code></nobr> unit class.  With
+these niceties in place, its time to move beyond our initial
+<nobr><code>location</code></nobr> unit instance.
+</p>
+<p><hr color="99CCCC">
+This exercise shows you how to:
+</p>
+<p><ul class="tight"><li>Add an additional dimension to a unit class
+<li>Define a KS that obtains its execution-context information from its
+triggering unit instance
+<li>Extend the random-walk application to do some walking
+<li>Explore the resulting random walk
+</ul>
+</p>
+<hr color="99CCCC">
+<h2><a name="id1">Prerequisites</a></h2>
+<p><ul class="tight"><li>The <nobr><code>tutorial-example.lisp</code></nobr> file as modified thus far:
+</ul>
+<pre class="pretop">
+  (in-package :gbbopen-user)
+
+  (define-unit-class location ()
+    (x y)
+    (:dimensional-values
+      (x :point x)
+      (y :point y))
+    (:initial-space-instances (known-world)))
+
+  (defmethod print-instance-slots ((location location) stream)
+    (call-next-method)
+    (when (and (slot-boundp location 'x)
+               (slot-boundp location 'y))
+      (format stream " (~s ~s)"
+              (x-of location)
+              (y-of location))))
+
+  ;;; ====================================================================
+  ;;;   Startup KS
+
+  (defun startup-ks-function (ksa)
+    (declare (ignore ksa))
+    ;; Create an initial location unit instance at (0,0):
+    (make-instance 'location :x 0 :y 0))
+
+  (define-ks startup-ks
+      :trigger-events ((control-shell-started-event))
+      :execution-function 'startup-ks-function)
+
+  ;;; ====================================================================
+  ;;;   Initializations (run at Agenda Shell startup)
+
+  (defun initializations (event-name &amp;key &amp;allow-other-keys)
+    (declare (ignore event-name))
+    ;; Clean up any previous run:
+    (delete-blackboard-repository)
+    ;; Make a new known-world space instance:
+    (make-space-instance 
+     '(known-world)
+     :dimensions (dimensions-of 'location)))
+
+  (add-event-function 'initializations 'control-shell-started-event
+                      ;; Initializations should be done first!
+                      :priority 100)
+</pre>
+</p>
+<p><ul class="tight"><li>The <nobr><code>:agenda-shell-user</code></nobr> module is loaded
+</ul>
+</p>
+<h2><a name="id2">Step 1: Add  another dimension</a></h2><p>
+It's time we introduce the notion of time to our application.  Edit the
+<nobr><code>location</code></nobr> unit-class definition in
+<nobr><code>tutorial-example.lisp</code></nobr>, adding a new slot, <code>time</code>, to the
+<nobr><code>location</code></nobr> unit class definition and a corresponding <code>time</code>
+dimensional value:
+<pre class="pretop">
+<font color="#667f66">  (define-unit-class location ()
+    (<font color="#000000">time</font> 
+     x y)
+    (:dimensional-values
+      <font color="#000000">(time :point time)</font>
+      (x :point x)
+      (y :point y))
+    (:initial-space-instances (known-world)))</font>
+</pre>
+</p>
+<p>Recall that we specified that the dimensions of the <nobr><code>known-world</code></nobr>
+space instance that is created by our <nobr><code>initializations</code></nobr> function
+relative to the dimensions of the <nobr><code>location</code></nobr> unit class:
+<pre class="pretop">
+<font color="#667f66">  (make-space-instance 
+      '(known-world)
+      :dimensions (dimensions-of 'location)))</font>
+</pre>
+Therefore, we don't need to modify our call to
+<nobr><code>make-space-instance</code></nobr> in order to add <code>time</code> as a dimension
+of <nobr><code>known-world</code></nobr>.
+</p>
+<p>Next, modify <nobr><code>startup-ks-function</code></nobr> in
+<nobr><code>tutorial-example.lisp</code></nobr> so that it creates the initial
+<nobr><code>location</code></nobr> unit instance at time 0:
+<pre class="pretop">
+<font color="#667f66">  (defun startup-ks-function (ksa)
+    (declare (ignore ksa))
+    ;; Create an initial location unit instance at (0,0) <font color="#000000">at time 0</font>:
+    (make-instance 'location <font color="#000000">:time 0</font> :x 0 :y 0))</font>
+</pre>
+</p>
+<h2><a name="id3">Step 2: A test of time</a></h2><p>
+Let's verify our work.  Compile and load the
+<nobr><code>tutorial-example.lisp</code></nobr> file directly from the editor buffer
+(using <nobr><code>C-c C-k</code></nobr> in SLIME; <nobr><code>C-c C-b</code></nobr> in ELI) and start
+the Agenda Shell:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(start-control-shell)</font>
+  ;; Control shell 1 started
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 3 cycles completed
+  ;; Run time: 0 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id4">Check</a> that the initial <nobr><code>location</code></nobr> unit instance is at <code>time</code>
+zero:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-instance (find-instance-by-name 1 'location))</font>
+  Location #&lt;location 1 (0 0)&gt;
+    Instance name: 1
+    Space instances: ((known-world))
+    Dimensional values:
+      time:  0
+      x:  40
+      y:  60
+    Non-link slots:
+      time:  0
+      x:  40
+      y : 60
+    Link slots: None
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id5">Step 3: Define another KS</a></h2><p>
+Define a KS called <nobr><code>random-walk-ks</code></nobr> that:
+</p>
+<p><ul class="tight"><li>Is triggered when a <nobr><code>location</code></nobr> unit instance is created
+<li>Has a constant KSA rating of 100
+<li>Has an execution function called <nobr><code>random-walk-ks-function</code></nobr>,
+which:
+</p>
+<p><ul class="tight"><li>Checks if we've already walked for 75 locations and prints a message if
+we have. 
+<li>Otherwise:
+</p>
+<p><ul class="tight"><li>Determines a random location for which the x and y values are within 10
+of the x and y values of the triggering unit instance (that is, the
+<nobr><code>location</code></nobr> instance whose creation triggered the
+<nobr><code>random-walk-ks</code></nobr> KS)
+<li>If both of the x and y values for the new random location are between
+-50 and 50, creates a <nobr><code>location</code></nobr> unit instance at the random
+location; otherwise, prints a message indicating that we've walked off the
+world
+</ul>
+</ul>
+</ul>
+</p>
+<h3><a name="id6">Step 3a: Define a utility function</a></h3><p>
+Begin implementing the <nobr><code>random-walk-ks</code></nobr> by adding the following
+utility function to the end of your <nobr><code>tutorial-example.lisp</code></nobr> file:
+<pre class="pretop">
+  ;;; ====================================================================
+  ;;;   Random-walk KS
+
+  (defun add-linear-variance (value max-variance)
+    ;;; Returns a new random value in the interval
+    ;;; [(- value max-variance), (+ value max-variance)]
+    (+ value (- (random (1+ (* max-variance 2))) max-variance)))
+</pre>
+Then compile the definition (using <nobr><code>C-c C-c</code></nobr> in SLIME or
+<nobr><code>C-c C-x</code></nobr> in ELI) and evaluate the following test in the REPL:
+<a name="id7"></a><pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(dotimes (i 15) (printv (add-linear-variance 0 10)))</font>
+  ;;  (add-linear-variance 0 10) =&gt; 8
+  ;;  (add-linear-variance 0 10) =&gt; 9
+  ;;  (add-linear-variance 0 10) =&gt; 4
+  ;;  (add-linear-variance 0 10) =&gt; 3
+  ;;  (add-linear-variance 0 10) =&gt; -4
+  ;;  (add-linear-variance 0 10) =&gt; -10
+  ;;  (add-linear-variance 0 10) =&gt; -1
+  ;;  (add-linear-variance 0 10) =&gt; 0
+  ;;  (add-linear-variance 0 10) =&gt; 4
+  ;;  (add-linear-variance 0 10) =&gt; 5
+  ;;  (add-linear-variance 0 10) =&gt; 8
+  ;;  (add-linear-variance 0 10) =&gt; -5
+  ;;  (add-linear-variance 0 10) =&gt; -3
+  ;;  (add-linear-variance 0 10) =&gt; 7
+  ;;  (add-linear-variance 0 10) =&gt; 6
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Because <nobr><code>add-linear-variance</code></nobr> is stochastic, your results will be
+similar but not identical.  Note that we used GBBopen's <b>printv</b>
+macro to display the result of each generated value.  <b>Printv</b> can
+greatly assist debugging by printing forms and the results of evaluating
+them.  <b>Printv</b> can be transparently wrapped around any form in a
+complex function definition, as it evaluates and displays all the forms in
+its body and returns the values resulting from evaluating the last form:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt;  (printv "Some multiple values" (values 1 2) "Some more" (values 3 4 5))
+  ;; Some multiple values
+  ;;  (values 1 2) =&gt; 1; 2
+  ;; Some more
+  ;;  (values 3 4 5) =&gt; 3; 4; 5
+  4
+  5
+  6
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h3><a name="id8">Step 3b: Define the <code>random-walk-ks</code> execution function</a></h3><p>
+Next add the following KS-execution function to the end of your
+<nobr><code>tutorial-example.lisp</code></nobr> file:
+<pre class="pretop">
+  (defun random-walk-ks-function (ksa)
+    ;;; Move to the next (random) location in the world
+    (let* ((trigger-instance (sole-trigger-instance-of ksa))
+           ;; The new time is one greater than the stimulus's time:
+           (time (1+ (time-of trigger-instance))))
+      (cond
+       ;; If the maximum time value (75) is reached, tell the user we've
+       ;; walked too long:
+       ((&gt;= time 75) (format t "~2&amp;Walked too long.~&#37;"))
+       (t ;; The new location is +/- 10 of the stimulus's location:
+        (let ((x (add-linear-variance (x-of trigger-instance) 10))
+              (y (add-linear-variance (y-of trigger-instance) 10)))
+          (cond
+           ;; Check that the new location is within the known-world
+           ;; boundaries.  If so, create the new location instance:
+           ((and (&lt;= -50 x 50) (&lt;= -50 y 50))
+            (make-instance 'location 
+              :time time 
+              :x x 
+              :y y))
+           ;; Otherwise, tell the user that we've walked too far away:
+           (t (format t "~2&#38;Walked off the world: (~d, ~d).~&#37;" x y))))))))
+</pre>
+</p>
+<p><a name="id9">Unlike</a> the KS-execution functions that we have defined previously,
+<nobr><code>random-walk-ks-function</code></nobr> does not ignore its <code>ksa</code> argument.
+Instead, it calls <nobr><b>sole-trigger-instance-of</b></nobr> with the <code>ksa</code>
+unit-instance argument in order to obtain the <nobr><code>location</code></nobr> unit
+instance whose creation triggered the KSA.  This pattern of obtaining the unit
+instance that triggered a KSA and then using that triggering unit instance as
+the context for the KS execution is typical of many KSs.
+</p>
+<h3><a name="id10">Step 3c: Add the <code>random-walk-ks</code> definition</a></h3><p>
+Finally, add this <nobr><code>define-ks</code></nobr> form to the end of your
+<nobr><code>tutorial-example.lisp</code></nobr> file to complete the
+<nobr><code>random-walk-ks</code></nobr> definition:
+<a name="id11"></a><pre class="pretop">
+  (define-ks random-walk-ks
+     :trigger-events ((instance-created-event location))
+     :rating 100
+     :execution-function 'random-walk-ks-function)
+</pre>
+</p>
+<h2><a name="id12">Step 4:  Run the application</a></h2><p>
+Compile and load the <nobr><code>random-walk-ks</code></nobr> forms, and then start the
+Agenda Shell:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(start-control-shell)</font>
+  ;; Control shell 1 started
+
+  Walked off the world: (23, 55).
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 64 cycles completed
+  ;; Run time: 0.01 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id13">
+It</a> looks like something happened! (Again, because
+<nobr><code>add-linear-variance</code></nobr> is stochastic, your results will be similar
+but not identical.)  Let's look at the blackboard repository and see how many
+<nobr><code>location</code></nobr> unit instances were created:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">:dsbb</font>
+
+  Space Instance                Contents
+  --------------                --------
+  known-world                   61 instances (61 location)
+
+  Unit Class                    Instances
+  ----------                    ---------
+  control-shell                         1 *
+  ks                                    1 +
+  ksa-queue                             2 +
+  location                             61
+  ordered-ksa-queue                     1 +
+  standard-space-instance               1
+                                ---------
+                                       67 instances
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>The 61 <nobr><code>location</code></nobr> instances makes sense.  Previously, it required
+3 control-shell cycles to create the initial <nobr><code>location</code></nobr> unit
+instance (one to execute the <nobr><code>initial-ks</code></nobr> KSA followed by two
+additional cycles of quiescence before the Agenda Shell exits).  We now create
+one additional <nobr><code>location</code></nobr> unit instance with every execution of
+<nobr><code>random-walk-ks</code></nobr>, so we always create 3 fewer
+<nobr><code>location</code></nobr> instances than the total number of control-shell
+cycles.
+</p>
+<h2><a name="id14">Step 5:  Where have we been?</a></h2><p>
+It would be interesting to see where our random walk has taken us.  We could
+use GBBopen's <nobr><b>map-instances-of-class</b></nobr> iterator to print each of
+the <nobr><code>location</code></nobr> unit instances:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(map-instances-of-class #'print 'location)</font>
+
+  #&lt;location 58 (5 31)&gt; 
+  #&lt;location 13 (-7 10)&gt; 
+  #&lt;location 26 (-40 35)&gt; 
+  #&lt;location 39 (-4 3)&gt; 
+  #&lt;location 52 (2 23)&gt; 
+  #&lt;location 7 (3 17)&gt; 
+  #&lt;location 20 (2 27)&gt; 
+  #&lt;location 33 (-25 6)&gt; 
+  #&lt;location 46 (-2 32)&gt; 
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  #&lt;location 31 (-22 18)&gt; 
+  #&lt;location 44 (-7 14)&gt; 
+  #&lt;location 57 (2 41)&gt; 
+  #&lt;location 12 (-15 15)&gt; 
+  #&lt;location 25 (-32 38)&gt; 
+  #&lt;location 38 (-10 -4)&gt; 
+  #&lt;location 51 (-2 16)&gt; 
+  #&lt;location 6 (10 27)&gt; 
+  #&lt;location 19 (-1 17)&gt; 
+  #&lt;location 32 (-25 12)&gt; 
+  #&lt;location 45 (-7 23)&gt; 
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+Unfortunately, the order that unit instances are supplied to the <code>print</code>
+function is not controllable.  Our walk would be much clearer if we printed
+the <nobr><code>location</code></nobr> unit instances in time order.
+</p>
+<p><a name="id15">We</a> might consider taking advantage of the instance names that GBBopen assigns
+to unit instances.  We could do something like the following:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#ff0000">(dotimes (i 76)
+                  (let ((location (find-instance-by-name i 'location)))
+                    (when location
+                       (print location))))</font>
+
+  #&lt;location 1 (0 0)&gt; 
+  #&lt;location 2 (10 4)&gt; 
+  #&lt;location 3 (19 10)&gt; 
+  #&lt;location 4 (14 9)&gt; 
+  #&lt;location 5 (14 18)&gt; 
+  #&lt;location 6 (10 27)&gt; 
+  #&lt;location 7 (3 17)&gt; 
+  #&lt;location 8 (-6 20)&gt; 
+  #&lt;location 9 (4 15)&gt; 
+  #&lt;location 10 (-5 14)&gt; 
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  #&lt;location 50 (5 26)&gt; 
+  #&lt;location 51 (-2 16)&gt; 
+  #&lt;location 52 (2 23)&gt; 
+  #&lt;location 53 (9 33)&gt; 
+  #&lt;location 54 (7 43)&gt; 
+  #&lt;location 55 (-2 36)&gt; 
+  #&lt;location 56 (0 46)&gt; 
+  #&lt;location 57 (2 41)&gt; 
+  #&lt;location 58 (5 31)&gt; 
+  #&lt;location 59 (13 39)&gt; 
+  #&lt;location 60 (17 41)&gt; 
+  #&lt;location 61 (21 50)&gt; 
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>This is a bad idea for several reasons.  First, we are looking up every
+<nobr><code>location</code></nobr> unit instance by its instance name, which is less
+efficient than operating on <nobr><code>location</code></nobr> instances directly.  While
+this isn't an significant issue in expressions that we evaluate in the REPL to
+investigate our application, we should seek to avoid such inefficiencies in
+application code.  More importantly, however, the <nobr><code>location</code></nobr>
+instance name just happens to mirror the sequencing that we really want to
+display: the <code>time</code> value of the locations.  We should find a way to
+sequence <nobr><code>location</code></nobr> printing that relies on the <code>time</code> values
+directly.
+</p>
+<p><a name="id16">GBBopen</a> provides a variant of <nobr><b>map-instances-of-class</b></nobr>, called
+<nobr><b>map-sorted-instances-of-class</b></nobr>, that sorts the unit instances
+based on a comparison predicate and an optional <code>:key</code> accessor function
+that suits our needs:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(map-sorted-instances-of-class #'print 'location #'&lt; 
+                   :key #'time-of)</font>
+
+  #&lt;location 1 (0 0)&gt; 
+  #&lt;location 2 (10 4)&gt; 
+  #&lt;location 3 (19 10)&gt; 
+  #&lt;location 4 (14 9)&gt; 
+  #&lt;location 5 (14 18)&gt; 
+  #&lt;location 6 (10 27)&gt; 
+  #&lt;location 7 (3 17)&gt; 
+  #&lt;location 8 (-6 20)&gt; 
+  #&lt;location 9 (4 15)&gt; 
+  #&lt;location 10 (-5 14)&gt; 
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  #&lt;location 50 (5 26)&gt; 
+  #&lt;location 51 (-2 16)&gt; 
+  #&lt;location 52 (2 23)&gt; 
+  #&lt;location 53 (9 33)&gt; 
+  #&lt;location 54 (7 43)&gt; 
+  #&lt;location 55 (-2 36)&gt; 
+  #&lt;location 56 (0 46)&gt; 
+  #&lt;location 57 (2 41)&gt; 
+  #&lt;location 58 (5 31)&gt; 
+  #&lt;location 59 (13 39)&gt; 
+  #&lt;location 60 (17 41)&gt; 
+  #&lt;location 61 (21 50)&gt; 
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id17">Using</a> <nobr><b>map-sorted-instances-of-class</b></nobr> involves a sorting
+operation, so this approach still has some efficiency concerns for use in
+application code.  However, it suits our REPL-exploration needs just fine.
+(There is a <nobr><b>do-sorted-instances-of-class</b></nobr> macro, if an
+iterative style is preferred over a mapper.)  We will explore a more efficient
+approach to displaying the random walk in the next exercise.
+</p>
+<h2><a name="id18">Step 6:  Run the application a few more times</a></h2><p>
+If we run the application a few more times, we eventually encounter a case
+where we create the allotted 75 <nobr><code>location</code></nobr> unit instances without
+walking off the <nobr><code>known-world</code></nobr>:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(start-control-shell)</font>
+  ;; Control shell 1 started
+
+  Walked too long.
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 78 cycles completed
+  ;; Run time: 0.04 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id19">Here</a> is one such random walk:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(map-sorted-instances-of-class #'print 'location #'&lt; 
+                   :key #'time-of)</font>
+
+  #&lt;location 1 (0 0)&gt; 
+  #&lt;location 2 (2 7)&gt; 
+  #&lt;location 3 (-1 5)&gt; 
+  #&lt;location 4 (-1 0)&gt; 
+  #&lt;location 5 (3 -2)&gt; 
+  #&lt;location 6 (13 -7)&gt; 
+  #&lt;location 7 (8 -5)&gt; 
+  #&lt;location 8 (1 2)&gt; 
+  #&lt;location 9 (8 0)&gt; 
+  #&lt;location 10 (5 8)&gt; 
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  #&lt;location 70 (-13 -11)&gt; 
+  #&lt;location 71 (-13 -6)&gt; 
+  #&lt;location 72 (-9 -6)&gt; 
+  #&lt;location 73 (1 -4)&gt; 
+  #&lt;location 74 (-8 -11)&gt; 
+  #&lt;location 75 (-13 -15)&gt; 
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-application-startup.html"><img border="0" alt="Application Startup and Event Functions" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-connections.html"><img border="0" alt="Making Connections" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Add Another KS</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

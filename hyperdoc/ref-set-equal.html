@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- set-equal</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-property.html"><img border="0" alt="remove-property" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-sets-overlap-p.html"><img border="0" alt="sets-overlap-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">set-equal</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">set-equal</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>list-1 list-2</var></nobr>
+<nobr><code>&#38;key</code> <var>test test-not key</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>boolean</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Determine if all elements in two lists are present in both lists.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>list-1</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id178">proper&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>list-2</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id178">proper&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>test</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a <a href="ref-glossary.html#id82">function&nbsp;object</a>
+of two arguments that returns a <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is
+<nobr><code>&#35;'eql</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>test-not</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments that returns a
+<a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (use of <nobr><code>:test-not</code></nobr> is deprecated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>key</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a <a href="ref-glossary.html#id82">function&nbsp;object</a>
+of one argument, or <code>nil</code> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>boolean</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />True if all elements in <var><var>list-1</var></var> are also in
+<nobr><var>list-2</var></nobr> and vice versa; <code>nil</code> otherwise.
+</p>
+<p><span class="fndoclabel">Description</span> <br />Duplicate elements in either list are permitted, so the lengths
+of <nobr><var>list-1</var></nobr> and <nobr><var>list-2</var></nobr> can differ and still return
+true.
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (set-equal '(1 2 3) '(3 2 1))
+  t
+  &gt; (set-equal '(1 2) '(3 2 1))
+  nil
+  &gt; (set-equal '(1 2 3) '(3 1))
+  nil
+  &gt; (set-equal '(1 2 3) '(3 3 3 2 1))
+  t
+  &gt; (set-equal '(1 2 3) '(4 5 6 7) :test #'/=)
+  t
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-property.html"><img border="0" alt="remove-property" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-sets-overlap-p.html"><img border="0" alt="sets-overlap-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">set-equal</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

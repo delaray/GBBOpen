@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- set-ot-base</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-printvot.html"><img border="0" alt="printvot" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-offset-universal-time-entities.html"><img border="0" alt="Offset Universal Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-ut2ot.html"><img border="0" alt="ut2ot" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">set-ot-base</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">set-ot-base</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><code>&#38;optional</code> 
+<var>date month year time-zone</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>ot-base</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Set the <a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a> time-base value.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>date</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer between 1 and up to 31, inclusive, depending
+on the month and year or <code>nil</code>, indicating the current date (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>month</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer between 1 and 12, inclusive or <code>nil</code>, indicating the
+current month (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>year</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer indicating the year A.D. or <code>nil</code>, indicating the
+current year (default is <code>nil</code>); if the <var>year</var>
+integer is between 0 and 99, the &#8220;obvious&#8221; year is assumed.
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>time-zone</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A time zone: a rational multiple of 1/3600 between
+-24 and 24 that represents the number of hours offset from GMT 
+(default is zero)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a> time-base value
+</p>
+<p><span class="fndoclabel">Description</span> <br />Without any arguments, <nobr><b>set-ot-base</b></nobr> sets the
+time-base value to the current date.  Setting the time base to the current
+date can be used in applications that do not need to represent historical
+dates and that do not save or communicate <a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a> values.
+However, setting the time base to a specific date is recommended for most
+applications.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-ot-base-var.html"><b>*ot-base*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-check-ot-base.html"><b>check-ot-base</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-ot2ut.html"><b>ot2ut</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-ut2ot.html"><b>ut2ot</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Set the time base for <a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a> to today:
+<pre class="pretop">
+  &gt; (set-ot-base)
+  3436662016
+  &gt;
+</pre>
+Note that the returned <a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a> time-base value (above) is not the current <a href="ref-glossary.html#id258">Universal&nbsp;Time</a> value:
+<pre>
+  &gt; (get-universal-time)
+  3419947437
+  &gt;
+</pre>
+</p>
+<p>Set the time base for <a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a> to July 1, 2007:
+<pre class="pretop">
+  &gt; (set-ot-base 1 7 2007)
+  3409014016
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-printvot.html"><img border="0" alt="printvot" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-offset-universal-time-entities.html"><img border="0" alt="Offset Universal Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-ut2ot.html"><img border="0" alt="ut2ot" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">set-ot-base</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

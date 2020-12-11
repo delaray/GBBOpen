@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- find-space-instances</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-find-space-instance-by-path.html"><img border="0" alt="find-space-instance-by-path" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-make-space-instance.html"><img border="0" alt="make-space-instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">find-space-instances</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">find-space-instances</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>space-instance-regexp</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>space-instances</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return the <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> that match a
+<a href="ref-glossary.html#gl:path-expression">path-expression</a> pattern.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>space-instance-regexp</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id224">space-instance&nbsp;path</a> regular expression
+specifying the <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> to be returned 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>space-instances</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id178">proper&nbsp;list</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The specified <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>.
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id1">The</a> <var>space-instance-regexp</var> argument is either the symbol
+<code>t</code> (indicating all <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>) or a list
+representing a regular expression where the following reserved symbols
+are interpreted as follows: 
+<a name="id2"></a></p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+</td><td valign="baseline" colspan="1" align="center"> <code>=</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> matches one occurrence in a 
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> path </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"> <code>?</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> matches zero or one occurrence in a 
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> path </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"> <code>+</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> matches one or more occurrences in a
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> path </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"> <code>*</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> matches zero or more occurrences in a 
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> path </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="center"> <code>&#94;</code> </td><td valign="baseline" colspan="1" align="left"> &nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> move to parent </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>Thus both <nobr><code>(find-space-instances '(*))</code></nobr> and
+<nobr><code>(find-space-instances 't)</code></nobr> return all <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>.
+</p>
+<p>A <var>space-instance-regexp</var> value consisting of a list of
+<a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> is returned unchanged.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-space-instance-by-path.html"><b>find-space-instance-by-path</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-map-space-instances.html"><b>map-space-instances</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Return the <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> that are rooted at <nobr><code>(bb)</code></nobr>:
+<pre class="pretop">
+  &gt; (find-space-instances '(bb +))
+  (#&lt;standard-space-instance (bb hyps)&gt;
+   #&lt;standard-space-instance (bb probable-hyps)&gt;)
+   #&lt;standard-space-instance (bb rejected-hyps)&gt;)
+  &gt;
+</pre>
+Return all the <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> <nobr><code>(bb)</code></nobr> and below:
+<pre>
+  &gt; (find-space-instances '(bb *))
+  (#&lt;standard-space-instance (bb hyps)&gt;
+   #&lt;standard-space-instance (bb probable-hyps)&gt;)
+   #&lt;standard-space-instance (bb rejected-hyps)&gt;
+   #&lt;standard-space-instance (bb)&gt;)
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-find-space-instance-by-path.html"><img border="0" alt="find-space-instance-by-path" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-make-space-instance.html"><img border="0" alt="make-space-instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">find-space-instances</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

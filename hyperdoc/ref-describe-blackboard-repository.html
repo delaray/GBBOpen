@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- describe-blackboard-repository</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-delete-space-instance.html"><img border="0" alt="delete-space-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-space-instance.html"><img border="0" alt="describe-space-instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">describe-blackboard-repository</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">describe-blackboard-repository</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><i>&lt;</i>no arguments<i>&gt;</i></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br /><a name="id1">Print</a> information about the <a href="ref-glossary.html#gl:unit">unit</a> and <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> in the
+blackboard repository.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id2">Information</a> is printed about the <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> in the blackboard
+repository and their contents.  The total count of the
+<a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> of each <a href="ref-glossary.html#id254">unit&nbsp;class</a> (including ones that
+do not reside on any <a href="ref-glossary.html#id222">space&nbsp;instance</a>) is also printed, as well
+as a character that indicates if the <a href="ref-glossary.html#id254">unit&nbsp;class</a> has been
+defined to be <i>retained</i> by
+<nobr><b><a href="ref-delete-blackboard-repository.html">delete-blackboard-repository</a></b></nobr>.  A plus sign
+indicates that the retention status will be propagated to subclasses
+of the unit class, while an asterisk (<code>*</code>) indicates a retain,
+But not propagated, status for the <a href="ref-glossary.html#id254">unit&nbsp;class</a>.
+</p>
+<p>The description is printed to the <b>*standard-output*</b> stream.
+</p>
+<p><span class="fndoclabel">Example</span> <br /><pre class="pretop">
+  &gt; (describe-blackboard-repository)
+
+  Space Instance              Contents
+  --------------              --------
+  bb                            
+     hyps                     15223 Instances (hyp 1479; sensor-report 13744)
+     probable-hyps            Empty
+     rejected-hyps            216 Instances (hyp 216)
+
+  Unit Class                  Instances
+  ----------                  ---------
+  control-shell                       1 *
+  hyp                              1695
+  ks                                 13 + 
+  ksa                               891 +
+  ksa-queue                           2 +
+  ordered-ksa-queue                   1 +
+  sensor-report                   13744
+  standard-space-instance             3
+                              ---------
+                                  16350 instances
+&gt;
+</pre>
+</p>
+<p><span class="fndoclabel">REPL Note</span> <br /><a name="id3"></a><b>Describe-blackboard-repository</b> can be invoked using the
+<a href="ref-glossary.html#id198">REPL&nbsp;command</a> <nobr><code>:dsbb</code></nobr>.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-delete-space-instance.html"><img border="0" alt="delete-space-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-space-instance.html"><img border="0" alt="describe-space-instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">describe-blackboard-repository</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

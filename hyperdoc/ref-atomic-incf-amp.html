@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- atomic-incf </title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-atomic-incf.html"><img border="0" alt="atomic-incf" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-atomic-pop.html"><img border="0" alt="atomic-pop" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">atomic-incf&#38;</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">atomic-incf&#38;</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>place</var> 
+<nobr>[<var>delta-form</var>]</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-place-value</var></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Increment the <a href="ref-glossary.html#gl:fixnum">fixnum</a> value stored in
+<nobr><var>place</var></nobr> as an <a href="ref-glossary.html#id5">atomic&nbsp;operation</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>place</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a> which is suitable for use as a
+<a href="ref-glossary.html#id88">generalized&nbsp;reference</a> containing a fixnum value
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>delta-form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a> that is evaluated to produce a fixnum delta
+value (default is 1)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>new-place-value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A fixnum
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The new fixnum value of <var>place</var>. 
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-as-atomic-operation.html"><b>as-atomic-operation</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-decf.html"><b>atomic-decf</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-decf-amp.html"><b>atomic-decf&#38;</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-delete.html"><b>atomic-delete</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-flush.html"><b>atomic-flush</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-incf.html"><b>atomic-incf</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-pop.html"><b>atomic-pop</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-pushnew.html"><b>atomic-pushnew</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; x
+  2
+  &gt; (atomic-incf&#38; x)
+  3
+  &gt; (atomic-incf&#38; x 2)
+  5
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-atomic-incf.html"><img border="0" alt="atomic-incf" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-atomic-pop.html"><img border="0" alt="atomic-pop" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">atomic-incf&#38;</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

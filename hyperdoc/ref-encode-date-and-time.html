@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- encode-date-and-time</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-brief-run-time-duration.html"><img border="0" alt="brief-run-time-duration" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-encode-time-of-day.html"><img border="0" alt="encode-time-of-day" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">encode-date-and-time</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">encode-date-and-time</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>string</var>
+<nobr><code>&#38;key</code> <var>start end</var></nobr>
+<var><nobr>junk-allowed</nobr>
+<nobr>date-separators</nobr>
+<nobr>time-separators</nobr> 
+<nobr>month-precedes-date</nobr>
+<nobr>year-first</nobr>
+<nobr>default-to-current-year</nobr>
+<nobr>time-first</nobr>
+<nobr>time-zone</nobr></var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <nobr><var>universal-time,</var> pos</nobr></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Parse and then encode a date-and-time specification string to a
+<a href="ref-glossary.html#id258">Universal&nbsp;Time</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> 
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>string</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>start</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Starting index into <var>string</var> (default is <code>0</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>end</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Ending index into <var>string</var> (default is <code>nil</code>, meaning
+end of <var>string</var>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>junk-allowed</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>date-separators</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A sequence of characters that are skipped and separate the
+date, month, and year fields in <var>string</var>, if needed (default is 
+<nobr><code>"-/ ,"</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>time-separators</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A sequence of characters that are skipped and separate the
+hour, minute, and second fields in <var>string</var>, if needed (default is 
+<nobr><code>" :"</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>month-precedes-date</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is 
+<nobr><b><a href="ref-month-precedes-date-var.html">*month-precedes-date*</a></b></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>year-first</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is
+<nobr><b><a href="ref-year-first-var.html">*year-first*</a></b></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>default-to-current-year</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>time-first</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is 
+<nobr><b><a href="ref-time-first-var.html">*time-first*</a></b></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>time-zone</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id250">time&nbsp;zone</a> (default is <code>nil</code>,
+which is equivalent to the current time zone adjusted for daylight
+saving time)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>universal-time</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id258">Universal&nbsp;Time</a> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>position</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A index in <var>string</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />Two values: <var>universal-time</var> and <nobr><var>position</var></nobr>
+</p>
+<p><span class="fndoclabel">Errors</span> <br />If <var>junk-allowed</var> is false, an error is signaled if a numeric field in
+<var>string</var> does not consist entirely of the representation of a integer,
+possibly surrounded on either side by characters in <nobr><var>separators</var></nobr>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />Both the month and date must be specified in <var>string</var>, optionally followed
+by the year and the time of day. The month can be a numeric value (1&ndash;12), a
+three-letter abbreviation, or the full month name.  If the month is specified
+numerically, then the value of <nobr><var>month-precedes-date</var></nobr> is used to
+determine the month and date ordering. If no year is specified in <var>string</var>
+and <nobr><var>default-to-current-year</var></nobr> is <code>nil</code>, the current calendar year
+is assumed, unless the specified month and date have passed, in which case the
+next year is assumed. If no year is specified in <var>string</var> and
+<nobr><var>default-to-current-year</var></nobr> is true, the current calendar year is
+always assumed.  If no hour, minute, or second values are specified, they
+default to zero.
+</p>
+<p><p> 
+If <var>month-precedes-date</var> is true, the month is expected before the date;
+otherwise the date is expected to follow the month.
+</p>
+<p><p> 
+If <var>year-first</var> is supplied and is non-<code>nil</code>, the year must be provided
+and it is expected before the month and date; otherwise the year (if provided)
+is expected to follow the month and date.
+</p>
+<p><p> 
+If a time-zone is specified in <var>string</var>, it is used when encoding the
+<nobr><var>universal-time</var></nobr> value.  Otherwise, if a non-<code>nil</code>
+<nobr><var>time-zone</var></nobr> argument was supplied, it used for the encoding.
+Otherwise, the current time zone adjusted for daylight saving time is used.
+</p>
+<p><p> 
+If <var>time-first</var> is true, the time-of-day is expected before the date;
+otherwise the time-of-day is expected to follow the date.
+</p>
+<p><p> 
+The returned <var>position</var> is the index within <var>string</var> where the
+parse ended.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-month-precedes-date-var.html"><b>*month-precedes-date*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-encode-date-and-time.html"><b>encode-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-encode-time-of-day.html"><b>encode-time-of-day</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-parse-date.html"><b>parse-date</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-parse-date-and-time.html"><b>parse-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-parse-duration.html"><b>parse-duration</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-parse-time.html"><b>parse-time</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (encode-date-and-time "1 Apr 2010")
+  3479083200
+  10
+  &gt; (encode-date-and-time "April 1, 2010 10:30")
+  3479121000
+  19
+  &gt; (encode-date-and-time "Thu 1 Apr 2010")
+  3479083200
+  14
+  &gt; (encode-date-and-time "Thursday, April 1, 2010 10:30")
+  3479121000
+  29
+  &gt; (encode-date-and-time "4/1/10 10:30pm")
+  3479164200
+  14
+  &gt; (encode-date-and-time "10:30pm 4/1/10" :time-first 't)
+  3479164200
+  14
+  &gt; (encode-date-and-time "Apr 1 2010 10:30 EDT")
+  3479121000
+  20
+  &gt; (encode-date-and-time "Apr 1 2010 10:30PM EDT")
+  3479164200
+  22
+  &gt; (encode-date-and-time "1 Apr 2010 10:30 IST")
+  3479086800
+  20
+  &gt; (encode-date-and-time "1 Apr 2010 10:30" :time-zone -11/2)
+  3479121000
+  20
+  &gt; (encode-date-and-time "1 Apr 2010 10:30 EDT" :time-zone -11/2)
+  3479086800
+  16
+  &gt; (encode-date-and-time "April 1, 2010 10:30 UTC-4")
+  3479121000
+  25
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">REPL Note</span> <br /><a name="id1">The</a> equivalent of:
+<pre class="pretop">
+  (print (<a href="ref-encode-date-and-time.html">encode-date-and-time</a> <var>string</var>))
+</pre> 
+can be invoked using the <a href="ref-glossary.html#id198">REPL&nbsp;command</a> <nobr><code>:ut</code> <var>string</var></nobr>.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-brief-run-time-duration.html"><img border="0" alt="brief-run-time-duration" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-encode-time-of-day.html"><img border="0" alt="encode-time-of-day" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">encode-date-and-time</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

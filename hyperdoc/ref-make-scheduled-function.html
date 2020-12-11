@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- make-scheduled-function</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-kill-periodic-function.html"><img border="0" alt="kill-periodic-function" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-entities.html"><img border="0" alt="Scheduled and Periodic Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-pause-scheduled-function-scheduler.html"><img border="0" alt="pause-scheduled-function-scheduler" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">make-scheduled-function</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">make-scheduled-function</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>function</var> 
+<nobr><code>&#38;key</code> <var>name name-test marker marker-test</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>scheduled-function</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Create a <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of one argument 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object (typically a
+string or a symbol; default is <nobr><var>function</var></nobr>, if
+<nobr><var>function</var></nobr> is a symbol, otherwise <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>name-test</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments that returns a
+<a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <nobr><code>&#35;'eql</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>marker</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>marker-test</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments that returns a
+<a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <nobr><code>&#35;'eql</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>scheduled-function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The newly created <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>. 
+</p>
+<p><span class="fndoclabel">Errors</span> <br />Threads (multiprocessing) is not supported on the
+Common Lisp implementation.
+</p>
+<p><span class="fndoclabel">Description</span> <br />Unless the run time to perform <nobr><var>function</var></nobr> is
+brief, it should spawn a new <a href="ref-glossary.html#gl:thread">thread</a> in which to perform its activities
+so as to avoid delaying the invocation of a subsequent
+<a href="ref-glossary.html#id206">scheduled&nbsp;function</a>.
+</p>
+<p>The optional <var>marker</var> and associated comparison <var>marker-test</var> can
+be specified to distinguish <a href="ref-glossary.html#gl:scheduled">scheduled&nbsp;functions</a> with the same
+<var>name</var> in calls to <nobr><b><a href="ref-schedule-function.html">schedule-function</a></b></nobr>,
+<nobr><b><a href="ref-schedule-function-relative.html">schedule-function-relative</a></b></nobr>, and
+<nobr><b><a href="ref-unschedule-function.html">unschedule-function</a></b></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-schedule-function-verbose-var.html"><b>*schedule-function-verbose*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-all-scheduled-functions.html"><b>all-scheduled-functions</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-pause-scheduled-function-scheduler.html"><b>pause-scheduled-function-scheduler</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-restart-scheduled-function-scheduler.html"><b>restart-scheduled-function-scheduler</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-resume-scheduled-function-scheduler.html"><b>resume-scheduled-function-scheduler</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-schedule-function.html"><b>schedule-function</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-schedule-function-relative.html"><b>schedule-function-relative</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-marker.html"><b>scheduled-function-marker</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-marker-test.html"><b>scheduled-function-marker-test</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-name.html"><b>scheduled-function-name</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-name-test.html"><b>scheduled-function-name-test</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-repeat-interval.html"><b>scheduled-function-repeat-interval</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-scheduler-paused-p.html"><b>scheduled-function-scheduler-paused-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-scheduler-running-p.html"><b>scheduled-function-scheduler-running-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-spawn-periodic-function.html"><b>spawn-periodic-function</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-unschedule-function.html"><b>unschedule-function</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Create a <a href="ref-glossary.html#id206">scheduled&nbsp;function</a> that simply prints <nobr><code>"Hello"</code></nobr>
+when invoked:
+<pre class="pretop">
+  &gt; (make-scheduled-function 
+      #'(lambda (scheduled-function)
+          (declare (ignore scheduled-function))
+          (print "Hello"))
+      :name 'hello)
+  #&lt;scheduled-function hello [unscheduled]&gt;
+  &gt;
+</pre>
+</p>
+<p><a name="id1">A</a> more complex <a href="ref-glossary.html#id206">scheduled&nbsp;function</a> that spawns a new <a href="ref-glossary.html#gl:thread">thread</a> to
+do its work and randomly sets whether to reschedule itself (and at what
+interval):
+<pre class="pretop">
+  &gt; (defun complex-function (scheduled-function)
+      (let ((interval (random 100)))
+        (setf (<a href="ref-scheduled-function-repeat-interval.html">scheduled-function-repeat-interval</a> scheduled-function)
+              (if (plusp interval) 
+                  ;; repeat 1-99 seconds from now:
+                  interval
+                  ;; don't repeat 1&#37; of the time:
+                  nil)))
+      (<a href="ref-spawn-thread.html">spawn-thread</a> "Lots of stuff doer" #'do-lots-of-stuff))
+  complex-function
+  &gt; (make-scheduled-function 'complex-function)
+  #&lt;scheduled-function complex-function [unscheduled]&gt;
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-kill-periodic-function.html"><img border="0" alt="kill-periodic-function" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-entities.html"><img border="0" alt="Scheduled and Periodic Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-pause-scheduled-function-scheduler.html"><img border="0" alt="pause-scheduled-function-scheduler" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">make-scheduled-function</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

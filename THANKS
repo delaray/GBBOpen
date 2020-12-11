@@ -1,0 +1,66 @@
+Organizational Supporters
+=========================
+
+We'd like to thank the following companies and organizations for their
+support:
+
+  * Franz, Inc. (http://franz.com/)
+  * DARPA/IXO (http://dtsn.darpa.mil/ixo/)
+  * Lispworks (http://www.lispworks.com/)
+
+
+Individual Contributors
+=======================
+
+  * Dan Corkill
+  * Douglas Crosher (Scieneer CL porting)
+  * Gary King (initial Digitool MCL and OpenMCL porting)
+  * Christian Lynbech (initial CMUCL porting)
+  * Sam Steingold (initiated CLISP porting)
+  * Vladimir Tzankov (Portable Threads support for CLISP/MT)
+  * <Your name could be here!>
+
+Questioners, bug reporters, capability demanders, contributors, and great idea
+suggesters include: Pascal Costanza, Matthew Danish, Michael Hannemann, Anton
+Kovalenko, Susan Lander, Attila Lendvai, Wendall Marvel, Clayton Morrison,
+Beryl Nelson, Eric O'Connor, Zack Rubinstein, Bill St. Clair, Earl Wagner,
+Paul Werkowski, and Huzaifa Zafar.
+  
+
+Historical Acknowledgments
+==========================
+
+GBBopen is a new design based on concepts that were explored and refined in
+the UMass Generic Blackboard system and the commercial GBB product.  The
+following individuals made significant contributions to those systems:
+
+The UMass Generic Blackboard System
+-----------------------------------
+  * Dan Corkill
+  * Kevin Gallagher
+  * Kelly Murray
+  * Philip Johnson
+
+The GBB Product
+---------------
+  * Tony Carrico
+  * Dan Corkill
+  * Raymond de Lacaze
+  * Kevin Gallagher
+  * Susan Lander
+  * Zack Rubinstein
+  * Suzanne Tromara
+
+The UMass Generic Blackboard Project received research support from The
+National Science Foundation, the Defense Advanced Research Projects Agency,
+the Office of Naval Research, and Texas Instruments, Inc.
+
+
+Disclaimer
+==========
+
+Acknowledgment here does not necessarily imply an endorsement of GBBopen by
+these organizations or individuals. Disclaimers aside, GBBopen users thank
+each of you!
+
+------------------------------------------------------------------------------

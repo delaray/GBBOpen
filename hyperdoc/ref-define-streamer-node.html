@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- define-streamer-node</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-default-network-stream-server-port-var.html"><img border="0" alt="*default-network-stream-server-port*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-network-streaming-entities.html"><img border="0" alt="Network Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-find-streamer-node.html"><img border="0" alt="find-streamer-node" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-streamer-node</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">define-streamer-node</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>name</var></nobr>
+<code>&#38;key</code> 
+<var>host
+port
+documentation
+<nobr>external-format</nobr>
+package
+<nobr>read-default-float-format</nobr>
+</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>streamer-node</var></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Define or redefine a <a href="ref-glossary.html#id232">streamer&nbsp;node</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:network-streaming</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object naming the streamer node (not evaluated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>host</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A 32-bit internet address or a string specifying the remote host
+(default <code>"localhost"</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>port</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer or a string specifying the service port (default
+is <nobr><b><a href="ref-default-network-stream-server-port-var.html">*default-network-stream-server-port*</a></b></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>documentation</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A documentation string or <code>nil</code> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>passphrase</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string or <code>nil</code> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>external-format</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An external-file-format designator (default is
+<nobr><code>:default</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>package</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id160">package&nbsp;designator</a> indicating the package to be used
+when establishing a streaming connection to <var>node</var> (default is
+<nobr><code>:common-lisp</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>read-default-float-format</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of the atomic type specifiers
+<nobr><code>short-float</code></nobr>, <nobr><code>single-float</code></nobr>,
+<nobr><code>double-float</code></nobr>, or <nobr><code>long-float</code></nobr> to be used when
+establishing a streaming connection to <var>streamer-node</var> (default is
+<nobr><code>single-float</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>authorized-nodes</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Needed (default is <code>:all</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>accepted-streamer-node-class</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Needed (default is <code>accepted-streamer-node</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>accepted-streamer-node-initargs</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Needed (default is <code>nil</code>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The newly defined or modified <a href="ref-glossary.html#id232">streamer&nbsp;node</a> object.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-default-network-stream-server-port-var.html"><b>*default-network-stream-server-port*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-close-streamer.html"><b>close-streamer</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-streamer-node.html"><b>find-streamer-node</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-open-network-streamer.html"><b>open-network-streamer</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-open-streamer-p.html"><b>open-streamer-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-stream-of.html"><b>stream-of</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Define a streamer node:
+<pre class="pretop">
+  &gt; (define-streamer-node "me"
+      :host "127.0.0.1"
+      :package ':gbbopen-user
+      :passphrase "Who goes there?"
+      :authorized-nodes '("you"))
+  #&lt;streamer-node "me"&gt;
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />Modifications to a <a href="ref-glossary.html#id232">streamer&nbsp;node</a> object apply the next time
+that a <a href="ref-glossary.html#id144">network&nbsp;streamer</a> is created for the <a href="ref-glossary.html#id232">streamer&nbsp;node</a>&mdash;the
+changes to not affect an established network streamer.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-default-network-stream-server-port-var.html"><img border="0" alt="*default-network-stream-server-port*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-network-streaming-entities.html"><img border="0" alt="Network Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-find-streamer-node.html"><img border="0" alt="find-streamer-node" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-streamer-node</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

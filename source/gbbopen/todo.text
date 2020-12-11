@@ -1,0 +1,5 @@
+Still to do:
+
+units.lisp
+
+  * handle shadowed link slots (e.g., link-1 in mondo2)

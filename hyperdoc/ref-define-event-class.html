@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- define-event-class</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-add-event-function.html"><img border="0" alt="add-event-function" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-event-entities.html"><img border="0" alt="Events" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-event-printing.html"><img border="0" alt="describe-event-printing" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-event-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">define-event-class</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>event-class-name</var> 
+<nobr><code>(</code>&#123;<var>superclass-name</var>&#125;*<code>)</code></nobr>
+<nobr><code>(</code>&#123;<var>slot-specifier</var>&#125;*<code>)</code></nobr>
+<nobr>&#123;<var>class-option</var>&#125;*</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-event-class</var></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Define or redefine an <a href="ref-glossary.html#id52">event&nbsp;class</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>event-class-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a> that names the
+<a href="ref-glossary.html#id52">event&nbsp;class</a> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>superclass-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a> that specifies a
+direct superclass of the <a href="ref-glossary.html#id52">event&nbsp;class</a> <var>event-class-name</var>  
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slot-specifiers</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> See below
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>class-options</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> See below
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>new-event-class</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A new or modified <a href="ref-glossary.html#id52">event&nbsp;class</a> object. 
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The newly defined or modified <a href="ref-glossary.html#id52">event&nbsp;class</a> object. 
+</p>
+<p><span class="fndoclabel">Detailed syntax</span><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>slot-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <var>slot-name</var> |
+<code>(</code><var>slot-name</var> [[<var>slot-option</var>]]<code>)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>slot-option</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> &#123;<code>:accessor</code> <var>reader-function-name</var>&#125;* |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:allocation</code> <var>allocation-type</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:documentation</code> <var>string</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:initarg</code> <var>initarg-name</var>&#125;* |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:initform</code> <var>form</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:reader</code> <var>reader-function-name</var>&#125;* |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:type</code> <var>type-specifier</var>&#125; | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:writer</code> <var>writer-function-name</var>&#125;* </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>class-option</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <code>(:abstract</code> <var>boolean</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:default-initargs .</code> <var>initarg-list</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:documentation</code> <var>string</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:event-metaclass</code> <var>event-metaclass-specifier</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:event-printing</code> <var>event-printing-specifier</var>/code) |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:export-accessors</code> <var>boolean</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:export-class-name</code> <var>boolean</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:export-slot-names</code> <var>direct-slots-specifier</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-accessors</code> <var>direct-slots-specifier</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-accessors-format</code> 
+&#123;<code>:prefix</code> | <code>:suffix</code>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-accessors-prefix</code> &#123;<var>string</var> |
+<var>symbol</var>&#125;<code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-accessors-suffix</code> &#123;<var>string</var> |
+<var>symbol</var>&#125;<code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-initargs</code> <var>direct-slots-specifier</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:metaclass</code> <var>class-name</var><code>)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>event-metaclass-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> non-instance-event-class | instance-event-class | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> space-instance-event-class | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> nonlink-slot-event-class | link-slot-event-class </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>direct-slots-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <code>nil</code> | <code>t</code> |
+<var>included-slot-name</var>* |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>t :exclude</code> <var>excluded-slot-name</var>*&#125; </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p><span class="fndoclabel">Terms</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>class-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a> that names a
+<a href="ref-glossary.html#gl:class">class</a> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>documentation</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A documentation string
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>initarg-list</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id96">initialization&nbsp;argument&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slot-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id1">Each</a> <var>superclass-name</var> argument specifies a direct superclass of the new
+class. If the superclass list is empty, then the direct superclass defaults to
+the single class <nobr><b><a href="ref-standard-event-instance.html">standard-event-instance</a></b></nobr>.
+</p>
+<p><a name="id2">The</a> <code>:metaclass</code> <var>class-name</var> class option, if specified, must be a
+subclass of <nobr><b><a href="ref-standard-event-class.html">standard-event-class</a></b></nobr>.  The default
+metaclass value is the metaclass of the event superclasses of
+<var>event-class-name</var> if they all have the smae metaclass.  If the event
+superclasses have multiple metaclasses, the metaclass of
+<var>event-class-name</var> must be provided. The following table lists the
+compatible event-superclass metaclasses for each <a href="ref-glossary.html#id58">event&nbsp;metaclass</a>:
+<table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="9" align="center"> <b>Compatible Event-Superclass Metaclasses</b></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+</td><td valign="baseline" colspan="1" align="center"> <b>Event</b></td><td valign="baseline" colspan="1" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline" colspan="1" align="center"><code>non-</code></td><td valign="baseline" colspan="1" align="left">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline" colspan="1" align="center"><code>space-</code></td><td valign="baseline" colspan="1" align="left">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline" colspan="1" align="center"> 
+<code>nonlink-</code></td><td valign="baseline" colspan="1" align="left">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline" colspan="1" align="center"><code>link-</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"> <b>Metaclass</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><code>instance</code></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><code>instance</code></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">
+<code>instance</code></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><code>slot</code></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><code>slot</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+</td><td valign="baseline" colspan="1" align="left"> <code>non-instance-event-class</code>
+</td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>instance-event-class</code>
+</td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>space-instance-event-class</code>
+</td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>nonlink-slot-event-class</code>
+</td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>link-slot-event-class</code>
+</td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center">          </td><td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"><b>X</b></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<p>The table in the documentation for <nobr><b>signal-event</b></nobr>
+lists the <a href="ref-glossary.html#id97">initialization&nbsp;arguments</a> that are required when
+signaling an event.  These required <a href="ref-glossary.html#id97">initialization&nbsp;arguments</a>
+are based on the <a href="ref-glossary.html#id58">event&nbsp;metaclass</a> of the <a href="ref-glossary.html#id52">event&nbsp;class</a> of
+the <a href="ref-glossary.html#gl:event">event</a> that is being signaled.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-signal-event.html"><b>signal-event</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-standard-event-class.html"><b>standard-event-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-standard-event-instance.html"><b>standard-event-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-generate-accessors-format.html"><b>with-generate-accessors-format</b></a>
+</p>
+<a name="id3"></a><p><span class="fndoclabel">Example</span> <br /><pre class="pretop">
+  &gt; (define-event-class my-event (non-instance-event)
+      ((my-event-arg1 :initform nil)
+       (my-event-arg2 :initform nil)))
+  #&lt;non-instance-event-class my-event&gt;
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-add-event-function.html"><img border="0" alt="add-event-function" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-event-entities.html"><img border="0" alt="Events" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-event-printing.html"><img border="0" alt="describe-event-printing" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-event-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

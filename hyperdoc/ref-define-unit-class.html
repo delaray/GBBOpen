@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- define-unit-class</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-class-instances-count.html"><img border="0" alt="class-instances-count" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-delete-instance.html"><img border="0" alt="delete-instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-unit-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">define-unit-class</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>unit-class-name</var></nobr>
+<nobr><code>(</code>&#123;<var>superclass-name</var>&#125;*<code>)</code></nobr>
+<nobr><code>(</code>&#123;<var>slot-specifier</var>&#125;*<code>)</code></nobr>
+<nobr>&#123;<var>class-option</var>&#125;*</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-unit-class</var></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Define or redefine a <a href="ref-glossary.html#id254">unit&nbsp;class</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>unit-class-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a> that names the
+<a href="ref-glossary.html#id254">unit&nbsp;class</a> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>superclass-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a> that specifies a
+direct superclass of the <a href="ref-glossary.html#id254">unit&nbsp;class</a> <var>unit-class-name</var>  
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slot-specifiers</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> See below
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>class-options</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> See below
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>new-unit-class</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A new or modified <a href="ref-glossary.html#id254">unit&nbsp;class</a> object
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The newly defined or modified <a href="ref-glossary.html#id254">unit&nbsp;class</a> object.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />The specified <var>superclass-names</var> do not include at least
+one <a href="ref-glossary.html#id254">unit&nbsp;class</a> name.  This error is signaled on class finalization.
+</p>
+<p><span class="fndoclabel">Detailed syntax</span><br /><img height=14 width=0 src="shim.gif">
+<span 
+    style="font-family: sans-serif; font-style: normal"><font size="-1"><font color="#667f66">[Syntax shown in gray is
+not supported in GBBopen Version&nbsp;1.5, but will become
+available in a future release.]</font></font></span><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>slot-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <var>slot-name</var> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>nonlink-slot-name</var> 
+[[<var>nonlink-slot-option</var>]]<code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>link-slot-name</var> [[<var>link-slot-option</var>]]<code>)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>nonlink-slot-name</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>slot-name</var></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>link-slot-name</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>slot-name</var></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>link-slot-option</var> ::=</nobr> 
+</td><td valign="baseline" colspan="1" align="left"> <var>slot-option</var> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:link</code> <var>inverse-link-slot-specifier</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:singular</code> <var>boolean</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:sort-function</code> <var>function</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:sort-key</code> <var>function</var>&#125; </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>inverse-link-slot-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> 
+<code>(</code><var>unit-class-name link-slot-name</var> 
+[<code>:singular</code> <var>boolean</var>]<code>)</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>:reflexive</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>nonlink-slot-option</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <var>slot-option</var> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:reader</code> <var>reader-function-name</var>&#125;* |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:writer</code> <var>writer-function-name</var>&#125;* </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>slot-option</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> &#123;<code>:accessor</code> <var>reader-function-name</var>&#125;* |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:allocation</code> <var>allocation-type</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:documentation</code> <var>string</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:initarg</code> <var>initarg-name</var>&#125;* |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:initform</code> <var>form</var>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>:type</code> <var>type-specifier</var>&#125; </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>class-option</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <code>(:abstract</code> <var>boolean</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:default-initargs .</code> <var>initarg-list</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:dimensional-values</code> 
+<var>dimension-value-specifier</var>*<code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:documentation</code> <var>string</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:estimated-instances</code> <var>size-form</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:export-accessors</code> <var>boolean</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:export-class-name</code> <var>boolean</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:export-slot-names</code> <var>direct-slots-specifier</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-accessors</code> <var>direct-slots-specifier</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-accessors-format</code> 
+&#123;<code>:prefix</code> | <code>:suffix</code>&#125; |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-accessors-prefix</code> &#123;<var>string</var> |
+<var>symbol</var>&#125;<code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-accessors-suffix</code> &#123;<var>string</var> |
+<var>symbol</var>&#125;<code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:generate-initargs</code> <var>direct-slots-specifier</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:initial-space-instances</code>
+<var>initial-space-instance-specifier</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:instance-name-comparison-test</code>
+<var>instance-name-comparison-test</var><code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:metaclass</code> <var>class-name</var><code>)</code>  |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:retain</code> &#123;<var>boolean</var> 
+| <code>:propagate</code>&#125;<code>)</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(:use-global-instance-name-counter</code> <var>boolean</var><code>)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>initial-space-instance-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> &#123;<var>space-instance-path</var><sup>+</sup> |
+<var>function</var>&#125; </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>dimension-value-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <var>incomposite-dv-specifier</var> | <var>composite-dv-specifier</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>incomposite-dv-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>dimension-name dimension-value-spec 
+dimension-value-place</var><code>)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>composite-dv-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>dimension-name dimension-value-specifier</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &nbsp; <var>composite-type dimension-value-place</var><code>)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>composite-type</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <code>:set</code> | <font color="#667f66"><code>:sequence</code></font> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <font color="#667f66">&#123;<code>:ascending-series</code> <var>ordering-dimension-name</var>&#125;</font> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <font color="#667f66">&#123;<code>:descending-series</code> <var>ordering-dimension-name</var>&#125;</font> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>dimension-value-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <var>dimension-value-type</var> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left">  <code>(</code><var>ordered-dimension-value-type</var>
+[<var>ordered-comparison-type</var>]<code>)</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>enumerated-dimension-value-type</var>
+[<var>enumerated-comparison-type</var>]<code>)</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>boolean-dimension-value-type</var>
+[<var>boolean-comparison-type</var>]<code>)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>dimension-value-type</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <var>ordered-dimension-value-type</var> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <var>enumerated-dimension-value-type</var> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <var>boolean-dimension-value-type</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>ordered-dimension-value-type</var> ::=</nobr>
+<a name="id1"></a></td><td valign="baseline" colspan="1" align="left"> <code>:point</code> | <code>:interval</code> | <code>:mixed</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>enumerated-dimension-value-type</var> ::=</nobr>
+<a name="id2"></a></td><td valign="baseline" colspan="1" align="left"> <code>:element</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>boolean-dimension-value-type</var> ::=</nobr>
+<a name="id3"></a></td><td valign="baseline" colspan="1" align="left">  <code>:boolean</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>ordered-comparison-type</var> ::=</nobr>
+<a name="id4"></a></td><td valign="baseline" colspan="1" align="left"> <code>number</code> | <code>fixnum</code> |
+<code>short-float</code> | <code>single-float</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>double-float</code> | <code>long-float</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>pseudo-probability</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>enumerated-comparison-type</var> ::=</nobr>
+<a name="id5"></a></td><td valign="baseline" colspan="1" align="left"> <code>eq</code> | <code>eql</code> |
+<code>equal</code> | <code>equalp</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>boolean-comparison-type</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <code>t</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>dimension-value-place</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> &#123;<var>slot-name</var> [<var>slot-name</var>]&#125; | 
+&#123;<var>function</var> [<var>slot-name</var>]&#125; </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>direct-slots-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <code>nil</code> | <code>t</code> |
+<var>included-slot-name</var>* |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> &#123;<code>t :exclude</code> <var>excluded-slot-name</var>*&#125; </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>The default <nobr><var>ordered-comparison-type</var></nobr>, if unspecified, is
+<nobr><code>number</code></nobr>.  The default <nobr><var>enumerated-comparison-type</var></nobr>,
+if unspecified, is <code>eql</code>.  The default
+<nobr><var>boolean-comparison-type</var></nobr> is <code>t</code>.</p>
+<p>A <var>dimension-value-place</var> with two <nobr><var>slot-names</var></nobr> is
+allowed only for an <nobr><code>:interval</code></nobr> dimension-value specification.
+</p>
+<p><span class="fndoclabel">Terms</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>class-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a> that names a
+<a href="ref-glossary.html#gl:class">class</a> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>dimension-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A symbol specifying a <a href="ref-glossary.html#gl:dimension">dimension</a> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>documentation</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A documentation string
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>initarg-list</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id96">initialization&nbsp;argument&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>instance-name-comparison-test</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of the four standardized hash
+table test function names: <code>eq</code>, <code>eql</code>, <nobr><code>equal</code></nobr>, or
+<nobr><code>equalp</code></nobr> (default for classes of
+metaclass <nobr><b><a href="ref-standard-unit-class.html">standard-unit-class</a></b></nobr> is <code>eql</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i><font color="#667f66">ordering-dimension-name</font></i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> <font color="#667f66">A 
+symbol specifying the <a href="ref-glossary.html#id156">ordering&nbsp;dimension</a> used to order 
+<a href="ref-glossary.html#id209">series-composite&nbsp;dimension&nbsp;values</a></font>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>size-form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer or an expression that evaluates to an integer
+(evaluation occurs whenever the unit class is initialized, reinitialized, or reset)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slot-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br />A <var>dimension-value-place</var> with two
+<var>slot-names</var> can be specified only for <nobr><code>:interval</code></nobr>
+dimension-value types.
+</p>
+<p><a name="id6">If</a> <var>dimension-value-place</var> is specified as a <var>function</var> without a
+qualifying <var>slot-name</var>, <var>function</var> is called with the unit
+instance rather than a slot value.  In this case, <var>function</var> is
+responsible for handling any unbound slots that it references, returning
+<nobr><b><a href="ref-unbound-value-indicator.html">unbound-value-indicator</a></b></nobr> when appropriate.
+</p>
+<p><a name="id7">Each</a> <var>superclass-name</var> argument specifies a direct superclass of the new
+class. If the superclass list is empty, then the direct superclass defaults to
+the single class <nobr><b><a href="ref-standard-unit-instance.html">standard-unit-instance</a></b></nobr>.
+</p>
+<p><a name="id8">The</a> <code>:metaclass</code> class option, if specified, must be a subclass of
+<nobr><b><a href="ref-standard-unit-class.html">standard-unit-class</a></b></nobr>.  The default metaclass
+value is <nobr><b><a href="ref-standard-unit-class.html">standard-unit-class</a></b></nobr>.
+</p>
+<p><p><b>Inheritance of class options</b></p>
+<a name="id9">The</a> set of <nobr><var>dimensional-values</var></nobr> for a <a href="ref-glossary.html#id254">unit&nbsp;class</a> is the
+union of the sets specified in the <nobr><var>dimensional-values</var></nobr> options
+of the class and its superclasses.  When more than one dimension-value
+specification is supplied for a given dimension, the one supplied by the
+most specific class is used.
+</p>
+<p>The effective <nobr><var>initial-space-instances</var></nobr> value for a
+<a href="ref-glossary.html#id254">unit&nbsp;class</a> is the value specified in the definition of the most
+specific <a href="ref-glossary.html#id254">unit&nbsp;class</a>. (No additive inheritance of
+<nobr><var>initial-space-instances</var></nobr> is performed.) If no definitions
+specify an <nobr><var>initial-space-instances</var></nobr> value, <code>nil</code> is used.
+</p>
+<p>The <nobr><var>instance-name-comparison-test</var></nobr> value is not inherited.  If
+no value is specified in the <a href="ref-glossary.html#gl:unit-class">unit-class</a> definition, the default
+initialization value associated with the metaclass is used.
+</p>
+<p>If a <var>retain</var> value is not specified, a value of
+<nobr><code>:propagate</code></nobr> is used as the default if any parent
+<a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a> have a <nobr><code>:propagate</code></nobr> retention value;
+otherwise <code>nil</code> is used as the default value.
+</p>
+<p>The <nobr><var>use-global-instance-name-counter</var></nobr> value is not
+inherited. If no value is specified in the <a href="ref-glossary.html#gl:unit-class">unit-class</a> definition,
+the default initialization value associated with the metaclass is used.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-space-class.html"><b>define-space-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-class.html"><b>define-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delete-blackboard-repository.html"><b>delete-blackboard-repository</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-deleted-unit-instance.html"><b>deleted-unit-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-all-instances-by-name.html"><b>find-all-instances-by-name</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-instance-by-name.html"><b>find-instance-by-name</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-link-slot-p.html"><b>link-slot-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-instance.html"><b>make-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-standard-unit-class.html"><b>standard-unit-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-standard-unit-instance.html"><b>standard-unit-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-generate-accessors-format.html"><b>with-generate-accessors-format</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Define a unit class, <code>hyp</code>, that illustrates a number of
+<nobr><b>define-unit-class</b></nobr> capabilities:
+<pre class="pretop">
+  &gt; (define-unit-class hyp ()
+      ((belief :initform 0.0)
+       (location :initform nil)
+       (velocity-range)
+       (color)
+       (classification :initform '(:car :truck :bus :motorcycle :train :duck-boat 
+                                   :lawn-mower :anything))
+       (supporting-hyps 
+        :link (hyp supported-hyps))
+       (supported-hyps 
+        :link (hyp supporting-hyps)))
+      (:dimensional-values 
+       (belief :point belief)
+       (velocity-range :interval velocity-range)
+       (color (:element eq) color)
+       (classification (:element eq) :set classification)
+       (x (:point fixnum) #'location.x location)
+       (y (:point fixnum) #'location.y location))
+      (:initial-space-instances (bb hyps)))
+  #&lt;standard-unit-class hyp&gt;
+  &gt;
+</pre>
+</p>
+<p>Define a unit class, <code>word</code>, whose <a href="ref-glossary.html#gl:instances">instances</a> are indexed by the
+word's individual characters in an <a href="ref-glossary.html#id45">enumerated&nbsp;dimension</a> and the
+<nobr><b>code-char</b></nobr> values of the individual characters in an
+<a href="ref-glossary.html#id154">ordered&nbsp;dimension</a>:
+<pre class="pretop">
+  &gt; (define-unit-class word ()
+      ((string :initform "what's"))
+      (:dimensional-values
+       (character :element :set string)
+       (char-code (:point fixnum) :set 
+                  #'(lambda (string)
+                      (map 'list #'char-code string))
+                  string))
+      (:initial-space-instances (words)))
+  #&lt;standard-unit-class word&gt;
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-class-instances-count.html"><img border="0" alt="class-instances-count" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-delete-instance.html"><img border="0" alt="delete-instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-unit-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,78 @@
+%% -*- Mode:TeX; Fonts:(hl12fb) -*-
+%% *-* File: /usr/local/gbbopen/doc-source/tutorial-intro.tex *-*
+%% *-* Last-Edit: Wed Aug 22 16:16:38 2012; Edited-By: cork *-*
+%% *-* Machine: phoenix.corkills.org *-*
+
+%% Copyright (C) 2006-2006, Dan Corkill <corkill@GBBopen.org>
+%% Part of the GBBopen Project.
+%% Licensed under Apache License 2.0 (see LICENSE for license information).
+
+%% ========================================================================
+%%  Shared Acknowledgments text
+
+GBBopen is a high-performance, open source blackboard-system framework.  This
+tutorial shows you how to get started using GBBopen through a series of
+exercises that cover GBBopen's concepts and features in a step-by-step
+sequence.  The exercises guide you in creating a simple ``random walk''
+application that simulates taking a sequence of straight-line excursions, each
+of random length and direction.  Although the application is simple, it
+involves many of GBBopen's features, from very basic to fairly advanced.
+
+\T\subsection*{GBBopen and Common Lisp}
+\W\textbf{\large GBBopen and Common Lisp}
+
+GBBopen is an extension of \xsitelink{Common
+  Lisp}{http://www.lispworks.com/documentation/HyperSpec/Front/index.htm} and
+uses CLOS (the Common Lisp Object System) and the \xsitelink{Metaobject
+  Protocol}{http://www.alu.org/mop/index.html} (MOP) to provide
+blackboard-specific object capabilities.  The blending of GBBopen with Common
+Lisp transfers all the advantages of a rich, dynamic, reflective, and
+extensible programming language to blackboard-application developers.  Thus,
+GBBopen's ``programming language'' includes all of Common Lisp in addition to
+the blackboard-system extensions documented in the \textit{GBBopen Reference}
+manual.
+
+This tutorial does not attempt to teach Common Lisp programming, and an
+understanding of basic Common Lisp and CLOS concepts is assumed.  Although it
+is possible to read through the tutorial exercises without Common Lisp
+expertise, a much deeper understanding of GBBopen's potential is gained by
+understanding how GBBopen and Common Lisp work smoothly together.  Two
+frequently recommended Common Lisp books are Peter Seibel's
+\xsitelink{\textit{Practical Common Lisp\/}}{http://www.gigamonkeys.com/book/}
+and Paul Graham's \xsitelink{\textit{On
+    Lisp\/}}{http://paulgraham.com/onlisptext.html}.  Both books are available
+on line, as well in traditional book form.  A less programmer-oriented
+introduction to Common Lisp is David Touretzky's \xsitelink{\textit{Common
+    Lisp: A Gentle Introduction to Symbolic
+    Computation\/}}{http://www.cs.cmu.edu/~dst/LispBook/}, also available on
+line. 
+
+Ken Pitman's \xsitelink{\textit{Common Lisp
+    HyperSpec\/}}{http://www.lispworks.com/documentation/HyperSpec/}, an
+easily navigable HTML document derived from the ANSI Common Lisp standard, is
+the customary programmer's reference for Common Lisp.  A
+\xsitelink{down-loadable 
+archive}{ftp://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz}
+of the HyperSpec is also available, which is very convenient when working
+without a continuous connection to the Internet.  We will show how to make the
+HyperSpec and the GBBopen Reference HyperDoc directly accessible in your
+Common Lisp development environment in
+\texorhtml{Exercise~\ref{sec:environment}.}{the \link{Enhancing Your
+Development Environment}{sec:environment} exercise.}
+
+\T\subsection*{Using a Common Lisp/GBBopen development environment}
+\W\textbf{\large Using a Common Lisp/GBBopen development environment}
+
+The tutorial exercises build on one another, and they are intended to be
+performed sequentially.  The initial exercise involves installing GBBopen and
+preparing it for use in your environment.  This is followed by several
+exercises where you interact with GBBopen by entering forms into the ``Lisp
+Listener'' (also called the read-eval-print-loop or simply the REPL) that is
+provided by your Common Lisp implementation.  As the scope of the random-walk
+application grows, however, it is important to set up a working environment
+where your work is done in a file.  So, after these initial GBBopen exercises,
+we will spend an exercise setting up your environment to provide you
+power-user productivity for the remainder of the tutorial (and for future
+GBBopen activities).  This diversion exercise will be worth your time!
+
+%% ========================================================================

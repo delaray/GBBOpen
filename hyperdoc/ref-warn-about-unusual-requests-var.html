@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- *warn-about-unusual-requests*</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-use-marking-var.html"><img border="0" alt="*use-marking*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-retrieval-entities.html"><img border="0" alt="Instance Retrieval" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-do-instances-of-class.html"><img border="0" alt="do-instances-of-class" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">*warn-about-unusual-requests*</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">*warn-about-unusual-requests*</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"></td><td valign="baseline" align="right">[<i>Variable</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Control warning messages of &#8220;unusual&#8221;
+<nobr><b><a href="ref-do-instances-on-space-instances.html">do-instances-on-space-instances</a></b></nobr>,
+<nobr><b><a href="ref-find-instances.html">find-instances</a></b></nobr>, and
+<nobr><b><a href="ref-map-instances-on-space-instances.html">map-instances-on-space-instances</a></b></nobr> requests that are
+likely to be mistakes.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Value type</span>&nbsp;&nbsp;&nbsp;A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</p>
+<p><span class="fndoclabel">Initial value</span>&nbsp;&nbsp;&nbsp;True
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-do-instances-on-space-instances.html"><b>do-instances-on-space-instances</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-filter-instances.html"><b>filter-instances</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-instances.html"><b>find-instances</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-map-instances-on-space-instances.html"><b>map-instances-on-space-instances</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Suppress the warning message associated with an unachievable retrieval pattern:
+<pre class="pretop">
+  &gt; (<a href="ref-filter-instances.html">filter-instances</a> nil '(and (&gt; x 3) (&lt; x 2)))
+  ;; Warning: Pattern (and (&gt; X 3) (&lt; X 2)) can not be satisfied.
+  nil
+  &gt; (let ((*warn-about-unusual-requests* nil))
+      (<a href="ref-filter-instances.html">filter-instances</a> nil '(and (&gt; x 3) (&lt; x 2))))
+  nil
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-use-marking-var.html"><img border="0" alt="*use-marking*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-retrieval-entities.html"><img border="0" alt="Instance Retrieval" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-do-instances-of-class.html"><img border="0" alt="do-instances-of-class" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">*warn-about-unusual-requests*</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

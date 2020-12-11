@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- condition-variable-broadcast</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-condition-variable.html"><img border="0" alt="condition-variable" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-condition-variable-signal.html"><img border="0" alt="condition-variable-signal" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">condition-variable-broadcast</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">condition-variable-broadcast</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>condition-variable</var></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Unblock all <a href="ref-glossary.html#gl:threads">threads</a> that are blocked on <nobr><var>condition-variable</var></nobr>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>condition-variable</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id27">condition&nbsp;variable</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Errors</span> <br />The <a href="ref-glossary.html#gl:lock">lock</a> (or <a href="ref-glossary.html#id194">recursive&nbsp;lock</a>) associated
+with <nobr><var>condition-variable</var></nobr> is not held by the executing process.
+</p>
+<p><span class="fndoclabel">Description</span> <br />If no threads are blocked on <nobr><var>condition-variable</var></nobr>,
+this function is a no-op.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-condition-variable-signal.html"><b>condition-variable-signal</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-condition-variable-wait.html"><b>condition-variable-wait</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-condition-variable-wait-with-timeout.html"><b>condition-variable-wait-with-timeout</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-condition-variable.html"><b>make-condition-variable</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-lock-held.html"><b>with-lock-held</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-without-lock-held.html"><b>without-lock-held</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Example</span> <br />Acquire the <a href="ref-glossary.html#gl:lock">lock</a> associated with
+<nobr><code>condition-variable</code></nobr> and then signal all blocked <a href="ref-glossary.html#gl:threads">threads</a>
+that are waiting on it:
+<pre class="pretop">
+  (<a href="ref-with-lock-held.html">with-lock-held</a> (condition-variable)
+    (condition-variable-broadcast condition-variable))
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />On Common Lisp implementations without threads, this function does
+nothing.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-condition-variable.html"><img border="0" alt="condition-variable" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-condition-variable-signal.html"><img border="0" alt="condition-variable-signal" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">condition-variable-broadcast</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

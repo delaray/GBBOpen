@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- thread-name</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-thread-alive-p.html"><img border="0" alt="thread-alive-p" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-thread-whostate.html"><img border="0" alt="thread-whostate" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">thread-name</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">thread-name</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>thread</var> 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>name-string</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return the name of a <a href="ref-glossary.html#gl:thread">thread</a>.
+</p>
+<p><span class="fndoclabel">Setf syntax</span><table class="tighttop" width="100%">
+<tr valign="top">
+<td valign="baseline" align="left">
+<nobr>(setf (thread-name</nobr>
+</td>
+<td valign="baseline">&nbsp; </td>
+<td valign="baseline" align="left" width="99%">
+<var>thread</var>) <var>name-string</var>) 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>name-string</var></nobr>
+</td>
+</tr>
+</table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>thread</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:thread">thread</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>name-string</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The name of <var>thread</var>.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />Threads (multiprocessing) is not supported on the
+Common Lisp implementation.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-spawn-form.html"><b>spawn-form</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-spawn-thread.html"><b>spawn-thread</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (thread-name thread)
+  "Initial"
+  &gt; (setf (thread-name thread) "Version 2")
+  "Version 2"
+  &gt; (thread-name thread)
+  "Version 2"
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />Digitool's <a target="_top" href="http://www.digitool.com">Macintosh Common Lisp</a>
+does not support changing the thread name via <nobr><b>setf</b></nobr>.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-thread-alive-p.html"><img border="0" alt="thread-alive-p" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-thread-whostate.html"><img border="0" alt="thread-whostate" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">thread-name</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

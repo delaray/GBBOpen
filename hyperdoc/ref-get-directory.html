@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- get-directory</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-finish-patch.html"><img border="0" alt="finish-patch" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-get-patch-description.html"><img border="0" alt="get-patch-description" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">get-directory</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">get-directory</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>name</var>
+<nobr><code>&#38;rest</code> <var>subdirectories</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>pathname</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return the <a href="ref-glossary.html#gl:pathname">pathname</a> based on a <a href="ref-glossary.html#id204">root&nbsp;directory</a>, a
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a>, or a <a href="ref-glossary.html#gl:module">module</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id110">keyword&nbsp;symbol</a> naming a <a href="ref-glossary.html#id204">root&nbsp;directory</a>, a
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a>, or a <a href="ref-glossary.html#gl:module">module</a>.
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>subdirectories</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One or more strings specifying, in order, subdirectories
+to be appended to the <a href="ref-glossary.html#id204">root&nbsp;directory</a>, <a href="ref-glossary.html#id196">relative&nbsp;directory</a>, or
+<a href="ref-glossary.html#gl:module">module</a> directory. (The <a href="ref-glossary.html#gl:keywords">keyword</a> <code>:up</code> or <code>:back</code> can
+also be supplied in addition to any of these strings, indicating to go upward
+one semantic or syntactic level of directory structure, respectively.)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>pathname</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:pathname">pathname</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The pathname.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />A <a href="ref-glossary.html#id196">relative&nbsp;directory</a>
+specification contains a circularity.
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a href="ref-glossary.html#gl:Root">Root</a> and <a href="ref-glossary.html#gl:relative-directory">relative-directory</a> definitions are
+searched first.  If no <var>name</var> directory definition is found,
+<a href="ref-glossary.html#gl:module">module</a> definitions are searched.  <a href="ref-glossary.html#gl:Root">Root&nbsp;directories</a> specify a
+fixed anchor directory for a tree of <a href="ref-glossary.html#id196">relative&nbsp;directory</a> definitions.
+The pathname returned for relative directories is based on the source pathname.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-relative-directory.html"><b>define-relative-directory</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-root-directory.html"><b>define-root-directory</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-get-root-directory.html"><b>get-root-directory</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-show-defined-directories.html"><b>show-defined-directories</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Return the pathname of the <nobr><code>:my-app-root</code></nobr> <a href="ref-glossary.html#id204">root&nbsp;directory</a>:
+<pre class="pretop">
+  &gt; (get-directory :my-app-root)
+  #P"~/my-app/"
+  &gt;
+</pre>
+Return the pathname of the <nobr><code>:gbbopen-tools</code></nobr>
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a>:
+<pre>
+  &gt; (get-directory :gbbopen-tools)
+  #P"<var>&lt;install-dir&gt;</var>/source/tools/"
+  &gt;
+</pre>
+Return this same pathname, this time computed from the
+<nobr><code>:gbbopen-root</code></nobr> <a href="ref-glossary.html#id204">root&nbsp;directory</a>:
+<pre>
+  &gt; (get-directory :gbbopen-root "tools")
+  #P"<var>&lt;install-dir&gt;</var>/source/tools/" 
+  &gt;
+</pre>
+Return the pathname of the <nobr><code>:gbbopen-user</code></nobr> <a href="ref-glossary.html#gl:module">module</a>:
+<pre>
+  &gt; (get-directory :gbbopen-user)
+  #P"<var>&lt;install-dir&gt;</var>/source/gbbopen/"
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-finish-patch.html"><img border="0" alt="finish-patch" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-get-patch-description.html"><img border="0" alt="get-patch-description" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">get-directory</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

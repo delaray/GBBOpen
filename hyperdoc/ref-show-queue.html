@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- show-queue</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-from-queue.html"><img border="0" alt="remove-from-queue" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-queue-entities.html"><img border="0" alt="Queue Management" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">show-queue</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">show-queue</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>queue</var>
+<nobr><code>&#38;key</code> <var>start end show-element-function</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Print the elements on <nobr><var>queue</var></nobr>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>show-queue</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>queue</var> <code>queue)</code>
+<code>&#38;key</code> <var>start end show-element-function</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:queue</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>queue</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A GBBopen <a href="ref-glossary.html#gl:queue">queue</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>start</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer specifying the first <a href="ref-glossary.html#id188">queue&nbsp;element</a> to
+be shown (default is <code>0</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>end</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer specifying the last <a href="ref-glossary.html#id188">queue&nbsp;element</a> to
+be shown or <code>nil</code> indicating that the last <a href="ref-glossary.html#id188">queue&nbsp;element</a> is
+to be shown (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>show-element-function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments used to print each
+<a href="ref-glossary.html#id188">queue&nbsp;element</a> line (default is
+<nobr><code>&#35;'standard-show-queue-element</code></nobr>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-clear-queue.html"><b>clear-queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-executed-ksas-of.html"><b>executed-ksas-of</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-queue.html"><b>make-queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-obviated-ksas-of.html"><b>obviated-ksas-of</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-ordered-ksa-queue.html"><b>ordered-ksa-queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-ordered-queue.html"><b>ordered-queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-queue.html"><b>queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-queue-element.html"><b>queue-element</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-on-queue-p.html"><b>on-queue-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-pending-ksas-of.html"><b>pending-ksas-of</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br /><a name="id1">Show</a> the control shell's pending <a href="ref-glossary.html#gl:activations">KSAs</a> queue (early in a
+<nobr><code>:tutorial-example</code></nobr> run):
+<pre class="pretop">
+  &gt;  (show-queue (<a href="ref-pending-ksas-of.html">pending-ksas-of</a> (<a href="ref-current-control-shell.html">current-control-shell</a>)))
+      0. #&lt;ksa 7 random-walk-ks 100&gt;
+      1. #&lt;ksa 1 count-center-locations-ks 90&gt;
+      2. #&lt;ksa 4 print-walk-ks 80&gt;(show-queue pending-ksas :end 5)
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-from-queue.html"><img border="0" alt="remove-from-queue" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-queue-entities.html"><img border="0" alt="Queue Management" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">show-queue</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

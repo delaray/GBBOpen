@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- iso8601-date-and-time</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-internet-text-date-and-time.html"><img border="0" alt="internet-text-date-and-time" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-message-log-date-and-time.html"><img border="0" alt="message-log-date-and-time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">iso8601-date-and-time</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">iso8601-date-and-time</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;optional</code> <var>universal-time</var></nobr>
+<nobr><code>&#38;key</code> <var>destination</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Convert a <a href="ref-glossary.html#id258">Universal&nbsp;Time</a> value into ISO8601 (XML dateTime) format.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>universal-time</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id258">Universal&nbsp;Time</a> (default is <code>nil</code>,
+which is equivalent to the value returned by
+<nobr><code>(get-universal-time)</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>destination</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Either <code>nil</code>, <code>t</code>, a stream, or a string with a fill 
+pointer (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>result</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string or <code>nil</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />If <var>destination</var> is non-<code>nil</code>, then <code>nil</code>; otherwise, a string.
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id1">If</a> <nobr><var>universal-time</var></nobr> is not supplied or is <code>nil</code>, the current time
+(as returned by <nobr><code>get-universal-time</code></nobr> is used.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-brief-date.html"><b>brief-date</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-brief-date-and-time.html"><b>brief-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-full-date-and-time.html"><b>full-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-http-date-and-time.html"><b>http-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-internet-text-date-and-time.html"><b>internet-text-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-message-log-date-and-time.html"><b>message-log-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-very-brief-date.html"><b>very-brief-date</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br /><pre class="pretop">
+  &gt; (iso8601-date-and-time)
+  "2008-05-17T08:02:49Z"
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-internet-text-date-and-time.html"><img border="0" alt="internet-text-date-and-time" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-message-log-date-and-time.html"><img border="0" alt="message-log-date-and-time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">iso8601-date-and-time</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

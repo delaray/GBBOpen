@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- make-duplicate-instance-changing-class</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-duplicate-instance.html"><img border="0" alt="make-duplicate-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-make-instance.html"><img border="0" alt="make-instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">make-duplicate-instance-changing-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">make-duplicate-instance-changing-class</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>instance 
+<nobr>new-class</nobr>
+<nobr>unduplicated-slot-names</nobr></var>
+<nobr><code>&#38;rest</code> <var>initargs</var></nobr>
+<nobr><code>&#38;key</code> <code>&#38;allow-other-keys</code></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-instance, slots</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Create a duplicate <a href="ref-glossary.html#gl:instances">instance</a> of <var>instance</var>, changing its
+<a href="ref-glossary.html#gl:class">class</a> to <var>new-class</var> in the process.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>make-duplicate-instance-changing-class</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>instance</var> <code>standard-object)</code>
+<code>(</code><var>new-class</var> <code>class)</code>
+<var>unduplicated-slot-names</var>
+<code>&#38;rest</code> <var>initargs</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-instance, slots</var></nobr>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>make-duplicate-instance-changing-class</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>instance</var> <code>standard-object)</code>
+<code>(</code><var>new-class</var> <code>standard-space-class)</code>
+<var>unduplicated-slot-names</var>
+<code>&#38;rest</code> <var>initargs</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-space-instance, slots</var></nobr>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>make-duplicate-instance-changing-class</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>instance</var> <code>standard-object)</code>
+<code>(</code><var>new-class</var> <code>standard-unit-class)</code>
+<var>unduplicated-slot-names</var>
+<code>&#38;rest</code> <var>initargs</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-unit-instance, slots</var></nobr>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>make-duplicate-instance-changing-class</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>instance</var> <code>standard-object)</code>
+<code>(</code><var>new-class</var> <code>symbol)</code>
+<var>unduplicated-slot-names</var>
+<code>&#38;rest</code> <var>initargs</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-instance, slots</var></nobr>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>make-duplicate-instance-changing-class</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>:around</code>
+<code>(</code><var>instance</var> <code>standard-unit-instance)</code>
+<code>(</code><var>new-class</var> <code>standard-unit-class)</code>
+<var>unduplicated-slot-names</var>
+<code>&#38;rest</code> <var>initargs</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-unit-instance, slots</var></nobr>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> (re-exported by <nobr><code>:gbbopen</code></nobr>)
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> (the <a href="ref-glossary.html#gl:instances">unit-instance</a> and
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> methods are added by <nobr><code>:gbbopen-core</code></nobr>)
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>instance</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code>standard-object</code> <a href="ref-glossary.html#gl:instances">instance</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>new-class</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id19">class&nbsp;designator</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>unduplicated-slot-names</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A list of slot names
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>initargs</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id96">initialization&nbsp;argument&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>new-instance</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code>standard-object</code> <a href="ref-glossary.html#gl:instances">instance</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slots</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id178">proper&nbsp;list</a> of slot objects
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />Two values: the (newly created) duplicate <a href="ref-glossary.html#gl:instances">instance</a> and a
+list of the slots that were duplicated or explicitly initialized.
+</p>
+<p><span class="fndoclabel">Events</span> <br /><a name="id1">When</a> a <a href="ref-glossary.html#id256">unit&nbsp;instance</a> is duplicated, events are signaled in the
+following sequence: 
+</p>
+<p><ol class="tight"><li>An <nobr><code>nonlink-slot-updated-event</code></nobr> or <nobr><code>link-event</code></nobr> is
+signaled for each initialized slot in the duplicated
+<a href="ref-glossary.html#id256">unit&nbsp;instance</a>.  A <nobr><code>link-event</code></nobr> is also signaled for
+each inverse pointer from an existing <a href="ref-glossary.html#id256">unit&nbsp;instance</a> to the
+(newly created) duplicate <a href="ref-glossary.html#id256">unit&nbsp;instance</a>.
+<li>An <nobr><code>instance-added-to-space-instance-event</code></nobr> is signaled
+for each <a href="ref-glossary.html#id222">space&nbsp;instance</a> on which the duplicate
+<a href="ref-glossary.html#id256">unit&nbsp;instance</a> is added.
+<li>A <code>instance-created-event</code> is signaled.
+</ol>
+</p>
+<p><span class="fndoclabel">Errors</span> <br />Use of an initialization argument that has not been declared as valid.
+</p>
+<a name="id2"></a><p><span class="fndoclabel">Description</span> <br />Slot initialization during instance duplication behaves as follows, regardless
+of whether the slots are local or shared:
+</p>
+<p><ul class="tight"><li>If an initarg in <var>initargs</var> specifies a value for a slot, that
+value is stored into the slot in the duplicated instance.
+<li>All slots in the duplicated instance that are unbound at this point and
+that are not named in <var>unduplicated-slot-names</var> or in the list of
+slot-names returned from calling
+<nobr><b><a href="ref-unduplicated-slot-names.html">unduplicated-slot-names</a></b></nobr> on <var>instance</var> are
+set to the value of the slot in <var>instance</var>.
+<li>Any slots that remain unbound at this point and that are defined for
+<var>new-class</var> instances but not for <var>instance</var> or are named in
+<var>unduplicated-slot-names</var> or in the list of slot-names returned from
+calling <nobr><b><a href="ref-unduplicated-slot-names.html">unduplicated-slot-names</a></b></nobr> on
+<var>instance</var> are initialized according to their <nobr><code>:initform</code></nobr>
+forms.
+</ul>
+</p>
+<p>When creating (duplicating) a new <a href="ref-glossary.html#id256">unit&nbsp;instance</a>, specifying a
+<nobr><code>:instance-name</code></nobr> initialization argument causes that value to be
+used as the <a href="ref-glossary.html#id100">instance&nbsp;name</a> of the newly created <a href="ref-glossary.html#id256">unit&nbsp;instance</a>
+instead of the instance-name counter value associated with the
+<a href="ref-glossary.html#id254">unit&nbsp;class</a> (if the <nobr><code>:use-global-instance-name-counter</code></nobr>
+class option is <code>nil</code> or was not specified for the unit class) or the global
+instance-name counter value (if the
+<nobr><code>:use-global-instance-name-counter</code></nobr> class option is true for the
+unit class).
+</p>
+<p>A <nobr><code>:space-instances</code></nobr> initialization argument must be provided when
+creating a new a <a href="ref-glossary.html#id222">space&nbsp;instance</a>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-change-class.html"><b>change-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delete-instance.html"><b>delete-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-describe-instance.html"><b>describe-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-initial-class-instance-number.html"><b>initial-class-instance-number</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-instance-name-of.html"><b>instance-name-of</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-duplicate-instance.html"><b>make-duplicate-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-instance.html"><b>make-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-space-instance.html"><b>make-space-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-next-class-instance-number.html"><b>next-class-instance-number</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-unduplicated-slot-names.html"><b>unduplicated-slot-names</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Create some simple duplicate <a href="ref-glossary.html#gl:instances">instances</a>:
+<a name="id3"></a><pre class="pretop">
+  &gt; (<a href="ref-define-class.html">define-class</a> foo () 
+       ((a :initform 1)
+        (b :initform 2)))
+  #&lt;standard-class foo&gt;
+  &gt; (<a href="ref-define-unit-class.html">define-unit-class</a> bar () 
+       ((a :initform 1)
+        (b :initform 2)))
+  #&lt;standard-class bar&gt;
+  &gt; (defparameter *x* (<a href="ref-make-instance.html">make-instance</a> 'foo :a 11 :b 12))
+  *x*
+  &gt; :ds *x*
+  #&lt;foo #x110fe6ea&gt; is an instance of #&lt;standard-class foo&gt;:
+   The following slots have :instance allocation:
+    a   11
+    b   12
+  &gt; :ds (make-duplicate-instance-changing-class *x* 'foo nil :a -1)
+  #&lt;foo #x110ff93a&gt; is an instance of #&lt;standard-class foo&gt;:
+   The following slots have :instance allocation:
+    a   -1
+    b   12
+  &gt; :ds (make-duplicate-instance-changing-class *x* 'bar nil :b 2)
+  #&lt;bar #x11100032&gt; is an instance of #&lt;standard-unit-class bar&gt;:
+   The following slots have :instance allocation:
+    a   11
+    b   2
+  &gt; :ds (make-duplicate-instance-changing-class *x* 'bar '(b) :a -1)
+  #&lt;bar #x11104542&gt; is an instance of #&lt;standard-unit-class bar&gt;:
+   The following slots have :instance allocation:
+    a   -1
+    b   2
+  &gt; :ds (make-duplicate-instance-changing-class *x* 'bar '(b))
+  #&lt;bar #x11108c82&gt; is an instance of #&lt;standard-unit-class foo&gt;:
+   The following slots have :instance allocation:
+    a   11
+    b   2
+  &gt; (make-duplicate-instance-changing-class *x* 'bar nil)
+  #&lt;bar @ #x1110a0e2&gt;
+  (#&lt;standard-effective-slot-definition b&gt;
+   #&lt;standard-effective-slot-definition a&gt;)
+  &gt;
+</pre>
+</p>
+<p><a name="id4">Create</a> a duplicate of the <code>hyp</code> <code>419</code> <a href="ref-glossary.html#id256">unit&nbsp;instance</a> as a 
+<nobr><code>probable-hyp</code></nobr>:'
+<pre class="pretop">
+  &gt; (make-duplicate-instance-changing-class 
+      (<a href="ref-find-instance-by-name.html">find-instance-by-name</a> 19 'hyp)
+      'possible-hyp nil)
+  #&lt;possible-hyp 681 (1835 4791) 0.85 [5..35]&gt;
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-duplicate-instance.html"><img border="0" alt="make-duplicate-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-make-instance.html"><img border="0" alt="make-instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">make-duplicate-instance-changing-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

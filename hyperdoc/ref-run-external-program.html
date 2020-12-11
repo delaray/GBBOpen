@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- run-external-program</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-kill-external-program.html"><img border="0" alt="kill-external-program" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-os-interface-entities.html"><img border="0" alt="OS Interface" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-svn-version.html"><img border="0" alt="svn-version" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">run-external-program</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">run-external-program</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>program args</var>
+<nobr>&#38;key <var>input output wait</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>bidirectional-stream, os-process</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Run an external program.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:os-interface</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>program</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string specifying the name of the program to be run
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>args</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A list of strings passed to <var>program</var> as arguments
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>input</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A stream specification (default is <nobr><code>:stream</code></nobr>, 
+see below)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>output</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A stream specification (default is <nobr><code>:stream</code></nobr>,
+see below)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>wait</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>bidirectional-stream</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A stream or <code>nil</code>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>os-process</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An implementation-dependent process representation or <code>nil</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />Two values:
+</p>
+<p><ul class="tight"><li>an input, output, or bi-directional stream or <code>nil</code>
+<li>an operating-system process representation, if available, or <code>nil</code>
+</ul>
+</p>
+<p><span class="fndoclabel">Errors</span> <br />Use of a true value for <var>wait</var> and a <nobr><code>:stream</code></nobr>
+value for <var>input</var> or <var>output</var> is problematic or an error in most
+Common Lisp implementations.
+</p>
+<p><span class="fndoclabel">Description</span> <br />The values of <var>input</var> and <var>output</var> can be:
+</p>
+<p><ul class="tight"><li><code>:stream</code> (the default) which creates a stream that is returned as
+the first result value; if both <var>input</var> and <var>output</var> are
+specified as <nobr><code>:stream</code></nobr>, a bi-directional stream is created and
+returned
+<li>a string specifying a file to be used as input or output
+</ul>
+</p>
+<p><a target="_top" href="http://www.lispworks.com">LispWorks</a> (non-Windows platforms) and
+<a target="_top" href="http://sbcl.sourceforge.net">SBCL</a> do not use a search path for
+locating <var>program</var>, the full path must be specified in the <var>program</var>
+string.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-close-external-program-stream.html"><b>close-external-program-stream</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Example</span> <br /><pre class="pretop">
+  &gt; (let ((stream (run-external-program "date" nil)))
+       (print (read-line stream))
+       (<a href="ref-close-external-program-stream.html">close-external-program-stream</a> stream))
+  "Mon Jul  4 14:06:04 EDT 2005" 
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-kill-external-program.html"><img border="0" alt="kill-external-program" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-os-interface-entities.html"><img border="0" alt="OS Interface" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-svn-version.html"><img border="0" alt="svn-version" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">run-external-program</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

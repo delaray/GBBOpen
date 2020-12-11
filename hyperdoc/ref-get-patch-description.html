@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- get-patch-description</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-get-directory.html"><img border="0" alt="get-directory" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-get-root-directory.html"><img border="0" alt="get-root-directory" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">get-patch-description</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">get-patch-description</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>id module-name</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>id, date, author,</var></nobr>
+<var>description, 
+<nobr>date-loaded,</nobr>
+<nobr>file-name</nobr></var>
+or <code>nil</code></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return the information describing <a href="ref-glossary.html#gl:patch">patch</a> <var>id</var> to a
+<nobr><var>module</var></nobr>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>id</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>module-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id110">keyword&nbsp;symbol</a> naming a <a href="ref-glossary.html#gl:module">module</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>date</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id258">Universal&nbsp;Time</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>author</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>description</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string or a <a href="ref-glossary.html#id178">proper&nbsp;list</a> of strings or <code>nil</code></td></tr><tr valign="top"><td valign="baseline" nowrap><i>date-loaded</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id258">Universal&nbsp;Time</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>file-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />Six values: <var>id</var>, <var>date</var>, <nobr><var>author</var></nobr>,
+<nobr><var>description</var></nobr>, <nobr><var>date-loaded</var></nobr>, and
+<nobr><var>file-name</var></nobr>, or <code>nil</code> if the patch has not been loaded.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />Module <var>module-name</var> has not been 
+defined.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-continue-patch.html"><b>continue-patch</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-module.html"><b>define-module</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-describe-module.html"><b>describe-module</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-describe-patches.html"><b>describe-patches</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-finish-patch.html"><b>finish-patch</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-parse-date.html"><b>parse-date</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-patch.html"><b>patch</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-patch-loaded-p.html"><b>patch-loaded-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-start-patch.html"><b>start-patch</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Get the description values for <a href="ref-glossary.html#gl:patch">patch</a> <code>1</code> to <a href="ref-glossary.html#gl:module">module</a>
+<nobr><code>:my-app</code></nobr>:
+<pre class="pretop">
+  &gt; (get-patch-description 1 ':my-app)
+  1
+  3423139200
+  "Corkill"
+  "A simple example patch"
+  3423316130
+  "my-app-p001"
+  &gt;
+</pre>
+and for non-existent patch <code>3</code>:
+<pre>
+  &gt; (get-patch-description 3 ':my-app)
+  nil
+  &gt;
+</pre>
+and for patch <code>1</code> in <a href="ref-glossary.html#gl:module">module</a> <nobr><code>:gbbopen-test</code></nobr> (when
+that module has not been loaded):
+<pre>
+  &gt; (get-patch-description 1 ':gbbopen-test)
+  nil
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-get-directory.html"><img border="0" alt="get-directory" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-get-root-directory.html"><img border="0" alt="get-root-directory" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">get-patch-description</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

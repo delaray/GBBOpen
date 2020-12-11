@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- compile-module</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-patches-only-var.html"><img border="0" alt="*patches-only*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-continue-patch.html"><img border="0" alt="continue-patch" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">compile-module</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">compile-module</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>module-name</var></nobr>
+<nobr><code>&#38;rest</code> <var>options</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Compiles and loads the files in a <a href="ref-glossary.html#gl:module">module</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>module-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id110">keyword&nbsp;symbol</a> naming a <a href="ref-glossary.html#gl:module">module</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>option</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Any of the following <a href="ref-glossary.html#gl:keywords">keywords</a>: 
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:create-dirs</code> </td><td valign="baseline" colspan="1" align="left"> Creates any needed directories that are missing in the
+compiled-file tree</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:noautorun</code> </td><td valign="baseline" colspan="1" align="left"> Binds <nobr><b><a href="ref-autorun-modules-var.html">*autorun-modules*</a></b></nobr> to <code>nil</code>
+during compilation and loading</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:nopatches</code> </td><td valign="baseline" colspan="1" align="left"> Do not compile or load any <a href="ref-glossary.html#gl:patches">patches</a></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:nopropagate</code> </td><td valign="baseline" colspan="1" align="left"> Cancels (overrides) a specified :propagate option</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><code>:patches-only</code></nobr>&nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> Do not compile or load/reload any non-<a href="ref-glossary.html#gl:patch">patch</a> 
+files (binds <nobr><b><a href="ref-patches-only-var.html">*patches-only*</a></b></nobr> to <code>t</code> during 
+compilation and loading)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:print</code> </td><td valign="baseline" colspan="1" align="left"> Incrementally prints information during compilation and
+loading</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:propagate</code> </td><td valign="baseline" colspan="1" align="left"> Applies the specified options to all 
+<a href="ref-glossary.html#gl:required-module">required&nbsp;modules</a></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:recompile</code> </td><td valign="baseline" colspan="1" align="left"> Compiles files even if the existing compiled file is newer 
+than the source file</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:reload</code> </td><td valign="baseline" colspan="1" align="left"> Loads files even if they are already loaded</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:source</code> </td><td valign="baseline" colspan="1" align="left"> Loads from the source file even if the existing compiled file
+is newer than the source file (implies <code>:reload</code>)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+</td></tr></tbody></table>
+<a name="id1"></a></td></tr></table>
+<p><span class="fndoclabel">Errors</span> <br />Module <var>module-name</var> has not been 
+defined.<br />A <a href="ref-glossary.html#id196">relative&nbsp;directory</a>
+specification contains a circularity.<br />Module <var>module-name</var> or one of
+its required modules has not been loaded and
+<nobr><b><a href="ref-patches-only-var.html">*patches-only*</a></b></nobr> is true.
+</p>
+<p><span class="fndoclabel">Description</span> <br />These file options, when specified for individual files in the
+<a href="ref-glossary.html#gl:module">module</a> definition (see <nobr><b><a href="ref-define-module.html">define-module</a></b></nobr>),
+have the following effects (overriding the behavior of <nobr><var>options</var></nobr>
+supplied to <nobr><b>compile-module</b></nobr>):
+<table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:developing</code> </td><td valign="baseline" colspan="1" align="left"> If the patch file has changed, recompile and
+reload it (patch files only) </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:forces-recompile</code>&nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> If the file has changed, recompile and
+reload all subsequent files and <a href="ref-glossary.html#gl:modules">modules</a></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:noload</code> </td><td valign="baseline" colspan="1" align="left"> Compile, but do not load the file </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:recompile</code> </td><td valign="baseline" colspan="1" align="left"> Always recompile the file </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:reload</code> </td><td valign="baseline" colspan="1" align="left"> Always reload the file </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:skip-recompile</code>&nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> Skip recompiling the file if it has been 
+loaded already</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> (takes precedence over other recompilation decisions)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:source</code> </td><td valign="baseline" colspan="1" align="left"> Do not compile the file (load the source instead) </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<a name="id2"></a>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-disable-compiler-macros.html"><b>:disable-compiler-macros</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-full-safety.html"><b>:full-safety</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-automatically-create-missing-directories-var.html"><b>*automatically-create-missing-directories*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-autorun-modules-var.html"><b>*autorun-modules*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-patches-only-var.html"><b>*patches-only*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-module.html"><b>define-module</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-load-module.html"><b>load-module</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-load-module-file.html"><b>load-module-file</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-startup-module.html"><b>startup-module</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Compile and load the GBBopen User <a href="ref-glossary.html#gl:module">module</a> and all its
+<a href="ref-glossary.html#gl:required-module">required&nbsp;modules</a>, creating new compilation directories if they do not
+exist already:
+<pre class="pretop">
+  (compile-module :gbbopen-user :propagate :create-dirs)
+</pre>
+</p>
+<p><span class="fndoclabel">REPL Note</span> <br /><b>Compile-module</b> can be invoked using the <a href="ref-glossary.html#id198">REPL&nbsp;command</a>:
+<a name="id3"></a><pre class="pretop">
+  :cm <span 
+    style="font-family: serif; font-style: normal">[</span><var>module-name</var> <span 
+    style="font-family: serif; font-style: normal">[</span><var>option</var>*<span 
+    style="font-family: serif; font-style: normal">]]</span>
+</pre>
+which remembers the last specified <nobr><var>module-name</var></nobr> and
+<nobr><var>options</var></nobr> as default values for the command.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-patches-only-var.html"><img border="0" alt="*patches-only*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-continue-patch.html"><img border="0" alt="continue-patch" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">compile-module</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

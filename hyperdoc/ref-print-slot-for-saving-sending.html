@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- print-slot-for-saving/sending</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-print-object-for-saving-sending.html"><img border="0" alt="print-object-for-saving/sending" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-saving-sending-entities.html"><img border="0" alt="Saving and Sending" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-save-blackboard-repository.html"><img border="0" alt="save-blackboard-repository" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">print-slot-for-saving/sending</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">print-slot-for-saving/sending</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>instance <nobr>slot-name</nobr> stream</var></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Write the printed representation of slot <nobr><var>slot-name</var></nobr>
+in <nobr><var>object</var></nobr> to <nobr><var>stream</var></nobr> when saving or sending.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-slot-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>instance</var> <code>standard-object)</code>
+<var>slot-name stream</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>print-slot-for-saving/sending</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>instance</var> <code>standard-unit-instance)</code>
+<code>(</code><var>slot-name</var> <code>(eql gbbopen::&#37;&#37;space-instances&#37;&#37;)</code>
+<var>stream</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> (the <a href="ref-glossary.html#gl:instances">unit-instance</a> method is added by
+<nobr><code>:gbbopen-core</code></nobr>)
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>instance</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code>standard-object</code> <a href="ref-glossary.html#gl:instances">instance</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slot-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>stream</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A stream
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Errors</span> <br />A call to <nobr><b>print-slot-for-saving/sending</b></nobr> was made outside the
+dynamic scope of a <nobr><b><a href="ref-with-saving-sending-block.html">with-saving/sending-block</a></b></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-print-object-for-sending-var.html"><b>*print-object-for-sending*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-omitted-slots-for-saving-sending.html"><b>omitted-slots-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-print-object-for-saving-sending.html"><b>print-object-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-print-slot-for-saving-sending.html"><b>print-slot-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-save-blackboard-repository.html"><b>save-blackboard-repository</b></a>
+</p>
+<a name="ex:song-save"></a>
+<p><span class="fndoclabel">Example</span> <br /><a name="id2">Write</a> the binary value of slot <code>song</code> in <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> of
+<code>bird</code> as a Base64 portable string (see the companion <a href="ref-initialize-saved-sent-instance.html#ex:song-read">decoding
+example</a>):
+<pre class="pretop">
+  (defmethod print-slot-for-saving/sending ((bird bird) (slot-name (eql 'song)) stream)
+    (<a href="ref-print-object-for-saving-sending.html">print-object-for-saving/sending</a> (base64-encode (song-of bird)) stream))
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-print-object-for-saving-sending.html"><img border="0" alt="print-object-for-saving/sending" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-saving-sending-entities.html"><img border="0" alt="Saving and Sending" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-save-blackboard-repository.html"><img border="0" alt="save-blackboard-repository" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">print-slot-for-saving/sending</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

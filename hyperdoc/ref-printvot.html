@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- printvot</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-ot2ut.html"><img border="0" alt="ot2ut" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-offset-universal-time-entities.html"><img border="0" alt="Offset Universal Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-set-ot-base.html"><img border="0" alt="set-ot-base" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">printvot</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">printvot</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>form</var>*</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var>*</nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Assist debugging involving <nobr><a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a></nobr> values by printing forms and the results of evaluating them to <nobr><code>*trace-output*</code></nobr>. Any form producing a single-valued integer result is assumed to be an <nobr><a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a></nobr> value and a convenient <nobr><b><a href="ref-full-date-and-time.html">full-date-and-time</a></b></nobr> format (including seconds) is printed as the result value.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>forms</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An implicit <nobr><code>progn</code></nobr> of <a href="ref-glossary.html#gl:forms">forms</a> to be
+evaluated and printed  
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>results</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The values returned by evaluating the last <var>form</var>
+that is not the keyword symbol <code>:hr</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The values returned by evaluating the last <var>form</var> that is not
+the keyword symbol <code>:hr</code>
+</p>
+<p><span class="fndoclabel">Description</span> <br />The following is performed for each form in <var>forms</var>:
+</p>
+<p><ul class="tight"><li>if the form is the keyword symbol <code>:hr</code>, a dashed separator line
+printed to <nobr><code>*trace-output*</code></nobr>
+<li>if the form is a string (before evaluation), it is treated as a label
+and printed to <nobr><code>*trace-output*</code></nobr> without enclosing double-quote
+characters
+<li>if the form is a self-evaluating object, it is printed to
+<nobr><code>*trace-output*</code></nobr>
+<li>otherwise, the form is printed to <nobr><code>*trace-output*</code></nobr>, then the
+form is evaluated and the result values are printed to
+<nobr><code>*trace-output*</code></nobr>.  Unlike <b><a href="ref-printv.html">printv</a></b>, a
+single-valued integer result is assumed to be an <nobr><a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a></nobr> value and when
+that result is printed by <b>printvot</b>, it is first converted to
+<a href="ref-glossary.html#id258">Universal&nbsp;Time</a> and then to
+<nobr><b><a href="ref-full-date-and-time.html">full-date-and-time</a></b></nobr> format (including seconds).
+</ul>
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-full-date-and-time.html"><b>full-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-printv.html"><b>printv</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (printvot "PRINTVOV example" *ot-base* (ut2ot) :hr)
+  ;; PRINTVOV example
+  ;;   *ot-base* =&gt; "Oct 22 2117 04:40:32"
+  ;;   (ut2ot) =&gt; "Jun  4 2008 13:51:08"
+  ;; ------------------------------------------------------------
+  -15071348
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-ot2ut.html"><img border="0" alt="ot2ut" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-offset-universal-time-entities.html"><img border="0" alt="Offset Universal Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-set-ot-base.html"><img border="0" alt="set-ot-base" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">printvot</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

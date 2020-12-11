@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- scheduled-function-scheduler-paused-p</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-scheduled-function-repeat-interval.html"><img border="0" alt="scheduled-function-repeat-interval" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-entities.html"><img border="0" alt="Scheduled and Periodic Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-scheduler-running-p.html"><img border="0" alt="scheduled-function-scheduler-running-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">scheduled-function-scheduler-paused-p</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">scheduled-function-scheduler-paused-p</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><i>&lt;</i>no arguments<i>&gt;</i>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>boolean</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Determine if <a href="ref-glossary.html#gl:scheduled">scheduled-function</a> scheduling is paused.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>boolean</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />True if the <a href="ref-glossary.html#gl:scheduled">scheduled-function</a> scheduler is paused; <code>nil</code>
+otherwise.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />Threads (multiprocessing) is not supported on the
+Common Lisp implementation.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-pause-scheduled-function-scheduler.html"><b>pause-scheduled-function-scheduler</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-resume-scheduled-function-scheduler.html"><b>resume-scheduled-function-scheduler</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-scheduler-running-p.html"><b>scheduled-function-scheduler-running-p</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Example</span> <br />Pause the <a href="ref-glossary.html#gl:scheduled">scheduled-function</a> scheduler:
+<pre class="pretop">
+  &gt; (scheduled-function-scheduler-paused-p)
+  nil
+  &gt; (<a href="ref-pause-scheduled-function-scheduler.html">pause-scheduled-function-scheduler</a>)
+  &gt; (scheduled-function-scheduler-paused-p)
+  t
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-scheduled-function-repeat-interval.html"><img border="0" alt="scheduled-function-repeat-interval" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-entities.html"><img border="0" alt="Scheduled and Periodic Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-scheduler-running-p.html"><img border="0" alt="scheduled-function-scheduler-running-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">scheduled-function-scheduler-paused-p</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- threadp</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-thread-yield.html"><img border="0" alt="thread-yield" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-thread-holds-lock-p.html"><img border="0" alt="thread-holds-lock-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">threadp</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">threadp</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>object</var> 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>boolean</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Check if <var>object</var> is an object representing a
+<a href="ref-glossary.html#gl:thread">thread</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>object</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>boolean</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />True if <var>object</var> is an object representing a 
+<a href="ref-glossary.html#gl:thread">thread</a>; <code>nil</code> otherwise.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-all-threads.html"><b>all-threads</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-spawn-form.html"><b>spawn-form</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-spawn-thread.html"><b>spawn-thread</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-thread-alive-p.html"><b>thread-alive-p</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Example</span> <br /><pre class="pretop">
+  &gt; (threadp (car (<a href="ref-all-threads.html">all-threads</a>)))
+  t
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-thread-yield.html"><img border="0" alt="thread-yield" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-thread-holds-lock-p.html"><img border="0" alt="thread-holds-lock-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">threadp</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

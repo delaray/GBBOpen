@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- *ignored-gbbopen-modules-directory-subdirectories*</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-starting-up.html"><img border="0" alt="Starting Up" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-gbbopen-modules-directory-verbose-var.html"><img border="0" alt="*gbbopen-modules-directory-verbose*" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">*ignored-gbbopen-modules-directory-subdirectories*</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">*ignored-gbbopen-modules-directory-subdirectories*</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"></td><td valign="baseline" align="right">[<i>Variable</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Specify subdirectory names to be ignored by GBBopen's
+<code>gbbopen-modules</code> directory processing.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:common-lisp-user</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;Defined in <code>gbbopen-modules-directory.lisp</code>
+</p>
+<p><span class="fndoclabel">Value type</span>&nbsp;&nbsp;&nbsp;A list
+</p>
+<p><span class="fndoclabel">Initial value</span>&nbsp;&nbsp;&nbsp;<code>(".svn")</code>
+</p>
+<p><span class="fndoclabel">Description</span> <br />Subdirectories named in 
+<nobr><code>*ignored-gbbopen-modules-directory-subdirectories*</code></nobr> are
+ignored when processing shared and personal <code>gbbopen-modules</code> directories
+for command and module definitions.
+</p>
+<p><span class="fndoclabel">Example</span> <br />Add <code>"CVS"</code> to the list of subdirectories that are ignored by GBBopen's
+<code>gbbopen-modules</code> directory processing:
+<pre class="pretop">
+  &gt; (push "CVS" *ignored-gbbopen-modules-directory-subdirectories*)
+  ("CVS" ".svn")
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-starting-up.html"><img border="0" alt="Starting Up" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-gbbopen-modules-directory-verbose-var.html"><img border="0" alt="*gbbopen-modules-directory-verbose*" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">*ignored-gbbopen-modules-directory-subdirectories*</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,14 @@
+This file describes implementation-specific issues that affect GBBopen.
+
+------------------------------------------------------------------------------
+  Franz Allegro CL 
+------------------------------------------------------------------------------
+
+Franz has chosen to ignore inline declarations of user functions (at
+least through Allegro CL 7.0).  So, we use compiler-macros instead (except
+in tools/defflags.lisp--haven't dealt with it yet...)
+
+------------------------------------------------------------------------------
+End of File
+
+

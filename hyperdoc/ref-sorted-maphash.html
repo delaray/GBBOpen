@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- sorted-maphash</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-splitting-butlast.html"><img border="0" alt="splitting-butlast" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-sortf.html"><img border="0" alt="sortf" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">sorted-maphash</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">sorted-maphash</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>function 
+<nobr>hash-table</nobr>
+predicate</var>
+<nobr>&#38;key <var>key</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Apply a <a href="ref-glossary.html#gl:function">function</a> once to each of the entries in a hash
+table according to the entry-key order determined by the <var>predicate</var>
+function
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments, the key and value of the 
+hash-table entry
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>hash-table</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A hash table
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>predicate</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments that returns a
+<a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>key</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a <a href="ref-glossary.html#id82">function&nbsp;object</a>
+of one argument, or <code>nil</code> (default is <code>nil</code>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br />For each entry in the hash table, the <var>function</var> is called with two
+arguments&ndash;the key and the value of that entry.
+</p>
+<p>The first argument to the <var>predicate</var> function is the key of
+one entry in the hash table (or part of that key extracted by the
+<var>key</var> function, if supplied); the second argument is the key of another
+entry in the hash table (or part of that key extracted by the
+<var>key</var> function, if supplied). The <var>predicate</var> function should
+return true if and only if the first argument is strictly less than the
+second; otherwise the predicate should return false.
+</p>
+<p><span class="fndoclabel">Example</span> <br />Print a list of entries in <code>hash-table</code>, in ascending order of their keys 
+(which are strings):
+<pre class="pretop">
+  (sorted-maphash
+     #'(lambda (key value)
+         (format t "~&amp;;; key: ~s value: ~s~&#37;" key value)
+     hash-table
+     #'string&lt;)
+</pre> 
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-splitting-butlast.html"><img border="0" alt="splitting-butlast" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-sortf.html"><img border="0" alt="sortf" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">sorted-maphash</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

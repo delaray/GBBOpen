@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- get-et</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-delete-et.html"><img border="0" alt="delete-et" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-atable-entities.html"><img border="0" alt="Transitioning Sets and Tables" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-in-eset.html"><img border="0" alt="in-eset" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">get-et</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">get-et</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>key et</var>
+<nobr><code>&#38;optional</code> <var>default</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>value, present-p</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return the value associated with <var>key</var> in <var>et</var> using
+<code>eq</code> as the key-comparison function.
+</p>
+<p><span class="fndoclabel">Setf syntax</span><table class="tighttop" width="100%">
+<tr valign="top">
+<td valign="baseline" align="left">
+<nobr>(setf (get-et</nobr>
+</td>
+<td valign="baseline">&nbsp; </td>
+<td valign="baseline" align="left" width="99%">
+<var>key et</var>
+<nobr><code>&#38;optional</code> <var>default</var></nobr>) <var>value</var>) 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>value</var></nobr>
+</td>
+</tr>
+</table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>key</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>et</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#gl:ET">ET</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>present-p</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />Two values:
+</p>
+<p><ul class="tight"><li>The value associated with the given <var>key</var> or <var>default</var> if no
+entry is associated with <var>key</var>
+<li>True, if an entry was found; <code>nil</code> if there is no such entry
+</ul>
+When <code>setf</code> is used with <nobr><b>get-et</b></nobr>, the supplied
+<var>value</var> is returned as a single value.
+</p>
+<p><span class="fndoclabel">Description</span> <br /><code>Setf</code> may be used with <nobr><b>get-et</b></nobr> to replace the
+value associated with the given <var>key</var>, or to add a new entry. When a
+<nobr><b>get-et</b></nobr> form is used as a setf place, any
+<var>default</var> which is supplied is evaluated, but its value is ignored.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-et.html"><b>make-et</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-assq.html"><b>assq</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delete-et.html"><b>delete-et</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><a name="id1"></a><pre class="pretop">
+  &gt; (defparameter *e* (<a href="ref-make-et.html">make-et</a>))
+  *et
+  &gt; (get-et 'x *et*)
+  nil
+  nil
+  &gt; (get-et 'x *et* ':missing)
+  :missing
+  nil
+  &gt; (setf (get-et 'x *et*) 1)
+  1
+  &gt; (get-et 'x *et*)
+  1
+  t
+  &gt; (get-et nil *et*)
+  nil
+  nil
+  &gt; (setf (get-et nil *et*) nil)
+  nil
+  &gt; (get-et nil *et*)
+  nil
+  t
+  &gt; 
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-delete-et.html"><img border="0" alt="delete-et" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-atable-entities.html"><img border="0" alt="Transitioning Sets and Tables" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-in-eset.html"><img border="0" alt="in-eset" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">get-et</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

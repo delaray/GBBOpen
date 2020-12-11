@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- change-space-instance</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-allowed-unit-classes-of.html"><img border="0" alt="allowed-unit-classes-of" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-children-of.html"><img border="0" alt="children-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">change-space-instance</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">change-space-instance</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>space-instance</var>
+<code>&#38;key</code> 
+<var><nobr>allowed-unit-classes</nobr> dimensions storage</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>space-instance</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Change the dimensions, allowed unit classes, and storage of a
+<a href="ref-glossary.html#id222">space&nbsp;instance</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>space-instance-or-path</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The <a href="ref-glossary.html#id222">space&nbsp;instance</a> or
+<a href="ref-glossary.html#id224">space-instance&nbsp;path</a> to be changed
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>allowed-unit-classes</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id73">extended&nbsp;unit-classes&nbsp;specification</a> 
+or <code>nil</code> (see below; default is <code>t</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>dimensions</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A list of <code>(</code><var><a href="ref-glossary.html#gl:dimension-name">dimension-name</a></var>
+<var>dimension-type-specifier</var><code>)</code> pairs (default is <code>nil</code>)  
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>storage</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id228">storage&nbsp;specification</a>
+(see below; default is <nobr><code>(t t unstructured)</code></nobr> or <code>nil</code> if
+<var>allowed-unit-classes</var> is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>space-instance</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The <a href="ref-glossary.html#id222">space&nbsp;instance</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <a href="ref-glossary.html#id222">space&nbsp;instance</a> that was changed.
+</p>
+<p><span class="fndoclabel">Events</span> <br /><a name="id1">When</a> the allowed unit classes of <var>space-instance</var> are made more
+restrictive, <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> that are no longer allowed on the
+<a href="ref-glossary.html#id222">space&nbsp;instance</a> are removed from <var>space-instance</var>, signaling a
+<nobr><code>instance-removed-from-space-instance-event</code></nobr> for each removed unit
+instance.
+</p>
+<p><span class="fndoclabel">Detailed syntax</span><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>allowed-unit-classes</var> ::=</nobr> <var>unit-classes-specifier</var>
+| <code>nil</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>dimension-type-specifier</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <code>:ordered</code> | 
+<code>(:ordered</code> [<var>ordered-comparison-type</var>]<code>)</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>:enumerated</code> |
+<code>(:enumerated</code> [<var>enumerated-comparison-type</var>]<code>)</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>:boolean</code> |
+<code>(:boolean</code> [<var>boolean-comparison-type</var>]<code>)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>ordered-comparison-type</var> ::=</nobr>
+<a name="id2"></a></td><td valign="baseline" colspan="1" align="left"> <code>number</code> | <code>fixnum</code> |
+<code>short-float</code> | <code>single-float</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>double-float</code> | <code>long-float</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>pseudo-probability</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>enumerated-comparison-type</var> ::=</nobr>
+<a name="id3"></a></td><td valign="baseline" colspan="1" align="left"> <code>eq</code> | <code>eql</code> |
+<code>equal</code> | <code>equalp</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>boolean-comparison-type</var> ::=</nobr>
+</td><td valign="baseline" colspan="1" align="left"> <code>t</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>unit-classes-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <code>t</code> | 
+<var>single-unit-class-specifier</var> 
+| <code>(</code><var>single-unit-class-specifier</var><sup>+</sup><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>single-unit-class-specifier</var> ::=</nobr> 
+</td><td valign="baseline" colspan="1" align="left"> <var>atomic-unit-class</var> |
+<code>(</code><var>atomic-unit-class subclassing-specifier</var><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>atomic-unit-class</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>unit-class</var> | 
+<var>unit-class-name</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<br /><table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>storage</var> ::=</nobr> 
+</td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>unit-class-specifier dimension-names 
+storage-specification</var><code>)*</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>dimension-names</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>dimension-name</var> | 
+<code>(</code><var>dimension-name</var><sup>+</sup><code>)</code> | <code>t</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>storage-specification</var> ::=</nobr>
+<a name="id4"></a></td><td valign="baseline" colspan="1" align="left"> <code>unstructured</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>boolean</code> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>uniform-buckets</code> <code>:layout</code> 
+<var>dimension-buckets-specification</var><sup>+</sup> |</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>hashed</code> [<code>:size</code> <var>integer</var>]</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>dimension-buckets-specification</var> ::=</nobr> 
+</td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>start-value end-value bucket-width</var><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>The default <nobr><var>ordered-comparison-type</var></nobr>, if unspecified, is
+<nobr><code>number</code></nobr>.  The default <nobr><var>enumerated-comparison-type</var></nobr>,
+if unspecified, is <code>eql</code>.  The default
+<nobr><var>boolean-comparison-type</var></nobr> is <code>t</code>.
+</p>
+<p><span class="fndoclabel">Terms</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>dimension-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A symbol specifying a <a href="ref-glossary.html#gl:dimension">dimension</a> 
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-space-instance.html"><b>make-space-instance</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Change the storage of <a href="ref-glossary.html#id222">space&nbsp;instance</a> <nobr><code>(bb hyp)</code></nobr> to the
+default unstructured storage for all <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a>:
+<pre class="pretop">
+  &gt; (change-space-instance '(bb hyps) :storage nil)
+  #&lt;standard-space-instance (bb hyps)&gt;
+  &gt;
+</pre>
+Now change it to store <code>hyp</code> <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> with uniform-bucket
+storage for indexing in the <code>x</code> and <code>y</code> dimensions and hashed
+storage in the <nobr><code>classification</code></nobr> dimension:
+<pre>
+  &gt; (change-space-instance '(bb hyps)
+       :storage '(((hyp :plus-subclasses) (x y) 
+                    uniform-buckets :layout ((0 10000 100)
+                                             (0 10000 100)))
+                  ((hyp :plus-subclasses) (classification) 
+                    hashed)))
+  #&lt;standard-space-instance (bb hyps)&gt;
+  &gt;
+</pre>
+Now change it to store only <code>hyp</code> <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> (no subclasses)
+with uniform-bucket storage for indexing in the <code>x</code> and <code>y</code>
+dimensions and hashed storage in the <nobr><code>classification</code></nobr> dimension:
+<pre>
+  &gt; (change-space-instance '(bb hyps)
+       :allowed-unit-classes 'hyp     
+       :storage '((hyp (x y) 
+                   uniform-buckets :layout ((0 10000 100)
+                                            (0 10000 100)))
+                  (hyp (classification) hashed)))
+  #&lt;standard-space-instance (bb hyps)&gt;
+  &gt; 
+</pre>
+Any <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> that are subclasses of <code>hyp</code> are removed from
+the <nobr><code>(bb hyps)</code></nobr> <a href="ref-glossary.html#id222">space&nbsp;instance</a> by the above change in
+allowed unit classes.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-allowed-unit-classes-of.html"><img border="0" alt="allowed-unit-classes-of" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-children-of.html"><img border="0" alt="children-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">change-space-instance</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

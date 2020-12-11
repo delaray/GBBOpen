@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- pushnew-acons</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-push-acons.html"><img border="0" alt="push-acons" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-pushnew-elements.html"><img border="0" alt="pushnew-elements" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">pushnew-acons</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">pushnew-acons</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>item value place</var> 
+<nobr><code>&#38;key</code> <var>key test test-not</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>new-place-value</var></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Replace the <var>value</var> associated with <var>item</var> in an
+<a href="ref-glossary.html#id3">association&nbsp;list</a> stored in <var>place</var> or add a new
+<nobr><code>(<var>item</var> . <var>value</var>)</code></nobr> <a href="ref-glossary.html#gl:cons">cons</a> to the
+<a href="ref-glossary.html#id3">association&nbsp;list</a> if there is no existing association for <var>item</var>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>item</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>place</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a> which is suitable for use as a
+<a href="ref-glossary.html#id88">generalized&nbsp;reference</a> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>key</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a <a href="ref-glossary.html#id82">function&nbsp;object</a>
+of one argument, or <code>nil</code> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>test</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a <a href="ref-glossary.html#id82">function&nbsp;object</a>
+of two arguments that returns a <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is
+<nobr><code>&#35;'eql</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>test-not</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments that returns a
+<a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (use of <code>:test-not</code> is deprecated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>new-place-value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id3">association&nbsp;list</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />An <a href="ref-glossary.html#id3">association&nbsp;list</a> (the new value of
+<var>place</var>). 
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-push-acons.html"><b>push-acons</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-pushnew-incf-acons.html"><b>pushnew/incf-acons</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (setf alist nil)
+  nil
+  &gt; (pushnew-acons 'x 1 alist)
+  ((x . 1))
+  &gt; (pushnew-acons 'y 2 alist)
+  ((y . 2) (x . 1))
+  &gt; (pushnew-acons 'x -1 alist)
+  ((y . 2) (x . -1))
+  &gt; alist
+  ((y . 2) (x . -1))
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-push-acons.html"><img border="0" alt="push-acons" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-pushnew-elements.html"><img border="0" alt="pushnew-elements" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">pushnew-acons</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

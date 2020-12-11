@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- sleep-nearly-forever</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-run-in-thread.html"><img border="0" alt="run-in-thread" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-spawn-form.html"><img border="0" alt="spawn-form" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">sleep-nearly-forever</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">sleep-nearly-forever</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;optional</code> <var>seconds</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />A maximum-time-bounded <code>sleep</code>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>seconds</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer (default is 
+<nobr><b><a href="ref-nearly-forever-seconds.html">nearly-forever-seconds</a></b></nobr>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id1">Calls</a> <code>sleep</code> with <var>seconds</var> or <nobr><b><a href="ref-nearly-forever-seconds.html">nearly-forever-seconds</a></b></nobr>, whichever is less.  Using <nobr><b>nearly-forever-seconds</b></nobr> protects against exceeding the duration limit of the Common Lisp implementation's <code>sleep</code> function for very long duration sleeping, by truncating the duration to <nobr><b><a href="ref-nearly-forever-seconds.html">nearly-forever-seconds</a></b></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-nearly-forever-seconds.html"><b>nearly-forever-seconds</b></a>
+</p>
+<a name="id2"></a><p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (sleep-nearly-forever)    ; sleep for a very long time
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  &gt; (sleep-nearly-forever     ; sleep as long as the above
+       (* 2 <a href="ref-nearly-forever-seconds.html">nearly-forever-seconds</a>))
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-run-in-thread.html"><img border="0" alt="run-in-thread" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-spawn-form.html"><img border="0" alt="spawn-form" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">sleep-nearly-forever</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

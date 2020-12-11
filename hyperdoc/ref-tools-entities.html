@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- GBBopen Tools</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="reference_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-additional-tools-entities.html"><img border="0" alt="Additional GBBopen Tools" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>GBBopen Tools</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h1>GBBopen Tools</h1>
+<p>The GBBopen Tools <a href="ref-glossary.html#gl:module">module</a>, <nobr><code>:gbbopen-tools</code></nobr>, contains
+useful Common Lisp additions and utilities.  Convenient (<a href="ref-declared-numerics.html">shorthand
+operators</a> for declared <nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr>, <nobr><code>short-float</code></nobr>, <nobr><code>single-float</code></nobr>, <nobr><code>double-float</code></nobr>, and <nobr><code>long-float</code></nobr> numeric operators are provided, as are efficient <a href="ref-pseudo-probability-entities.html">pseudo probability</a> operators.  Uniform access to <a href="ref-clos-and-mop-entities.html">commonly used CLOS and MOP symbols</a> is
+provided by the module's <nobr><code>:gbbopen-tools</code></nobr> package.
+Date and time <a href="ref-date-and-time-entities.html">parsing and formatting entities</a>, <nobr><code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code></nobr>-based <a href="ref-offset-universal-time-entities.html">offset-universal-time
+functions</a>, and <a href="ref-search-tree-entities.html">left-leaning red-black
+(<a href="ref-glossary.html#gl:LLRB">LLRB</a>) trees</a> are also included in GBBopen Tools.
+</p>
+<p>Additional GBBopen Tools entities that are not loaded as part of the <nobr><code>:gbbopen-tools</code></nobr> module are documented in the <a href="ref-additional-tools-entities.html">Additional GBBopen Tools section</a> of this Reference.  These additional-tool entities are grouped into separate modules that can be loaded as appropriate.
+</p>
+<p>Several entities in the <nobr><code>:gbbopen-tools</code></nobr> module that are extended by additional methods in the <nobr><code>:gbbopen-core</code></nobr> module are documented in the <a href="ref-GBBopen-core-entities.html">GBBopen Core section</a> of this Reference.  These entities are:
+<table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-print-object-for-sending-var.html">*print-object-for-sending*</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-save-send-references-only-var.html">*save/send-references-only*</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-initialize-saved-sent-instance.html">initialize-saved/sent-instance</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-make-duplicate-instance.html">make-duplicate-instance</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-make-duplicate-instance-changing-class.html">make-duplicate-instance-changing-class</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-omitted-slots-for-saving-sending.html">omitted-slots-for-saving/sending</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-print-object-for-saving-sending.html">print-object-for-saving/sending</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-print-slot-for-saving-sending.html">print-slot-for-saving/sending</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-with-reading-saved-sent-objects-block.html">with-reading-saved/sent-objects-block</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-with-saving-sending-block.html">with-saving/sending-block</a></code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<p><b><font size="+1">Entities</font></b>
+</p>
+<ul>
+<li><a href="ref-disable-compiler-macros.html"><font color="#000000">:disable-compiler-macros</font></a></li>
+<li><a href="ref-full-safety.html"><font color="#000000">:full-safety</font></a></li>
+<li><a href="ref-disable-with-error-handling-var.html"><font color="#000000">*disable-with-error-handling*</font></a></li>
+<li><a href="ref-allow-redefinition.html"><font color="#000000">allow-redefinition</font></a></li>
+<li><a href="ref-assq.html"><font color="#000000">assq</font></a></li>
+<li><a href="ref-bounded-value.html"><font color="#000000">bounded-value</font></a></li>
+<li><a href="ref-case-using.html"><font color="#000000">case-using</font></a></li>
+<li><a href="ref-case-using-failure.html"><font color="#000000">case-using-failure</font></a></li>
+<li><a href="ref-ccase-using.html"><font color="#000000">ccase-using</font></a></li>
+<li><a href="ref-compiler-macroexpand.html"><font color="#000000">compiler-macroexpand</font></a></li>
+<li><a href="ref-compiler-macroexpand-1.html"><font color="#000000">compiler-macroexpand-1</font></a></li>
+<li><a href="ref-counted-delete.html"><font color="#000000">counted-delete</font></a></li>
+<li><a href="ref-decf-after.html"><font color="#000000">decf-after</font></a></li>
+<li><a href="ref-decf-delete-acons.html"><font color="#000000">decf/delete-acons</font></a></li>
+<li><a href="ref-delq.html"><font color="#000000">delq</font></a></li>
+<li><a href="ref-delq-one.html"><font color="#000000">delq-one</font></a></li>
+<li><a href="ref-defcm.html"><font color="#000000">defcm</font></a></li>
+<li><a href="ref-define-class.html"><font color="#000000">define-class</font></a></li>
+<li><a href="ref-do-until.html"><font color="#000000">do-until</font></a></li>
+<li><a href="ref-do-while.html"><font color="#000000">do-while</font></a></li>
+<li><a href="ref-dosequence.html"><font color="#000000">dosequence</font></a></li>
+<li><a href="ref-dosublists.html"><font color="#000000">dosublists</font></a></li>
+<li><a href="ref-dotted-length.html"><font color="#000000">dotted-length</font></a></li>
+<li><a href="ref-ecase-using.html"><font color="#000000">ecase-using</font></a></li>
+<li><a href="ref-ensure-finalized-class.html"><font color="#000000">ensure-finalized-class</font></a></li>
+<li><a href="ref-ensure-list.html"><font color="#000000">ensure-list</font></a></li>
+<li><a href="ref-incf-after.html"><font color="#000000">incf-after</font></a></li>
+<li><a href="ref-list-length-1-p.html"><font color="#000000">list-length-1-p</font></a></li>
+<li><a href="ref-list-length-2-p.html"><font color="#000000">list-length-2-p</font></a></li>
+<li><a href="ref-list-length-gt.html"><font color="#000000">list-length&gt;</font></a></li>
+<li><a href="ref-list-length-gt-1.html"><font color="#000000">list-length&gt;1</font></a></li>
+<li><a href="ref-list-length-gt-2.html"><font color="#000000">list-length&gt;2</font></a></li>
+<li><a href="ref-make-hash-values-vector.html"><font color="#000000">make-hash-values-vector</font></a></li>
+<li><a href="ref-make-keyword.html"><font color="#000000">make-keyword</font></a></li>
+<li><a href="ref-memq.html"><font color="#000000">memq</font></a></li>
+<li><a href="ref-multiple-value-setf.html"><font color="#000000">multiple-value-setf</font></a></li>
+<li><a href="ref-nsorted-insert.html"><font color="#000000">nsorted-insert</font></a></li>
+<li><a href="ref-object-address.html"><font color="#000000">object-address</font></a></li>
+<li><a href="ref-print-instance-slot-value.html"><font color="#000000">print-instance-slot-value</font></a></li>
+<li><a href="ref-print-instance-slots.html"><font color="#000000">print-instance-slots</font></a></li>
+<li><a href="ref-printv.html"><font color="#000000">printv</font></a></li>
+<li><a href="ref-push-acons.html"><font color="#000000">push-acons</font></a></li>
+<li><a href="ref-pushnew-acons.html"><font color="#000000">pushnew-acons</font></a></li>
+<li><a href="ref-pushnew-elements.html"><font color="#000000">pushnew-elements</font></a></li>
+<li><a href="ref-pushnew-incf-acons.html"><font color="#000000">pushnew/incf-acons</font></a></li>
+<li><a href="ref-remove-properties.html"><font color="#000000">remove-properties</font></a></li>
+<li><a href="ref-remove-property.html"><font color="#000000">remove-property</font></a></li>
+<li><a href="ref-set-equal.html"><font color="#000000">set-equal</font></a></li>
+<li><a href="ref-sets-overlap-p.html"><font color="#000000">sets-overlap-p</font></a></li>
+<li><a href="ref-shuffle-list.html"><font color="#000000">shuffle-list</font></a></li>
+<li><a href="ref-shrink-vector.html"><font color="#000000">shrink-vector</font></a></li>
+<li><a href="ref-sole-element.html"><font color="#000000">sole-element</font></a></li>
+<li><a href="ref-splitting-butlast.html"><font color="#000000">splitting-butlast</font></a></li>
+<li><a href="ref-sorted-maphash.html"><font color="#000000">sorted-maphash</font></a></li>
+<li><a href="ref-sortf.html"><font color="#000000">sortf</font></a></li>
+<li><a href="ref-stable-sortf.html"><font color="#000000">stable-sortf</font></a></li>
+<li><a href="ref-standard-gbbopen-instance.html"><font color="#000000">standard-gbbopen-instance</font></a></li>
+<li><a href="ref-trimmed-substring.html"><font color="#000000">trimmed-substring</font></a></li>
+<li><a href="ref-undefmethod.html"><font color="#000000">undefmethod</font></a></li>
+<li><a href="ref-unbound-value-indicator.html"><font color="#000000">unbound-value-indicator</font></a></li>
+<li><a href="ref-until.html"><font color="#000000">until</font></a></li>
+<li><a href="ref-while.html"><font color="#000000">while</font></a></li>
+<li><a href="ref-with-error-handling.html"><font color="#000000">with-error-handling</font></a></li>
+<li><a href="ref-with-full-optimization.html"><font color="#000000">with-full-optimization</font></a></li>
+<li><a href="ref-with-generate-accessors-format.html"><font color="#000000">with-generate-accessors-format</font></a></li>
+<li><a href="ref-with-gensyms.html"><font color="#000000">with-gensyms</font></a></li>
+<li><a href="ref-with-once-only-bindings.html"><font color="#000000">with-once-only-bindings</font></a></li>
+<li><a href="ref-xor.html"><font color="#000000">xor</font></a></li>
+</ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="reference_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-additional-tools-entities.html"><img border="0" alt="Additional GBBopen Tools" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>GBBopen Tools</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

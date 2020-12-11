@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- condition-variable-wait-with-timeout</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-condition-variable-wait.html"><img border="0" alt="condition-variable-wait" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-current-thread.html"><img border="0" alt="current-thread" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">condition-variable-wait-with-timeout</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">condition-variable-wait-with-timeout</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>condition-variable seconds</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>boolean</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Block the current <a href="ref-glossary.html#gl:thread">thread</a> on
+<nobr><var>condition-variable</var></nobr> or until <nobr><var>seconds</var></nobr> seconds have
+elapsed.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>condition-variable</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id27">condition&nbsp;variable</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>seconds</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A number
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>boolean</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />True if <nobr><var>condition-variable</var></nobr> is unblocked before
+<nobr><var>seconds</var></nobr> seconds have elapsed; <code>nil</code> if the timeout has occurred.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />The <a href="ref-glossary.html#gl:lock">lock</a> (or <a href="ref-glossary.html#id194">recursive&nbsp;lock</a>) associated
+with <nobr><var>condition-variable</var></nobr> is not held by the executing process.
+</p>
+<p>Threads (multiprocessing) is not supported on the
+Common Lisp implementation.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-condition-variable-broadcast.html"><b>condition-variable-broadcast</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-condition-variable-signal.html"><b>condition-variable-signal</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-condition-variable-wait.html"><b>condition-variable-wait</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-condition-variable.html"><b>make-condition-variable</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-lock-held.html"><b>with-lock-held</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-without-lock-held.html"><b>without-lock-held</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Example</span> <br />Acquire the condition-variable <a href="ref-glossary.html#gl:lock">lock</a> and then wait until
+signaled by another <a href="ref-glossary.html#gl:thread">thread</a> or until 5 seconds have elapsed:
+<pre class="pretop">
+  (<a href="ref-with-lock-held.html">with-lock-held</a> (condition-variable)
+    (condition-variable-wait-with-timeout condition-variable 5))
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-condition-variable-wait.html"><img border="0" alt="condition-variable-wait" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-current-thread.html"><img border="0" alt="current-thread" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">condition-variable-wait-with-timeout</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

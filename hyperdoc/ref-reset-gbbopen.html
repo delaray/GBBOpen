@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- reset-gbbopen</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-instance-from-space-instance.html"><img border="0" alt="remove-instance-from-space-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-standard-space-class.html"><img border="0" alt="standard-space-class" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">reset-gbbopen</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">reset-gbbopen</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;key</code> <var>disable-events</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Unconditionally delete all <a href="ref-glossary.html#gl:unit">unit</a> and
+<a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>, remove all <a href="ref-glossary.html#gl:event-function">event&nbsp;functions</a>, and disable event
+printing.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>disable-events</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>t</code>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Events</span> <br /><a name="id1">If</a> <var>disable-events</var> is <code>nil</code>, the following events may be signaled (in
+order) as <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> and <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> are deleted:
+</p>
+<p><ul class="tight"><li><code>delete-instance-event</code>
+<li><code>unlink-event</code>
+<li><code>instance-removed-from-space-instance-event</code>
+<li><code>instance-deleted-event</code>
+</ul>
+</p>
+<p><span class="fndoclabel">Description</span> <br />Calling <nobr><b>reset-gbbopen</b></nobr> deletes all
+<a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> and <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>, disables all event
+printing, removes all event functions, and resets all <a href="ref-glossary.html#gl:unit-class">unit-class</a>
+instance-name counters to their initial values.  <nobr><b>Reset-gbbopen</b></nobr>
+does not undefine any class definitions, functions, methods, etc.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-confirm-if-blackboard-repository-not-empty-p.html"><b>confirm-if-blackboard-repository-not-empty-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delete-all-space-instances.html"><b>delete-all-space-instances</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delete-instance.html"><b>delete-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delete-space-instance.html"><b>delete-space-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-ks-class.html"><b>define-ks-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-ksa-class.html"><b>define-ksa-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-space-class.html"><b>define-space-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-unit-class.html"><b>define-unit-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-initial-class-instance-number.html"><b>initial-class-instance-number</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-reset-gbbopen.html"><b>reset-gbbopen</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-reset-unit-class.html"><b>reset-unit-class</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Prepare for a new application by resetting GBBopen:
+<pre class="pretop">
+  &gt; (reset-gbbopen)
+  t
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br /><a name="id2">This</a> function and <nobr><b><a href="ref-delete-blackboard-repository.html">delete-blackboard-repository</a></b></nobr> are
+the only GBBopen functions that disable <a href="ref-glossary.html#gl:event">event</a> signaling by default.
+This conflicts with the normal use of
+<nobr><b><a href="ref-with-events-disabled.html">with-events-disabled</a></b></nobr> and
+<nobr><b><a href="ref-with-events-enabled.html">with-events-enabled</a></b></nobr> macros for controlling
+<a href="ref-glossary.html#gl:event">event</a> signaling, but having <a href="ref-glossary.html#gl:events">events</a> disabled is the desired
+behavior in almost every reset situation.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-instance-from-space-instance.html"><img border="0" alt="remove-instance-from-space-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-bb-repository-entities.html"><img border="0" alt="Blackboard Repository" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-standard-space-class.html"><img border="0" alt="standard-space-class" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">reset-gbbopen</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

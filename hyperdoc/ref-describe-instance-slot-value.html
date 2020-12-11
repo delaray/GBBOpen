@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- describe-instance-slot-value</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-describe-instance.html"><img border="0" alt="describe-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-unit-class.html"><img border="0" alt="describe-unit-class" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">describe-instance-slot-value</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">describe-instance-slot-value</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>unit-instance <nobr>slot-name</nobr> value</var>
+<nobr><code>&#38;optional</code> <var>stream</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Customize slot-value printing by
+<b><a href="ref-describe-instance.html">describe-instance</a></b>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>describe-instance-slot-value</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>unit-instance</var> <code>standard-unit-instance)</code>
+<var>slot-name value</var>
+<nobr><code>&#38;optional</code> <var>stream</var></nobr>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>unit-instance</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id256">unit&nbsp;instance</a> (or <a href="ref-glossary.html#id222">space&nbsp;instance</a>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slot-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-<code>nil</code>, <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>stream</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A stream (default is <nobr><code>*standard-output*</code></nobr>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id2"></a><b>Describe-instance-slot-value</b> is called by
+<nobr><b><a href="ref-describe-instance.html">describe-instance</a></b></nobr> to print each slot value; it
+should not be called directly. The slot-value representation is printed to the
+output <var>stream</var>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-describe-instance.html"><b>describe-instance</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br /><a name="id3">Describe</a> the <code>observation-duration</code> slot of a <code>hyp</code>
+<a href="ref-glossary.html#id256">unit&nbsp;instance</a> as a human-readable duration:
+<pre class="pretop">
+  (defmethod describe-instance-slot-value
+      ((hyp hyp)
+       (slot-name (eql 'observation-duration)) value
+       &#38;optional (stream *standard-output*))
+    (if value
+        (<a href="ref-pretty-duration.html">pretty-duration</a> duration 5 stream)
+        (prin1 nil stream)))
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-describe-instance.html"><img border="0" alt="describe-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-unit-class.html"><img border="0" alt="describe-unit-class" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">describe-instance-slot-value</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

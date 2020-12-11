@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- link-setf</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-linkf.html"><img border="0" alt="linkf" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-link-entities.html"><img border="0" alt="Links" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-link-slot-p.html"><img border="0" alt="link-slot-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">link-setf</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">link-setf</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a> <nobr>unit-instance-or-instances</nobr></var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>unit-instance-or-instances</var></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Set <var><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></var> to be precisely
+<nobr><var>unit-instance-or-instances</var></nobr> <a href="ref-glossary.html#gl:links">links</a> between
+<nobr><a href="ref-glossary.html#id256">unit&nbsp;instance</a></nobr> and <nobr><var>unit-instance-or-instances</var></nobr>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a> which is suitable for use as a
+<a href="ref-glossary.html#id88">generalized&nbsp;reference</a> to a <a href="ref-glossary.html#id128">link&nbsp;slot</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>unit-instance-or-instances</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id256">unit&nbsp;instance</a>, a 
+<a href="ref-glossary.html#id130">link-pointer&nbsp;object</a>, or a list of <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> and 
+<a href="ref-glossary.html#gl:link-pointer-object">link-pointer&nbsp;objects</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The supplied <var>unit-instance-or-instances</var>.
+</p>
+<p><span class="fndoclabel">Events</span> <br /><a name="id1">An</a> <code>unlink-event</code> is signaled for:
+</p>
+<p><ul class="tight"><li>all pointers that are removed from the specified
+<nobr><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></nobr>
+<li>each inverse pointer of the <a href="ref-glossary.html#gl:link">link</a> that is removed-from
+another <nobr><a href="ref-glossary.html#id256">unit&nbsp;instance</a></nobr>
+</ul>
+A <code>link-event</code> is signaled for:
+</p>
+<p><ul class="tight"><li>all pointers that are added to the specified
+<nobr><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></nobr> (unlike <b><a href="ref-linkf.html">linkf</a></b>, this event
+is signaled even if no new pointers were added to
+<nobr><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></nobr>)
+<li>each inverse pointer of the <a href="ref-glossary.html#gl:link">link</a> that is added to
+another <nobr><a href="ref-glossary.html#id256">unit&nbsp;instance</a></nobr>
+</ul>
+</p>
+<p><span class="fndoclabel">Description</span> <br />Any existing <a href="ref-glossary.html#gl:links">links</a> in <nobr><var><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></var></nobr> that 
+do not involve <nobr><var>unit-instance-or-instances</var></nobr> are unlinked.  
+Existing <a href="ref-glossary.html#gl:links">links</a> that are also specified as <a href="ref-glossary.html#gl:link-pointer-object">link-pointer&nbsp;objects</a> in
+<nobr><var>unit-instance-or-instances</var></nobr> are replaced with the new
+link-pointer objects. Then <a href="ref-glossary.html#gl:links">links</a> to any additional
+<nobr><a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a></nobr> in <nobr><var>unit-instance-or-instances</var></nobr>
+are added.
+</p>
+<p>The order of the specified <nobr><var>unit-instance-or-instances</var></nobr> is
+maintained when settting the value of <nobr><var><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></var></nobr>, if
+no <nobr><code>:sort-function</code></nobr> was specified as a
+<nobr><var>link-slot-option</var></nobr> in the <a href="ref-glossary.html#gl:unit-class">unit-class</a> definition for that
+<a href="ref-glossary.html#id128">link&nbsp;slot</a>.  Any duplicates in
+<nobr><var>unit-instance-or-instances</var></nobr> are removed, but the order of the
+remaining elements will be the same as the order in which they appeared in
+<nobr><var>unit-instance-or-instances.</var></nobr>
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-link-instance-of.html"><b>link-instance-of</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-linkf.html"><b>linkf</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-standard-link-pointer.html"><b>standard-link-pointer</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-unlinkf.html"><b>unlinkf</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-unlinkf-all.html"><b>unlinkf-all</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Set the <nobr><code>supporting-hyps</code></nobr> <a href="ref-glossary.html#id128">link&nbsp;slot</a> of the
+<code>hyp</code> <a href="ref-glossary.html#id256">unit&nbsp;instance</a> to the <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> in
+<nobr><code>supporting-hyps</code></nobr>:
+<pre class="pretop">
+  &gt; (link-setf (supporting-hyps-of unit-instance) supporting-hyps)
+  #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;
+  &gt;
+</pre>
+Note that, when a link pointer to <code>hyp</code> 231 is already present in
+a link slot, adding a <a href="ref-glossary.html#gl:link-pointer-object">link-pointer-object</a> link to that same <code>hyp</code> unit instance replaces the existing link pointer:
+<pre>
+  &gt; (supporting-hyps-of unit-instance)
+  (#&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;)
+  &gt; (link-setf (supporting-hyps-of unit-instance) 
+           (<a href="ref-make-instance.html">make-instance</a> '<a href="ref-standard-link-pointer.html#link-ptr-class">link-ptr-with-value</a>
+               :link-instance support-hyp
+               :value 0.9))
+  #&lt;link-ptr-with-value #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;
+  &gt; (supporting-hyps-of unit-instance)
+  (#&lt;link-ptr-with-value #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;)
+  &gt; (value-of *)
+  0.9
+  &gt;
+</pre>
+Replace the existing <a href="ref-glossary.html#gl:link-pointer-object">link-pointer-object</a> pointer with one that has a different <code>value</code>:
+<pre>
+  &gt; (supporting-hyps-of unit-instance)
+  (#&lt;link-ptr-with-value #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;)
+  &gt; (link-setf (supporting-hyps-of unit-instance) 
+           (<a href="ref-make-instance.html">make-instance</a> '<a href="ref-standard-link-pointer.html#link-ptr-class">link-ptr-with-value</a>
+               :link-instance support-hyp
+               :value 0.94))
+  #&lt;link-ptr-with-value #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;
+  &gt; (supporting-hyps-of unit-instance)
+  (#&lt;link-ptr-with-value #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;)
+  &gt; (value-of *)
+  0.94
+  &gt;
+</pre>
+Of course, a <code>value</code> change can also be done directly in 
+an existing <a href="ref-glossary.html#id130">link-pointer&nbsp;object</a>:
+<pre>
+  &gt; (supporting-hyps-of unit-instance)
+  (#&lt;link-ptr-with-value #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;)
+  &gt; (setf (value-of *) 0.96)
+  0.96
+  &gt; (supporting-hyps-of unit-instance)
+  (#&lt;link-ptr-with-value #&lt;hyp 231 (1488 7405) 0.63 [0..8]&gt;)
+  &gt; (value-of *)
+  0.96
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br /><a name="id2">The</a> form <nobr><code>(link-setf</code> <var><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></var> <code>nil)</code></nobr>
+is semantically equivalent to <nobr><code>(<a href="ref-unlinkf-all.html">unlinkf-all</a></code>
+<var><a href="ref-glossary.html#gl:link-slot-place">link-slot-place</a></var><code>)</code></nobr>.  However, using
+<nobr><b><a href="ref-unlinkf-all.html">unlinkf-all</a></b></nobr> is preferable stylistically and
+slightly faster. 
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-linkf.html"><img border="0" alt="linkf" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-link-entities.html"><img border="0" alt="Links" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-link-slot-p.html"><img border="0" alt="link-slot-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">link-setf</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

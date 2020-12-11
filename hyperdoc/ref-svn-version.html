@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- svn-version</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-run-external-program.html"><img border="0" alt="run-external-program" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-os-interface-entities.html"><img border="0" alt="OS Interface" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">svn-version</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">svn-version</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;key</code> <var>directory program</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>version-string-or-nil</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Obtain the <a target="_top" href="http://subversion.tigris.org">Subversion</a>
+compact version number of a working copy.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:os-interface</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>directory</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of the following:
+</p>
+<p><ul class="tight"><li>A string specifying a directory
+<li>A <a href="ref-glossary.html#gl:pathname">pathname</a> specifying a directory
+<li>A <a href="ref-glossary.html#gl:keywords">keyword</a> naming a <a href="ref-glossary.html#id204">root&nbsp;directory</a>
+</ul>
+(default is the GBBopen install directory)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>program</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string specifying the name of the program to be run (default
+is <nobr><code>"svnversion"</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>version-string-or-nil</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string or <code>nil</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />A string containing the compact version number or <code>nil</code> if the
+program <nobr><code>svnversion</code></nobr> cannot be found or the specified directory is
+not in a Subversion working copy.
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a target="_top" href="http://www.lispworks.com">LispWorks</a> (non-Windows platforms) and
+<a target="_top" href="http://sbcl.sourceforge.net">SBCL</a> do not use a search path for
+locating <var>program</var>, the full path must be specified in the <var>program</var>
+string.
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (svn-version)
+  "525" 
+  &gt; (svn-version :program "/usr/bin/svnversion")
+  "525" 
+  &gt; (svn-version :directory ':my-app-root)
+  "73:76M" 
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-run-external-program.html"><img border="0" alt="run-external-program" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-os-interface-entities.html"><img border="0" alt="OS Interface" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">svn-version</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

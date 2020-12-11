@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- describe-unit-class</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-describe-instance-slot-value.html"><img border="0" alt="describe-instance-slot-value" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-dimensions-of.html"><img border="0" alt="dimensions-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">describe-unit-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">describe-unit-class</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>unit-class-name</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br /><a name="id1">Print</a> information about a <a href="ref-glossary.html#id254">unit&nbsp;class</a>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>describe-unit-class</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>unit-class-name</var> <code>symbol)</code>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>describe-unit-class</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>unit-class-specifier</var> <code>cons)</code>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>describe-unit-class</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>unit-class</var> <code>standard-unit-class)</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>unit-class-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:unit-class">unit-class</a> or an 
+<a href="ref-glossary.html#id73">extended&nbsp;unit-classes&nbsp;specification</a> (see below)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Detailed syntax</span><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>unit-classes-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <code>t</code> | 
+<var>single-unit-class-specifier</var> 
+| <code>(</code><var>single-unit-class-specifier</var><sup>+</sup><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>single-unit-class-specifier</var> ::=</nobr> 
+</td><td valign="baseline" colspan="1" align="left"> <var>atomic-unit-class</var> |
+<code>(</code><var>atomic-unit-class subclassing-specifier</var><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>atomic-unit-class</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>unit-class</var> | 
+<var>unit-class-name</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>subclassing-specifier</var> ::=</nobr> 
+<a name="id2"></a></td><td valign="baseline" colspan="1" align="left"> <code>:plus-subclasses</code> | <code>:no-subclasses</code> | 
+<code>+</code> | <code>=</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>The shorthand <code>+</code> subclasses specifier is equivalent to
+<code>:plus-subclasses</code> and <code>=</code> to <code>:no-subclasses</code>.
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id3">The</a> description is printed to the <b>*standard-output*</b> stream.
+</p>
+<p><span class="fndoclabel">Example</span> <br /><pre class="pretop">
+  &gt; (describe-unit-class 'hyp)
+  Standard-unit-class #&lt;standard-unit-class hyp&gt;
+    Direct superclasses:
+      standard-unit-instance (abstract)
+    Direct subclasses: None
+    Direct nonlink slots:
+      belief
+        :allocation :instance
+        :initargs (:belief)
+        :initform 0.0
+        :readers (belief-of)
+        :writers ((setf belief-of))
+      classification
+        :allocation :instance
+        :initargs (:classification)
+        :initform '(:car :truck :bus :motorcycle :train :duck-boat :lawn-mower
+                    :anything)
+        :readers (classification-of)
+       :writers ((setf classification-of))
+      color
+        :allocation :instance
+        :initargs (:color)
+        :readers (color-of)
+        :writers ((setf color-of))
+      location
+        :allocation :instance
+        :initargs (:location)
+        :initform nil
+        :readers (location-of)
+        :writers ((setf location-of))
+      velocity-range
+        :allocation :instance
+        :initargs (:velocity-range)
+        :readers (velocity-range-of)
+        :writers ((setf velocity-range-of))
+    Direct link slots:
+      supported-hyps
+        :allocation :instance
+        :initargs (:supported-hyps)
+        :initform nil
+        :readers (supported-hyps-of)
+        :writers ((setf supported-hyps-of))
+        :link (hyp supporting-hyps)
+      supporting-hyps
+        :allocation :instance
+        :initargs (:supporting-hyps)
+        :initform nil
+        :readers (supporting-hyps-of)
+        :writers ((setf supporting-hyps-of))
+        :link (hyp supported-hyps)
+    Effective nonlink slots:
+      belief
+        :allocation :instance
+        :initargs (:belief)
+        :initform 0.0
+      classification
+        :allocation :instance
+        :initargs (:classification)
+        :initform '(:car :truck :bus :motorcycle :train :duck-boat :lawn-mower
+                    :anything)
+      color
+        :allocation :instance
+        :initargs (:color)
+      instance-name
+        :allocation :instance
+        :initargs (:instance-name)
+      location
+        :allocation :instance
+        :initargs (:location)
+        :initform nil
+      velocity-range
+        :allocation :instance
+        :initargs (:velocity-range)
+    Effective link slots:
+      supported-hyps
+        :allocation :instance
+        :initargs (:supported-hyps)
+        :initform nil
+      supporting-hyps
+        :allocation :instance
+        :initargs (:supporting-hyps)
+        :initform nil
+    Dimensional values:
+      belief (:point number)
+      classification (:element eq) :set
+      color (:element eq)
+      velocity-range (:interval number)
+      x (:point fixnum)
+      y (:point fixnum)
+    Effective dimensional values:
+      belief (:point number)
+      classification (:element eq) :set
+      color (:element eq)
+      velocity-range (:interval number)
+      x (:point fixnum)
+      y (:point fixnum)
+    Initial space instances:
+      (bb hyps)
+    Effective initial space instances:
+      (bb hyps)
+    Retain: nil
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-describe-instance-slot-value.html"><img border="0" alt="describe-instance-slot-value" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-dimensions-of.html"><img border="0" alt="dimensions-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">describe-unit-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

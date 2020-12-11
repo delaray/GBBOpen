@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- open-streamer-p</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-broadcast-streamer.html"><img border="0" alt="make-broadcast-streamer" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-streaming-entities.html"><img border="0" alt="Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-read-queued-streaming-block.html"><img border="0" alt="read-queued-streaming-block" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">open-streamer-p</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">open-streamer-p</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>streamer</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>boolean</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Determine if a <a href="ref-glossary.html#gl:journal">journal</a> or <a href="ref-glossary.html#gl:network-streamer">network&nbsp;</a><a href="ref-glossary.html#gl:streamer">streamer</a> is
+open.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:streaming</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>streamer</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:journal">journal</a> or <a href="ref-glossary.html#gl:network-streamer">network&nbsp;</a><a href="ref-glossary.html#gl:streamer">streamer</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />True if the streamer is open; otherwise <code>nil</code>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-close-streamer.html"><b>close-streamer</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-streamer-node.html"><b>find-streamer-node</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-journal-streamer.html"><b>make-journal-streamer</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-open-network-streamer.html"><b>open-network-streamer</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-stream-of.html"><b>stream-of</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Check if the <a href="ref-glossary.html#id144">network&nbsp;streamer</a> <code>*streamer*</code> is open:
+<pre class="pretop">
+  &gt; (open-streamer-p *streamer*)
+  t
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-broadcast-streamer.html"><img border="0" alt="make-broadcast-streamer" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-streaming-entities.html"><img border="0" alt="Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-read-queued-streaming-block.html"><img border="0" alt="read-queued-streaming-block" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">open-streamer-p</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

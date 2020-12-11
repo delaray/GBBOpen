@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- multiple-value-setf</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-memq.html"><img border="0" alt="memq" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-nsorted-insert.html"><img border="0" alt="nsorted-insert" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">multiple-value-setf</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">multiple-value-setf</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>(<var>place</var>*)</code></nobr>
+<var>form</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>primary-value</var></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Assign values to <var>places</var>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>place</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a> which is suitable for use as a
+<a href="ref-glossary.html#id88">generalized&nbsp;reference</a> or <code>nil</code></td></tr><tr valign="top"><td valign="baseline" nowrap><i>form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>primary-value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The first value returned by evaluating <var>form</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The primary value returned by <var>form</var>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />The <var>form</var> is evaluated, and each <var>place</var> is assigned to the
+corresponding value returned by <var>form</var>.  If <code>nil</code> is used one or more
+<var>places</var>, no assignment is made to the <code>nil</code> &#8220;place,&#8221; but the
+corresponding value is consumed (ignored). If there are more <var>places</var>
+than values returned, <code>nil</code> is assigned to the extra <var>places</var>. If there
+are more values than <var>places</var>, the extra values are discarded.
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (setf *x* (cons 0 0))
+  (0 . 0)
+  &gt; (multiple-value-setf ((car *x*) (cdr *x*)) (values 1 2 3))
+  1
+  &gt; *x*
+  (1 . 2)
+  &gt; (multiple-value-setf (nil nil (cdr *x*)) (values -1 -2 -3))
+  -1
+  &gt; *x*
+  (1 . -3)
+  &gt; (multiple-value-setf ((car *x*) (cdr *x*)) 100)
+  100
+  &gt; *x*
+  (100)
+  &gt; (multiple-value-setf ((car *x*) (cdr *x*)) nil)
+  nil
+  &gt; *x*
+  (nil)
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-memq.html"><img border="0" alt="memq" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-nsorted-insert.html"><img border="0" alt="nsorted-insert" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">multiple-value-setf</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

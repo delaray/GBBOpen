@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- check-all-instance-links</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-link-entities.html"><img border="0" alt="Links" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-check-link-definitions.html"><img border="0" alt="check-link-definitions" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">check-all-instance-links</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">check-all-instance-links</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;optional</code> <var>silentp errorp</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>problem-count</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Check the link slots of all <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> for
+bi-directional consistency.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>silentp</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>errorp</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>problem-count</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The number of inconsistent links encountered.
+</p>
+<p><span class="fndoclabel">Description</span> <br />GBBopen automatically maintains bidirectional relationship
+consistency all <a href="ref-glossary.html#gl:link-slot">link-slot</a> definitions are consistent. (Definitional
+consistency can be checked with
+<nobr><b><a href="ref-check-link-definitions.html">check-link-definitions</a></b></nobr>).  Unintended destructive
+list modification of the value of a link slot (for example, using <code>sort</code>
+without a protective <code>copy-list</code>) can break this consistency.
+<nobr><b>Check-all-instance-links</b></nobr> detects link inconsistencies and,
+when <var>errorp</var> is true, assist in repairing them.
+</p>
+<p>If a link inconsistency is found, details of the inconsistency
+are printed to <nobr><code>*standard-output*</code></nobr>.
+</p>
+<p>If <var>silentp</var> is true, warning and summary messages are not printed.  If
+<var>silentp</var> is <code>nil</code> and <var>errorp</var> is true, a correctable error is
+signaled if a link inconsistency is found.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-check-link-definitions.html"><b>check-link-definitions</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Check that all instance links are consistent:
+<pre class="pretop">
+  &gt; (check-all-instance-links)
+  ;; All instance links are consistent.
+  0
+  &gt;
+</pre>
+Check again, silently:
+<pre>
+  &gt; (check-all-instance-links 't)
+  0
+  &gt;
+</pre>
+</p>
+<p>The result of checking when something has set the <nobr><code>next-location</code></nobr>
+link slot in <code>location</code> 20 to <code>nil</code>:
+<pre class="pretop">
+  &gt; (check-all-instance-links)
+  Warning: Inverse link back to #&lt;location 21 (32 37)&gt; (link-slot previous-location)
+           from #&lt;location 20 (28 28)&gt; is missing in link-slot next-location
+  ;; 1 problem was found.
+  1
+  &gt;
+</pre>
+</p>
+<p>Repeat, but with <var>errorp</var> true to prompt for automated repair of each problem:
+<pre class="pretop">
+  &gt; (check-all-instance-links nil 't)
+  Error: Inverse link back to #&lt;location 21 (32 37)&gt; (link-slot previous-location)
+         from #&lt;location 20 (28 28)&gt; is missing in link-slot next-location
+  Restart actions (select using :c n):
+    0: Fix the inconsistency.
+  &gt;&gt; :c 0
+  ;; Link to #&lt;location 21 (32 37)&gt; added.
+  ;; 1 problem was found.
+  ;; 1 repair was made.
+  1
+  &gt; (check-all-instance-links)
+  ;; All instance links are consistent.
+  0
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-link-entities.html"><img border="0" alt="Links" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-check-link-definitions.html"><img border="0" alt="check-link-definitions" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">check-all-instance-links</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

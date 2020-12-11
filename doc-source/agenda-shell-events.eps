@@ -1,0 +1,700 @@
+%!PS-Adobe-1.0
+%%BoundingBox: 0 0 540 302
+%%Page: ? ?
+/max {2 copy lt {exch} if pop} def
+/min {2 copy gt {exch} if pop} def
+/inch {72 mul} def
+/drawspecialbox
+ {/height exch def
+  /width exch def
+  /y exch def
+  /x exch def
+  gsave newpath
+  x y boxradius add moveto
+  x y height add x width add y height add boxradius arcto pop pop pop pop
+  x width add y height add x width add y boxradius arcto pop pop pop pop
+  x width add y x y boxradius arcto pop pop pop pop
+  x y x y height add boxradius arcto pop pop pop pop
+  boxgray setgray boxkind grestore
+ } def
+/drawbox
+ {/height exch def
+  /width exch def
+  /y exch def
+  /x exch def
+  gsave newpath
+  x y boxradius add moveto
+  x y height add x width add y height add boxradius arcto pop pop pop pop
+  x width add y height add x width add y boxradius arcto pop pop pop pop
+  x width add y x y boxradius arcto pop pop pop pop
+  x y x y height add boxradius arcto pop pop pop pop
+  1 setgray boxkind grestore
+ } def
+/printposter
+ {/rows exch def
+  /columns exch def
+  /bigpictureproc exch def
+  newpath
+    leftmargin botmargin moveto
+    0 pageheight rlineto
+    pagewidth 0 rlineto
+    0 pageheight neg rlineto
+  closepath clip
+  leftmargin botmargin translate
+  0 1 rows 1 sub
+   {/rowcount exch def
+    0 1 columns 1 sub
+     {/colcount exch def
+      gsave
+       pagewidth colcount mul neg
+       pageheight rowcount mul neg
+       translate
+       bigpictureproc
+       gsave showpage grestore
+      grestore
+     } for
+   } for
+ } def
+/xarray 35 array def
+/widtharray 35 array def
+/leftmargin 36 def
+/botmargin 36 def
+/pagewidth 540 def
+/pageheight 720 def
+/boxradius 0 def 
+/boxedge 2 def 
+/boxgray 0 def 
+/boxkind {stroke} def
+/Helvetica findfont 10 scalefont setfont
+widtharray 0 (standard-event-instance) stringwidth pop put
+widtharray 1 (instance-event) stringwidth pop put
+widtharray 2 (ksa-event) stringwidth pop put
+widtharray 3 (ksa-activated-event) stringwidth pop put
+widtharray 4 (ksa-executing-event) stringwidth pop put
+widtharray 5 (ksa-obviated-event) stringwidth pop put
+widtharray 6 (ksa-retriggered-event) stringwidth pop put
+widtharray 7 (multiple-instance-event) stringwidth pop put
+widtharray 8 (single-instance-event) stringwidth pop put
+widtharray 9 (instance-created/changed/deleted-event) stringwidth pop put
+widtharray 10 (change-instance-class-event) stringwidth pop put
+widtharray 11 (delete-instance-event) stringwidth pop put
+widtharray 12 (instance-changed-class-event) stringwidth pop put
+widtharray 13 (instance-created-event) stringwidth pop put
+widtharray 14 (instance-deleted-event) stringwidth pop put
+widtharray 15 (link/nonlink-slot-event) stringwidth pop put
+widtharray 16 (link-slot-event) stringwidth pop put
+widtharray 17 (link-event) stringwidth pop put
+widtharray 18 (unlink-event) stringwidth pop put
+widtharray 19 (link/nonlink-slot-modified-event) stringwidth pop put
+widtharray 20 (nonlink-slot-updated-event) stringwidth pop put
+widtharray 21 (space-instance-event) stringwidth pop put
+widtharray 22 (instance-added-to-space-instance-event) stringwidth pop put
+widtharray 23 (instance-moved-within-space-instance-event) stringwidth pop put
+widtharray 24 (instance-removed-from-space-instance-event) stringwidth pop put
+widtharray 25 (non-instance-event) stringwidth pop put
+widtharray 26 (control-shell-event) stringwidth pop put
+widtharray 27 (control-shell-cycle-event) stringwidth pop put
+widtharray 28 (control-shell-hibernating/awakened-event) stringwidth pop put
+widtharray 29 (control-shell-awakened-event) stringwidth pop put
+widtharray 30 (control-shell-hibernating-event) stringwidth pop put
+widtharray 31 (control-shell-restarted-event) stringwidth pop put
+widtharray 32 (control-shell-started-event) stringwidth pop put
+widtharray 33 (quiescence-event) stringwidth pop put
+widtharray 34 (timer-interrupt-event) stringwidth pop put
+/Helvetica-Oblique findfont 8 scalefont setfont
+widtharray 0 get
+4 add widtharray exch 0 exch put
+widtharray 1 get
+4 add widtharray exch 1 exch put
+widtharray 2 get
+4 add widtharray exch 2 exch put
+widtharray 3 get
+4 add widtharray exch 3 exch put
+widtharray 4 get
+4 add widtharray exch 4 exch put
+widtharray 5 get
+4 add widtharray exch 5 exch put
+widtharray 6 get
+4 add widtharray exch 6 exch put
+widtharray 7 get
+4 add widtharray exch 7 exch put
+widtharray 8 get
+4 add widtharray exch 8 exch put
+widtharray 9 get
+4 add widtharray exch 9 exch put
+widtharray 10 get
+4 add widtharray exch 10 exch put
+widtharray 11 get
+4 add widtharray exch 11 exch put
+widtharray 12 get
+4 add widtharray exch 12 exch put
+widtharray 13 get
+4 add widtharray exch 13 exch put
+widtharray 14 get
+4 add widtharray exch 14 exch put
+widtharray 15 get
+4 add widtharray exch 15 exch put
+widtharray 16 get
+4 add widtharray exch 16 exch put
+widtharray 17 get
+4 add widtharray exch 17 exch put
+widtharray 18 get
+4 add widtharray exch 18 exch put
+widtharray 19 get
+4 add widtharray exch 19 exch put
+widtharray 20 get
+4 add widtharray exch 20 exch put
+widtharray 21 get
+4 add widtharray exch 21 exch put
+widtharray 22 get
+4 add widtharray exch 22 exch put
+widtharray 23 get
+4 add widtharray exch 23 exch put
+widtharray 24 get
+4 add widtharray exch 24 exch put
+widtharray 25 get
+4 add widtharray exch 25 exch put
+widtharray 26 get
+4 add widtharray exch 26 exch put
+widtharray 27 get
+4 add widtharray exch 27 exch put
+widtharray 28 get
+4 add widtharray exch 28 exch put
+widtharray 29 get
+4 add widtharray exch 29 exch put
+widtharray 30 get
+4 add widtharray exch 30 exch put
+widtharray 31 get
+4 add widtharray exch 31 exch put
+widtharray 32 get
+4 add widtharray exch 32 exch put
+widtharray 33 get
+4 add widtharray exch 33 exch put
+widtharray 34 get
+4 add widtharray exch 34 exch put
+xarray 0 0 put
+xarray 0 get widtharray 0 get add
+20 add xarray exch 1 exch put
+xarray 1 get widtharray 1 get add
+20 add xarray exch 7 exch put
+xarray 1 get widtharray 1 get add
+20 add xarray exch 8 exch put
+xarray 8 get widtharray 8 get add
+20 add xarray exch 9 exch put
+xarray 9 get widtharray 9 get add
+20 add xarray exch 10 exch put
+xarray 9 get widtharray 9 get add
+20 add xarray exch 11 exch put
+xarray 9 get widtharray 9 get add
+20 add xarray exch 12 exch put
+xarray 9 get widtharray 9 get add
+20 add xarray exch 13 exch put
+xarray 9 get widtharray 9 get add
+20 add xarray exch 14 exch put
+xarray 8 get widtharray 8 get add
+20 add xarray exch 15 exch put
+xarray 15 get widtharray 15 get add
+20 add xarray exch 16 exch put
+xarray 15 get widtharray 15 get add
+20 add xarray exch 19 exch put
+xarray 16 get widtharray 16 get add
+xarray 19 get widtharray 19 get add max
+20 add xarray exch 17 exch put
+xarray 16 get widtharray 16 get add
+xarray 19 get widtharray 19 get add max
+20 add xarray exch 18 exch put
+xarray 19 get widtharray 19 get add
+20 add xarray exch 20 exch put
+xarray 8 get widtharray 8 get add
+20 add xarray exch 21 exch put
+xarray 21 get widtharray 21 get add
+20 add xarray exch 22 exch put
+xarray 21 get widtharray 21 get add
+20 add xarray exch 23 exch put
+xarray 21 get widtharray 21 get add
+20 add xarray exch 24 exch put
+xarray 0 get widtharray 0 get add
+20 add xarray exch 25 exch put
+xarray 25 get widtharray 25 get add
+20 add xarray exch 26 exch put
+xarray 1 get widtharray 1 get add
+xarray 26 get widtharray 26 get add max
+20 add xarray exch 2 exch put
+xarray 2 get widtharray 2 get add
+20 add xarray exch 3 exch put
+xarray 2 get widtharray 2 get add
+20 add xarray exch 4 exch put
+xarray 2 get widtharray 2 get add
+20 add xarray exch 5 exch put
+xarray 2 get widtharray 2 get add
+20 add xarray exch 6 exch put
+xarray 26 get widtharray 26 get add
+20 add xarray exch 27 exch put
+xarray 26 get widtharray 26 get add
+20 add xarray exch 28 exch put
+xarray 28 get widtharray 28 get add
+20 add xarray exch 29 exch put
+xarray 28 get widtharray 28 get add
+20 add xarray exch 30 exch put
+xarray 26 get widtharray 26 get add
+20 add xarray exch 31 exch put
+xarray 26 get widtharray 26 get add
+20 add xarray exch 32 exch put
+xarray 26 get widtharray 26 get add
+20 add xarray exch 33 exch put
+xarray 25 get widtharray 25 get add
+20 add xarray exch 34 exch put
+/maximum-x 0
+xarray 0 get widtharray 0 get add max
+xarray 1 get widtharray 1 get add max
+xarray 2 get widtharray 2 get add max
+xarray 3 get widtharray 3 get add max
+xarray 4 get widtharray 4 get add max
+xarray 5 get widtharray 5 get add max
+xarray 6 get widtharray 6 get add max
+xarray 7 get widtharray 7 get add max
+xarray 8 get widtharray 8 get add max
+xarray 9 get widtharray 9 get add max
+xarray 10 get widtharray 10 get add max
+xarray 11 get widtharray 11 get add max
+xarray 12 get widtharray 12 get add max
+xarray 13 get widtharray 13 get add max
+xarray 14 get widtharray 14 get add max
+xarray 15 get widtharray 15 get add max
+xarray 16 get widtharray 16 get add max
+xarray 17 get widtharray 17 get add max
+xarray 18 get widtharray 18 get add max
+xarray 19 get widtharray 19 get add max
+xarray 20 get widtharray 20 get add max
+xarray 21 get widtharray 21 get add max
+xarray 22 get widtharray 22 get add max
+xarray 23 get widtharray 23 get add max
+xarray 24 get widtharray 24 get add max
+xarray 25 get widtharray 25 get add max
+xarray 26 get widtharray 26 get add max
+xarray 27 get widtharray 27 get add max
+xarray 28 get widtharray 28 get add max
+xarray 29 get widtharray 29 get add max
+xarray 30 get widtharray 30 get add max
+xarray 31 get widtharray 31 get add max
+xarray 32 get widtharray 32 get add max
+xarray 33 get widtharray 33 get add max
+xarray 34 get widtharray 34 get add max
+def
+194 dict begin
+/box0 {
+xarray 0 get 158 widtharray 0 get 14 drawspecialbox
+} def
+/box1 {
+xarray 1 get 278 widtharray 1 get 14 drawspecialbox
+} def
+/box2 {
+xarray 2 get 155 widtharray 2 get 14 drawspecialbox
+} def
+/box3 {
+xarray 3 get 182 widtharray 3 get 14 drawbox
+} def
+/box4 {
+xarray 4 get 164 widtharray 4 get 14 drawbox
+} def
+/box5 {
+xarray 5 get 146 widtharray 5 get 14 drawbox
+} def
+/box6 {
+xarray 6 get 128 widtharray 6 get 14 drawbox
+} def
+/box7 {
+xarray 7 get 398 widtharray 7 get 14 drawspecialbox
+} def
+/box8 {
+xarray 8 get 281 widtharray 8 get 14 drawspecialbox
+} def
+/box9 {
+xarray 9 get 344 widtharray 9 get 14 drawspecialbox
+} def
+/box10 {
+xarray 10 get 380 widtharray 10 get 14 drawbox
+} def
+/box11 {
+xarray 11 get 362 widtharray 11 get 14 drawbox
+} def
+/box12 {
+xarray 12 get 344 widtharray 12 get 14 drawbox
+} def
+/box13 {
+xarray 13 get 326 widtharray 13 get 14 drawbox
+} def
+/box14 {
+xarray 14 get 308 widtharray 14 get 14 drawbox
+} def
+/box15 {
+xarray 15 get 281 widtharray 15 get 14 drawspecialbox
+} def
+/box16 {
+xarray 16 get 290 widtharray 16 get 14 drawspecialbox
+} def
+/box17 {
+xarray 17 get 290 widtharray 17 get 14 drawbox
+} def
+/box18 {
+xarray 18 get 272 widtharray 18 get 14 drawbox
+} def
+/box19 {
+xarray 19 get 272 widtharray 19 get 14 drawspecialbox
+} def
+/box20 {
+xarray 20 get 254 widtharray 20 get 14 drawbox
+} def
+/box21 {
+xarray 21 get 218 widtharray 21 get 14 drawspecialbox
+} def
+/box22 {
+xarray 22 get 236 widtharray 22 get 14 drawbox
+} def
+/box23 {
+xarray 23 get 218 widtharray 23 get 14 drawbox
+} def
+/box24 {
+xarray 24 get 200 widtharray 24 get 14 drawbox
+} def
+/box25 {
+xarray 25 get 39 widtharray 25 get 14 drawspecialbox
+} def
+/box26 {
+xarray 26 get 77 widtharray 26 get 14 drawspecialbox
+} def
+/box27 {
+xarray 27 get 110 widtharray 27 get 14 drawbox
+} def
+/box28 {
+xarray 28 get 83 widtharray 28 get 14 drawspecialbox
+} def
+/box29 {
+xarray 29 get 92 widtharray 29 get 14 drawbox
+} def
+/box30 {
+xarray 30 get 74 widtharray 30 get 14 drawbox
+} def
+/box31 {
+xarray 31 get 56 widtharray 31 get 14 drawbox
+} def
+/box32 {
+xarray 32 get 38 widtharray 32 get 14 drawbox
+} def
+/box33 {
+xarray 33 get 20 widtharray 33 get 14 drawbox
+} def
+/box34 {
+xarray 34 get 2 widtharray 34 get 14 drawbox
+} def
+/text0 {xarray 0 get boxedge add 162 moveto (standard-event-instance) show} def
+/text1 {xarray 1 get boxedge add 282 moveto (instance-event) show} def
+/text2 {xarray 2 get boxedge add 159 moveto (ksa-event) show} def
+/text3 {xarray 3 get boxedge add 186 moveto (ksa-activated-event) show} def
+/text4 {xarray 4 get boxedge add 168 moveto (ksa-executing-event) show} def
+/text5 {xarray 5 get boxedge add 150 moveto (ksa-obviated-event) show} def
+/text6 {xarray 6 get boxedge add 132 moveto (ksa-retriggered-event) show} def
+/text7 {xarray 7 get boxedge add 402 moveto (multiple-instance-event) show} def
+/text8 {xarray 8 get boxedge add 285 moveto (single-instance-event) show} def
+/text9 {xarray 9 get boxedge add 348 moveto (instance-created/changed/deleted-event) show} def
+/text10 {xarray 10 get boxedge add 384 moveto (change-instance-class-event) show} def
+/text11 {xarray 11 get boxedge add 366 moveto (delete-instance-event) show} def
+/text12 {xarray 12 get boxedge add 348 moveto (instance-changed-class-event) show} def
+/text13 {xarray 13 get boxedge add 330 moveto (instance-created-event) show} def
+/text14 {xarray 14 get boxedge add 312 moveto (instance-deleted-event) show} def
+/text15 {xarray 15 get boxedge add 285 moveto (link/nonlink-slot-event) show} def
+/text16 {xarray 16 get boxedge add 294 moveto (link-slot-event) show} def
+/text17 {xarray 17 get boxedge add 294 moveto (link-event) show} def
+/text18 {xarray 18 get boxedge add 276 moveto (unlink-event) show} def
+/text19 {xarray 19 get boxedge add 276 moveto (link/nonlink-slot-modified-event) show} def
+/text20 {xarray 20 get boxedge add 258 moveto (nonlink-slot-updated-event) show} def
+/text21 {xarray 21 get boxedge add 222 moveto (space-instance-event) show} def
+/text22 {xarray 22 get boxedge add 240 moveto (instance-added-to-space-instance-event) show} def
+/text23 {xarray 23 get boxedge add 222 moveto (instance-moved-within-space-instance-event) show} def
+/text24 {xarray 24 get boxedge add 204 moveto (instance-removed-from-space-instance-event) show} def
+/text25 {xarray 25 get boxedge add 43 moveto (non-instance-event) show} def
+/text26 {xarray 26 get boxedge add 81 moveto (control-shell-event) show} def
+/text27 {xarray 27 get boxedge add 114 moveto (control-shell-cycle-event) show} def
+/text28 {xarray 28 get boxedge add 87 moveto (control-shell-hibernating/awakened-event) show} def
+/text29 {xarray 29 get boxedge add 96 moveto (control-shell-awakened-event) show} def
+/text30 {xarray 30 get boxedge add 78 moveto (control-shell-hibernating-event) show} def
+/text31 {xarray 31 get boxedge add 60 moveto (control-shell-restarted-event) show} def
+/text32 {xarray 32 get boxedge add 42 moveto (control-shell-started-event) show} def
+/text33 {xarray 33 get boxedge add 24 moveto (quiescence-event) show} def
+/text34 {xarray 34 get boxedge add 6 moveto (timer-interrupt-event) show} def
+/edge0 {newpath
+stroke } def
+/edge1 {newpath
+xarray 0 get widtharray 0 get add 165 moveto
+xarray 1 get 285 lineto
+stroke } def
+/edge2 {newpath
+xarray 1 get widtharray 1 get add 285 moveto
+xarray 2 get 162 lineto
+xarray 26 get widtharray 26 get add 84 moveto
+xarray 2 get 162 lineto
+stroke } def
+/edge3 {newpath
+xarray 2 get widtharray 2 get add 162 moveto
+xarray 3 get 189 lineto
+stroke } def
+/edge4 {newpath
+xarray 2 get widtharray 2 get add 162 moveto
+xarray 4 get 171 lineto
+stroke } def
+/edge5 {newpath
+xarray 2 get widtharray 2 get add 162 moveto
+xarray 5 get 153 lineto
+stroke } def
+/edge6 {newpath
+xarray 2 get widtharray 2 get add 162 moveto
+xarray 6 get 135 lineto
+stroke } def
+/edge7 {newpath
+xarray 1 get widtharray 1 get add 285 moveto
+xarray 7 get 405 lineto
+stroke } def
+/edge8 {newpath
+xarray 1 get widtharray 1 get add 285 moveto
+xarray 8 get 288 lineto
+stroke } def
+/edge9 {newpath
+xarray 8 get widtharray 8 get add 288 moveto
+xarray 9 get 351 lineto
+stroke } def
+/edge10 {newpath
+xarray 9 get widtharray 9 get add 351 moveto
+xarray 10 get 387 lineto
+stroke } def
+/edge11 {newpath
+xarray 9 get widtharray 9 get add 351 moveto
+xarray 11 get 369 lineto
+stroke } def
+/edge12 {newpath
+xarray 9 get widtharray 9 get add 351 moveto
+xarray 12 get 351 lineto
+stroke } def
+/edge13 {newpath
+xarray 9 get widtharray 9 get add 351 moveto
+xarray 13 get 333 lineto
+stroke } def
+/edge14 {newpath
+xarray 9 get widtharray 9 get add 351 moveto
+xarray 14 get 315 lineto
+stroke } def
+/edge15 {newpath
+xarray 8 get widtharray 8 get add 288 moveto
+xarray 15 get 288 lineto
+stroke } def
+/edge16 {newpath
+xarray 15 get widtharray 15 get add 288 moveto
+xarray 16 get 297 lineto
+stroke } def
+/edge17 {newpath
+xarray 16 get widtharray 16 get add 297 moveto
+xarray 17 get 297 lineto
+xarray 19 get widtharray 19 get add 279 moveto
+xarray 17 get 297 lineto
+stroke } def
+/edge18 {newpath
+xarray 16 get widtharray 16 get add 297 moveto
+xarray 18 get 279 lineto
+xarray 19 get widtharray 19 get add 279 moveto
+xarray 18 get 279 lineto
+stroke } def
+/edge19 {newpath
+xarray 15 get widtharray 15 get add 288 moveto
+xarray 19 get 279 lineto
+stroke } def
+/edge20 {newpath
+xarray 19 get widtharray 19 get add 279 moveto
+xarray 20 get 261 lineto
+stroke } def
+/edge21 {newpath
+xarray 8 get widtharray 8 get add 288 moveto
+xarray 21 get 225 lineto
+stroke } def
+/edge22 {newpath
+xarray 21 get widtharray 21 get add 225 moveto
+xarray 22 get 243 lineto
+stroke } def
+/edge23 {newpath
+xarray 21 get widtharray 21 get add 225 moveto
+xarray 23 get 225 lineto
+stroke } def
+/edge24 {newpath
+xarray 21 get widtharray 21 get add 225 moveto
+xarray 24 get 207 lineto
+stroke } def
+/edge25 {newpath
+xarray 0 get widtharray 0 get add 165 moveto
+xarray 25 get 46 lineto
+stroke } def
+/edge26 {newpath
+xarray 25 get widtharray 25 get add 46 moveto
+xarray 26 get 84 lineto
+stroke } def
+/edge27 {newpath
+xarray 26 get widtharray 26 get add 84 moveto
+xarray 27 get 117 lineto
+stroke } def
+/edge28 {newpath
+xarray 26 get widtharray 26 get add 84 moveto
+xarray 28 get 90 lineto
+stroke } def
+/edge29 {newpath
+xarray 28 get widtharray 28 get add 90 moveto
+xarray 29 get 99 lineto
+stroke } def
+/edge30 {newpath
+xarray 28 get widtharray 28 get add 90 moveto
+xarray 30 get 81 lineto
+stroke } def
+/edge31 {newpath
+xarray 26 get widtharray 26 get add 84 moveto
+xarray 31 get 63 lineto
+stroke } def
+/edge32 {newpath
+xarray 26 get widtharray 26 get add 84 moveto
+xarray 32 get 45 lineto
+stroke } def
+/edge33 {newpath
+xarray 26 get widtharray 26 get add 84 moveto
+xarray 33 get 27 lineto
+stroke } def
+/edge34 {newpath
+xarray 25 get widtharray 25 get add 46 moveto
+xarray 34 get 9 lineto
+stroke } def
+/boxchunk0 {
+box0
+box1
+box2
+box3
+box4
+box5
+box6
+box7
+box8
+box9
+box10
+box11
+box12
+box13
+box14
+box15
+box16
+box17
+box18
+box19
+box20
+box21
+box22
+box23
+box24
+box25
+box26
+box27
+box28
+box29
+box30
+box31
+box32
+box33
+box34
+} def
+/textchunk0 {
+text0
+text1
+text2
+text3
+text4
+text5
+text6
+text7
+text8
+text9
+text10
+text11
+text12
+text13
+text14
+text15
+text16
+text17
+text18
+text19
+text20
+text21
+text22
+text23
+text24
+text25
+text26
+text27
+text28
+text29
+text30
+text31
+text32
+text33
+text34
+} def
+/secondtextchunk0 {
+} def
+/edgechunk0 {
+edge0
+edge1
+edge2
+edge3
+edge4
+edge5
+edge6
+edge7
+edge8
+edge9
+edge10
+edge11
+edge12
+edge13
+edge14
+edge15
+edge16
+edge17
+edge18
+edge19
+edge20
+edge21
+edge22
+edge23
+edge24
+edge25
+edge26
+edge27
+edge28
+edge29
+edge30
+edge31
+edge32
+edge33
+edge34
+} def
+/drawgraph { gsave
+.5 setlinewidth
+0 setlinecap
+0 setgray
+edgechunk0
+/boxkind {fill} def
+/boxgray 1 def
+boxchunk0
+/boxkind {stroke} def
+/boxgray 0 def
+boxchunk0
+0 setgray
+/Helvetica findfont 10 scalefont setfont
+textchunk0
+/Helvetica-Oblique findfont 8 scalefont setfont
+secondtextchunk0
+grestore } def
+pagewidth dup maximum-x max div pageheight dup 414 max div min dup scale
+drawgraph end

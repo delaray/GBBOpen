@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- define-relative-directory</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-define-module.html"><img border="0" alt="define-module" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-define-root-directory.html"><img border="0" alt="define-root-directory" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-relative-directory</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">define-relative-directory</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>name directory</var> 
+<nobr><code>&#38;rest</code> <var>subdirectories</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Defines a directory relative to a <a href="ref-glossary.html#gl:Root">root</a> or
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a> or to the directory specification of a
+<a href="ref-glossary.html#gl:module">module</a> definition.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id110">keyword&nbsp;symbol</a> naming the <a href="ref-glossary.html#id196">relative&nbsp;directory</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>directory</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The <a href="ref-glossary.html#id110">keyword&nbsp;symbol</a> name of a <a href="ref-glossary.html#gl:Root">root</a> or 
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a> or the name of a <a href="ref-glossary.html#gl:module">module</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>subdirectories</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One or more strings specifying, in order,
+subdirectories from <nobr><var>directory</var></nobr> to the relative directory. (The
+<a href="ref-glossary.html#gl:keywords">keyword</a> <code>:up</code> or <code>:back</code> can also be supplied in addition to any
+of these strings, indicating to go upward one semantic or syntactic level of
+directory structure, respectively.)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a href="ref-glossary.html#gl:Root">Root</a> and <a href="ref-glossary.html#id196">relative&nbsp;directory</a> definitions are
+used to isolate file-system details from <a href="ref-glossary.html#gl:module">module</a> definitions.  A
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a> is defined in relation to another directory
+definition, that is either a <a href="ref-glossary.html#id204">root&nbsp;directory</a> or another
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a> (which itself is eventually associated with a
+<a href="ref-glossary.html#id204">root&nbsp;directory</a>).  If this <a href="ref-glossary.html#gl:Root">root</a> directory location changes,
+every <a href="ref-glossary.html#id196">relative&nbsp;directory</a> associated with it is adjusted automatically.
+</p>
+<p>The <nobr><var>documentation</var></nobr> string associated with a
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a> can be accessed and set by using Common Lisp's
+<nobr><code>documentation</code></nobr> generic function with the directory's <var>name</var>
+and the <nobr><var>doc-type</var></nobr> <code>directory</code>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-root-directory.html"><b>define-root-directory</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-get-directory.html"><b>get-directory</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-show-defined-directories.html"><b>show-defined-directories</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-system-name.html"><b>with-system-name</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Define a relative directory below <nobr><code>:my-app-root</code></nobr> named
+<nobr><code>:my-tests</code></nobr>:
+<pre class="pretop">
+  (define-relative-directory :my-tests 
+    "The tests directory for My App"
+    :my-app-root "tests")
+</pre>
+Define another relative directory named <nobr><code>:my-performance-tests</code></nobr>
+below <nobr><code>:my-tests</code></nobr>:
+<pre>
+  (define-relative-directory :my-performance-tests 
+  "The performance-tests subdirectory for My App"
+  :my-tests "performance")
+</pre>
+Define a data directory sibling to the <nobr><code>source</code></nobr> directory of
+<nobr><code>:my-app</code></nobr> <a href="ref-glossary.html#gl:module">module</a>:
+<pre>
+  (define-relative-directory :my-app-data 
+    "The data directory for My App"
+    :my-app :up "data")
+</pre>
+</p>
+<p><a name="id1">Retrieve</a> and then modify the documentation string of the
+<a href="ref-glossary.html#id196">relative&nbsp;directory</a> named <nobr><code>:my-tests</code></nobr>:
+<pre class="pretop">
+  &gt; (documentation ':my-app-data 'directory)
+  "The data directory for My App"
+  &gt; (setf (documentation ':my-app-data 'directory) 
+  "The data directory for my way cool application")
+  "The data directory for my way cool application"
+  &gt; (documentation ':my-app-data 'directory)
+  "The data directory for my way cool application"
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-define-module.html"><img border="0" alt="define-module" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-define-root-directory.html"><img border="0" alt="define-root-directory" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">define-relative-directory</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

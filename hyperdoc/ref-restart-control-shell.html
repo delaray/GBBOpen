@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- restart-control-shell</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-rating-of.html"><img border="0" alt="rating-of" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-agenda-shell-entities.html"><img border="0" alt="Agenda Control Shell" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-sole-trigger-event-of.html"><img border="0" alt="sole-trigger-event-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">restart-control-shell</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">restart-control-shell</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;key</code> <var>instance-name</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var>*</nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Restart the agenda shell named <nobr><var>instance-name</var></nobr>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:agenda-shell</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:agenda-shell</code>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>instance-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object naming a control-shell instance (default is 
+<code>1</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>results</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> (see below)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />One of the following sets of multiple values: 
+</p>
+<p><ul class="tight"><li><code>:quiescence</code>&mdash;If the control-shell scheduling loop is terminated
+due to <a href="ref-glossary.html#gl:quiescence">quiescence</a> (that is, no more <a href="ref-glossary.html#id61">executable&nbsp;KSAs</a> remain 
+in the queue of <a href="ref-glossary.html#id173">pending&nbsp;KSAs</a>) 
+<li><code>:stop</code> and (optionally) associated reasons, as multiple
+values&mdash;If one of the following conditions occurs:
+</p>
+<p><ul class="tight"><li>The <nobr><b><a href="ref-exit-control-shell.html">exit-control-shell</a></b></nobr> <a href="ref-glossary.html#gl:function">function</a> is
+called.
+<li>A precondition <a href="ref-glossary.html#gl:function">function</a> or <a href="ref-glossary.html#gl:KS-execution">KS-execution</a> <a href="ref-glossary.html#gl:function">function</a>
+returns <code>:stop</code> and, optionally, associated reasons.
+</ul>
+<li><var>Result-values</var>&mdash;If the control-shell is terminated by
+calling <nobr><b><a href="ref-exit-control-shell.html">exit-control-shell</a></b></nobr>.
+</ul>
+</p>
+<p><span class="fndoclabel">Events</span> <br /><a name="id2">A</a> <nobr><code>control-shell-restarted-event</code></nobr> is signaled.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />The idle-loop process has not been started on
+<a target="_top" href="http://www.cons.org/cmucl/">CMUCL</a>.  Multiprocessing has not been
+started on <a target="_top" href="http://www.lispworks.com">LispWorks</a>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-abort-ks-execution.html"><b>abort-ks-execution</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-control-shell-running-p.html"><b>control-shell-running-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-current-control-shell.html"><b>current-control-shell</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-exit-control-shell.html"><b>exit-control-shell</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-run-polling-functions.html"><b>run-polling-functions</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-start-control-shell.html"><b>start-control-shell</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Restart the Agenda Shell (in this case, without any <a href="ref-glossary.html#gl:KSs">KSs</a> defined):
+<pre class="pretop">
+  &gt; (restart-control-shell)
+  ;; Control shell 1 restarting after cycle 2
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 4 cycles completed
+  ;; Run time: 0 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  &gt;
+</pre>
+</p>
+<a name="id3"></a><p><span class="fndoclabel">Note</span> <br />When a non-<code>nil</code>
+<nobr><code>:run-polling-functions</code></nobr> value is supplied to
+<nobr><b><a href="ref-start-control-shell.html">start-control-shell</a></b></nobr> (the default on Common Lisp
+implementations without threads),
+<nobr><b><a href="ref-run-polling-functions.html">run-polling-functions</a></b></nobr> is called at the beginning
+of every control-shell-cycle and at one-half-second intervals when the
+Agenda Shell is hibernating due to <a href="ref-glossary.html#gl:quiescence">quiescence</a>.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-rating-of.html"><img border="0" alt="rating-of" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-agenda-shell-entities.html"><img border="0" alt="Agenda Control Shell" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-sole-trigger-event-of.html"><img border="0" alt="sole-trigger-event-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">restart-control-shell</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

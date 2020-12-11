@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- Module Manager Facility</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-starting-up.html"><img border="0" alt="Starting Up" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="reference_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Module Manager Facility</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h1>Module Manager Facility</h1>
+<p>The Module Manager Facility provides a lightweight and easy to use mechanism
+for compiling and loading <a href="ref-glossary.html#gl:module">module</a> files.  The facility keeps track of
+the dependencies between modules and the modules that have been compiled and
+loaded. The Module Manager Facility was designed to be easy to use, yet it is
+powerful enough to manage substantial software projects, each operating on
+multiple hardware platforms and Common Lisp implementations.  Other, more
+complex, <nobr><b>defsystem</b></nobr> packages, such as
+(<a target="_top" href="http://common-lisp.net/project/asdf/">ASDF</a>), are available,
+but their complexity makes defining and maintaining correct system
+definitions difficult.
+</p>
+<p><a name="id1">The</a> <code>:module-manager</code> <a href="ref-glossary.html#gl:module">module</a> is automatically loaded by the
+GBBopen <nobr><code><var>&lt;install-directory&gt;</var>/startup.lisp</code></nobr> file (by the
+<nobr><code>module-manager-loader.lisp</code></nobr> file located in the
+<nobr><code>module-manager</code></nobr> subdirectory). If a
+<nobr><code>gbbopen-init.lisp</code></nobr> file (source or compiled) is present in the
+user's &#8220;home&#8221; directory, it is loaded immediately following the loading of
+the Module Manager Facility.  A personal
+<nobr><code><var>&lt;homedir&gt;</var>/gbbopen-init.lisp</code></nobr> file is very useful for
+defining GBBopen parameters and other personalizations
+(see the GBBopen <a href="ref-starting-up.html">start-up description</a>).
+</p>
+<p><h4>Key concepts</h4>
+</p>
+<p>The Module Manager Facility incorporates several important concepts:
+</p>
+<p><ul class="tight"><li>Dependencies are maintained among modules, rather than among individual
+files.  Defining compilation and loading dependencies at the file level (and
+maintaining those dependencies as applications and libraries evolve) is both
+complex and error prone.  Instead, each Module Manager module definition
+specifies a total ordering of any other modules that it requires (directly)
+as well as a total ordering of the individual files that comprise the
+module.  (It is an error for a file to be associated with more than one
+module.)  
+<li>A total ordering of all the individual files that are required and used
+by a module is generated from the module definitions.  The Module Manager
+Facility expands a module's specified required modules recursively to obtain
+a fully expanded sequence of all the modules that are required (directly or
+indirectly) by the module.  The individual files associated with each module
+in this fully expanded sequence of required modules define the sequence of
+all the individual files that must be possibly compiled and/or loaded as
+part of compiling or loading the module.
+<li>Recompilation and reloading dependencies are specified as options
+associated with individual files.  For example, if the option
+<nobr><code>:forces-recompile</code></nobr> is specified for a file and that file needs
+to be recompiled, all files later in the total file sequence need to be
+recompiled and reloaded.  This simple, &#8220;somewhat aggressive&#8221; recompilation
+mechanism replaces complex definitions of pairwise dependencies between
+individual files (and the risk of missed and no-longer-appropriate
+dependencies), but at the cost of some unneeded recompilation.  It also
+simplifies handling dependencies that exist between some files in a
+requiring module and files in ones of that module's required modules when
+each module is supported by a different developer/maintainer.  A developer
+only needs to consider whether a file includes forms (such as macro
+definitions and compiler transforms) that may effect the compilation and/or
+loading of downstream files (whether or not those files are known to the
+developer). With today's fast Common Lisp compilers, some unnecessary
+recompilation is a small price to pay for easier and more likely to be
+correct dependency specifications.
+<li>The fully expanded required module sequences of all modules (and
+therefore the compilation and loading sequence of files for all modules)
+must be consistent.  This requirement is checked by the Module Manager and
+ensures that the ordering of file compilation and loading will be maintained
+no matter what module (or modules) is being loaded.  Ordering consistency is
+important in avoiding unnecessary recompilation of unchanged files if
+different modules were allowed to specify their sequence of overlapping
+required modules differently.  Although required-module ordering consistency
+is a very strong constraint&mdash;especially when independently development
+modules use common libraries as required modules&mdash;in practice, existing
+required-module orderings quickly eliminate most &#8220;otherwise arbitrary&#8221;
+required-module orderings.  Where two required modules are not constrained
+as to their pairwise ordering, the convention of specifying the module that
+is earlier alphabetically first is recommended.
+<li>Separate compiled-file directory trees are created for each Common Lisp
+implementation and platform.  These compiled-file directories mirror the
+directory structure of the original source-file directory tree of a system.
+This separation makes packaging and distributing compiled files for one or
+more platforms (with or without the source tree) simple by including only
+the desired directory trees.
+<li>Freezing a release (and providing patches later, if needed) are
+important phases of the release life cycle of some applications.  Support
+for freezing and patches that are in keeping with the above concepts is
+provided explicitly by Module Manager operators.
+</ul>
+</p>
+<p><h4>Stand-alone usage</h4>
+</p>
+<p>To bootstrap the Module Manager Facility stand-alone (separate from the GBBopen
+Project software tree), do the following:
+</p>
+<p><ul class="tight"><li>create a &#8220;root&#8221; directory to contain the Module Manager software tree<br />(for example: <nobr><code>&#36; mkdir my-tree</code></nobr>)
+<li>create the Module Manager portion of the source tree in the newly created
+&#8220;root&#8221; directory<br />(for example: <nobr><code>&#36; cd my-tree ; mkdir -p source/module-manager</code></nobr>)
+<li>copy the
+<a target="_top" href="http://gbbopen.org/svn/GBBopen/trunk/source/module-manager/module-manager-loader.lisp"><nobr><code>module-manager-loader.lisp</code></nobr></a>,
+&nbsp;
+<a target="_top" href="http://gbbopen.org/svn/GBBopen/trunk/source/module-manager/module-manager.lisp"><nobr><code>module-manager.lisp</code></nobr></a>,
+&nbsp; and
+<a target="_top" href="http://gbbopen.org/svn/GBBopen/trunk/source/module-manager/module-manager-user.lisp"><nobr><code>module-manager-user.lisp</code></nobr></a>
+files into the <nobr><code>source/module-manager</code></nobr> directory
+<li>start your Common Lisp implementation and then load the
+<nobr><code>module-manager-loader.lisp</code></nobr> file<br />&nbsp;&nbsp;&nbsp;<nobr><code>&gt; (load "my-tree/source/module-manager/module-manager-loader")</code></nobr>
+<li>compile the <nobr><code>:module-manager</code></nobr> and <nobr><code>:module-manager-user</code></nobr> modules:<br />&nbsp;&nbsp;&nbsp;<nobr><code>&gt; (module-manager:<a href="ref-compile-module.html">compile-module</a> :module-manager-user :create-dirs :propagate)</code></nobr>
+</ul>
+After performing the above steps, the Module Manager can be used stand-alone
+by loading <nobr><code>source/module-manager-loader.lisp</code></nobr> as part of your
+Common Lisp initialization.
+</p>
+<p><b><font size="+1">Entities</font></b>
+</p>
+<ul>
+<li><a href="ref-automatically-create-missing-directories-var.html"><font color="#000000">*automatically-create-missing-directories*</font></a></li>
+<li><a href="ref-autorun-modules-var.html"><font color="#000000">*autorun-modules*</font></a></li>
+<li><a href="ref-patches-only-var.html"><font color="#000000">*patches-only*</font></a></li>
+<li><a href="ref-compile-module.html"><font color="#000000">compile-module</font></a></li>
+<li><a href="ref-continue-patch.html"><font color="#000000">continue-patch</font></a></li>
+<li><a href="ref-define-module.html"><font color="#000000">define-module</font></a></li>
+<li><a href="ref-define-relative-directory.html"><font color="#000000">define-relative-directory</font></a></li>
+<li><a href="ref-define-root-directory.html"><font color="#000000">define-root-directory</font></a></li>
+<li><a href="ref-describe-module.html"><font color="#000000">describe-module</font></a></li>
+<li><a href="ref-describe-patches.html"><font color="#000000">describe-patches</font></a></li>
+<li><a href="ref-finish-patch.html"><font color="#000000">finish-patch</font></a></li>
+<li><a href="ref-get-directory.html"><font color="#000000">get-directory</font></a></li>
+<li><a href="ref-get-patch-description.html"><font color="#000000">get-patch-description</font></a></li>
+<li><a href="ref-get-root-directory.html"><font color="#000000">get-root-directory</font></a></li>
+<li><a href="ref-load-module.html"><font color="#000000">load-module</font></a></li>
+<li><a href="ref-load-module-file.html"><font color="#000000">load-module-file</font></a></li>
+<li><a href="ref-module-directories.html"><font color="#000000">module-directories</font></a></li>
+<li><a href="ref-module-loaded-p.html"><font color="#000000">module-loaded-p</font></a></li>
+<li><a href="ref-patch.html"><font color="#000000">patch</font></a></li>
+<li><a href="ref-patch-loaded-p.html"><font color="#000000">patch-loaded-p</font></a></li>
+<li><a href="ref-show-defined-directories.html"><font color="#000000">show-defined-directories</font></a></li>
+<li><a href="ref-start-patch.html"><font color="#000000">start-patch</font></a></li>
+<li><a href="ref-with-module-redefinitions.html"><font color="#000000">with-module-redefinitions</font></a></li>
+</ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-starting-up.html"><img border="0" alt="Starting Up" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="reference_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Module Manager Facility</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

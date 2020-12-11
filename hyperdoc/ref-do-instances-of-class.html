@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- do-instances-of-class</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-warn-about-unusual-requests-var.html"><img border="0" alt="*warn-about-unusual-requests*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-retrieval-entities.html"><img border="0" alt="Instance Retrieval" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-do-instances-on-space-instances.html"><img border="0" alt="do-instances-on-space-instances" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">do-instances-of-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">do-instances-of-class</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%">(<var>var 
+<nobr>unit-classes-specifier</nobr>)</var>
+<var>declaration</var>* 
+<nobr>&#123;<var>tag</var> | <var>form</var>&#125;*</nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Iterate over all <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> of the specified
+<a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>var</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id260">variable&nbsp;symbol</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>unit-classes-specifier</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id73">extended&nbsp;unit-classes&nbsp;specification</a>
+(see below)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>declaration</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A declare expression (not evaluated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>tag</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code>go</code> tag (not evaluated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Detailed syntax</span><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>unit-classes-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <code>t</code> | 
+<var>single-unit-class-specifier</var> 
+| <code>(</code><var>single-unit-class-specifier</var><sup>+</sup><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>single-unit-class-specifier</var> ::=</nobr> 
+</td><td valign="baseline" colspan="1" align="left"> <var>atomic-unit-class</var> |
+<code>(</code><var>atomic-unit-class subclassing-specifier</var><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>atomic-unit-class</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>unit-class</var> | 
+<var>unit-class-name</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>subclassing-specifier</var> ::=</nobr> 
+<a name="id1"></a></td><td valign="baseline" colspan="1" align="left"> <code>:plus-subclasses</code> | <code>:no-subclasses</code> | 
+<code>+</code> | <code>=</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>The shorthand <code>+</code> subclasses specifier is equivalent to
+<code>:plus-subclasses</code> and <code>=</code> to <code>:no-subclasses</code>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />The iteration over the <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> of the specified
+<a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a> is performed once for each <a href="ref-glossary.html#id256">unit&nbsp;instance</a>, whether
+or not the instances reside on any <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-class-instances-count.html"><b>class-instances-count</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-clear-space-instances.html"><b>clear-space-instances</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-do-instances-on-space-instances.html"><b>do-instances-on-space-instances</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-instances-of-class.html"><b>find-instances-of-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-instances-of-class-vector.html"><b>make-instances-of-class-vector</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-map-instances-of-class.html"><b>map-instances-of-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-map-instances-on-space-instances.html"><b>map-instances-on-space-instances</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-map-sorted-instances-of-class.html"><b>map-sorted-instances-of-class</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Delete all <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> of the <a href="ref-glossary.html#id254">unit&nbsp;class</a> <code>hyp</code>:
+<pre class="pretop">
+  (do-instances-of-class (instance 'hyp)
+    (<a href="ref-delete-instance.html">delete-instance</a> instance))
+</pre> 
+Delete all unit instances of the unit class <code>hyp</code> and
+instances of subclasses of <code>hyp</code>:
+<pre>
+  (do-instances-of-class (instance '(hyp :plus-subclasses))
+    (<a href="ref-delete-instance.html">delete-instance</a> instance))
+</pre> 
+or simply:
+<pre>
+  (do-instances-of-class (instance '(hyp +))
+    (<a href="ref-delete-instance.html">delete-instance</a> instance))
+</pre> 
+</p>
+<p><span class="fndoclabel">Note</span> <br /><a name="id2">The</a> consequences are unspecified if an attempt is made to add or delete a
+<a href="ref-glossary.html#id256">unit&nbsp;instance</a> while <nobr><b>do-instances-of-class</b></nobr> is in
+progress.  There is one exception to this restriction: the current
+<a href="ref-glossary.html#id256">unit&nbsp;instance</a> in the iteration (bound to <var>var</var>) can be deleted,
+provided that the deletion does not trigger the deletion of any other
+<a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a>.  For example, the following form intended to delete
+all <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> violates this restriction:
+<pre class="pretop">
+   <font color="#ff0000">(do-instances-of-class (space-instance 
+                             '(<a href="ref-standard-space-instance.html">standard-space-instance</a> :plus-subclasses))
+     (<a href="ref-delete-space-instance.html">delete-space-instance</a> space-instance))</font>
+</pre>
+because deletion of a <a href="ref-glossary.html#id222">space&nbsp;instance</a> with children automatically
+deletes those child <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>.  The function
+<nobr><b><a href="ref-delete-all-space-instances.html">delete-all-space-instances</a></b></nobr> provides an efficient
+means of deleting all <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a> without violating this rule.
+</p>
+<p><span class="fndoclabel">REPL Note</span> <br /><a name="id3">The</a> equivalent of <nobr><code>(do-instances-of-class (instance <var>arg</var>)
+(print instance))</code></nobr> can be invoked using the <a href="ref-glossary.html#id198">REPL&nbsp;command</a>
+<nobr><code>:pic <span 
+    style="font-family: serif; font-style: normal">[</span><var>arg</var><span 
+    style="font-family: serif; font-style: normal">]</span></code></nobr>.  If <var>arg</var> is
+omitted, <code>t</code> is assumed.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-warn-about-unusual-requests-var.html"><img border="0" alt="*warn-about-unusual-requests*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-retrieval-entities.html"><img border="0" alt="Instance Retrieval" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-do-instances-on-space-instances.html"><img border="0" alt="do-instances-on-space-instances" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">do-instances-of-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- open-connection</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-passive-socket.html"><img border="0" alt="make-passive-socket" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-socket-entities.html"><img border="0" alt="Portable Sockets" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-remote-hostname-and-port.html"><img border="0" alt="remote-hostname-and-port" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">open-connection</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">open-connection</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>host port</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>socket-stream</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Open a socket-stream connection to server <var>host</var>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>open-connection</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>host</var> <code>integer)</code>
+<var>port</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>socket-stream</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>open-connection</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>host</var> <code>string)</code> <var>port</var>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>socket-stream</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-sockets</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-sockets</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>host</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A 32-bit internet address or a string specifying the remote host
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>port</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer or a string specifying the service port
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>socket-stream</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A socket stream
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />A socket stream.
+</p>
+<p><span class="fndoclabel">Description</span> <br />A <var>host</var> string can be either a host name or a
+&#8220;dotted&#8221; IP address, such as <nobr><code>"127.0.0.1"</code></nobr>.
+</p>
+<p>String values available for specifying <var>port</var> are found in the operating
+system's services file and labeled as being <code>tcp</code> services. On Unix
+systems, the services file is <nobr><code>/etc/services</code></nobr>. On Windows, it is
+the file <nobr><code>services</code></nobr> in the <nobr><code>Windows</code></nobr> directory.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-shutdown-socket-stream.html"><b>shutdown-socket-stream</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-open-connection.html"><b>with-open-connection</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Open a socket connection to the GBBopen Project web server:
+<pre class="pretop">
+  &gt; (open-connection "GBBopen.org" 80)
+  #&lt;socket stream connected from localhost/51756 to gbbopen.org/80&gt;
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />Connections should always be closed using <nobr><b>close</b></nobr> (from
+both sides) when they are no longer needed to free up operating-system
+resources.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-passive-socket.html"><img border="0" alt="make-passive-socket" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-socket-entities.html"><img border="0" alt="Portable Sockets" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-remote-hostname-and-port.html"><img border="0" alt="remote-hostname-and-port" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">open-connection</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

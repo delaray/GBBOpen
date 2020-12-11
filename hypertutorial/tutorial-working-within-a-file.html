@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: tutorial.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Tutorial -- Working Within a File</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-development-environment.html"><img border="0" alt="Enhancing Your Development Environment" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-adding-dimensions.html"><img border="0" alt="Adding Dimensions" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Working Within a File</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h1>Working Within a File</h1>
+<p>Now that we've enhanced our GBBopen and Common Lisp development environment,
+let's begin developing the random-walk application in earnest.
+</p>
+<p><hr color="99CCCC">
+This exercise shows you how to:
+</p>
+<p><ul class="tight"><li>Begin working with files for application development
+<li>Compile and load an application file using the SLIME or ELI
+environments
+</ul>
+</p>
+<hr color="99CCCC">
+<h2><a name="id1">Step 1: Create the tutorial-example directories</a></h2><p>
+Create a directory to hold the random-walk application.  I'm calling mine
+<code>tutorial</code>.  Next, create a subdirectory in that directory named
+<code>source</code>.  The reason for doing this will become clear in an
+<a href="tutorial-application.html">upcoming exercise</a>. Here are the shell commands
+that I used to create my directories:
+<pre class="pretop">
+<font color="#667f66">  [~]&#36; <font color="#000000">mkdir tutorial</font>
+  [~]&#36; <font color="#000000">cd tutorial</font>
+  [~/tutorial]&#36; <font color="#000000">mkdir source</font>
+  [~/tutorial]&#36;</font>
+</pre>
+</p>
+<h2><a name="id2">Step 2: Create the tutorial-example file</a></h2><p>
+Start up a fresh Common Lisp session and load the <nobr><code>:gbbopen-user</code></nobr>
+module, using the REPL command we set up in the last exercise:
+<small><pre class="pretop">
+<font color="#667f66">  cl-user&gt; <font color="#000000">:gbbopen-user</font>
+  ;; Loading <var>&lt;install-dir&gt;</var>/startup.lisp
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  ;; Loading <var>&lt;install-dir&gt;</var>/<var>&lt;platform-dir&gt;</var>/gbbopen/gbbopen-user.fasl
+  gbbopen-user&gt;</font>
+</pre></small>
+</p>
+<p>Next, begin editing a new file named <nobr><code>tutorial-example.lisp</code></nobr> in
+the <code>source</code> subdirectory that you just created.  Even if you are more
+comfortable using another editor, use the editing facilities that are provided
+by your Common Lisp environment.  The development features of a quality Common
+Lisp environment are well worth the price of learning a new editor.  In an
+Emacs-based environment, such as
+<a target="_top" href="http://common-lisp.net/project/slime/">SLIME</a> or <a target="_top" href="http://franz.com/products/allegrocl/">Allegro
+CL</a>'s ELI, typing <nobr><code>C-x C-f</code></nobr> will prompt
+you for the name of a file to editor or create.  (We will use Emacs
+key-binding notation, where <nobr><code>C-x C-f</code></nobr> means typing <code>^c</code>
+followed by ^f.)
+</p>
+<p>Type the following two forms into the <nobr><code>tutorial-example.lisp</code></nobr> file
+buffer:
+<pre class="pretop">
+  (in-package :gbbopen-user)
+
+  (define-unit-class location ()
+    (x y))
+</pre>
+</p>
+<p>The <nobr><code>in-package</code></nobr> form specifies the Common Lisp package that is
+made current when the file is compiled or loaded.  The first form in every
+Common Lisp source file that you create should begin with an
+<nobr><code>in-package</code></nobr> form.  This form is also used by most Common Lisp
+editing environments to set the package associated with development
+operations.
+</p>
+<p>The <nobr><b>define-unit-class</b></nobr> definition is the same one we used in
+the <a href="tutorial-creating-a-unit-instance.html">Creating a Unit
+instance</a> exercise.
+</p>
+<p>Now, save the file.  
+</p>
+<h2><a name="id3">Step 3: Compile and load the tutorial-example file</a></h2><p>
+At this point, we have been using Common Lisp's
+development environment, but we have not loaded the forms in our file
+into Common Lisp:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(make-instance 'location)</font>
+  Error: No class named: location.
+  gbbopen-user&gt;&gt; <font color="#000000">:a</font>
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>We could use Common Lisp's <nobr><code>compile-file</code></nobr> to compile the file and
+then <code>load</code> to load the resulting compiled file. For example:
+<small><pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(load (compile-file "~/tutorial/source/tutorial-example.lisp"))</font>
+  ;; Compiling file ~/tutorial/source/tutorial-example.lisp
+  ;; Loading ~/tutorial/source/tutorial-example.fasl
+  t
+  gbbopen-user&gt;</font>
+</pre></small>
+but you should be able to compile and load the file directly from the editor
+buffer.  In SLIME, the command <nobr><code>C-c C-k</code></nobr> will compile and load the
+file currently being edited.  Allegro's ELI interface compile-and-load command
+is <nobr><code>C-c C-b</code></nobr>.  Identify and use the compile-and-load-file command
+in your editing environment.
+</p>
+<p>Verify that all is well by creating a <nobr><code>location</code></nobr> unit instance in
+the REPL:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(make-instance 'location)</font>
+  #&lt;location 1&gt;
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id4">Then</a> delete the blackboard repository in preparation for the next exercise:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(delete-blackboard-repository)</font>
+  t
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-development-environment.html"><img border="0" alt="Enhancing Your Development Environment" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-adding-dimensions.html"><img border="0" alt="Adding Dimensions" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Working Within a File</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- Double Metaphone</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-portable-socket-entities.html"><img border="0" alt="Portable Sockets" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-additional-tools-entities.html"><img border="0" alt="Additional GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-os-interface-entities.html"><img border="0" alt="OS Interface" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Double Metaphone</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h2>Double Metaphone</h2>
+<p>The <nobr><code>:double-metaphone</code></nobr> <a href="ref-glossary.html#gl:module">module</a> provides Double Metaphone
+phonetic-code generation.
+</p>
+<p>The Metaphone algorithm, published by Lawrence Philips in 1990, improved early
+phonetic approaches, such as Soundex, by attempting to correctly code cases
+where &#8220;gh&#8221; is pronounced as &#8220;f&#8221; as in &#8220;laugh&#8221; and when it is silent, as
+in &#8220;dough,&#8221; or where &#8220;t,&#8221; &#8220;c,&#8221; and &#8220;s&#8221; are pronounced as &#8220;sh&#8221; (or
+&#8220;ch,&#8221; which is treated as a sound that is similar enough to &#8220;sh&#8221; to be
+mapped to the same encoding value) as in &#8220;ratio,&#8221; &#8220;ciao,&#8221; and &#8220;erosion.&#8221;
+Although Metaphone was an improvement, it failed to encode many common words
+accurately, including the silent &#8220;l&#8221; in &#8220;lincoln,&#8221; and the case of
+&#8220;school&#8221; where &#8220;ch&#8221; is pronounced as &#8220;k.&#8221; Also, by using the Soundex
+style of encoding an initial vowel as it appears, Metaphone results in
+different encodings for &#8220;Otto&#8221; and &#8220;auto,&#8221; which sound similar enough to
+match.
+</p>
+<p>Double Metaphone was published by Lawrence Philips in 2000 to improve accuracy
+further than was achieved by Metaphone. It maps all initial vowels to &#8220;A,&#8221;
+matching &#8220;Otto&#8221; to &#8220;auto.&#8221; It attempts to correctly encode a number of
+common words and names commonly found in the United States that are of
+non-english origin and are usually pronounced correctly according to their
+non-english spellings, by Americans, such as &#8220;Jose&#8221; or &#8220;pizza.&#8221;  It also
+attempts to account for cases where more than one pronunciation may be common
+in the United States, such as the Spanish name &#8220;Cabrillo&#8221; which might be
+plausibly pronounced as &#8220;cabreeyo&#8221; or &#8220;cabrillo.&#8221; Double Metaphone
+addresses exceptions in regular English pronunciation, such as the many cases
+of silent consonants, such as the silent &#8220;l&#8221; in &#8220;lincoln&#8221; or the silent
+&#8220;s&#8221; in &#8220;island,&#8221; as well as the pronunciation of &#8220;s&#8221; as &#8220;sh&#8221; in
+&#8220;sugar,&#8221; or an anomaly like &#8220;caesar,&#8221; an unusual case of a &#8220;c&#8221; followed
+by an &#8220;a&#8221; where the &#8220;c&#8221; is pronounced as &#8220;s.&#8221;
+</p>
+<p>Even with this more detailed treatment, Double Metaphone still misses a number
+of common exceptions, such as the silent &#8220;p&#8221; in &#8220;receipt,&#8221; many cases
+where &#8220;ch&#8221; is pronounced as &#8220;k&#8221; instead of &#8220;ch&#8221; as in &#8220;monarch,&#8221; many
+cases where Americans pronounce words of non-English origin according to their
+non-English pronunciations, such as &#8220;chutzpah,&#8221; and exceptions such as
+&#8220;colonel,&#8221; pronounced &#8220;kernal,&#8221; and &#8220;tucson,&#8221; pronounced &#8220;tooson.&#8221;
+</p>
+<p>In addition to providing strict adherence to the Double Metaphone algorithm,
+this Common Lisp implementation also supports an extended-encoding option that
+activates additional encoding rules that separate the sounds used for &#8220;B&#8221;
+and &#8220;P,&#8221; for &#8220;D&#8221; and &#8220;T,&#8221; for &#8220;F&#8221; and &#8220;V,&#8221; and for &#8220;S&#8221; and &#8220;Z.&#8221;
+The extended-encoding option often produces phonetic-code results that are
+more natural and intuitive.
+</p>
+<p><b><font size="+1">Entities</font></b>
+</p>
+<ul>
+<li><a href="ref-double-metaphone.html"><font color="#000000">double-metaphone</font></a></li>
+</ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-portable-socket-entities.html"><img border="0" alt="Portable Sockets" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-additional-tools-entities.html"><img border="0" alt="Additional GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-os-interface-entities.html"><img border="0" alt="OS Interface" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Double Metaphone</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

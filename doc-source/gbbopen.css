@@ -1,0 +1,61 @@
+/* Note: This file must be linked (or copied) to the hyperdoc directory when
+         creating a new hyperdoc tree.  In addition: GBBopen-logo.png, 
+         GBBopen-logo-sm.png, top.png, up.png, next.png, previous.png, 
+         blank.png, and favicon.ico must be similarly linked (or copied).
+*/
+
+body     {background-color: #FFFFFF}
+h1       {color: #000066}
+h1.navname {
+         margin: 0;
+         padding: 0}
+h2       {color: #000066}
+h4       {font-family: "sans-serif"; 
+          color: #333366}
+address  {font-family: "sans-serif"; 
+          font-size: 7pt;
+          color: #0099FF}
+a.address {color: #0099FF}
+span.fndoclabel { 
+          font-family: "sans-serif"; 
+          font-weight: bold;
+          color: #3333AA}
+pre.pretop {
+          margin-bottom: 6px;
+          color: #000033;
+          margin-top: -10px;
+         #margin-top: 0px;/* Override for MS IE*/    
+         _margin-top: 0px;/* Override for MS IE6 and older*/    
+}
+pre      {margin-top: 6px;
+          margin-bottom: 6px;
+          color: #000033}
+ol.tight {margin-top: -12px
+         #margin-top: 0px}/* Override for MS IE*/
+ul.tight {margin-top: -12px;
+         #margin-top: 0px;/* Override for MS IE*/
+         _margin-top: 0px;/* Override for MS IE6 and older*/    
+}       
+table.tight {
+          margin: 0pt; 
+          padding: 0pt; 
+          border-spacing: 0pt}
+table.tighttop {
+          margin: 0pt; 
+          padding: 0pt; 
+          border-spacing: 0pt;
+          margin-top: -12px;
+         #margin-top: 0px;/* Override for MS IE*/    
+         _margin-top: 0px;/* Override for MS IE6 and older*/    
+}
+table.tightertop {
+          margin: 0pt; 
+          padding: 0pt; 
+          border-spacing: 0pt;
+          margin-top: -16px;
+         #margin-top: 0px;/* Override for MS IE*/    
+         _margin-top: 0px;/* Override for MS IE6 and older*/    
+}
+p.tiny   {font-family: "sans-serif"; 
+          font-size: 7pt;
+          color: #0099FF}

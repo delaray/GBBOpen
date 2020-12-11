@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- Offset Universal Time</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-atable-entities.html"><img border="0" alt="Transitioning Sets and Tables" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Offset Universal Time</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h2>Offset Universal Time</h2>
+<p>Common Lisp has three time representations: Decoded Time, Universal
+Time, and Internal Time.  <a href="ref-glossary.html#id258">Universal&nbsp;Time</a> (UT) allows specific points
+in time from the beginning of 1900 to be represented with one-second
+resolution (ignoring leap seconds).  The disadvantage of absolute
+Universal Time values is that they are bignums in most Common Lisp
+implementations.
+</p>
+<p>To reduce computation and storage requirements, a fourth time
+representation, <a href="ref-glossary.html#id152">Offset&nbsp;Universal&nbsp;Time</a> (OT), can be used.  Offset
+Universal Time is Universal Time that is offset by an integer
+time-base value so that the most often used Offset Universal Time
+values in an application are <a href="ref-glossary.html#gl:fixnums">fixnums</a>.
+</p>
+<p>Nearly all Common Lisp implementations provide fixnums of at least 30
+bits (34 years of time range) or more, but CLISP on 32-bit machines
+provides only 25 bits (388 days).  The ANSI standard requires an
+implementation to provide fixnums with at least 16 bits (only 18
+hours), but fortunately Common Lisp implementations are considerably more
+generous!
+</p>
+<p>When developing applications that must represent time values that
+exceed the fixnum range, it is important to choose the best time-base
+offset value to reduce bignum costs.  Of course, existing Offset
+Universal Time values will appear shifted if the time-base offset
+value is changed.
+</p>
+<p><b><font size="+1">Entities</font></b>
+</p>
+<ul>
+<li><a href="ref-ot-base-var.html"><font color="#000000">*ot-base*</font></a></li>
+<li><a href="ref-check-ot-base.html"><font color="#000000">check-ot-base</font></a></li>
+<li><a href="ref-ot2ut.html"><font color="#000000">ot2ut</font></a></li>
+<li><a href="ref-printvot.html"><font color="#000000">printvot</font></a></li>
+<li><a href="ref-set-ot-base.html"><font color="#000000">set-ot-base</font></a></li>
+<li><a href="ref-ut2ot.html"><font color="#000000">ut2ot</font></a></li>
+</ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-atable-entities.html"><img border="0" alt="Transitioning Sets and Tables" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Offset Universal Time</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- Transitioning Sets and Tables</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-offset-universal-time-entities.html"><img border="0" alt="Offset Universal Time" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-search-tree-entities.html"><img border="0" alt="Search Trees" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Transitioning Sets and Tables</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h2>Transitioning Sets and Tables</h2>
+<p>Ideally, native Common Lisp hash tables operations should always be very fast.
+On some Common Lisp implementations, however, a small amount of time (and
+space) can be saved by using list-based representations for hash tables with
+small entry counts.  These list-based representations transition automatically
+to regular hash tables as the entry count grows beyond the
+performance-advantage threshold (and back to the list representation as the
+count shrinks).  These auto-transitioning representations add a small overhead
+to normal hash table operations, so their use should be considered very
+carefully (and restricted to situations where the counts tend to remain low).
+</p>
+<p><h4>ESETs</h4>
+<a name="id1">An</a> ESET (short for <code>eq</code>-set) is a keys-only table that automatically
+transitions between list and hash-table implementations.  The keys are used to
+represent elements of the ESET and are compared using <code>eq</code>.
+</p>
+<p><h4>ETs</h4>
+<a name="id2">An</a> ET (short for <code>eq</code>-table) is a key-and-value table that automatically
+transitions between list and hash-table implementations.  The keys are
+compared using <code>eq</code>.
+</p>
+<ul>
+<li><a href="ref-add-to-eset.html"><font color="#000000">add-to-eset</font></a></li>
+<li><a href="ref-delete-from-eset.html"><font color="#000000">delete-from-eset</font></a></li>
+<li><a href="ref-delete-et.html"><font color="#000000">delete-et</font></a></li>
+<li><a href="ref-get-et.html"><font color="#000000">get-et</font></a></li>
+<li><a href="ref-in-eset.html"><font color="#000000">in-eset</font></a></li>
+<li><a href="ref-make-eset.html"><font color="#000000">make-eset</font></a></li>
+<li><a href="ref-make-et.html"><font color="#000000">make-et</font></a></li>
+</ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-offset-universal-time-entities.html"><img border="0" alt="Offset Universal Time" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-search-tree-entities.html"><img border="0" alt="Search Trees" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Transitioning Sets and Tables</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

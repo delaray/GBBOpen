@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference</title>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<p><p class="tiny" align="right"> 
+<a target="_top" href="http://gbbopen.org/downloads/reference.pdf">PDF version</a>
+</p>
+<img align="left" src="GBBopen-logo.png">
+<br clear="both">
+<font size="+3"><b>Reference Manual</b></font><br /><font size="+1"><b>Version 1.5</b></font>
+</p>
+<p>GBBopen is a modern, high-performance, open source blackboard-system
+development environment that is based on the concepts that were explored and
+refined in the <a target="_top" href="http://dancorkill.home.comcast.net/pubs/aaai87.pdf">UMass Generic Blackboard
+system</a> and the
+commercial GBB product.  GBBopen is not, however, a clone or updated version
+of either system.  The GBBopen Project is applying the knowledge and
+experience gained with these earlier tools to create a new generation of
+blackboard-system capabilities and make them freely available to a wide
+audience.
+</p>
+<p>GBBopen is structured for high-performance and scalability while
+maintaining flexibility and adaptability to changes in representation,
+<a href="ref-glossary.html#gl:KSs">knowledge-source</a> (KS) components, and control strategies.
+Multi-dimensional abstraction of blackboard components
+(&#8220;<a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>&#8221;), blackboard objects
+(&#8220;<a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a>&#8221;), and proximity-based retrieval patterns
+is used to provide a semantically meaningful separation of
+blackboard-repository storage mechanisms from <a href="ref-glossary.html#gl:KSs">KS</a> and control code.
+This separation allows storage and search strategies and optimizations
+to change dynamically as well as to be adapted to a broad range of
+application areas.  GBBopen also provides highly efficient and
+extensible event primitives that form the foundation for fast, yet
+effective, opportunistic control reasoning.
+</p>
+<p>At the implementation level, GBBopen is designed as a smooth extension
+of <a target="_top" href="http://www.lispworks.com/documentation/HyperSpec/Front/index.htm">Common
+Lisp</a>,
+providing all the advantages of a rich, dynamic, reflective, and
+extensible programming language to the blackboard-system architects
+and component writers.  These capabilities are crucial in building
+complex blackboard-based applications where object representations,
+knowledge sources (<a href="ref-glossary.html#gl:KSs">KSs</a>), and control mechanisms will change
+during development and over the operational lifetime of the blackboard
+application. GBBopen is tightly integrated with CLOS (the Common Lisp
+Object System) and provides additional blackboard-specific object
+mechanisms via the <a target="_top" href="http://www.lisp.org/mop/index.html">Metaobject
+Protocol</a>.
+</p>
+<p>The open-source licensing of GBBopen provides a number of important benefits:
+</p>
+<ul><li>A modular, open-source reference implementation of
+blackboard-system infrastructure that serves as a basis for research
+and development activities.
+</li><li>The availability of source code and the right to modify it
+enables unlimited improvement and enhancement of the software. It
+also makes it possible to port the code to new hardware and
+software, to adapt it to changing conditions, and to reach a
+detailed understanding of how GBBopen works. Source code
+availability also makes it much easier to isolate and fix bugs.
+</li><li>The right to redistribute improvements and extensions to the
+GBBopen source code.
+</li><li>The right to use the software.
+</li><li>There is no single entity on which the future of the GBBopen
+software depends. This is particularly important given the highly
+specialized nature of blackboard-system software and the lack of
+multiple implementations.
+</li><li>GBBopen supports alternative and additional GBBopen <a href="ref-glossary.html#gl:modules">modules</a> for
+use in research and experimentation.
+</li></ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+</body></html>

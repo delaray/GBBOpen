@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: tutorial.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Tutorial -- Creating a Unit Instance</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-starting-up.html"><img border="0" alt="Starting GBBopen" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-creating-a-space-instance.html"><img border="0" alt="Creating a Space Instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Creating a Unit Instance</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h1>Creating a Unit Instance</h1>
+<p>Blackboard objects in GBBopen are called <i>unit instances</i>. Each unit
+instance is a member of a <i>unit class</i>.  The unit class defines the
+structure of all instances of the unit class, such as the slots in each unit
+instance.  At a more precise Common Lisp level, every GBBopen unit instance is
+member of a (possibly non-direct) subclass of GBBopen's unit class,
+<nobr><code>standard-unit-instance</code></nobr>, which is itself a subclass of Common
+Lisp's <nobr><code>standard-object</code></nobr> class.  Even more technically, the
+metaclass of each GBBopen unit class is an instance of the GBBopen metaclass,
+<nobr><code>standard-unit-class</code></nobr>, which is a subclass of Common Lisp's
+<nobr><code>standard-class</code></nobr> metaclass.  In other words, GBBopen classes and
+unit instances fit naturally into the CLOS (the Common Lisp Object System) and
+MOP (<a target="_top" href="http://www.alu.org/mop/index.html">Metaobject Protocol</a>)
+hierarchies. Fortunately, understanding such details is not required to put
+GBBopen to use.
+</p>
+<p>The word &#8220;unit&#8221; is used in GBBopen because it has a very neutral meaning
+that is unlikely to be confused with programming terminology, such as
+&#8220;object,&#8221; or with application-domain concepts, such as &#8220;location&#8221; or
+&#8220;goal&#8221;.  When someone refers to &#8220;unit instances,&#8221; it is clear that they
+are talking about GBBopen's blackboard objects.  Thus, &#8220;unit instance&#8221;
+always refers to an instance of a particular unit class, and &#8220;unit class&#8221;
+refers to a class of unit instances.
+</p>
+<p>So let's start using them<i>...</i>
+</p>
+<p><hr color="99CCCC">
+This exercise shows you how to:
+</p>
+<p><ul class="tight"><li>Define a unit class
+<li>Create a unit instance
+<li>Display a description of a unit instance
+<li>Find a unit instance by its name
+<li>Read and write slot values
+</ul>
+</p>
+<hr color="99CCCC">
+<h2><a name="id1">Prerequisites</a></h2><p>
+If you ended the Common Lisp session used in the last exercise, begin a new
+session and evaluate the following forms:
+<pre class="pretop">
+<font color="#667f66">  cl-user&gt; <font color="#000000">(load "<var>&lt;install-dir&gt;</var>/initiate.lisp")</font>
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  cl-user&gt; <font color="#000000">:gbbopen-user</font>
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id2"></a><table width="90%" align="center" border="1" cellpadding="12"
+      bgcolor="#FFFFEA"><tr><td valign="baseline"><table border="0">
+<tr><td valign="baseline"><b>ASDF, clbuild, and Quicklisp users</b></td></tr><tr><td valign="baseline">
+Remember to <nobr><code>(asdf:operate 'asdf:load-op 'gbbbopen)</code></nobr> or
+<nobr><code>(require :gbbopen)</code></nobr> in place of loading
+<nobr><code><var>&lt;install-dir&gt;</var>/initiate.lisp</code></nobr>.
+</td></tr></table></table>
+</p>
+<h2><a name="id3">Step 1: Define the <code>location</code> unit class</a></h2><p>
+We begin by defining a unit class <nobr><code>location</code></nobr> that has two slots,
+named <code>x</code> and <code>y</code>.
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(define-unit-class location ()
+                  (x y))</font>
+  #&lt;location&gt;
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>This unit-class definition instructs GBBopen to:
+</p>
+<p><ul class="tight"><li>Define initialization argument <code>:x</code> for the <code>x</code> slot
+and <code>:y</code> for the <code>y</code> slot.  You will use these
+initialization arguments in the next step, to specify initial slot
+values for an instance.
+<li>Define reader and writer methods for the <nobr><code>x-of</code></nobr> and
+<nobr><code>y-of</code></nobr> generic slot-accessor functions, used to reading and
+modifying the <code>x</code> and <code>y</code> slot values.
+</ul>
+</p>
+<h2><a name="id4">Step 2: Create a unit instance</a></h2><p>
+Next, you can create a <i>unit instance</i> for the <nobr><code>location</code></nobr>
+unit class.  To simplify access to the unit instance during subsequent
+activities, first define a global variable called <code>ui</code> by entering the
+following form:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(defvar ui)</font>
+  ui
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id5">Now,</a> create a unit instance and assign it to the variable <code>ui</code> by
+entering the form:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(setf ui (make-instance 'location :x 40 :y 60))</font>
+  #&lt;location 1&gt;
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>This creates a unit instance of the <nobr><code>location</code></nobr> class, initializes
+the instance's <code>x</code> and <code>y</code> slots with the values specified by the
+<code>:x</code> and <code>:y</code> initialization arguments.  The created unit instance
+is then assigned to the variable <code>ui</code>.
+</p>
+<h2><a name="id6">Step 3: Display a description of the unit instance</a></h2><p>
+Now, display a description of the unit instance by using GBBopen's
+<nobr><b>describe-instance</b></nobr> function.  Enter the following form:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-instance ui)</font>
+  Location #&lt;location 1&gt;
+    Instance name: 1
+    Space instances: None
+    Dimensional values: None
+    Non-link slots:
+      x:  40
+      y:  60
+    Link slots: None
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id7">Note</a> that you didn't specify a name for the unit instance when you created it.
+In fact, there is often no natural reason to name each unit instance you
+create. By default, GBBopen names unit instances by giving it a sequentially
+increasing number.  (For example, the unit instance you just created is named
+<code>1</code>.)  GBBopen requires that each instance of a unit class is uniquely
+named within the class and the accessor <nobr><b>instance-name-of</b></nobr> can
+be used to access this name:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(instance-name-of ui)</font>
+  1
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id8">Step 4: Find a unit instance by its name</a></h2><p>
+You can look up a particular unit instance by its name. For example, to find
+the <nobr><code>location</code></nobr> <code>1</code> unit instance by name, enter the form:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instance-by-name 1 'location)</font>
+  #&lt;location 1&gt;
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Of course, we assigned the <nobr><code>location</code></nobr> unit instance to the global
+variable <code>ui</code>, but it is nice to know that we can always find our unit
+instance using its name.
+</p>
+<h2><a name="id9">Step 5: Change the <code>x</code> slot value</a></h2><p>
+Use the <code>x-of</code> reader and writer methods GBBopen defined for the
+<code>x</code> slot (in Step 3 above) to get the value of the <code>x</code> slot of the
+unit instance:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(x-of ui)</font>
+  40
+  gbbopen-user&gt;</font>
+</pre>
+change the slot value to 50:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(setf (x-of ui) 50)</font>
+  50
+  gbbopen-user&gt;</font>
+</pre>
+and then get the (new) value of the <code>x</code> slot:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(x-of ui)</font>
+  50
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id10">Display</a> the description of the <nobr><code>location</code></nobr> unit instance again,
+observing the changed <code>x</code> slot value:
+</p>
+<pre class="pretop">
+
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-instance ui)</font>
+  Location #&lt;location 1&gt;
+    Instance name: 1
+    Space instances: None
+    Dimensional values: None
+    Non-link slots:
+      x:  50
+      y:  60
+    Link slots: None
+  gbbopen-user&gt;</font>
+</pre>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-starting-up.html"><img border="0" alt="Starting GBBopen" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-creating-a-space-instance.html"><img border="0" alt="Creating a Space Instance" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Creating a Unit Instance</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

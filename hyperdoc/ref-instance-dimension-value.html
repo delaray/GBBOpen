@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- instance-dimension-value</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-instance-deleted-p.html"><img border="0" alt="instance-deleted-p" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-instance-dimension-values.html"><img border="0" alt="instance-dimension-values" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">instance-dimension-value</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">instance-dimension-value</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var><nobr>unit-instance</nobr>
+<nobr>dimension-name</nobr></var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>dimension-value, dimension-value-type,</var>
+<nobr>comparison-type,</nobr>
+<nobr>composite-type,|
+<nobr>ordering-dimension-name</nobr></nobr></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Obtain a <a href="ref-glossary.html#id37">dimension&nbsp;value</a> of a <a href="ref-glossary.html#id256">unit&nbsp;instance</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>unit-instance</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id256">unit&nbsp;instance</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>dimension-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A symbol specifying a <a href="ref-glossary.html#gl:dimension">dimension</a> of
+<var>unit-instance</var> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>dimension-value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>dimension-value-type</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of: <nobr><code>:point</code></nobr>,
+<nobr><code>:interval</code></nobr>, <nobr><code>:mixed</code></nobr>, <nobr><code>:element</code></nobr>, or
+<nobr><code>:boolean</code></nobr>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>comparison-type</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of: <nobr><code>number</code></nobr>, <nobr><code>fixnum</code></nobr>,
+<nobr><code>short-float</code></nobr>, <nobr><code>single-float</code></nobr>,
+<nobr><code>double-float</code></nobr>, <nobr><code>long-float</code></nobr>, or
+<nobr><code>pseudo-probability</code></nobr>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>composite-type</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of <code>:set</code>,
+<font color="#667f66"><nobr><code>:sequence</code></nobr></font>,
+<font color="#667f66"><nobr>(<code>:ascending-series</code>
+<var>ordering-dimension-name</var>)</nobr></font>,
+<font color="#667f66"><nobr>(<code>:descending-series</code>
+<var>ordering-dimension-name</var>)</nobr></font>, or <code>nil</code>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>ordering-dimension-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id148">non-keyword&nbsp;symbol</a> or <code>nil</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />Five values: 
+</p>
+<p><ul class="tight"><li>the <a href="ref-glossary.html#id37">dimension&nbsp;value</a> of the <var>unit-instance</var> in the specified
+<a href="ref-glossary.html#gl:dimension">dimension</a>
+<li>the dimension-value type of the specified <a href="ref-glossary.html#gl:dimension">dimension</a>
+<li>the comparison type of the specified <a href="ref-glossary.html#gl:dimension">dimension</a>
+<li>the composite type of the <a href="ref-glossary.html#id37">dimension&nbsp;value</a> if it is a
+<a href="ref-glossary.html#id25">composite&nbsp;dimension&nbsp;value</a>; <code>nil</code> if it is an
+<a href="ref-glossary.html#id94">incomposite&nbsp;dimension&nbsp;value</a>
+<li>the name of the <a href="ref-glossary.html#id156">ordering&nbsp;dimension</a>, if the 
+<a href="ref-glossary.html#id37">dimension&nbsp;value</a> is a <a href="ref-glossary.html#id208">series-composite&nbsp;dimension&nbsp;value</a>;
+<code>nil</code> otherwise
+</ul>
+</p>
+<p><span class="fndoclabel">Errors</span> <br />The <a href="ref-glossary.html#gl:dimension">dimension</a> <var>dimension-name</var> is not defined for
+<var>unit-instance</var>. 
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-unit-class.html"><b>define-unit-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-dimensions-of.html"><b>dimensions-of</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-instance-dimension-values.html"><b>instance-dimension-values</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-instance.html"><b>make-instance</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Return the <code>x</code> <a href="ref-glossary.html#id37">dimension&nbsp;value</a> of the <a href="ref-glossary.html#id256">unit&nbsp;instance</a>,
+<code>hyp</code>:
+<pre class="pretop">
+  &gt; (instance-dimension-value hyp 'x)
+  1835
+  :point
+  :fixnum
+  nil
+  nil
+  &gt;
+</pre>
+and its <nobr><code>classification</code></nobr> <a href="ref-glossary.html#id37">dimension&nbsp;value</a>:
+<pre>
+  &gt; (instance-dimension-value hyp 'classification)
+  (:car :truck)
+  :element
+  eq
+  :set
+  nil
+  &gt;
+</pre>
+</p>
+<p>Return the <nobr><code>character</code></nobr> <a href="ref-glossary.html#id37">dimension&nbsp;value</a> of the
+<a href="ref-glossary.html#id256">unit&nbsp;instance</a>, <code>word</code>:
+<pre class="pretop">
+  &gt; (instance-dimension-value w 'character)
+  "what's"
+  :element
+  eql
+  :set
+  nil
+  &gt;
+</pre>
+and its <nobr><code>char-code</code></nobr> <a href="ref-glossary.html#id37">dimension&nbsp;value</a>:
+<pre>
+  &gt; (instance-dimension-value word 'char-code)
+  (119 104 97 116 39 115)
+  :point
+  fixnum
+  :set
+  nil
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-instance-deleted-p.html"><img border="0" alt="instance-deleted-p" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-instance-dimension-values.html"><img border="0" alt="instance-dimension-values" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">instance-dimension-value</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

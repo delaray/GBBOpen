@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- exit-control-shell</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-execution-cycle-of.html"><img border="0" alt="execution-cycle-of" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-agenda-shell-entities.html"><img border="0" alt="Agenda Control Shell" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-find-ks-by-name.html"><img border="0" alt="find-ks-by-name" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">exit-control-shell</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">exit-control-shell</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;rest</code> <var>result-form</var>*</nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Exit the Agenda Shell.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:agenda-shell</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:agenda-shell</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>result-form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Errors</span> <br /><b>Exit-control-shell</b> called outside the context of an
+executing control shell.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-abort-ks-execution.html"><b>abort-ks-execution</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-control-shell-running-p.html"><b>control-shell-running-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-current-control-shell.html"><b>current-control-shell</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-restart-control-shell.html"><b>restart-control-shell</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-start-control-shell.html"><b>start-control-shell</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Exit the Agenda Shell, indicating that a solution, 
+<nobr><code>solution</code></nobr>, was found:
+<pre class="pretop">
+  (exit-control-shell ':solution-found solution)
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-execution-cycle-of.html"><img border="0" alt="execution-cycle-of" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-agenda-shell-entities.html"><img border="0" alt="Agenda Control Shell" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-find-ks-by-name.html"><img border="0" alt="find-ks-by-name" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">exit-control-shell</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

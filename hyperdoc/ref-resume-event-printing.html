@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- resume-event-printing</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-event-function.html"><img border="0" alt="remove-event-function" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-event-entities.html"><img border="0" alt="Events" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-signal-event.html"><img border="0" alt="signal-event" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">resume-event-printing</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">resume-event-printing</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%">[<var>event-class-specifier</var> 
+<nobr>[<var>unit-class-or-instance-specifier</var>]]</nobr>
+<nobr><code>&#38;key</code> <var>slot-names paths</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Resume the printing of printing-enabled events for one or more
+<a href="ref-glossary.html#gl:event-class">event&nbsp;classes</a>. 
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>event-class-specifier</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id64">extended&nbsp;event-class&nbsp;specification</a> 
+(see below; default is <code>t</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>unit-class-or-instance-specifier</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An 
+<a href="ref-glossary.html#id70">extended&nbsp;unit-class&nbsp;or&nbsp;instance&nbsp;specification</a> 
+(see below; default is <code>t</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>slot-names <span 
+    style="font-family: serif; font-style: normal">or</span> slot-name <td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A slot-name or list of slot-names
+(default is <code>t</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>paths <span 
+    style="font-family: serif; font-style: normal">or</span> path <td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id224">space-instance&nbsp;path</a> regular expression
+(default is <code>(*)</code>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Detailed syntax</span><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>event-class-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>atomic-event-class</var> |
+<code>(</code><var>atomic-event-class subeventing-specifier</var><code>)</code>
+| <code>t</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>atomic-event-class</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>event-class</var> | 
+<var>event-class-name</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>subeventing-specifier</var> ::=</nobr> 
+<a name="id1"></a></td><td valign="baseline" colspan="1" align="left"> <code>:plus-subevents</code> | <code>:no-subevents</code>
+<code>+</code> | <code>=</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>The shorthand <code>+</code> subevents specifier is equivalent to
+<code>:plus-subevents</code> and <code>=</code> to <code>:no-subevents</code>.
+<br /></p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>unit-class-or-instance-specifier</var> ::=</nobr> 
+</td><td valign="baseline" colspan="1" align="left"> <var>unit-instance</var> | 
+<code>(</code><var>unit-instance</var>*<code>)</code> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <var>atomic-unit-class</var> | </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>(</code><var>atomic-unit-class subclassing-specifier</var><code>)</code> |
+<code>t</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>atomic-unit-class</var> ::= </nobr> </td><td valign="baseline" colspan="1" align="left"> <var>unit-class</var> | 
+<var>unit-class-name</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>subclassing-specifier</var> ::=</nobr> 
+<a name="id2"></a></td><td valign="baseline" colspan="1" align="left"> <code>:plus-subclasses</code> | <code>:no-subclasses</code> | 
+<code>+</code> | <code>=</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>The shorthand <code>+</code> subclasses specifier is equivalent to
+<code>:plus-subclasses</code> and <code>=</code> to <code>:no-subclasses</code>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />The <var>paths</var> argument is either the symbol <code>t</code> (indicating
+all <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>) or a list representing a regular
+expression where the following reserved symbols are interpreted as
+follows:
+<a name="id3"></a></p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+</td><td valign="baseline" colspan="1" align="center"> <code>=</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> matches one occurrence in a 
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> path </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"> <code>?</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> matches zero or one occurrence in a 
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> path </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"> <code>+</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> matches one or more occurrences in a
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> path </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="center"> <code>*</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> matches zero or more occurrences in a 
+<a href="ref-glossary.html#gl:space-instance">space-instance</a> path </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="center"> <code>&#94;</code> </td><td valign="baseline" colspan="1" align="left"> &nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> move to parent </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-describe-event-printing.html"><b>describe-event-printing</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-disable-event-printing.html"><b>disable-event-printing</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-enable-event-printing.html"><b>enable-event-printing</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-suspend-event-printing.html"><b>suspend-event-printing</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Resume all suspended event printing:
+<pre class="pretop">
+  (resume-event-printing)
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />Resuming event printing does not enable event printing that is disabled.
+</p>
+<p>Unit-instance-specific event functions
+are not yet implemented in GBBopen.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-event-function.html"><img border="0" alt="remove-event-function" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-event-entities.html"><img border="0" alt="Events" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-signal-event.html"><img border="0" alt="signal-event" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">resume-event-printing</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

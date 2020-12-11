@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- with-open-connection</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-start-connection-server.html"><img border="0" alt="start-connection-server" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-socket-entities.html"><img border="0" alt="Portable Sockets" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">with-open-connection</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">with-open-connection</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><code>(</code><var>var host port</var><code>)</code>
+<nobr><var>declaration</var>*</nobr>
+<nobr><var>form</var>*</nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Open a socket-stream connection to server <var>host</var>,
+perform a series of operations on the connection, and then close the
+connection.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-sockets</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-sockets</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>var</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id260">variable&nbsp;symbol</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>host</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A 32-bit internet address or a string specifying the remote host
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>port</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer or a string specifying the service port
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>declaration</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A declare expression (not evaluated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>forms</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An implicit <nobr><b>progn</b></nobr> of <a href="ref-glossary.html#gl:forms">forms</a> to be evaluated
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br />This macro ensures that the opened connection is closed when
+control leaves the body of the macro.
+</p>
+<p>A <var>host</var> string can be either a host name or a &#8220;dotted&#8221; IP address,
+such as <nobr><code>"127.0.0.1"</code></nobr>.
+</p>
+<p>String values available for specifying <var>port</var> are found in the operating
+system's services file and labeled as being <code>tcp</code> services. On Unix
+systems, the services file is <nobr><code>/etc/services</code></nobr>. On Windows, it is
+the file <nobr><code>services</code></nobr> in the <nobr><code>Windows</code></nobr> directory.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-open-connection.html"><b>open-connection</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-shutdown-socket-stream.html"><b>shutdown-socket-stream</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Open a socket connection to the GBBopen Project web server:
+<pre class="pretop">
+  &gt; (with-open-connection (connection "GBBopen.org" 80)
+       (flet ((write-crlf (stream)
+                ;; HTTP requires CR/LF line termination: 
+                (write-char #\return stream)
+                (write-char #\linefeed stream)))
+          (format connection "GET / HTTP/1.1")
+          (write-crlf connection)
+          (format connection "Host: ~a:~a" host port)
+          (write-crlf connection)
+          (write-crlf connection)
+          (force-output connection)
+          (let ((line (read-line connection)))
+            (format t "~&amp;;; Received: ~a~%" line))))
+  ;; Received: HTTP/1.1 200 OK
+  &gt; 
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-start-connection-server.html"><img border="0" alt="start-connection-server" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-socket-entities.html"><img border="0" alt="Portable Sockets" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">with-open-connection</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

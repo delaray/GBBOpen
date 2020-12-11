@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- with-module-redefinitions</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-start-patch.html"><img border="0" alt="start-patch" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">with-module-redefinitions</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+ 
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">with-module-redefinitions</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>form</var>*</td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Defer <a href="ref-glossary.html#gl:required-module">required-module</a> order checking of <a href="ref-glossary.html#gl:module">module</a>
+definitions in <var>forms</var> until all <var>forms</var> have been processed.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>form</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:form">form</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Errors</span> <br />The fully expanded <a href="ref-glossary.html#gl:required-module">required-module</a> order of a module
+redefined in <var>forms</var> conflicts with the fully expanded
+<a href="ref-glossary.html#gl:required-module">required-module</a> order of another <a href="ref-glossary.html#gl:module">module</a>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />Normally, the fully expanded <a href="ref-glossary.html#gl:required-module">required-module</a> order
+specified by the <nobr><code>:requires</code></nobr> option is checked immediately for
+conflicts with previously defined <a href="ref-glossary.html#gl:modules">modules</a> by
+<nobr><b><a href="ref-define-module.html">define-module</a></b></nobr>.  Wrapping several
+<nobr><b><a href="ref-define-module.html">define-module</a></b></nobr> forms with
+<nobr><b>with-module-redefinitions</b></nobr> allows the definitions to be
+conflicting temporarily, until all the <var>forms</var> have been processed.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-module.html"><b>define-module</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br /><a name="id1">Redefine</a> several modules with deferred conflict checking:
+<pre class="pretop">
+  (with-module-redefinitions
+    (<a href="ref-define-module.html">define-module</a> :alpha <span 
+    style="font-family: serif; font-style: normal">...</span>)
+    (<a href="ref-define-module.html">define-module</a> :beta <span 
+    style="font-family: serif; font-style: normal">...</span>))
+            <b>...</b>
+    (<a href="ref-define-module.html">define-module</a> :omega <span 
+    style="font-family: serif; font-style: normal">...</span>)))
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-start-patch.html"><img border="0" alt="start-patch" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">with-module-redefinitions</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

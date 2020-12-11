@@ -1,0 +1,352 @@
+
+                                GBBopen (1.5)
+                                -------------
+
+Requirements:
+
+ - GBBopen is written in ANSI Common Lisp with some MOP and vendor-specific
+   extensions.  GBBopen is actively supported on the following Common Lisp
+   implementations:
+
+       Allegro CL   Version 9.0
+       CLISP        Version 2.49 (configure --with-threads if possible)
+       Clozure CL   Version 1.8
+       CMUCL        Version 20d
+       ECL          Version 12.12.1
+       Lispworks    Version 6.1.1
+       SBCL         Version 1.1.3 (use sb-threads if possible)
+
+   Known issues with the above implementations are summarized in the ISSUES
+   file.
+
+   Completion of Armed Bear Common Lisp (ABCL) support is awaiting active work
+   on MOP support that is being done for ABCL 1.1.  We are hopeful that this
+   work will enable full use of GBBopen under ABCL.
+
+   We continue to indirectly support Scieneer CL (Version 1.3.9) via
+   contributed source-code patches.  We do not have a Scieneer CL license and
+   therefore rely on those who do for maintenance and testing.
+
+   Support for Digitool MCL (Version 5.1) has been discontinued. However,
+   GBBopen may still function under MCL.
+
+   Ports of GBBopen to Corman Common Lisp (Version 3.0), and GCL
+   (Version 2.7.0 with --enable-ansi) are incomplete (due to limitations
+   in the MOP support in these implementations).  The latest GCL tested was
+   obtained using:
+      # export CVSROOT=:pserver:anonymous@cvs.sv.gnu.org:/sources/gcl
+      # cvs -z9 -q co -d gcl-2.7.0t5 -r Version_2_7_0t5 gcl
+
+   See PORTING for information on porting GBBopen to other Common Lisp
+   implementations.
+
+
+Current Status Notes (January 6, 2013)
+--------------------
+
+Implementation work is progressing on a regular basis.  See the list of
+pending development activities maintained on the "Development Activities" page
+on the GBBopen Project web site (http://GBBopen.org/) for the latest
+information.  Day-to-day development activities can also be followed on
+twitter (http://twitter.com/GBBopen) or via RSS
+(http://twitter.com/statuses/user_timeline/GBBopen.rss).
+
+GBBopen users are encouraged to update their GBBopen sources frequently.
+
+
+STEP 1: Getting GBBopen
+=======================
+
+The latest source-repository snapshot archive (containing the files in the
+GBBopen repository as well as the GBBopen hyperdoc files and the GBBopen
+Reference Manual) can be found in the "Downloads" section of the GBBopen web
+site (http://GBBopen.org). The repository is maintained using Subversion,
+which is available at http://subversion.tigris.org/.  The snapshot archive
+includes .svn administrative directories, so a Subversion update command can
+be used to freshen sources obtained from a snapshot archive.
+
+
+Subversion Access
+-----------------
+
+You can also get the very latest GBBopen sources directly via Subversion by
+issuing the following command:
+
+  $ svn co http://GBBopen.org/svn/GBBopen/trunk/ gbbopen
+
+A directory tree rooted at the directory named 'gbbopen' will be created. At
+any later time, you can issue the command:
+
+  $ svn update
+
+from within that directory tree.  
+
+GBBopen development is ongoing, and you should update your GBBopen
+installation regularly in order to obtain the latest capabilities and
+enhancements.  Using Subversion is the easiest way to keep current, and you
+are strongly encouraged to install a Subversion client and use it perform
+frequent updates.
+
+
+Browsing the GBBopen Repository
+-------------------------------
+
+The GBBopen repository can be browsed directly at
+http://GBBopen.org/svn/GBBopen/trunk/.
+
+
+Using clbuild
+-------------
+
+If you use clbuild, you can get the latest GBBopen sources by issuing the
+following command:
+
+  $ clbuild install gbbopen
+
+At any later time, you can issue the command:
+
+  $ clbuild update gbbopen
+
+to obtain the latest sources from the GBBopen repository.
+
+If your clbuild doesn't know about GBBopen, add the following line to clbuild's
+wnpp-projects file:
+
+gbbopen get_svn http://gbbopen.org/svn/GBBopen/trunk/ #blackboard-system framework, tools, & utilities
+
+
+Using Quicklisp
+---------------
+
+If you use Quicklisp, you can obtain GBBopen by evaluating:
+
+  > (ql:quickload "gbbopen")
+
+which will install the GBBopen sources (if necessary) and set up GBBopen's
+extended REPL command definitions and ASDF module definitions.
+
+
+STEP 2: Compiling All GBBopen Modules
+=====================================
+
+If others will be using the GBBopen installation and they do not have write
+permission to the compiled GBBopen directories, you should compile all of the
+GBBopen modules whenever you install or update GBBopen.  
+
+
+Compiling without ASDF, clbuild, or Quicklisp
+---------------------------------------------
+
+To compile all GBBopen modules, perform the following in a fresh Common Lisp
+environment:
+
+  > (load "<install-dir>/initiate.lisp")
+  ;; Loading <install-dir>/initiate.lisp
+  ;;  Loading <install-dir>/extended-repl.lisp
+  ;;  Loading <install-dir>/gbbopen-toplevel-commands.lisp
+  t
+  > :compile-gbbopen     ; or (compile-gbbopen), if REPL commands don't work
+  ;; Loading <install-dir>/startup.lisp
+     ...
+  ;;; GBBopen modules compilation completed.
+  [Common Lisp will exit]
+
+
+Compiling using ASDF, clbuild, or Quicklisp
+-------------------------------------------
+
+GBBopen includes a Module Manager Facility that supports compiling and loading
+GBBopen components.  The Module Manager provides an interface that allows ASDF
+(and clbuild or Quicklisp) to play nicely with the Module Manager.  If you
+installed GBBopen using clbuild or Quicklisp, ASDF has been informed of
+GBBopen's gbbopen.asd system-definition file.  Otherwise, to use ASDF to set
+up GBBopen, you must add gbbopen.asd to ASDF manually.  Then, the Module
+Manager and GBBopen module definitions can be loaded using ASDF by issuing:
+
+  > (asdf:operate 'asdf:load-op :gbbbopen)
+
+or when ASDF is integrated with Common Lisp's REQUIRE:
+
+  > (require :gbbopen)
+
+ASDF users can compile all GBBopen modules, by evaluating the following in a
+fresh Common Lisp environment with ASDF installed.  For example:
+
+  > (require :gbbopen)
+      ...
+  > :compile-gbbopen     ; or (compile-gbbopen), if REPL commands don't work
+      ...
+  ;;; GBBopen modules compilation completed.
+  [Common Lisp will exit]
+
+
+STEP 3: Running GBBopen Modules
+===============================
+
+To run a simple trip-tests file, evaluate the following in a fresh Common Lisp
+environment:
+
+  > (load "<install-dir>/initiate.lisp")
+  ;; Loading <install-dir>/initiate.lisp
+  ;;  Loading <install-dir>/extended-repl.lisp
+  ;;  Loading <install-dir>/gbbopen-toplevel-commands.lisp
+  t
+  > :gbbopen-test
+      ...
+  ;; Running basic GBBopen tests...
+      ...
+  ;; Performing Common Lisp capability checks...
+      ...
+  >
+
+Or with ASDF or clbuild:
+
+  > (require :gbbopen)
+      ...
+  > :gbbopen-test
+      ...
+  ;; Running basic GBBopen tests...
+      ...
+  ;; Performing Common Lisp capability checks...
+      ...
+  >
+
+That's it.  GBBopen should load and run the basic trip tests without error.
+
+Other GBBopen test and example modules can be run similarly, by replacing the
+:gbbopen-test command with :agenda-shell-test (for a simple trip-test of
+GBBopen's Agenda Shell), :tutorial-example (to run the example developed in
+the GBBopen Tutorial), :cl-timing (to perform some timings of Common Lisp
+operations), etc.  Each of these should be loaded and run in a fresh
+environment.
+
+Note that the Agenda Shell requires that the idle-loop process has been
+started on CMUCL and that multiprocessing has been started on LispWorks.  
+(An error message will instruct you on what to do if this is not the case.)
+
+
+GBBopen Tutorial
+================
+
+We highly recommend taking a walk through the GBBopen Tutorial.  (You'll get
+the pun once you've done so.)  The Tutorial shows you how to get started
+using GBBopen through a series of exercises that cover GBBopen's concepts
+and features in a step-by-step sequence.
+
+
+GBBopen Forum
+=============
+
+If you need help or advice, the GBBopen Forum is the place to ask (should the
+GBBopen Tutorial and Reference Manual come up short).  There is also a GBBopen
+fan page on facebook
+(http://www.facebook.com/pages/Amherst-MA/GBBopen/156240293546).
+
+
+Some Useful Things
+==================
+
+(You did work through the GBBopen Tutorial, didn't you?)
+
+Personal gbbopen-init.lisp file
+-------------------------------
+
+If a gbbopen-init.lisp file (source or compiled) is present in the user's
+"home" directory (as defined by user-homedir-pathname), it is loaded
+immediately after the <install-directory>startup.lisp file is loaded.  A
+personal gbbopen-init file is useful for specifying GBBopen parameters and
+other personalizations.
+
+
+Personal gbbopen-commands.lisp file
+---------------------------------------
+
+If a gbbopen-commands.lisp file (source or compiled) is present in the user's
+"home" directory, it is loaded at the end of loading the
+<install-directory>initiate.lisp file and gbbopen-modules directory files.  A
+personal gbbopen-commands file is useful for defining user-specific top-level
+(REPL) commands for common application-independent activities.  See the
+"Starting Up" section in the GBBopen Reference Manual for details.
+Application-specific commands should be defined in separate application
+"commands.lisp" files (see next paragraph).
+
+
+Personal gbbopen-modules directory
+----------------------------------
+
+If a gbbopen-modules directory is present in the user's home directory, it is
+assumed to contain symbolic links (or "pseudo-symbolic-link" files on Windows)
+to individual GBBopen module directory trees.  Each module directory tree can
+contain:
+
+  * a commands.lisp file that specifies top-level commands (loaded after the
+    personal gbbopen-commands.lisp file if there is one in the user's 
+    home directory)
+
+  * a modules.lisp file containing module definitions (loaded after the
+    personal gbbopen-init.lisp file if there is one in the user's home 
+    directory)
+
+  * a subdirectory named source containing all the additional source
+    files for the module or application
+
+This is the recommended mechanism for managing and sharing multiple
+user-defined GBBopen modules and applications on an individual basis.  It is
+very easy to use and share modules defined in this way by placing symbolic
+links to the module directories in your personal gbbopen-modules directory.
+Windows, unfortunately, is the exception to this as Windows does not provide
+symbolic links.  GBBopen users running on Windows must create a text file of
+type .sym (containing target directory path as its sole line) as a stand-in
+for the symbolic link. Once again, see the "Starting Up" section in the
+GBBopen Reference Manual for details.
+
+
+Installation-wide shared-gbbopen-modules directory
+--------------------------------------------------
+
+There is also an <install-dir>/shared-gbbopen-modules directory.  As with a
+user's gbbopen-modules directory, the shared-gbbopen-modules directory is
+assumed to contain symbolic links (or "pseudo-symbolic-link" files on Windows)
+to individual GBBopen module directory trees.
+
+This is the recommended mechanism for installation-wide managing and sharing
+of modules and applications.
+
+
+GBBopen Hyperdoc
+----------------
+
+Convenient access to a local copy of the GBBopen Hyperdoc manual from Common
+Lisp is available by using the browse-hyperdoc function.  Emacs access to
+the GBBopen Hyperdoc is provided by <install-directory>browse-hyperdoc.el.
+This file defines the interactive Emacs command browse-hyperdoc and binds it
+to META-?.  To enable this command, load browse-hyperdoc.el from your .emacs
+initialization file.  Highly recommended!
+
+
+Use the Source!
+---------------
+
+You're read this far, so why stop now?  A major benefit of open source is
+that the GBBopen code is available for all to see.  If you are curious about
+how some capability is implemented, read on!  If the documentation leaves
+you with some questions, please tell us about them--but go to the source and
+read on!  The power of meta-point (META-.) awaits you...
+
+There are certainly some warts in the code (including code written for
+expediency that awaits revisiting), but there is also GBBopen code that is
+exquisite in its clarity, simplicity, and efficiency.  Reading code written
+by others is a great way to understand how a system works and to extend and
+improve your own programming skills. Of course you should not assume that
+the specifics of GBBopen's implementation are invarient; we retain the
+flexibility to change undocumented implementation details and behavior
+without notice.
+
+We are always seeking to improve the GBBopen code base, so if you notice
+something that could be done better while looking at the code, please let us
+know.  Code improvements and suggestions (and questions) are welcomed at
+comments@GBBopen.org.  Unless you request anonymity, we'll attach your name
+to committed enhancements (it won't buy lunch, but we're happy to provide a
+morsel of acknowledgment).
+
+==============================================================================

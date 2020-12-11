@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- load-module-file</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-load-module.html"><img border="0" alt="load-module" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-directories.html"><img border="0" alt="module-directories" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">load-module-file</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">load-module-file</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var><nobr>module-name</nobr>
+<nobr>file-name</nobr></var>
+<nobr><code>&#38;rest</code> <var>options</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>pathname</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Load a single file from a <a href="ref-glossary.html#gl:module">module</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>module-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id110">keyword&nbsp;symbol</a> naming a <a href="ref-glossary.html#gl:module">module</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>file-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string naming a file in the <a href="ref-glossary.html#gl:module">module</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>option</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Any of the following <a href="ref-glossary.html#gl:keywords">keywords</a>: 
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:noautorun</code>&nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> Binds <nobr><b><a href="ref-autorun-modules-var.html">*autorun-modules*</a></b></nobr> to <code>nil</code>
+during loading</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:print</code> </td><td valign="baseline" colspan="1" align="left"> Incrementally prints information during loading</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+<code>:source</code> </td><td valign="baseline" colspan="1" align="left"> Loads from the source file even if the existing compiled file
+is newer than the source file</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left">
+</td></tr></tbody></table>
+<a name="id1"></a></td></tr><tr valign="top"><td valign="baseline" nowrap><i><p>pathname</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:pathname">pathname</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The pathname of the loaded file.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />Module <var>module-name</var> has not been 
+defined.<br />File <var>file-name</var> is not associated with the module.
+</p>
+<p>A <a href="ref-glossary.html#id196">relative&nbsp;directory</a>
+specification contains a circularity.
+</p>
+<p><span class="fndoclabel">Description</span> <br />File options specified for individual files in the
+<a href="ref-glossary.html#gl:module">module</a> definition (see <nobr><b><a href="ref-define-module.html">define-module</a></b></nobr>)
+are ignored by <nobr><b>load-module-file</b></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-autorun-modules-var.html"><b>*autorun-modules*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-module.html"><b>define-module</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-load-module.html"><b>load-module</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Load the source of the file <code>tools</code> from the GBBopen
+Tools <a href="ref-glossary.html#gl:module">module</a>:
+<pre class="pretop">
+  &gt; (load-module-file :gbbopen-tools "tools" :source)
+  ;; Loading <var>&lt;install-dir&gt;</var>/source/tools/tools.lisp
+  #P"<var>&lt;install-dir&gt;</var>/source/tools/tools.lisp"
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">REPL Note</span> <br /><b>Load-module-file</b> can be invoked using the
+<a href="ref-glossary.html#id198">REPL&nbsp;command</a>:
+<a name="id2"></a><pre class="pretop">
+  :lmf <span 
+    style="font-family: serif; font-style: normal">[</span><var>module-name</var> <var>file-name</var> <span 
+    style="font-family: serif; font-style: normal">[</span><var>option</var>*<span 
+    style="font-family: serif; font-style: normal">]]</span>
+</pre>
+which remembers the last specified <nobr><var>module-name</var></nobr>,
+<nobr><var>file-name</var></nobr>, and <nobr><var>options</var></nobr> as default values for the
+command.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-load-module.html"><img border="0" alt="load-module" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-module-directories.html"><img border="0" alt="module-directories" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">load-module-file</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

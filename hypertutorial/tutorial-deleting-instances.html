@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: tutorial.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Tutorial -- Deleting Instances</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-creating-a-space-instance.html"><img border="0" alt="Creating a Space Instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-development-environment.html"><img border="0" alt="Enhancing Your Development Environment" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Deleting Instances</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h1>Deleting Instances</h1>
+<p>GBBopen retains created unit and space instances until they are explicitly
+deleted.  This behavior is important to blackboard applications, where shared
+information in the form of unit instances remains available until a decision
+is made to remove them.
+</p>
+<p>In this exercise, we explore some implications of deleting unit and space
+instances.
+</p>
+<p><hr color="99CCCC">
+This exercise shows you how to:
+</p>
+<p><ul class="tight"><li>Delete a unit instance
+<li>Create a space-instance hierarchy
+<li>Delete a space instance
+<li>Delete all unit and space instances from the blackboard repository
+</ul>
+</p>
+<hr color="99CCCC">
+<h2><a name="id1">Prerequisites</a></h2><p>
+If you ended the Common Lisp session used in the last exercise, begin a new
+session and evaluate the following forms:
+<pre class="pretop">
+<font color="#667f66">  cl-user&gt; <font color="#000000">(load "<var>&lt;install-dir&gt;</var>/initiate.lisp")</font>
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  cl-user&gt; <font color="#000000">:gbbopen-user</font>
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  gbbopen-user&gt; <font color="#000000">(define-unit-class location ()
+                   (x y))</font>
+  #&lt;standard-unit-class location&gt;
+  gbbopen-user&gt; <font color="#000000">(defparameter ui (make-instance 'location :x 50 :y 60))</font>
+  ui
+  gbbopen-user&gt; <font color="#000000">(defparameter si (make-space-instance '(known-world)))</font>
+  si
+  gbbopen-user&gt; <font color="#000000">(add-instance-to-space-instance 
+                   (make-instance 'location :x 80 :y 90)
+                   si)</font>
+  #&lt;location 2&gt;
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id2"></a><table width="90%" align="center" border="1" cellpadding="12"
+      bgcolor="#FFFFEA"><tr><td valign="baseline"><table border="0">
+<tr><td valign="baseline"><b>ASDF, clbuild, and Quicklisp users</b></td></tr><tr><td valign="baseline">
+Remember to <nobr><code>(asdf:operate 'asdf:load-op 'gbbbopen)</code></nobr> or
+<nobr><code>(require :gbbopen)</code></nobr> in place of loading
+<nobr><code><var>&lt;install-dir&gt;</var>/initiate.lisp</code></nobr>.
+</td></tr></table></table>
+</p>
+<h2><a name="id3">Step 1: Create a few more unit instances</a></h2><p>
+Just to review, we created two <nobr><code>location</code></nobr> unit instances.  The
+unit instance named <code>1</code> is no longer on the <nobr><code>known-world</code></nobr>
+space instance, but it is still assigned to the global variable <code>ui</code>:
+<a name="id4"></a><pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">ui</font>
+  #&lt;location 1&gt; 
+  gbbopen-user&gt;</font>
+</pre>
+The <nobr><code>location</code></nobr> unit instance named <code>2</code> is the only
+<nobr><code>location</code></nobr> unit instance on the <nobr><code>known-world</code></nobr> space
+instance:
+<a name="id5"></a><pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world) :all)</font>
+  (#&lt;location 2&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Now, let's create five more <nobr><code>location</code></nobr> unit instances.  Enter:
+<a name="id6"></a><pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(dotimes (i 5) (make-instance 'location))</font>
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+Note that we did not specify <code>x</code> and <code>y</code> slot values for these new
+unit instances.  We will explore the implications of this shortly.
+</p>
+<h2><a name="id7">Step 2: Apply a function to all instances of a unit class</a></h2><p>
+We did not assign the new <nobr><code>location</code></nobr> unit instances to global
+variables or add them to the <nobr><code>known-world</code></nobr> space instance.  Can we
+still reference them?  If we know the names of the new unit instances, we can
+use the <nobr><b>find-instance-by-name</b></nobr> function that we learned
+earlier.  For example:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instance-by-name 5 'location)</font>
+  #&lt;location 5&gt;
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id8">It</a> is often useful to perform some action on all instances of a unit class.
+GBBopen provides a <i>mapping function</i>, or &#8220;iterator,&#8221; that repeatedly
+calls a function with each instance of a unit class as the argument to the
+function.  For example:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(map-instances-of-class #'print 'location)</font>
+
+  #&lt;location 6&gt; 
+  #&lt;location 3&gt; 
+  #&lt;location 7&gt; 
+  #&lt;location 1&gt; 
+  #&lt;location 2&gt; 
+  #&lt;location 4&gt; 
+  #&lt;location 5&gt; 
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+displays each of our <nobr><code>location</code></nobr> unit instances.  Note that the
+exact order that <nobr><code>location</code></nobr> unit instances are supplied to the
+<code>print</code> function may differ from the above example in your Common Lisp
+implementation.
+</p>
+<p><a name="id9">Currently,</a> there is only one <nobr><code>location</code></nobr> unit instance on the
+<nobr><code>known-world</code></nobr> space instance:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world) :all)</font>
+  (#&lt;location 2&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Let's use <nobr><b>map-instances-of-class</b></nobr> to add all the
+<nobr><code>location</code></nobr> unit instances to the <nobr><code>known-world</code></nobr>:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(map-instances-of-class 
+                  #'(lambda (instance) 
+                       (add-instance-to-space-instance instance si))
+                 'location)</font>
+  Warning: In add-instance-to-space-instance: #&lt;location 2&gt; is already on 
+           space instance #&lt;standard-space-instance (known-world)&gt;.
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+GBBopen warns us that the <nobr><code>location</code></nobr> <code>2</code> unit instance is
+already on the <nobr><code>known-world</code></nobr> and adds all the other
+<nobr><code>location</code></nobr> instances.  We can verify this by using
+<nobr><b>find-instances</b></nobr>:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world) :all)</font>
+  (#&lt;location 7&gt; #&lt;location 6&gt; #&lt;location 5&gt; #&lt;location 4&gt; #&lt;location 3&gt;
+   #&lt;location 2&gt; #&lt;location 1&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id10">For</a> those who prefer a more iterative programming style, GBBopen provides a
+<tt>dolist</tt>-style macro, <nobr><b>do-instances-of-class</b></nobr>, as an
+alternative to <nobr><b>map-instances-of-class</b></nobr>.  So, to add all the
+<nobr><code>location</code></nobr> unit instances to the <nobr><code>known-world</code></nobr>, we
+could have chosen to use the form:
+<pre class="pretop">
+<font color="#667f66">  (do-instances-of-class (instance 'location)
+     (add-instance-to-space-instance instance si))</font>
+</pre>
+instead of the <nobr><b>map-instances-of-class</b></nobr> version.  As with things
+stylistic, the choice is yours.
+</p>
+<h2><a name="id11">Step 3: Delete a unit instance</a></h2><p>
+Let's delete the first <nobr><code>location</code></nobr> unit instance that we created:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(delete-instance ui)</font>
+  #&lt;deleted-unit-instance location 1&gt;
+  gbbopen-user&gt;</font>
+</pre>
+Note that the displayed representation indicates that the unit instance has
+been deleted.
+</p>
+<p><a name="id12">We</a> can no longer find the deleted unit instance by its name:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instance-by-name 1 'location)</font>
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+and it is no longer included in a <nobr><b>map-instances-of-class</b></nobr>
+iteration:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(map-instances-of-class #'print 'location)</font>
+
+  #&lt;location 6&gt; 
+  #&lt;location 3&gt; 
+  #&lt;location 7&gt; 
+  #&lt;location 2&gt; 
+  #&lt;location 4&gt; 
+  #&lt;location 5&gt; 
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+and it is no longer on the <nobr><code>known-world</code></nobr> space instance:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world) :all)</font>
+  (#&lt;location 7&gt; #&lt;location 6&gt; #&lt;location 5&gt; #&lt;location 4&gt; #&lt;location 3&gt;
+   #&lt;location 2&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id13">However,</a> the deleted <nobr><code>location</code></nobr> unit instance is still assigned to
+the <code>ui</code> global variable:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">ui</font>
+  #&lt;deleted-unit-class location 1&gt;
+  gbbopen-user&gt;</font>
+</pre>
+and that can lead to problems.  Let's try to place the deleted
+<nobr><code>location</code></nobr> unit instance on the <nobr><code>known-world</code></nobr> space
+instance:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(add-instance-to-space-instance ui si)</font>
+  Error: No methods applicable for generic function
+         #&lt;standard-generic-function add-instance-to-space-instance&gt; with args
+         (#&lt;deleted-unit-instance location 1&gt; #&lt;standard-space-instance (known-world)&gt;)
+         of classes (deleted-unit-instance standard-space-instance)
+  gbbopen-user&gt;&gt; <font color="#000000">:a</font>
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Most of GBBopen's operations signal an error if they are given a deleted unit
+instance.  This is because <nobr><b>delete-instance</b></nobr> changes the class
+of the deleted unit instance to <nobr><code>deleted-unit-instance</code></nobr> which,
+despite its name, is not a <nobr><code>standard-unit-instance</code></nobr>.  We cannot
+use <nobr><b>describe-instance</b></nobr> to verify this, because the deleted unit
+instance is no longer a unit instance, but we can use Common Lisp's
+<code>describe</code> function:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe ui)</font>
+  #&lt;deleted-unit-instance location 1&gt; is an instance of
+    #&lt;standard-class deleted-unit-instance&gt;:
+  The following slots have :instance allocation:
+    instance-name   1
+    original-class  #&lt;standard-unit-class location&gt;
+  gbbopen-user&gt;</font>
+</pre>
+Note that the slots that we defined for <nobr><code>location</code></nobr> unit instances
+are not present in the <nobr><code>deleted-unit-instance</code></nobr> object.  A deleted
+unit instance has only two slots, <nobr><code>instance-name</code></nobr> and
+<nobr><code>original-class</code></nobr>, which are set when the class of the deleted unit
+instance is changed to <nobr><code>deleted-unit-instance</code></nobr>.
+</p>
+<p>Several GBBopen operations on a deleted unit instance do not signal errors.
+In particular:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(instance-name-of ui)</font>
+  1
+  gbbopen-user&gt;</font>
+</pre>
+<a name="id14">The</a> value returned by <nobr><b>instance-name-of</b></nobr>, along with that by
+<nobr><b>original-class-of</b></nobr>, can be used to identify the unit instance
+that, when deleted, became the <nobr><code>deleted-unit-instance</code></nobr>.
+</p>
+<p><a name="id15">Typically,</a> blackboard applications obtain unit instances from the blackboard
+repository (or as we will see in
+the <a href="tutorial-control-shell.html">Using a Control
+Shell</a> exercise,
+as an event argument) rather than maintaining references to them in variables.
+This limits the possibility of retaining a deleted unit instance and
+performing GBBopen operations on it.  The deletion status of a unit instance
+can be determined using the <nobr><b>instance-deleted-p</b></nobr> predicate:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(instance-deleted-p ui)</font>
+  t
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id16">Step 4: Create a simple space-instance hierarchy</a></h2><p>
+In the last exercise, we noted that space instances can be organized in
+hierarchical structures.  To illustrate this, let's create a few more space
+instances:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(make-space-instance '(known-world my-town))</font>
+  #&lt;standard-space-instance (known-world my-town)&gt;
+  gbbopen-user&gt; <font color="#000000">(make-space-instance '(known-world my-town east-side))</font>
+  #&lt;standard-space-instance (known-world my-town east-side)&gt;
+  gbbopen-user&gt; <font color="#000000">(make-space-instance '(known-world my-town west-side))</font>
+  #&lt;standard-space-instance (known-world my-town west-side)&gt;
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id17">Recall</a> that the <nobr><var>space-instance-path</var></nobr> argument to
+<nobr><b>make-space-instance</b></nobr> is the complete list of space-instance
+names, starting with the name of the most distant indirect parent.  So, the
+<nobr><code>my-town</code></nobr> space instance has the <nobr><code>known-world</code></nobr> as it's
+parent and the <nobr><code>east-side</code></nobr> and <nobr><code>west-side</code></nobr> as
+children.  We can use <nobr><b>describe-blackboard-repository</b></nobr> to see
+this organization:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-blackboard-repository)</font>
+
+  Space Instance                Contents
+  --------------                --------
+  known-world                   6 instances (6 location)
+     my-town                    Empty
+        east-side               Empty
+        west-side               Empty
+
+  Unit Class                    Instances
+  ----------                    ---------
+  location                              6
+  standard-space-instance               4
+                                ---------
+                                       10 instances
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id18">Observe</a> from the above description that child space instances that we created
+are not placed on their parent.  Unlike the directories in a file system in
+the analogy that we presented in the last exercise, in GBBopen a
+space-instance hierarchy is orthogonal to containment.  In fact, space
+instances are actually unit instances (of the class
+<nobr><b>standard-space-instance</b></nobr>, by default) and a space instance can
+be placed on other space instances&mdash;or even on itself.  Typical blackboard
+applications do not involve using space instances as unit instances, but this
+property of space instances is very powerful when it is needed.
+</p>
+<p><a name="id19">The</a> functions <nobr><b>parent-of</b></nobr> and <nobr><b>children-of</b></nobr> are
+provided to traverse the space-instance hierarchy.  For example:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(children-of 
+                  (find-space-instance-by-path '(known-world my-town)))</font>
+  (#&lt;standard-space-instance (known-world my-town west-side)&gt;
+   #&lt;standard-space-instance (known-world my-town east-side)&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id20">Step 5: Add a unit instance to multiple space instances</a></h2><p>
+Now, let's add <nobr><code>location</code></nobr> <code>2</code> to the <nobr><code>my-town</code></nobr>
+and <nobr><code>east-side</code></nobr> space instances:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(let ((location-2 (find-instance-by-name 2 'location)))
+                 (add-instance-to-space-instance location-2 '(known-world my-town))
+                 (add-instance-to-space-instance location-2 '(known-world my-town east-side)))</font>
+  #&lt;location 2&gt;
+  gbbopen-user&gt;</font>
+</pre>
+<a name="id21">As</a> we expect, <nobr><code>location</code></nobr> <code>2</code> is now on three space instances:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-instance (find-instance-by-name 2 'location))</font>
+  Location #&lt;location 2&gt;
+    Instance name: 2
+    Space instances: ((known-world my-town east-side)
+                      (known-world my-town)
+                      (known-world))
+    Dimensional values: None
+    Non-link slots:
+      x:  80
+      y:  90
+    Link slots: None
+  gbbopen-user&gt;</font>
+</pre>
+and the description of the blackboard repository is:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-blackboard-repository)</font>
+
+  Space Instance                Contents
+  --------------                --------
+  known-world                   6 instances (6 location)
+     my-town                    1 instance (1 location)
+        east-side               1 instance (1 location)
+        west-side               Empty
+
+  Unit Class                    Instances
+  ----------                    ---------
+  location                              6
+  standard-space-instance               4
+                                ---------
+                                       10 instances
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Placing a unit instance on multiple space instances is useful when each space
+instance represents a different view of unit instances.  In this case,
+<nobr><code>location</code></nobr> <code>2</code> is in the <nobr><code>known-world</code></nobr>, in
+<nobr><code>my-town</code></nobr>, and on the <nobr><code>east-side</code></nobr>:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world my-town) :all)</font>
+  (#&lt;location 2&gt;)
+  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world my-town east-side) :all)</font>
+  (#&lt;location 2&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id22">Step 6: Delete a space instance</a></h2><p>
+Now let's delete some of what we just created.  Let's delete the
+<nobr><code>my-town</code></nobr> space instance:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(delete-space-instance '(known-world my-town))</font>
+  #&lt;deleted-unit-instance standard-space-instance (known-world my-town)&gt;
+  gbbopen-user&gt;</font>
+</pre>
+<a name="id23">and</a> describe the blackboard repository:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-blackboard-repository)</font>
+
+  Space Instance                Contents
+  --------------                --------
+  known-world                   6 instances (6 location)
+
+  Unit Class                    Instances
+  ----------                    ---------
+  location                              6
+  standard-space-instance               1
+                                ---------
+                                        7 instances
+  gbbopen-user&gt;</font>
+</pre>
+Notice that GBBopen has also deleted all the child space instances of
+<nobr><code>my-town</code></nobr>: both <nobr><code>east-side</code></nobr> and
+<nobr><code>west-side</code></nobr> were also deleted.  So, just as with our file-system
+directory analogy, space-instance deletion is recursive over children and
+should be performed with caution.
+</p>
+<p><a name="id24">Also</a> note that deleting space instances did not delete any of the unit
+instances that were stored on them.  If we want to delete a space instance
+<i>and</i> all the unit instances that are stored on it, we must
+explicitly delete the unit instances before deleting the space instance.
+For example, we could do:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; (map-instances-on-space-instances #'delete-instance 
+                  'location '(known-world my-town))
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+to delete the unit instances in <nobr><code>my-town</code></nobr>.  However, we must keep
+in mind that a unit instance can reside on multiple space instances; so
+deleting a unit instance that is on other space instances might not be the
+desired action.
+</p>
+<p><a name="id25">As</a> is the case with <nobr><b>map-instances-of-class</b></nobr>, GBBopen provides a
+<nobr><b>do-instances-on-space-instances</b></nobr> macro as an alternative to
+<nobr><b>map-instances-on-space-instances</b></nobr>.  So we could have chosen to
+use the form:
+<pre class="pretop">
+<font color="#667f66">  (do-instances-on-space-instances (instance 'location '(known-world my-town))
+    (delete-instance instance))</font>
+</pre>
+to explicitly delete the <nobr><code>location</code></nobr> unit instances in
+<nobr><code>my-town</code></nobr>.
+</p>
+<h2><a name="id26">Step 7: Delete the Blackboard Repository</a></h2><p>
+If we really want to get rid of all our unit and space instances, we can use
+the <nobr><b>delete-blackboard-repository</b></nobr> function:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(delete-blackboard-repository)</font>
+  t
+  gbbopen-user&gt; <font color="#000000">(describe-blackboard-repository)</font>
+  There are no space instances in the blackboard repository.
+  gbbopen-user&gt; <font color="#000000">(map-instances-of-class #'print location)</font>
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id27">Calling</a> <nobr><b>delete-blackboard-repository</b></nobr> has deleted every space
+and unit instance, but it has not eliminated our <nobr><code>location</code></nobr> unit
+class definition.  Let's create a <nobr><code>location</code></nobr> unit instance once
+again:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(make-instance 'location)</font>
+  #&lt;location 1&gt;
+  gbbopen-user&gt;</font>
+</pre>
+Note that deleting the blackboard repository also reset the counter for
+<nobr><code>location</code></nobr> instance names, so the created unit instance is again
+named <code>1</code>.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-creating-a-space-instance.html"><img border="0" alt="Creating a Space Instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-development-environment.html"><img border="0" alt="Enhancing Your Development Environment" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Deleting Instances</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

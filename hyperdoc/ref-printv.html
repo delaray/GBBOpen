@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- printv</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-print-instance-slots.html"><img border="0" alt="print-instance-slots" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-push-acons.html"><img border="0" alt="push-acons" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">printv</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">printv</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>form</var>*</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var>*</nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Assist debugging by printing forms and the results of
+evaluating them to <nobr><code>*trace-output*</code></nobr>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> (home package is
+<nobr><code>:module-manager</code></nobr>)
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>forms</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An implicit <nobr><code>progn</code></nobr> of <a href="ref-glossary.html#gl:forms">forms</a> to be
+evaluated and printed  
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>results</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The values returned by evaluating the last <var>form</var>
+that is not the keyword symbol <code>:hr</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The values returned by evaluating the last <var>form</var> that is not
+the keyword symbol <code>:hr</code>
+</p>
+<p><span class="fndoclabel">Description</span> <br />The following is performed for each form in <var>forms</var>:
+</p>
+<p><ul class="tight"><li>if the form is the keyword symbol <code>:hr</code>, a dashed separator line
+printed to <nobr><code>*trace-output*</code></nobr>
+<li>if the form is a string (before evaluation), it is treated as a label
+and printed to <nobr><code>*trace-output*</code></nobr> without enclosing double-quote
+characters
+<li>if the form is a self-evaluating object, it is printed to
+<nobr><code>*trace-output*</code></nobr>
+<li>otherwise, the form is printed to <nobr><code>*trace-output*</code></nobr>, then the
+form is evaluated and the result values are printed to
+<nobr><code>*trace-output*</code></nobr>.
+</ul>
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-printvot.html"><b>printvot</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (printv :hr "PRINTV example" (list 1 2) (list 3 4) '"A quoted string" 
+            "Return no values:" (values)
+            "Return multiple values:" (values 5 6) :hr)
+  ;; ------------------------------------------------------------
+  ;; PRINTV example
+  ;;   (list 1 2) =&gt; (1 2)
+  ;;   (list 3 4) =&gt; (3 4)
+  ;; Return no values:
+  ;;   (values) =&gt; [returned 0 values]
+  ;;   '"A quoted string" =&gt; "A quoted string"
+  ;; Return multiple values:
+  ;;   (values 5 6) =&gt; 5; 6
+  ;; ------------------------------------------------------------
+  5
+  6
+  &gt; (printv *package* (<a href="ref-object-address.html">object-address</a> *package* 't))
+  ;;  *package* =&gt; #&lt;The GBBOPEN-USER package&gt;
+  ;;  (object-address *package* 't) =&gt; "71b32f5a"
+  "71b32f5a"
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br /><a name="id2">This</a> macro is defined in the <nobr><code>:module-manager</code></nobr> <a href="ref-glossary.html#gl:module">module</a>
+in order to make it available as early as possible.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-print-instance-slots.html"><img border="0" alt="print-instance-slots" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-push-acons.html"><img border="0" alt="push-acons" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">printv</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

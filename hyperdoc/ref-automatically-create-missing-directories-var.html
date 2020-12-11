@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- *automatically-create-missing-directories*</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-autorun-modules-var.html"><img border="0" alt="*autorun-modules*" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">*automatically-create-missing-directories*</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">*automatically-create-missing-directories*</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"></td><td valign="baseline" align="right">[<i>Variable</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Controls whether any directories that are missing
+in the compiled-file tree should be created when needed.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:common-lisp-user</code> 
+(also imported into and exported from <nobr><code>:module-manager</code></nobr>)
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Value type</span>&nbsp;&nbsp;&nbsp;A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</p>
+<p><span class="fndoclabel">Initial value</span>&nbsp;&nbsp;&nbsp;<code>t</code>
+</p>
+<p><span class="fndoclabel">Description</span> <br />By default, the Module Manager will create any needed directories in the
+compiled-file tree automatically during module compilation.  For tighter
+control over new directory creation,
+<nobr><b>*automatically-create-missing-directories*</b></nobr> can be set to <code>nil</code>,
+causing <nobr><b><a href="ref-compile-module.html">compile-module</a></b></nobr> to signal a continuable error
+during compilation if a needed directory is missing in the compiled-file tree.
+When <nobr><b>*automatically-create-missing-directories*</b></nobr> has been set
+to <code>nil</code>, the <nobr><b><a href="ref-compile-module.html">compile-module</a></b></nobr> option
+<nobr><code>:create-dirs</code></nobr> provides a convenient way to bind
+<nobr><b>*automatically-create-missing-directories*</b></nobr> to true during
+compilation of a specified <a href="ref-glossary.html#gl:module">module</a>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-compile-module.html"><b>compile-module</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Have the Module Manager generate a continuable error during module compilation
+when a needed directory in the compiled-file tree is missing (and the
+compile-module option <nobr><code>:create-dirs</code></nobr> was not specified when
+compiling the module needing that missing directory):
+<pre class="pretop">
+  (setf common-lisp-user::*automatically-create-missing-directories* nil)
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-module-manager-entities.html"><img border="0" alt="Module Manager Facility" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-autorun-modules-var.html"><img border="0" alt="*autorun-modules*" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">*automatically-create-missing-directories*</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- Pseudo Probabilities</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-declared-numerics.html"><img border="0" alt="Declared Numerics" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Pseudo Probabilities</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h2>Pseudo Probabilities</h2>
+<p>The <code>:gbbopen-tools</code> module provides a discretized <code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code>
+representation for probability values in which probability values in the range
+[0.0..1.0] are represented as the nearest integers in the range [0..1000].
+</p>
+<p>The following <code><a href="ref-glossary.html#gl:pseudo-probability">pseudo-probability</a></code> operators are provided:
+<a name="id1"></a><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </td><td valign="baseline" colspan="1" align="left"> <b>Operator</b> </td><td valign="baseline" colspan="1" align="left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> <b>Operation</b>  </td><td valign="baseline" colspan="1" align="left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> 
+<b>Example</b> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>&#37;</code>      </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>the pseudo-probability</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(&#37; x)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>+&#37;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>+&#38;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(+&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>-&#37;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>-&#38;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(-&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>1+&#37;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>1+&#38;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(1+&#37; x)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>1-&#37;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>1-&#38;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(1-&#37; x)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-multiply-pprob.html">*&#37;</a></code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>*&#38;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(*&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code><a href="ref-divide-pprob.html">/&#37;</a></code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>/&#38;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(/&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>=&#37;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>=&#38;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(=&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>/=&#37;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>/=&#38;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(/=&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>&lt;&#37;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>&lt;&#38;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(&lt;&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>&lt;=&#37;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>&lt;=&#38;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(&lt;=&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>&gt;&#37;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>&gt;&#38;</code>     </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(&gt;&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>&gt;=&#37;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>&gt;=&#38;</code>    </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(&gt;=&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>abs&#37;</code>   </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>abs&#38;</code>   </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(abs&#37; x)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>bounded-value&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>bounded-value&#38;</code>
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(bounded-value&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>ceiling&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>ceiling&#38;</code>
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(ceiling&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>decf&#37;</code>  </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>decf&#38;</code>  </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(decf&#37; x delta)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>decf-&#37;after</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>decf-after&#38;</code> 
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(decf&#37;-after x delta)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>decf/delete&#37;-acons</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>decf/delete-acons&#38;</code>
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(decf/delete&#37;-acons</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> &nbsp;&nbsp;&nbsp; <code>x delta alist)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>evenp&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>evenp&#38;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(evenp&#37; x)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>fceiling&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>fceiling&#38;</code>
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(fceiling&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>floor&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>floor&#38;</code> 
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(floor&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>ffloor&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>ffloor&#38;</code> 
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(ffloor&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>fround&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>fround&#38;</code>
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(fround&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>ftruncate&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>ftruncate&#38;</code>
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(ftruncate&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>incf&#37;</code>  </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>incf&#38;</code>  </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(incf&#37; x delta)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>incf&#37;-after</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>incf-after&#38;</code> 
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(incf&#37;-after x delta)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>max&#37;</code>   </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>max&#38;</code>   </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(max&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>min&#37;</code>   </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>min&#38;</code>   </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(min&#37; x y z)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>minusp&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>minusp&#38;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(minusp&#37; x)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>mod&#37;</code>   </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>mod&#38;</code>   </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(mod&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>oddp&#37;</code>  </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>oddp&#38;</code>  </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(oddp&#37; x)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>plusp&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>plusp&#38;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(plusp&#37; x)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>pushnew/incf&#37;-acons</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>pushnew/incf-acons&#38;</code>
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(pushnew/incf&#37;-acons</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> &nbsp;&nbsp;&nbsp; <code>'x delta alist)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>round&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>round&#38;</code> 
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(round&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>truncate&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> normalizing <code>truncate&#38;</code>
+</td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(truncate&#37; x divisor)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td><td valign="baseline" colspan="1" align="left"> <code>zerop&#37;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>zerop&#38;</code> </td><td valign="baseline" colspan="1" align="left"> </td><td valign="baseline" colspan="1" align="left"> <code>(zerop&#37; x)</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"> </td></tr></tbody></table>
+</p>
+<p><b><font size="+1">Entities</font></b>
+</p>
+<ul>
+<li><a href="ref-multiply-pprob.html"><font color="#000000">*&#37;</font></a></li>
+<li><a href="ref-divide-pprob.html"><font color="#000000">/&#37;</font></a></li>
+<li><a href="ref-exp-pprob.html"><font color="#000000">exp&#37;</font></a></li>
+<li><a href="ref-ln-pprob.html"><font color="#000000">ln&#37;</font></a></li>
+<li><a href="ref-pprob2prob.html"><font color="#000000">pprob2prob</font></a></li>
+<li><a href="ref-prob2pprob.html"><font color="#000000">prob2pprob</font></a></li>
+</ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-declared-numerics.html"><img border="0" alt="Declared Numerics" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Pseudo Probabilities</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- make-journal-streamer</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-load-journal.html"><img border="0" alt="load-journal" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-journaling-entities.html"><img border="0" alt="Journaling" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">make-journal-streamer</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">make-journal-streamer</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>pathname</var>
+<code>&#38;key</code> 
+<var><nobr>external-format</nobr>
+package
+<nobr>read-default-float-format</nobr>
+value</var> 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>journal-streamer</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Create a <a href="ref-glossary.html#id106">journal&nbsp;streamer</a> to record to a file changes made
+to <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a> (and <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>).
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:streaming</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>pathname</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id170">pathname&nbsp;designator</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>external-format</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An external-file-format designator (default is
+<nobr><code>:default</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>package</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id160">package&nbsp;designator</a> indicating the package to be used
+when writing the journal and when loading the journal file (default is
+<nobr><code>:common-lisp</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>read-default-float-format</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> One of the atomic type specifiers
+<nobr><code>short-float</code></nobr>, <nobr><code>single-float</code></nobr>,
+<nobr><code>double-float</code></nobr>, or <nobr><code>long-float</code></nobr> to be used when writing
+the journal and loading the journal file (default is <nobr><code>single-float</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object to be saved with the journal and returned when the
+journal file is loaded (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>journal-streamer</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id106">journal&nbsp;streamer</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The created <a href="ref-glossary.html#id106">journal&nbsp;streamer</a>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />If <var>pathname</var> does not specify a file type, the type
+<code>jnl</code> is added to it.  Then, <nobr><code>(user-homedir-pathname)</code></nobr> is used
+to supply any missing components to <nobr><var>pathname</var></nobr>.
+</p>
+<p>The size of the journal file can be reduced by specifying a
+<nobr><var>package</var></nobr> containing the majority of the symbols that are written
+to the file.
+</p>
+<p>A <nobr><b><a href="ref-with-saving-sending-block.html">with-saving/sending-block</a></b></nobr>, with the
+<nobr><var>package</var></nobr> and <nobr><var>read-default-float-format</var></nobr> values, is
+established when writing to the journal.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-load-journal.html"><b>load-journal</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-omitted-slots-for-saving-sending.html"><b>omitted-slots-for-saving/sending</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-stream-instance.html"><b>stream-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-save-blackboard-repository.html"><b>save-blackboard-repository</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-saving-sending-block.html"><b>with-saving/sending-block</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Load the <code>:streaming</code> module followed by the GBBopen Tutorial Example
+application (without running it). Then write a journal file recording what
+occurred when taking a walk:
+<pre class="pretop">
+  &gt; :streaming
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  &gt; :tutorial-example :noautorun
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  &gt; (defparameter *streamer*
+      (make-journal-streamer "tutorial" :package ':tutorial))
+  *streamer*
+  &gt; *streamer*
+  #&lt;journal-streamer "<var>&lt;homedir&gt;</var>/tutorial.jnl"&gt;
+  &gt; (add-mirroring *streamer* 'standard-space-instance)
+  nil
+  &gt; (add-mirroring *streamer* 'path)
+  nil
+  &gt; (add-mirroring *streamer* 'location)
+  nil
+  &gt; (take-a-walk)
+  ;; Control shell 1 started
+     <span 
+    style="font-family: serif; font-style: normal">...</span>
+  ;; Explicit :stop issued by KS print-walk-ks
+  ;; Control shell 1 exited: 41 cycles completed
+  ;; Run time: 0.01 seconds
+  ;; Elapsed time: 0 seconds
+  :stop
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-load-journal.html"><img border="0" alt="load-journal" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-journaling-entities.html"><img border="0" alt="Journaling" src="up.png"/></a></td><td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">make-journal-streamer</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

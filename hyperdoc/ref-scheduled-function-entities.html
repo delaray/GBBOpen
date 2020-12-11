@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- Scheduled and Periodic Functions</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-additional-tools-entities.html"><img border="0" alt="Additional GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-polling-function-entities.html"><img border="0" alt="Polling Functions" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Scheduled and Periodic Functions</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h2>Scheduled and Periodic Functions</h2>
+<p>GBBopen provides two forms of time-scheduled functions:
+<a href="ref-glossary.html#gl:scheduled">scheduled&nbsp;functions</a> and <a href="ref-glossary.html#gl:periodic">periodic&nbsp;functions</a>, both built using
+<a href="ref-portable-thread-entities.html">Portable Threads</a>.  These
+time-scheduled-function entities are provided by the
+<nobr><code>:portable-threads</code></nobr> module.
+</p>
+<p><h4>Scheduled Functions</h4> 
+</p>
+<p>A <a href="ref-glossary.html#id206">scheduled&nbsp;function</a> is an object that contains a <a href="ref-glossary.html#gl:function">function</a> to
+be run at a specified time. When that specified time arrives, the
+<a href="ref-glossary.html#gl:function">function</a> is invoked with a single argument: the
+<a href="ref-glossary.html#id206">scheduled&nbsp;function</a> object. A repeat interval (in seconds) can also be
+specified for the <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>. This value is used whenever the
+<a href="ref-glossary.html#id206">scheduled&nbsp;function</a> is invoked to schedule itself again at a new time
+relative to the current invocation.  <a href="ref-glossary.html#gl:scheduled">Scheduled&nbsp;functions</a> can be
+scheduled to a resolution of one second.
+</p>
+<p><a href="ref-glossary.html#gl:scheduled">Scheduled&nbsp;functions</a> are scheduled and invoked by a separate
+<nobr><code>"Scheduled-Function Scheduler"</code></nobr> <a href="ref-glossary.html#gl:thread">thread</a>.  Unless the run
+time of the invoked function is brief, the invoked function should spawn a new
+thread in which to perform its activities so as to avoid delaying the
+invocation of a subsequent <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>.
+</p>
+<p><h4>Periodic Functions</h4> 
+</p>
+<p><a name="id1">A</a> <a href="ref-glossary.html#id174">periodic&nbsp;function</a> is a <a href="ref-glossary.html#gl:function">function</a> to be run repeatedly at a
+specified interval.  Unlike <a href="ref-glossary.html#gl:scheduled">scheduled&nbsp;functions</a>, which can be
+scheduled only to a resolution of one second, a <a href="ref-glossary.html#id174">periodic&nbsp;function</a> can
+be repeated at intervals as brief as is supported by the <nobr><code>sleep</code></nobr>
+function of the Common Lisp implementation.  A <a href="ref-glossary.html#id174">periodic&nbsp;function</a> is
+scheduled and executed in its own <a href="ref-glossary.html#gl:thread">thread</a>.  As with
+<a href="ref-glossary.html#gl:scheduled">scheduled&nbsp;functions</a>, the invoked function should spawn a new thread in
+which to perform its activities, unless its run time is brief.
+</p>
+<p><b><font size="+1">Entities</font></b>
+</p>
+<ul>
+<li><a href="ref-periodic-function-verbose-var.html"><font color="#000000">*periodic-function-verbose*</font></a></li>
+<li><a href="ref-schedule-function-verbose-var.html"><font color="#000000">*schedule-function-verbose*</font></a></li>
+<li><a href="ref-all-scheduled-functions.html"><font color="#000000">all-scheduled-functions</font></a></li>
+<li><a href="ref-kill-periodic-function.html"><font color="#000000">kill-periodic-function</font></a></li>
+<li><a href="ref-make-scheduled-function.html"><font color="#000000">make-scheduled-function</font></a></li>
+<li><a href="ref-pause-scheduled-function-scheduler.html"><font color="#000000">pause-scheduled-function-scheduler</font></a></li>
+<li><a href="ref-restart-scheduled-function-scheduler.html"><font color="#000000">restart-scheduled-function-scheduler</font></a></li>
+<li><a href="ref-resume-scheduled-function-scheduler.html"><font color="#000000">resume-scheduled-function-scheduler</font></a></li>
+<li><a href="ref-schedule-function.html"><font color="#000000">schedule-function</font></a></li>
+<li><a href="ref-schedule-function-relative.html"><font color="#000000">schedule-function-relative</font></a></li>
+<li><a href="ref-scheduled-function-invocation-time.html"><font color="#000000">scheduled-function-invocation-time</font></a></li>
+<li><a href="ref-scheduled-function-marker.html"><font color="#000000">scheduled-function-marker</font></a></li>
+<li><a href="ref-scheduled-function-marker-test.html"><font color="#000000">scheduled-function-marker-test</font></a></li>
+<li><a href="ref-scheduled-function-name.html"><font color="#000000">scheduled-function-name</font></a></li>
+<li><a href="ref-scheduled-function-name-test.html"><font color="#000000">scheduled-function-name-test</font></a></li>
+<li><a href="ref-scheduled-function-repeat-interval.html"><font color="#000000">scheduled-function-repeat-interval</font></a></li>
+<li><a href="ref-scheduled-function-scheduler-paused-p.html"><font color="#000000">scheduled-function-scheduler-paused-p</font></a></li>
+<li><a href="ref-scheduled-function-scheduler-running-p.html"><font color="#000000">scheduled-function-scheduler-running-p</font></a></li>
+<li><a href="ref-spawn-periodic-function.html"><font color="#000000">spawn-periodic-function</font></a></li>
+<li><a href="ref-unschedule-function.html"><font color="#000000">unschedule-function</font></a></li>
+</ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-additional-tools-entities.html"><img border="0" alt="Additional GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-polling-function-entities.html"><img border="0" alt="Polling Functions" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Scheduled and Periodic Functions</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

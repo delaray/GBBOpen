@@ -1,0 +1,74 @@
+
+                                    Bugs
+                                    ----
+
+No priority bugs at this time
+
+
+                                  Small Tasks
+                                  -----------
+
+* Add CHANGE-CLASS event testing to :gbbopen-test
+
+* Improve define-tll-command SLIME support
+
+* Add LispWorks "heavy-allocation" support to with-reading-saved/sent-objects
+
+
+                                  Immediate
+                                  ---------
+
+* Add comparision-type compatibilty check in
+  ADD-INSTANCE-TO-SPACE-INSTANCE-INTERNAL
+
+* Add LispWorks 5.1 symeval-in-process support to Portable Threads
+
+* Add SLIME REPL package setting to GBBopen commands
+
+
+                                 Needed Soon
+                                 -----------
+
+* Worry about the effect on the storage for existing space instances when
+  a unit-class definition is redefined with a changed dimensional-value
+  specifications
+
+
+                                 Needed Later
+                                 ------------
+
+find.lisp
+
+ * optimize-pattern-element
+
+   Change optimize-pattern-element and add-dimension-extent to handle negated
+   regions (requires handling all dimensions in the pattern operator at once)
+   to tile around the "hole".  Right now, add-dimension-extent must scan the
+   entire area.
+
+ * optimize-pattern
+
+   Take another look at the #+is-this-needed-any-longer? clause.
+
+storage.lisp
+
+ * determine-2d-uniform-storage-regions
+
+   Add smarter 2D-extent merging, for now we're only deleting obvious duplicates.
+
+   Also, avoid full sweep on :infeasible pattern.
+
+
+			     Future Enhancements
+                             -------------------
+
+space.lisp
+
+ * add-instance-to-space-instance 
+  
+   Cache dimension-compatibility checks on space-instance after the first time
+   an instance of a unit class is added.  Must be cleared if unit-class is
+   redefined, however.
+
+
+

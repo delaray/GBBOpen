@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- make-condition-variable</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-kill-thread.html"><img border="0" alt="kill-thread" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-make-lock.html"><img border="0" alt="make-lock" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">make-condition-variable</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">make-condition-variable</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;rest</code> <var>initargs</var></nobr>
+<nobr><code>&#38;key</code> <var>class lock</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>condition-variable</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Create a new <a href="ref-glossary.html#id27">condition&nbsp;variable</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>initargs</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id96">initialization&nbsp;argument&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>class</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The name of the <a href="ref-glossary.html#gl:class">class</a> for the created
+<a href="ref-glossary.html#gl:condition-variable">condition-variable</a> instance (default is
+<nobr><code>condition-variable</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>lock</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:lock">lock</a>, a <a href="ref-glossary.html#id194">recursive&nbsp;lock</a>, or a 
+<a href="ref-glossary.html#id27">condition&nbsp;variable</a> (default is a non-recursive lock)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>condition-variable</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id27">condition&nbsp;variable</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The created <nobr><b><a href="ref-condition-variable.html">condition-variable</a></b></nobr>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-instance.html"><b>make-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-lock.html"><b>make-lock</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-recursive-lock.html"><b>make-recursive-lock</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-lock-held.html"><b>with-lock-held</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-without-lock-held.html"><b>without-lock-held</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Make a <nobr><b>condition-variable</b></nobr> instance with a non-recursive 
+<a href="ref-glossary.html#gl:lock">lock</a>:
+<pre class="pretop">
+  &gt; (make-condition-variable)
+  #&lt;condition-variable&gt;
+  &gt;
+</pre>
+Make a <nobr><b>condition-variable</b></nobr> instance with a
+<a href="ref-glossary.html#id194">recursive&nbsp;lock</a>:
+<pre>
+  &gt; (make-condition-variable :lock (<a href="ref-make-recursive-lock.html">make-recursive-lock</a>))
+  #&lt;condition-variable&gt;
+  &gt;
+</pre>
+Define a subclass of <nobr><b>condition-variable</b></nobr> that includes a 
+<nobr><code>state</code></nobr> slot:
+<pre>
+  (defclass state-cv (condition-variable)
+    ((state :initarg :state
+            :initform nil
+            :accessor state-of)))
+</pre>
+and then create a <nobr><code>state-cv</code></nobr> instance with a
+<a href="ref-glossary.html#id194">recursive&nbsp;lock</a>:
+<pre>
+  &gt; (make-condition-variable :class 'state-cv
+                             :lock (<a href="ref-make-recursive-lock.html">make-recursive-lock</a>))
+  #&lt;state-cv&gt;
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />The <b>make-condition-variable</b> function is equivalent to using
+<nobr><b><a href="ref-make-instance.html">make-instance</a></b></nobr> with the desired <a href="ref-glossary.html#gl:class">class</a> for
+the created <a href="ref-glossary.html#gl:condition-variable">condition-variable</a> instance.  However, using
+<nobr><b>make-condition-variable</b></nobr> is preferable stylistically.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-kill-thread.html"><img border="0" alt="kill-thread" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-make-lock.html"><img border="0" alt="make-lock" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">make-condition-variable</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

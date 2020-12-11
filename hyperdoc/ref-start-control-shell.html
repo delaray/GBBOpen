@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- start-control-shell</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-standard-ksa-class.html"><img border="0" alt="standard-ksa-class" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-agenda-shell-entities.html"><img border="0" alt="Agenda Control Shell" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-trigger-events-of.html"><img border="0" alt="trigger-events-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">start-control-shell</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">start-control-shell</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;rest</code> <var>initargs</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var>*</nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Start the Agenda Shell.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:agenda-shell</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:agenda-shell</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>initargs</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id96">initialization&nbsp;argument&nbsp;list</a> (see below)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>results</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> (See below)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />One of the following sets of multiple values: 
+</p>
+<p><ul class="tight"><li><code>:quiescence</code>&mdash;If the control-shell scheduling loop is terminated
+due to <a href="ref-glossary.html#gl:quiescence">quiescence</a> (that is, no more <a href="ref-glossary.html#id61">executable&nbsp;KSAs</a> remain
+in the queue of <a href="ref-glossary.html#id173">pending&nbsp;KSAs</a>)
+<li><code>:stop</code> and (optionally) associated reasons, as multiple
+values&mdash;If one of the following conditions occurs:
+</p>
+<p><ul class="tight"><li>The <nobr><b><a href="ref-exit-control-shell.html">exit-control-shell</a></b></nobr> <a href="ref-glossary.html#gl:function">function</a> is
+called.
+<li>A precondition <a href="ref-glossary.html#gl:function">function</a> or <a href="ref-glossary.html#gl:KS-execution">KS-execution</a> <a href="ref-glossary.html#gl:function">function</a>
+returns <code>:stop</code> and, optionally, associated reasons.
+</ul>
+<li><var>Result-values</var>&mdash;If the control-shell is terminated by
+calling <nobr><b><a href="ref-exit-control-shell.html">exit-control-shell</a></b></nobr>.
+</ul>
+</p>
+<p><span class="fndoclabel">Events</span> <br /><a name="id1">A</a> <nobr><code>control-shell-started-event</code></nobr> is signaled.
+</p>
+<p><span class="fndoclabel">Errors</span> <br />The idle-loop process has not been started on
+<a target="_top" href="http://www.cons.org/cmucl/">CMUCL</a>.  Multiprocessing has not been
+started on <a target="_top" href="http://www.lispworks.com">LispWorks</a>.
+</p>
+<p><span class="fndoclabel">Detailed syntax</span><br />Available <var>initargs</var> are:
+<br />&nbsp;<br /><table class="tighttop">
+<a name="id2"></a><tr valign="top"><td valign="baseline" nowrap><i>awaken-on-event</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>t</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>continue-past-quiescence</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default
+is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>fifo-queue-ordering</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>t</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>hibernate-on-quiescence</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>minimum-ksa-execution-rating</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#gl:rating">rating</a> (default is <code>1</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>instance-name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object naming this control-shell instance (default is 
+<code>1</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>output-stream</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Control-shell output stream (default is
+<nobr><code>*trace-output*</code></nobr>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>pause</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>print</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>t</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>run-polling-functions</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is 
+<code>t</code> on non-threaded Common Lisp implementations; <code>nil</code> otherwise) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>save-executed-ksas</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>save-obviated-ksas</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>stepping</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Control-shell stepping options (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>stepping-stream</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Control-shell stepping stream (default is
+<nobr><code>*query-io*</code></nobr>) 
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br />Many Agenda Shell behaviors can be customized by providing
+non-default values for the following <nobr><var>initargs</var></nobr>:
+<table class="tight">
+</p>
+<tr valign="top"><td valign="baseline"><code><p>:awaken-on-event</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> value indicating
+whether the control shell is to be awakened from hibernation when any event
+is signaled
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:continue-past-quiescence</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> value
+indicating whether the control shell loop should continue even when
+quiescence-event processing has failed to produce any
+<a href="ref-glossary.html#id61">executable&nbsp;KSAs</a>; use with caution, as the control shell will only
+exit by an explicit call to <nobr><b><a href="ref-exit-control-shell.html">exit-control-shell</a></b></nobr>
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:fifo-queue-ordering</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> value that
+indicates a newly rated <a href="ref-glossary.html#id173">pending&nbsp;KSA</a> is to be placed ahead of equally
+rated <a href="ref-glossary.html#gl:activations">KSAs</a> (first-in, first out) or after them (last-in, first out)
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:hibernate-on-quiescence</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> value that
+determines whether the control-shell will hibernate rather than exit when no
+executable <a href="ref-glossary.html#gl:activations">KSA</a> exists; this decision point is never reached when
+<nobr><code>:continue-past-quiescence</code></nobr> is true
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:minimum-ksa-execution-rating</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> The minimum <a href="ref-glossary.html#gl:rating">rating</a> value
+that a <a href="ref-glossary.html#id173">pending&nbsp;KSA</a> must have to be executed
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:output-stream</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> The stream to be used for control shell 
+output
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:pause</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> that determines
+whether the control shell should hibernate until awakened at the
+start of each cycle
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:print</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> that determines
+whether start, restart, and termination messages are printed by the
+control shell 
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:run-polling-functions</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> that
+determines whether polling functions (provided by the
+<a href="ref-polling-function-entities.html"><nobr><code>:polling-functions</code></nobr> module</a>)
+are to be run at the start of each control-shell cycle
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:save-executed-ksas</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> that determines
+whether <a href="ref-glossary.html#id63">executed&nbsp;KSA</a> instances are to be saved on the executed-ksas
+queue
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:save-obviated-ksas</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> that determines
+whether <a href="ref-glossary.html#gl:obviation">obviated&nbsp;KSA</a> instances are to be saved on the obviated-ksas
+queue
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:stepping</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> A list of stepping options (see below) indicating the
+kinds of control-shell stepping that are to be enabled initially, or the
+symbol <code>t</code>, indicating all stepping options are enabled
+</p>
+</td></tr><tr valign="top"><td valign="baseline"><code><p>:stepping-stream</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> The stream to be used for control shell stepping
+</p>
+</td></tr></table>
+<p><p><b>Stepping options</b></p>
+</p>
+<p><a name="id3">The</a> supported stepping options and their interpretations are as follows:
+<table class="tight">
+<tr valign="top"><td valign="baseline"><code>:activation-predicate</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to execute the activation
+predicate of a <a href="ref-glossary.html#gl:KSs">KS</a>
+</td></tr><tr valign="top"><td valign="baseline"><code>:ks-activation</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to create a <a href="ref-glossary.html#gl:activations">KS&nbsp;activation</a>
+</td></tr><tr valign="top"><td valign="baseline"><code>:ksa-execution</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to execute a <a href="ref-glossary.html#gl:activations">KS&nbsp;activation</a>
+</td></tr><tr valign="top"><td valign="baseline"><code>:obviation-predicate</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to execute the <a href="ref-glossary.html#gl:obviation">obviation</a>
+predicate of a <a href="ref-glossary.html#gl:KSs">KS</a>
+</td></tr><tr valign="top"><td valign="baseline"><code>:precondition-function</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to execute the precondition
+function of a <a href="ref-glossary.html#gl:KSs">KS</a> 
+</td></tr><tr valign="top"><td valign="baseline"><code>:process-event</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to perform control-shell processing
+associated with an <a href="ref-glossary.html#gl:event">event</a>
+</td></tr><tr valign="top"><td valign="baseline"><code>:quiescence</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to perform activities triggered by 
+control-shell <a href="ref-glossary.html#gl:quiescence">quiescence</a> 
+</td></tr><tr valign="top"><td valign="baseline"><code>:retrigger-function</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to execute the retrigger
+function of a <a href="ref-glossary.html#gl:KSs">KS</a> 
+</td></tr><tr valign="top"><td valign="baseline"><code>:retrigger-function</code></td><td valign="baseline">&nbsp;</td><td valign="baseline"> about to execute the revalidation predicate
+of a <a href="ref-glossary.html#gl:KSs">KS</a> 
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-control-shell-running-p.html"><b>control-shell-running-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-current-control-shell.html"><b>current-control-shell</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-exit-control-shell.html"><b>exit-control-shell</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-run-polling-functions.html"><b>run-polling-functions</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-restart-control-shell.html"><b>restart-control-shell</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Start the Agenda Shell (in this case, without any <a href="ref-glossary.html#gl:KSs">KSs</a> defined):
+<pre class="pretop">
+  &gt; (start-control-shell)
+  ;; Control shell 1 started
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 2 cycles completed
+  ;; Run time: 0 seconds
+  ;; Elapsed time: 0 seconds
+  :quiescence
+  &gt;
+</pre>
+</p>
+<p>Start the Agenda Shell (again without any <a href="ref-glossary.html#gl:KSs">KSs</a> defined, but with
+stepping enabled):
+<pre class="pretop">
+  &gt; (start-control-shell :stepping 't)
+  ;; Control shell 1 started
+  &gt;&gt; CS Step (cycle 1):
+     About to signal quiescence... <font color="#00b200">[<i>? entered</i>]</font>
+  Stepping commands (follow with &lt;Return&gt;):
+     d       Disable this kind of stepping (:quiescence)
+     e       Enable another kind of stepping
+     f       Evaluate a form
+     h or ?  Help (this text)
+     q       Quit (disable all stepping and continue)
+     s       Show enabled stepping kinds
+     x       Exit control shell
+     =       Describe the object of interest (bound to ==)
+     +       Enable all stepping
+     -       Disable all stepping
+     &lt;Space&gt; Continue (resume processing)
+  &gt;&gt; CS Step (cycle 1):
+     About to signal quiescence... <font color="#00b200">[<i>d entered</i>]</font>
+  :quiescence stepping disabled
+  &gt;&gt; CS Step (cycle 1):
+     About to signal quiescence... <font color="#00b200">[<i>q entered</i>]</font>
+  All stepping disabled
+  ;; No executable KSAs remain, exiting control shell
+  ;; Control shell 1 exited: 2 cycles completed
+  ;; Run time: 0 seconds
+  ;; Elapsed time: 54 seconds
+  :quiescence
+  &gt;
+</pre>
+</p>
+<a name="id4"></a><p><span class="fndoclabel">Note</span> <br />When a non-<code>nil</code>
+<nobr><code>:run-polling-functions</code></nobr> value is supplied to
+<nobr><b><a href="ref-start-control-shell.html">start-control-shell</a></b></nobr> (the default on Common Lisp
+implementations without threads),
+<nobr><b><a href="ref-run-polling-functions.html">run-polling-functions</a></b></nobr> is called at the beginning
+of every control-shell-cycle and at one-half-second intervals when the
+Agenda Shell is hibernating due to <a href="ref-glossary.html#gl:quiescence">quiescence</a>.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-standard-ksa-class.html"><img border="0" alt="standard-ksa-class" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-agenda-shell-entities.html"><img border="0" alt="Agenda Control Shell" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-trigger-events-of.html"><img border="0" alt="trigger-events-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">start-control-shell</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

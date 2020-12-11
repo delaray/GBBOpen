@@ -1,0 +1,483 @@
+Important changes since GBBopen 1.5:
+
+  * Incompatible changes to event names --
+    (set cl-user::*include-old-event-names* to nil and recompile to eliminate
+     old event names and associated [redundant] signaling):
+        > CREATE-INSTANCE-EVENT -> INSTANCE-CREATED-EVENT
+        > CREATE/DELETE-INSTANCE-EVENT -> 
+            INSTANCE-CREATED/CHANGED/DELETED-EVENT
+        > ADD-INSTANCE-TO-SPACE-INSTANCE-EVENT -> 
+            INSTANCE-ADDED-TO-SPACE-INSTANCE-EVENT
+        > MOVE-INSTANCE-WITHIN-SPACE-INSTANCE-EVENT ->
+            INSTANCE-MOVED-WITHIN-SPACE-INSTANCE-EVENT
+        > REMOVE-INSTANCE-FROM-SPACE-INSTANCE-EVENT ->
+            INSTANCE-REMOVED-FROM-SPACE-INSTANCE-EVENT 
+        > UPDATE-NONLINK-SLOT-EVENT -> NONLINK-SLOT-UPDATED-EVENT
+        > LINK/NONLINK-SLOT-MODIFY-EVENT -> LINK/NONLINK-SLOT-MODIFIED-EVENT
+        > START-CONTROL-SHELL-EVENT -> CONTROL-SHELL-STARTED-EVENT
+        > RESTART-CONTROL-SHELL-EVENT -> CONTROL-SHELL-RESTARTED-EVENT
+        > CONTROL-SHELL-HIBERNATION-EVENT -> CONTROL-SHELL-HIBERNATING-EVENT
+        > KSA-ACTIVATION-EVENT -> KSA-ACTIVATED-EVENT
+        > KSA-EXECUTION-EVENT -> KSA-EXECUTING-EVENT
+        > KSA-OBVIATION-EVENT -> KSA-OBVIATED-EVENT
+        > KSA-RETRIGGER-EVENT -> KSA-RETRIGGERED-EVENT
+
+  * Changes to GBBopen initiate & startup
+     - New FUNCALL-IN-PACKAGE function
+
+  * Changes to Module Manager
+     - Default value of *AUTOMATICALLY-CREATE-MISSING-DIRECTORIES* changed 
+       from NIL to T
+     - Documentation string added to DEFINE-MODULE, MODULE doc-type added to
+       DOCUMENTATION methods to access and set module documentation
+     - Documentation string added to DEFINE-RELATIVE-DIRECTORY and 
+       DEFINE-ROOT-DIRECTORY, DIRECTORY doc-type added to DOCUMENTATION 
+       methods to access and set root- and relative-directory documentation
+
+  * Changes to GBBopen Tools
+     - New VERY-BRIEF-DATE function
+     - New :include-year keyword argument to BRIEF-DATE
+     - New :default-to-current-year keyword argument to ENCODE-DATE-AND-TIME,
+       PARSE-DATE, and PARSE-DATE-AND-TIME
+     - New :time-first keyword argument to ENCODE-DATE-AND-TIME and 
+       PARSE-DATE-AND-TIME
+     - New *TIME-FIRST* and *YEAR-FIRST* variables
+     - New WHITESPACE-CHAR-P function
+     - Document PRINTVOT macro
+     - Export SORTF and STABLE-SORTF macros
+     - New MAKE-HASH-VALUES-VECTOR and SORTED-MAPHASH functions
+     - Support user-provided string-coalescing hash table in 
+       WITH-READING-SAVED/SENT-OBJECTS-BLOCK
+
+  * Changes to extended-REPL commands
+     - :ut (describe/encode univeral-time value) command encodes string argument
+
+  * Changes to GBBopen
+     - New *SKIP-DELETED-UNIT-INSTANCE-CLASS-CHANGE* and 
+       *REPOSITORY-LOAD-PERCENTAGE-HOOK-FUNCTIONS* variables
+     - New CHECK-ALL-INSTANCE-LINKS and CHECK-INSTANCE-LOCATORS functions
+     - New WITH-BLACKBOARD-REPOSITORY-LOCKED macro
+     - Documented *FIND-VERBOSE*, *USE-MARKING*, CHECK-FOR-DELETED-INSTANCE
+
+  * Changes to GBBopen Extensions
+     - Experimental journaling and network-streaming
+
+  * Changes to Queue Management
+     - New CLEAR-QUEUE generic function
+
+  * Changes to Agenda Shell
+     - New CONTROL-SHELL-HIBERNATING/AWAKENED-EVENT abstract control-shell
+       event and CONTROL-SHELL-AWAKENED-EVENT control-shell event
+
+
+Important changes in GBBopen 1.5:
+
+  * Changes to gbbopen-modules directory processing
+     - New *GBBOPEN-MODULES-DIRECTORY-VERBOSE* and *SYM-FILE-VERBOSE* 
+       global variables
+
+  * Changes to extended-REPL commands
+     - New :lmf (LOAD-MODULE-FILE) REPL command
+
+  * Changes to Module Manager
+     - Add :skip-recompile module file option
+
+  * Changes to GBBopen Tools
+     - New ASSQ function
+     - New DEFCONSTRUCT cons-based 2-field "structure"
+     - New DELQ-ONE function
+     - New HTTP-DATE-AND-TIME function
+     - Change argument order of ENCODE-TIME-OF-DAY
+     - New left-leaning red-black (LLRB) tree entities
+     - New auto-transitioning EQ set (EQSET), EQ table (ET), and
+       auto-transitioning ("fast hash-table") ATABLE entities
+
+  * New :double-metaphone module
+
+  * New :gbbopen-tools-user module
+
+  * Changes to Portable Threads
+     - New ATOMIC-INCF& and ATOMIC-DECF& macros
+     - Scheduled and periodic function entities moved into a 
+       separate file (scheduled-periodic-functions.lisp)
+
+  * Changes to Scheduled and Periodic Functions
+     - New :name-test, :marker, :marker-test keyword arguments to 
+       MAKE-SCHEDULED-FUNCTION
+     - New :marker keyword argument to SCHEDULE-FUNCTION,
+       SCHEDULE-FUNCTION-RELATIVE, and UNSCHEDULE-FUNCTION
+     - New :warnp keyword argument to UNSCHEDULE-FUNCTION
+     - New PAUSE-SCHEDULED-FUNCTION-SCHEDULER, 
+       RESUME-SCHEDULED-FUNCTION-SCHEDULER,
+       SCHEDULED-FUNCTION-SCHEDULER-PAUSED-P,
+       SCHEDULED-FUNCTION-SCHEDULER-RUNNING-P functions
+
+  * Changes to GBBopen
+     - Support for evaluated :estimated-instances unit-class option 
+       forms
+
+
+Important changes in GBBopen 1.4:
+
+  * Changes to gbbopen-modules directory processing
+     - New *IGNORED-GBBOPEN-MODULES-DIRECTORY-SUBDIRECTORIES* global 
+       variable
+
+  * Changes to extended-REPL commands
+     - New :ot (describe offset-univeral-time value) command
+     - New :pic (print-instances-of-class) command
+     - New :ut (describe univeral-time value) command
+
+  * Changes to GBBopen Tools
+     - New *DISABLE-WITH-ERROR-HANDLING* global variable
+     - New DOSUBLISTS macro
+     - New :all-numeric, :include-day, and :full-names arguments to 
+       FULL-DATE-AND-TIME
+     - New PRINT-INSTANCE-SLOT-VALUE generic function
+
+  * Changes to Portable Threads
+     - New SPAWN-FORM macro
+     - New constant NEARLY-FOREVER-SECONDS
+     - New function SLEEP-NEARLY-FOREVER
+     - CLISP MT support (thanks to Vladimir Tzankov)
+
+  * Changes to GBBopen
+     - Support for link-pointer objects, new LINK-INSTANCE-OF 
+       generic function, and new STANDARD-LINK-POINTER class
+     - New DESCRIBE-INSTANCE-SLOT-VALUE generic function
+     - Abbreviated + specifier for :plus-subclasses and :plus-subevents
+     - Abbreviated = specifier for :no-subclasses and :no-subevents
+
+
+Important changes in GBBopen 1.3:
+
+  * Incompatible changes:
+     - Optional arguments (other than the universal-time argument) have
+       been changed to keyword arguments in BRIEF-DATE, 
+       BRIEF-DATE-AND-TIME, INTERNET-TEXT-DATE-AND-TIME, 
+       ISO8601-DATE-AND-TIME, MESSAGE-LOG-DATE-AND-TIME
+
+  * Changes to Module Manager
+     - More consistent OS/platform compile-directory naming
+
+  * Changes to GBBopen Tools
+     - Saving/sending support for adjustable, fill-pointer, and 
+       element-typed vectors, bit-vectors, and arrays
+     - New FULL-DATE-AND-TIME, BRIEF-DURATION, BRIEF-RUN-TIME-DURATION,
+       ENCODE-DATE-AND-TIME, PARSE-DATE, PARSE-DATE-AND-TIME, PARSE-TIME,
+       and PARSE-DURATION functions 
+     - Renamed: PRETTY-TIME-INTERVAL -> PRETTY-DURATION
+                PRETTY-RUN-TIME-INTERVAL -> PRETTY-RUN-TIME-DURATION
+       the old names are deprecated and will be removed eventually
+     - New :EXPORT-SLOT-NAMES class option in DEFINE-CLASS
+     - New LIST-LENGTH>2 predicate
+     - New MAKE-DUPLICATE-INSTANCE-CHANGING-CLASS generic function
+
+  * Changes to GBBopen Core
+     - New class, DELETED-UNIT-INSTANCE, is now used to represent deleted 
+       unit and space instances
+     - New generic function, DELETED-INSTANCE-CLASS, and default method
+       for STANDARD-UNIT-INSTANCE
+     - New function, MAKE-INSTANCES-OF-CLASS-VECTOR
+     - New abuts ordered-match operator to FIND-INSTANCES, etc.
+     - speed/allocation optimizations to MAP-SORTED-INSTANCES-OF-CLASS
+       and DO-SORTED-INSTANCES-OF-CLASS
+     - New :coalesce-strings and :estimated-peak-forward-references
+       arguments to LOAD-BLACKBOARD-REPOSITORY (these arguments are also
+       new in GBBopen Tool's WITH-READING-SAVED/SENT-OBJECTS-BLOCK)
+     - New :EXPORT-SLOT-NAMES class option in DEFINE-UNIT-CLASS,
+       DEFINE-SPACE-CLASS, DEFINE-KS-CLASS, and DEFINE-KSA-CLASS
+
+
+Important changes in GBBopen 1.2:
+
+  * The :clos package nickname is no longer added by GBBopen, use the
+    :gbbopen-tools package rather than :clos for CLOS/MOP entities
+
+  * The Mini Module Facility has been renamed to Module Manager Facility
+     - Module and package names have been renamed, as appropriate
+         :mini-module -> :module-manager
+         :mini-module-user -> :module-manager-user
+     - Support for patches added
+         *PATCHES-ONLY*
+         DESCRIBE-PATCHES
+         GET-PATCH-DESCRIPTION
+         PATCH (also START-PATCH, CONTINUE-PATCH, FINISH-PATCH)
+         PATCH-LOADED-P
+
+  * Changes to GBBopen Core       
+     - Renamed CHECK-LINK-CONSISTENCY to CHECK-LINK-DEFINITIONS
+     - New :value argument to SAVE-BLACKBOARD-REPOSITORY replaces
+       :after-load-function mechanism (this :value argument is also
+       new in GBBopen Tool's WITH-SAVING/SENDING-BLOCK)
+
+  * New Agenda Shell functions
+     - CURRENT-CONTROL-SHELL
+     - EXECUTED-KSAS-OF
+     - OBVIATED-KSAS-OF
+     - PENDING-KSAS-OF
+
+
+Important changes in GBBopen 1.1:
+
+  * New :gbbopen-tools functions and macros
+     - DECF/DELETE-ACONS
+     - DEFCM
+     - PARSE-DATE
+
+  * New :portable-threads macro
+     - WITHOUT-LOCK-HELD
+
+  * New :gbbopen-core functions
+     - CHANGE-SPACE-INSTANCE
+     - INITIAL-CLASS-INSTANCE-NUMBER
+     - MAKE-DUPLICATED-INSTANCE
+     - UNDUPLICATED-SLOT-NAMES
+
+  * New class options in DEFINE-UNIT-CLASS, DEFINE-SPACE-CLASS, 
+    DEFINE-KS-CLASS, and DEFINE-KSA-CLASS
+     - :ESTIMATED-INSTANCES
+     - :USE-GLOBAL-INSTANCE-NAME-COUNTER
+
+  * New :SIZE option for a hashed-storage specification to
+    MAKE-SPACE-INSTANCE
+
+  * CLASS-DIRECT-METHODS removed from MOP interface (use 
+    SPECIALIZER-DIRECT-METHODS instead)
+
+
+Important changes in GBBopen 1.0:
+  
+  * Support added for set-composite dimension values and space-instance
+    storage of them; support for incomposite (scalar) pattern retrieval of
+    set-composite unit instances
+
+  * Added processing of <install-dir>/shared-gbbopen-modules (processed 
+    immediately before user's personal <homedir>/gbbopen-modules)
+
+  * Added system-name tagging of extended-REPL commands, directory
+    definitions, and module definitions
+     - New WITH-SYSTEM-NAME macro added to support this
+
+  * Changes to extended-REPL commands
+     - DEFINE-TLL-COMMAND renamed to DEFINE-REPL-COMMAND
+     - New built-in extended-REPL commands
+        :systems  Shows all system-names used in commands, directory 
+                  definitions, and module definitions
+        :commands [<system-name>] 
+                  Shows all extended-REPL commands; if system-name is
+                  specified, then only those commands are displayed
+        :undefine-system <system-name>
+                  Removes all commands, directory definitions, and 
+                  module definitions associated with <system-name>
+
+  * Changes to Module Manager Facility
+     - Added support for "Source" and "SOURCE" directory-name conventions
+       (in addition to the recommended "source")
+     - Added application-version modifier support to DEFINE-ROOT-DIRECTORY
+     - New GET-ROOT-DIRECTORY function
+     - New WITH-MODULE-REDEFINITIONS macro
+     - Incremented version to 1.3
+
+
+Important changes in GBBopen 0.9.9:
+
+  * INCOMPATIBLE CHANGE: INSTANCE-DIMENSION-VALUE now returns five values:
+      1. the dimension value of the unit instance in the specified dimension
+      2. the dimension-value type of the specified dimension
+      3. the comparison type of the specified dimension
+      4. the composite type of the dimension value, if it is a
+         composite; NIL if it is an incomposite value
+      5. the name of the ordering dimension if the dimension value is
+         a series composite; NIL otherwise
+    The third value is new in GBBopen 0.9.9.
+
+  * Renamed "specified comparison test" element (enumerated dimension) 
+    pattern operators
+       EQ     -> IS-EQ
+       EQL    -> IS-EQL
+       EQUAL  -> IS-EQUAL
+       EQUALP -> IS-EQUALP 
+    The old operator names are deprecated, but will remain available through 
+    GBBopen 1.1
+
+  * New comparison-type specification support for DEFINE-UNIT-CLASS
+    :DIMENSIONAL-VALUES class option
+
+  * The :TEST option for a hashed-storage specification to MAKE-SPACE-INSTANCE
+    has been eliminated, as the comparison test is now determined from the
+    dimension comparison-type specifications of the unit classes associated
+    with the hashed storage
+
+  * <install-dir>/gbbopen-init.lisp renamed to more intuitive
+    <install-dir>/initiate.lisp
+
+  * Reloading of changed commands.lisp and modules.lisp files in
+    <homedir>/gbbopen-modules/ directory  
+
+  * New :nopropagate option to COMPILE-MODULE and LOAD-MODULE; improved
+    remembering of REPL :cm and :lm command parameters 
+
+  * New :MODULE-MANAGER-USER package
+
+  * New :CLASS-NAME-TRANSLATIONS argument added to LOAD-BLACKBOARD-REPOSITORY
+    and WITH-READING-SAVED/SENT-OBJECTS-BLOCK
+
+  * New NEXT-CLASS-INSTANCE-NUMBER function
+
+  * New FIND-ALL-INSTANCES-BY-NAME function
+
+  * New INSTANCE-DIMENSION-VALUES function
+
+  * New handler-forms (evaluated in the dynamic context of the error) and new
+    ERROR-CONDITION lexical function added to WITH-ERROR-HANDLING
+
+  * New *WARN-ABOUT-NONPORTABLE-SAVING/SENDING* global variable
+
+  * CHANGE-CLASS support to/from non-unit instances
+
+
+Important changes in GBBopen 0.9.8:
+
+  * INCOMPATIBLE CHANGE: New DELETE-BLACKBOARD-REPOSITORY function
+    replaces typical uses of RESET-GBBOPEN
+     - RESET-GBBOPEN now unconditionally deletes/resets all instances,
+       event functions, and event printing
+
+  * New :RETAIN class option in DEFINE-UNIT-CLASS (and DEFINE-SPACE-CLASS,
+    DEFINE-KS-CLASS, and DEFINE-KSA-CLASS), controls default
+    DELETE-BLACKBOARD-REPOSITORY behavior on instances of that class:
+       nil  = don't retain 
+       true = retain (a value of :PROPAGATE indicates propagation of
+                      :PROPAGATE retention value (as default) to subclasses)
+     - The :RETAIN class option is overridden if DELETE-BLACKBOARD-REPOSITORY
+       is invoked with a true :ALL-CLASSES keyword value
+
+  * POTENTIALLY INCOMPATIBLE CHANGE: Queue objects (headers, elements) are now
+    unit instances, all queue-management entities have been moved from the
+    :GBBOPEN-TOOLS package to the :GBBOPEN package; new Agenda Shell unit
+    classes KSA-QUEUE and ORDERED-KSA-QUEUE
+     - Any subclasses of ORDERED-QUEUE, QUEUE, and QUEUE-ELEMENT that were
+       defined previously to be unit instances should no longer include
+       STANDARD-UNIT-INSTANCE in their direct superclasses
+
+  * New :instance-name argument for START-CONTROL-SHELL and 
+    RESUME-CONTROL-SHELL
+
+
+Important changes in GBBopen 0.9.7:
+
+  * Renamed functions
+       ALLOWED-UNIT-CLASSES      -> ALLOWED-UNIT-CLASSES-OF
+       SPACE-INSTANCE-CHILDREN   -> CHILDREN-OF
+       SPACE-INSTANCE-DIMENSIONS -> DIMENSIONS-OF
+       SPACE-INSTANCE-PARENT     -> PARENT-OF
+       UNIT-CLASS-DIMENSIONS     -> DIMENSIONS-OF
+
+  * Save & load blackboard repository support; PRINT-OBJECT-FOR-SAVING/SENDING
+    protocol
+
+  * Version 1.2 of the Module Manager Facility
+     - Support for module-relative directory specifications; implicit module
+       rooting
+
+  * Added LIST-LENGTH>1, LIST-LENGTH>, SHRINK-VECTOR, and TRIMMED-SUBSTRING to
+    GBBopen-tools
+ 
+  * Version 2.2 of the Portable Threads Interface
+     - Periodic functions
+
+  * Version 2.1 of the Portable Threads Interface
+     - Scheduled functions, new THREAD-ALIVE-P and ENCODE-TIME-OF-DAY functions
+
+  * Version 2.0 of the Portable Threads Interface
+     - Recursive and nonrecursive locks, with stronger enforcement of usage
+       violations (to reduce the potential for different behavior on different
+       CL implementations).
+     - Use of condition variables for thread waiting/notification
+     - Improved hibernation behavior
+     - New WITH-TIMEOUT function
+
+    The names of many Portable Threads functions were changed (for
+    consistency with new capabilities and to make the portable-threads
+    interface names more "thread-centric" rather than "process-centric")
+       ALL-PROCESSES             -> ALL-THREADS
+       AWAKEN-PROCESS            -> AWAKEN-THREAD
+       CURRENT-PROCESS           -> CURRENT-THREAD
+       HIBERNATE-PROCESS         -> HIBERNATE-THREAD
+       KILL-PROCESS              -> KILL-THREAD
+       MAKE-PROCESS-LOCK         -> MAKE-RECURSIVE-LOCK
+       PROCESS-NAME              -> THREAD-NAME
+       PROCESSP                  -> THREADP
+       PROCESS-WAIT              -> THREAD-WAIT
+       PROCESS-WAIT-WITH-TIMEOUT -> THREAD-WAIT-WITH-TIMEOUT
+       PROCESS-WHOSTATE          -> THREAD-WHOSTATE
+       PROCESS-YIELD             -> THREAD-YIELD
+       RUN-IN-PROCESS            -> RUN-IN-THREAD
+       SPAWN-PROCESS             -> SPAWN-THREAD
+       SYMBOL-VALUE-IN-PROCESS   -> SYMBOL-VALUE-IN-THREAD
+       WITH-PROCESS-LOCK         -> WITH-LOCK-HELD
+       <new>                        CONDITION-VARIABLE (object)
+       <new>                        CONDITION-VARIABLE-BROADCAST
+       <new>                        CONDITION-VARIABLE-SIGNAL
+       <new>                        CONDITION-VARIABLE-WAIT
+       <new>                        CONDITION-VARIABLE-WAIT-WITH-TIMEOUT
+       <new>                        MAKE-CONDITION-VARIABLE
+       <new>                        MAKE-LOCK
+       <new>                        THREAD-HOLDS-LOCK-P
+       CLOSE-GATE                   <removed>
+       GATE-OPEN-P                  <removed>
+       MAKE-GATE                    <removed>
+       OPEN-GATE                    <removed>
+       PROCESS-WAIT                 <removed>
+       PROCESS-WAIT-WITH-TIMEOUT    <removed>
+
+
+Important changes in GBBopen 0.9.6:
+
+  * Rewrite of the uniform-buckets storage machinery and how it interacts 
+    with WITH-CHANGING-DIMENSION-VALUES. 
+
+
+Important changes in GBBopen 0.9.5:
+
+  * The default accessors generated by DEFINE-CLASS, DEFINE-EVENT-CLASS, 
+    DEFINE-UNIT-CLASS, and DEFINE-SPACE-CLASS are now <slot-name>-OF (:suffix
+    format) rather than <class-name>.<slot-name> (:prefix format).
+
+  * A new macro WITH-GENERATE-ACCESSORS-FORMAT is provided to facilitate
+    historical (:prefix format) or other non-standard accessor-name generation
+    in a block of DEFINE-CLASS, DEFINE-EVENT-CLASS, DEFINE-UNIT-CLASS, and
+    DEFINE-SPACE-CLASS definitions.
+
+  * The accessor INSTANCE-NAME-OF replaced INSTANCE-NAME 
+
+  * The function SPACE-INSTANCES-OF replaced INSTANCE-SPACE-INSTANCES
+
+  * The generic function SOLE-TRIGGER-INSTANCE-OF replaced
+    SOLE-TRIGGER-INSTANCE
+
+  * The generic function SOLE-TRIGGER-EVENT-OF replaced SOLE-TRIGGER-EVENT
+
+  * The accessor KS-ENABLED-P replaced KS.ENABLED
+
+  * The PENDING-ACTIVATION-OF link-slot in the KSA unit-class replaced
+    PENDING-ACTIVATION
+
+  * The accessor ACTIVATION-CYCLE-OF replaced KSA.ACTIVATION-CYCLE
+
+  * The accessor EXECUTION-CYCLE-OF replaced KSA.EXECUTION-CYCLE
+
+  * The accessor KS-OF replaced KSA.KS
+
+  * The accessor OBVIATION-CYCLE-OF replaced KSA.OBVIATION-CYCLE
+
+  * The accessor RATING-OF replaced KSA.RATING
+
+  * The accessor TRIGGER-EVENTS-OF replaced KSA.TRIGGER-EVENTS
+
+  * The slot accessors of all standard GBBopen system and control-shell events
+    were changed to <slot-name>-OF (:suffix) format.
+
+------------------------------------------------------------------------------
+

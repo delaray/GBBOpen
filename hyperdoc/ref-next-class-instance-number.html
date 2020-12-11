@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- next-class-instance-number</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-instance.html"><img border="0" alt="make-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-reset-unit-class.html"><img border="0" alt="reset-unit-class" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">next-class-instance-number</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">next-class-instance-number</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>unit-class-name-or-instance</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>integer</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Increment and return the instance-name counter value
+associated with a <a href="ref-glossary.html#id254">unit&nbsp;class</a>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>next-class-instance-number</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>unit-class-name</var> <code>symbol)</code>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>integer</var>
+</td></tr></table> 
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>next-class-instance-number</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>unit-instance</var> <code>standard-unit-instance)</code>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>integer</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>unit-class-name-or-instance</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id256">unit&nbsp;instance</a> or a symbol naming a
+<a href="ref-glossary.html#id254">unit&nbsp;class</a> 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>integer</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The incremented instance-name counter value
+associated with the <a href="ref-glossary.html#id254">unit&nbsp;class</a>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-change-class.html"><b>change-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-class-instances-count.html"><b>class-instances-count</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-initial-class-instance-number.html"><b>initial-class-instance-number</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-instance.html"><b>make-instance</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Increment and return the next instance-name number of <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a>
+of <code>ksa</code>:
+<pre class="pretop">
+  &gt; (next-class-instance-number 'ksa)
+  8
+  &gt;
+</pre> 
+</p>
+<p><a name="id1">Change</a> the class of <a href="ref-glossary.html#id256">unit&nbsp;instance</a> <code>hyp</code> from
+<nobr><code>probable-hyp</code></nobr> to <nobr><code>rejected-hyp</code></nobr>:
+<pre class="pretop">
+  &gt; (<a href="ref-change-class.html">change-class</a> hyp 'rejected-hyp 
+      :instance-name (next-class-instance-number 'rejected-hyp))
+  #&lt;rejected-hyp 1409 (896 388) .68&gt;
+  &gt;
+</pre>
+Note that the <nobr><code>:instance-name</code></nobr> initarg can be eliminated if both
+the old and new classes for <var>hyp</var> are using the global instance-name
+counter.
+</p>
+<p><span class="fndoclabel">Note</span> <br /><a name="id2">
+The</a> <nobr><b>next-class-instance-number</b></nobr> function increments the global
+instance-name counter value if the
+<nobr><code>:use-global-instance-name-counter</code></nobr> class option is true for the
+unit class.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-make-instance.html"><img border="0" alt="make-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-reset-unit-class.html"><img border="0" alt="reset-unit-class" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">next-class-instance-number</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

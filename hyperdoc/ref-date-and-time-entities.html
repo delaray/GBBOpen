@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- Date and Time</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-pseudo-probability-entities.html"><img border="0" alt="Pseudo Probabilities" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-offset-universal-time-entities.html"><img border="0" alt="Offset Universal Time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Date and Time</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h2>Date and Time</h2>
+<p>The <code>:gbbopen-tools</code> module includes useful date and
+time parsing and formatting entities.
+</p>
+<p><a name="ref:timezones">In</a> addition to UTC offsets, time-of-day entities support the following
+time-zone abbreviations for standard-time (non-daylight-savings) offsets:
+<font size="-1"><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="center">
+<b>Offset</b> </td><td valign="baseline" colspan="1" align="center"> &nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="center"> <b>Zone</b> </td><td valign="baseline" colspan="1" align="center"> &nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> <b>Locations</b> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">1 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>WAT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> West Africa (also Cape Verdes Islands, 
+Atlantic Ocean)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">2 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>AT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Azores</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">7/2 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>NST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Newfoundland</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">4 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>AST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Atlantic</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">5 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>EST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Eastern (North America)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">6 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>CST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Central (North America)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">7 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>MST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Mountain (North America)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">8 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>PST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Pacific (North America)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">9 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>AKST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Alaska</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">10 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>HAST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Hawaii-Aleutian</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">11 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>NT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Nome</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">12 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>IDLW</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> International Dateline West</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">0 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>GMT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Greenwich (also Portugal, Reykjavik (Iceland),
+Western Africa)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-1 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>CET</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Central European (also Algeria, Nigeria, Angola)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-2 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>EET</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Eastern European (also Finland, Balkans, Libya, Egypt,
+South Africa)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-3 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>MSK</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Moscow (also Baghdad, Eastern Africa, Ethiopia, Kenya,
+Tanzania)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-4 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>ZP4</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Samara (Russia Zone 3)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-5 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>ZP5</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Yekaterinburg (Russia Zone 4)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-11/2 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>IST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Indian</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-6 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>ZP6</code>  </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Omsk (Russia Zone 5), Bangladesh)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-7 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>WAST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> West Austrailian Standard (also Christmas Island,
+Krasnoyarsk (Russia Zone 6), Western Indonesia) </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-8 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>AWST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Australian Western (also Irkutsk (Russia Zone 7),
+China, Hong Kong, Philippines, Central Indonesia)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-9 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>JST</code>  </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Japan (also Yakutsk (Russia Zone 8), Korea,
+Eastern Indonesia)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-19/2 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>ACST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Australian Central</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-10 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>AEST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Australian Eastern (also Vladivostok (Russia Zone 9),
+Papua New Guinea)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-21/2 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>NFT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Norfolk (Island)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-12 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>NZST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> New Zealand (also Kamchatka (Russia), Fiji,
+Marshall Islands) </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center"></td></tr></tbody></table>
+</p>
+<p><font size="+0">and for daylight-savings-time offsets:
+<font size="-1"><table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="center">
+<b>Offset</b> </td><td valign="baseline" colspan="1" align="center"> &nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="center"> <b>Zone</b> </td><td valign="baseline" colspan="1" align="center"> &nbsp;&nbsp;&nbsp; </td><td valign="baseline" colspan="1" align="left"> <b>Locations</b> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">5/2 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>NDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Newfoundland Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">3   </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>ADT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Atlantic Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">4   </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>EDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Eastern Daylight (North America)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">5   </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>CDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Central Daylight (North America)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">6   </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>MDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Mountain Daylight (North America)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">7   </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>PDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Pacific Daylight (North America)</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">8   </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>AKDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Alaska Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">9  </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>HADT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Hawaii-Aleutian Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-1   </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>BST</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> British Summer</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-2  </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>CEDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Central European Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-3  </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>EEDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Eastern European Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-4  </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>MSD</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Moscow Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-9  </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>AWDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Australian Western Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-21/2 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>ACSD</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Australian Central Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center">-11 </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="center"> <code>AEDT</code> </td><td valign="baseline" colspan="1" align="center"></td><td valign="baseline" colspan="1" align="left"> Australian Eastern Daylight</td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="center"></td></tr></tbody></table>
+</p>
+<p><font size="+0">
+Time-zone abbreviations used around the world are not unique or universal. The
+same hour offset can map onto multiple different zone abbreviations, and the
+same abbreviations are also used to refer to different zones.  The above
+choices of supported abbreviations were made arbitrarily, and the use of UTC
+offsets is recommended for unambiguous textual representation of the time of
+day.
+</p>
+<p><b><font size="+1">Entities</font></b>
+</p>
+<ul>
+<li><a href="ref-month-precedes-date-var.html"><font color="#000000">*month-precedes-date*</font></a></li>
+<li><a href="ref-time-first-var.html"><font color="#000000">*time-first*</font></a></li>
+<li><a href="ref-year-first-var.html"><font color="#000000">*year-first*</font></a></li>
+<li><a href="ref-brief-date.html"><font color="#000000">brief-date</font></a></li>
+<li><a href="ref-brief-date-and-time.html"><font color="#000000">brief-date-and-time</font></a></li>
+<li><a href="ref-brief-duration.html"><font color="#000000">brief-duration</font></a></li>
+<li><a href="ref-brief-run-time-duration.html"><font color="#000000">brief-run-time-duration</font></a></li>
+<li><a href="ref-encode-date-and-time.html"><font color="#000000">encode-date-and-time</font></a></li>
+<li><a href="ref-encode-time-of-day.html"><font color="#000000">encode-time-of-day</font></a></li>
+<li><a href="ref-full-date-and-time.html"><font color="#000000">full-date-and-time</font></a></li>
+<li><a href="ref-http-date-and-time.html"><font color="#000000">http-date-and-time</font></a></li>
+<li><a href="ref-internet-text-date-and-time.html"><font color="#000000">internet-text-date-and-time</font></a></li>
+<li><a href="ref-iso8601-date-and-time.html"><font color="#000000">iso8601-date-and-time</font></a></li>
+<li><a href="ref-message-log-date-and-time.html"><font color="#000000">message-log-date-and-time</font></a></li>
+<li><a href="ref-parse-date.html"><font color="#000000">parse-date</font></a></li>
+<li><a href="ref-parse-date-and-time.html"><font color="#000000">parse-date-and-time</font></a></li>
+<li><a href="ref-parse-duration.html"><font color="#000000">parse-duration</font></a></li>
+<li><a href="ref-parse-time.html"><font color="#000000">parse-time</font></a></li>
+<li><a href="ref-pretty-duration.html"><font color="#000000">pretty-duration</font></a></li>
+<li><a href="ref-pretty-run-time-duration.html"><font color="#000000">pretty-run-time-duration</font></a></li>
+<li><a href="ref-very-brief-date.html"><font color="#000000">very-brief-date</font></a></li>
+</ul>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-pseudo-probability-entities.html"><img border="0" alt="Pseudo Probabilities" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-offset-universal-time-entities.html"><img border="0" alt="Offset Universal Time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Date and Time</b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

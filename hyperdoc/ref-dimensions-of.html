@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- dimensions-of</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-describe-unit-class.html"><img border="0" alt="describe-unit-class" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-direct-nonlink-slot-definition.html"><img border="0" alt="direct-nonlink-slot-definition" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">dimensions-of</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">dimensions-of</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>space-instance-or-unit-classes-specifier</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>dimension-specifications-list</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return the <a href="ref-glossary.html#gl:dimension">dimension</a> specifications of a
+<a href="ref-glossary.html#id222">space&nbsp;instance</a> or one or more <a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>dimensions-of</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>space-instance</var> <code>standard-space-instance)</code>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>dimension-specifications-list</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>dimensions-of</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>unit-classes-specifier</var> <code>cons)</code>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>dimension-specifications-list</var>
+</td></tr></table>
+<table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>dimensions-of</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>unit-class</var> <code>standard-unit-class)</code>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>dimension-specifications-list</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>space-instance-or-unit-classes-specifier</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id222">space&nbsp;instance</a>, 
+an <a href="ref-glossary.html#id73">extended&nbsp;unit-classes&nbsp;specification</a>
+or a list of <a href="ref-glossary.html#id74">extended&nbsp;unit-classes&nbsp;specifications</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>dimension-specifications-list</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id178">proper&nbsp;list</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />A list of <nobr><code>(<a href="ref-glossary.html#gl:dimension-name">dimension-name</a> (<a href="ref-glossary.html#gl:dimension-type">dimension-type</a>
+<a href="ref-glossary.html#gl:comparison-type">comparison-type</a>))</code></nobr> pairs.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-unit-class.html"><b>define-unit-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-space-instance.html"><b>make-space-instance</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-instance-dimension-value.html"><b>instance-dimension-value</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-instance-dimension-values.html"><b>instance-dimension-values</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Return the <a href="ref-glossary.html#gl:dimensions">dimensions</a> defined for instances of
+<a href="ref-glossary.html#id254">unit&nbsp;class</a> <code>hyp</code>: 
+<pre class="pretop">
+  &gt; (dimensions-of 'hyp)
+  ((x (:ordered fixnum)) (y (:ordered fixnum)) (belief (:ordered number))
+   (velocity-range (:ordered number)) (color (:enumerated eq)) 
+   (classification (:enumerated eq)))
+  &gt;
+</pre>
+<a name="id1">Return</a> the <a href="ref-glossary.html#gl:dimensions">dimensions</a> of the <nobr><code>(bb hyps)</code></nobr>
+<a href="ref-glossary.html#id222">space&nbsp;instance</a>:
+<pre>
+  &gt; (dimensions-of (<a href="ref-find-space-instance-by-path.html">find-space-instance-by-path</a> '(bb hyps)))
+  ((x (:ordered fixnum)) (y (:ordered fixnum)) (belief (:ordered number))
+   (velocity-range (:ordered number)) (color (:enumerated eq)) 
+   (classification (:enumerated eq)))
+  &gt;
+</pre>
+</p>
+<p><a name="id2">Note</a> that the <a href="ref-glossary.html#gl:dimensions">dimensions</a> of a <a href="ref-glossary.html#id222">space&nbsp;instance</a> (its
+<a href="ref-glossary.html#id41">dimensional&nbsp;extent</a> as a container for other <a href="ref-glossary.html#gl:instances">unit&nbsp;instances</a>) is
+independent of any <a href="ref-glossary.html#id38">dimension&nbsp;values</a> that the space instance might have
+as a <a href="ref-glossary.html#id256">unit&nbsp;instance</a>:
+<pre class="pretop">
+  &gt; (<a href="ref-instance-dimension-values.html">instance-dimension-values</a> (class-of (<a href="ref-find-space-instance-by-path.html">find-space-instance-by-path</a> '(bb hyps))))
+  nil
+  &gt;
+</pre>
+or the <a href="ref-glossary.html#gl:dimensions">dimensions</a> that the <a href="ref-glossary.html#id254">unit&nbsp;class</a> of the space instance
+might have:
+<pre>
+  &gt; (dimensions-of (class-of (<a href="ref-find-space-instance-by-path.html">find-space-instance-by-path</a> '(bb hyps))))
+  nil
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />The returned list of <a href="ref-glossary.html#gl:dimension">dimension</a> specifications for a
+<a href="ref-glossary.html#id222">space&nbsp;instance</a> or for a <a href="ref-glossary.html#id254">unit&nbsp;class</a> should not be destructively
+altered.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-describe-unit-class.html"><img border="0" alt="describe-unit-class" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-GBBopen-core-entities.html"><img border="0" alt="GBBopen Core" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-direct-nonlink-slot-definition.html"><img border="0" alt="direct-nonlink-slot-definition" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">dimensions-of</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

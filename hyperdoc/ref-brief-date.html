@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- brief-date</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-year-first-var.html"><img border="0" alt="*year-first*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-brief-date-and-time.html"><img border="0" alt="brief-date-and-time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">brief-date</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">brief-date</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;optional</code> <var>universal-time</var></nobr>
+<nobr><code>&#38;key</code> <var>time-zone</var></nobr>
+<var><nobr>month-precedes-date</nobr> 
+<nobr>year-first</nobr> 
+<nobr>include-year</nobr>
+destination</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Generate a brief date description.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code> (home package is <nobr><code>:module-manager</code></nobr>)
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:module-manager</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>universal-time</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id258">Universal&nbsp;Time</a> (default is <code>nil</code>,
+which is equivalent to the value returned by
+<nobr><code>(get-universal-time)</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>time-zone</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id250">time&nbsp;zone</a> (default is <code>nil</code>,
+which is equivalent to the current time zone adjusted for daylight
+saving time)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>month-precedes-date</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is 
+<nobr><b><a href="ref-month-precedes-date-var.html">*month-precedes-date*</a></b></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>year-first</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is 
+<nobr><b><a href="ref-year-first-var.html">*year-first*</a></b></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>include-year</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>t</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>destination</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Either <code>nil</code>, <code>t</code>, a stream, or a string with a fill 
+pointer (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>result</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string or <code>nil</code>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />If <var>destination</var> is non-<code>nil</code>, then <code>nil</code>; otherwise, a string.
+</p>
+<p><span class="fndoclabel">Description</span> <br />A 12-character description is generated (6 characters, if
+<nobr><var>include-year</var></nobr> is non-<code>nil</code>).
+</p>
+<p><p>
+<a name="id1">If</a> <var>universal-time</var> is not supplied or is <code>nil</code>, the current time
+(as returned by <nobr><code>get-universal-time</code></nobr> is used.  
+</p>
+<p><p> 
+If <var>time-zone</var> is not supplied or is <code>nil</code>, it defaults to the current
+time zone adjusted for daylight saving time. If <nobr><var>time-zone</var></nobr> is
+supplied, it is assumed to include any adjustment for daylight saving time.
+</p>
+<p><p> 
+If <var>month-precedes-date</var> is true, the month is presented in front of the
+date; otherwise the date precedes the month.
+</p>
+<p><p> 
+If <var>year-first</var> is supplied and is non-<code>nil</code>, the year is presented in
+front of the month and date; otherwise the year follows the month and date.
+</p>
+<p><p> 
+If <var>include-year</var> is supplied and is non-<code>nil</code>, the year is included in
+the presented time.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-month-precedes-date-var.html"><b>*month-precedes-date*</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-brief-date-and-time.html"><b>brief-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-full-date-and-time.html"><b>full-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-http-date-and-time.html"><b>http-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-internet-text-date-and-time.html"><b>internet-text-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-iso8601-date-and-time.html"><b>iso8601-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-message-log-date-and-time.html"><b>message-log-date-and-time</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-very-brief-date.html"><b>very-brief-date</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Display the current date (with and without the year):
+<pre class="pretop">
+  &gt; (brief-date)
+  "Feb 16, 2008"
+  &gt; (brief-date (get-universal-time) :include-year nil)
+  "Feb 16"
+  &gt;
+</pre>
+Display the date 10 days ago:
+<pre>
+  &gt; (brief-date (- (get-universal-time) (* 60 60 24 10)))
+  "Feb 6, 2008"
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br /><a name="id2">This</a> function is loaded with the <nobr><code>:module-manager</code></nobr> <a href="ref-glossary.html#gl:module">module</a>
+in order to to make it available as early as possible.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-year-first-var.html"><img border="0" alt="*year-first*" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-date-and-time-entities.html"><img border="0" alt="Date and Time" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-brief-date-and-time.html"><img border="0" alt="brief-date-and-time" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">brief-date</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

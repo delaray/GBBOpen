@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- with-mirroring-disabled</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-mirroring.html"><img border="0" alt="remove-mirroring" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-streaming-entities.html"><img border="0" alt="Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-with-mirroring-enabled.html"><img border="0" alt="with-mirroring-enabled" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">with-mirroring-disabled</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">with-mirroring-disabled</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>(</code><var>option</var>*<code>)</code></nobr>
+<nobr><var>declaration</var>*</nobr>
+<nobr><var>form</var>*</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result</var>*</nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Disable mirroring during evaluation of <var>forms</var>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:streaming</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>option</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> No options are currently supported
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>declaration</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A declare expression (not evaluated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>forms</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An implicit <nobr><b>progn</b></nobr> of <a href="ref-glossary.html#gl:forms">forms</a> to be evaluated
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>results</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The values returned by evaluating the last <var>form</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The values returned by evaluating the last <var>form</var>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-add-mirroring.html"><b>add-mirroring</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-remove-mirroring.html"><b>remove-mirroring</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-with-mirroring-enabled.html"><b>with-mirroring-enabled</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br /><a name="id1">Create</a> a <code>hyp</code> without mirroring:
+<pre class="pretop">
+  &gt; (with-mirroring-disabled ()
+       (<a href="ref-make-instance.html">make-instance</a> 'hyp 
+          :location (list x y)
+          :classification '(:car :truck)
+          :color ':red
+          :belief .85
+          :velocity-range '(5 35)
+          :supporting-hyps supporting-hyps))
+  #&lt;hyp 419 (1835 4791) 0.85 [5..35]&gt;
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-remove-mirroring.html"><img border="0" alt="remove-mirroring" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-streaming-entities.html"><img border="0" alt="Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-with-mirroring-enabled.html"><img border="0" alt="with-mirroring-enabled" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">with-mirroring-disabled</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

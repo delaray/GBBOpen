@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- counted-delete</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-compiler-macroexpand-1.html"><img border="0" alt="compiler-macroexpand-1" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-decf-after.html"><img border="0" alt="decf-after" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">counted-delete</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">counted-delete</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>item sequence</var>
+<nobr><code>&#38;key</code> <var>from-end</var></nobr>
+<var>test <nobr>test-not</nobr> start end count key</var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>result-sequence, count</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />A version of <nobr><code>delete</code></nobr> that returns the number of items
+that were deleted as a second value. 
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>item</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>sequence</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A proper sequence
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>from-end</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>) </td></tr><tr valign="top"><td valign="baseline" nowrap><i>test</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A
+<a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a <a href="ref-glossary.html#id82">function&nbsp;object</a> of two
+arguments that returns a <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is
+<nobr><code>&#35;'eql</code></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>test-not</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments that returns a
+<a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (use of <nobr><code>:test-not</code></nobr> is deprecated)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>start</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Starting index into <nobr><var>sequence</var></nobr> (default is <code>0</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>end</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Ending index into <nobr><var>sequence</var></nobr> (default is <code>nil</code>, meaning
+end of <nobr><var>sequence</var></nobr>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>count</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An integer or <code>nil</code> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>key</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a <a href="ref-glossary.html#id82">function&nbsp;object</a>
+of one argument, or <code>nil</code> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>result-sequence</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A sequence
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />Two values: 
+</p>
+<p><ul class="tight"><li>the <var>sequence</var> from which the elements that satisfy the
+<var>test</var> have been removed 
+<li>the number of items that have been removed, or <code>nil</code></ul>
+</p>
+<p><span class="fndoclabel">Description</span> <br />Returns a sequence from which elements that satisfy the
+<var>test</var> have been deleted.  The supplied <nobr><var>sequence</var></nobr> may be
+modified in constructing the result; however, modification of the supplied
+<nobr><var>sequence</var></nobr> itself is not guaranteed.
+</p>
+<p>Specifying a <nobr><var>from-end</var></nobr> value of true matters only when
+the <var>count</var> is provided, and in that case only the rightmost
+<var>count</var> elements satisfying the <var>test</var> are deleted.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-delete.html"><b>atomic-delete</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delq.html"><b>delq</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-delq-one.html"><b>delq-one</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br /></p>
+<pre class="pretop">
+
+  &gt; (counted-delete 'a '(a b c a b c))
+  (b c b c)
+  2
+  &gt; (counted-delete #\a "abcabc")
+  "bcbc"
+  2
+  &gt; (counted-delete 'z '(a b c a b c))
+  (a b c a b c)
+  0
+  &gt; (counted-delete #\a "abcabc" :from-end 't :count 1)
+  "abcbc"
+  1
+  &gt;
+</pre>
+<p><span class="fndoclabel">Note</span> <br />This is what <nobr><code>delete</code></nobr> should have been (and was on the
+Lisp Machines).
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-compiler-macroexpand-1.html"><img border="0" alt="compiler-macroexpand-1" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-decf-after.html"><img border="0" alt="decf-after" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">counted-delete</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- find-streamer-node</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-define-streamer-node.html"><img border="0" alt="define-streamer-node" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-network-streaming-entities.html"><img border="0" alt="Network Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-kill-network-stream-server.html"><img border="0" alt="kill-network-stream-server" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">find-streamer-node</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">find-streamer-node</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>name</var> 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>streamer-node</var> or <code>nil</code></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return a <a href="ref-glossary.html#id232">streamer&nbsp;node</a> given its name.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:network-streaming</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>name</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object naming the <a href="ref-glossary.html#id232">streamer&nbsp;node</a>.
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>errorp</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>streamer-node</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id232">streamer&nbsp;node</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The <a href="ref-glossary.html#id232">streamer&nbsp;node</a> named <nobr><var>name</var></nobr>
+or <code>nil</code>, if none has been defined.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-streamer-node.html"><b>define-streamer-node</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-open-network-streamer.html"><b>open-network-streamer</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Return the streamer node named <nobr><code>"master"</code></nobr>:
+<pre class="pretop">
+  &gt; (find-streamer-node "master")
+  #&lt;streamer-node "master"&gt;
+  &gt;
+</pre>
+Find a non-existent streamer node:
+<pre>
+  &gt; (find-streamer-node "missing")
+  nil
+  &gt; (find-streamer-node "missing" 't)
+  Error: No streamer node named "missing"
+  &gt;&gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-define-streamer-node.html"><img border="0" alt="define-streamer-node" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-network-streaming-entities.html"><img border="0" alt="Network Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-kill-network-stream-server.html"><img border="0" alt="kill-network-stream-server" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">find-streamer-node</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

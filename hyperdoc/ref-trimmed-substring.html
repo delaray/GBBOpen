@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- trimmed-substring</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-standard-gbbopen-instance.html"><img border="0" alt="standard-gbbopen-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-undefmethod.html"><img border="0" alt="undefmethod" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">trimmed-substring</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">trimmed-substring</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>character-bag string</var></nobr>
+<nobr><code>&#38;optional</code> <var>start end</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>trimmed-substring</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Extract and trim a substring from <var>string</var>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>character-bag</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A sequence containing characters
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>string</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id236">string&nbsp;designator</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>start</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Starting index into <var>string</var> (default is <code>0</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>end</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> Ending index into <var>string</var> (default is <code>nil</code>, meaning
+end of <var>string</var>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>trimmed-substring</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A string
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The extracted, trimmed string
+</p>
+<p><span class="fndoclabel">Examples</span> <br /><pre class="pretop">
+  &gt; (trimmed-substring '(#\space #\tab) "xxx   abc   yyy" 3 12)
+  "abc"
+  &gt; (trimmed-substring " " "xxx   abc   yyy" 3 12)
+  "abc"
+  &gt; (trimmed-substring " " "xxx   abc   yyy" 3)
+  "abc   yyy"
+  &gt; (trimmed-substring " " "xxx   abc   yyy" 3 13)
+  "abc   y"
+  &gt; (trimmed-substring " " "xxx   abc   yyy" 2 12)
+  "x   abc"
+  &gt; (trimmed-substring " " "   abc   ")
+  "abc"
+  &gt;
+</pre>
+</p>
+<p><span class="fndoclabel">Note</span> <br />The function <nobr><b>trimmed-substring</b></nobr> is semantically
+equivalent to
+<pre class="pretop">
+  (string-trim <var>character-bag</var> (subseq <var>string start end</var>))
+</pre> 
+but avoids allocating an intermediate substring.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-standard-gbbopen-instance.html"><img border="0" alt="standard-gbbopen-instance" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-tools-entities.html"><img border="0" alt="GBBopen Tools" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-undefmethod.html"><img border="0" alt="undefmethod" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">trimmed-substring</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

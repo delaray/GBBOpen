@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- llrb-tree-delete</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-llrb-tree-count.html"><img border="0" alt="llrb-tree-count" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-search-tree-entities.html"><img border="0" alt="Search Trees" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-llrb-tree-p.html"><img border="0" alt="llrb-tree-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">llrb-tree-delete</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">llrb-tree-delete</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>key <nobr>llrb-tree</nobr></var>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>deleted-p</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Delete the entry associated with a given key.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>key</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>llrb-tree</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id124">LLRB&nbsp;tree</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>deleted-p</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />True if the entry was deleted; <code>nil</code> if it was not found
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-llrb-tree-count.html"><b>llrb-tree-count</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-llrb-tree-p.html"><b>llrb-tree-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-llrb-tree-test.html"><b>llrb-tree-test</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-llrb-tree-value.html"><b>llrb-tree-value</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-llrb-tree.html"><b>make-llrb-tree</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-map-llrb-tree.html"><b>map-llrb-tree</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Delete the entry stored under <code>1</code> in the LLRB-tree <code>*tree*</code>, then
+try deleting it a second time:
+<pre class="pretop">
+  &gt; (llrb-tree-delete 1 *tree*)
+  t
+  &gt; (llrb-tree-delete 1 *tree*)
+  nil
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-llrb-tree-count.html"><img border="0" alt="llrb-tree-count" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-search-tree-entities.html"><img border="0" alt="Search Trees" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-llrb-tree-p.html"><img border="0" alt="llrb-tree-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">llrb-tree-delete</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

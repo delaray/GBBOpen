@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: tutorial.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Tutorial -- Adding Dimensions</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-working-within-a-file.html"><img border="0" alt="Working Within a File" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-control-shell.html"><img border="0" alt="Using a Control Shell" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Adding Dimensions</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+<h1>Adding Dimensions</h1>
+<p>A central concept in GBBopen is <i>dimensionality</i>.  Dimensional
+abstraction of space instances, unit instances, and proximity-based
+retrieval patterns is used to provide a semantically meaningful
+separation of blackboard-repository storage mechanisms from system and
+application code.  This separation provides flexibility in developing
+and evolving complex blackboard applications and allows GBBopen to
+change storage and search strategies and optimizations dynamically.
+</p>
+<p>Each space instance can be created as a conceptual hyper-dimensional
+volume.  Unit instances occupy multidimensional extent based on their
+attributes.  The location of a unit instance within the space instance
+is determined by the intersection of the space instance's
+dimensionality and the unit instance's dimension values.
+</p>
+<p>GBBopen supports three types of dimensions:
+</p>
+<p><ul class="tight"><li><i>ordered</i>: a real-number line
+<li><i>boolean</i>: true and false values
+<li><i>enumerated</i>: a set of named elements (the set can be
+either closed or infinite)
+</ul>
+Determining the dimensionality of space and unit instances is an
+important part of designing a blackboard application.
+</p>
+<p>In this exercise, we will redefine the <nobr><code>location</code></nobr> unit class to
+have two ordered dimensions, <code>x</code> and <code>y</code>, that represent Euclidean
+positions on a two-dimensional plane.  Then we will create a two-dimensional
+<nobr><code>known-world</code></nobr> space instance, create some <nobr><code>location</code></nobr>
+unit instances on the <nobr><code>known-world</code></nobr>, and retrieve the instances
+based on their two-dimensional positions.
+</p>
+<p><hr color="99CCCC">
+This exercise shows you how to:
+</p>
+<p><ul class="tight"><li>Add dimensional values to a unit-class definition
+<li>Create a multidimensional space instance
+<li>Retrieve unit instances from a space instance based on their
+dimensional values
+<li>Compile and load individual forms directly from an Emacs file
+buffer using the SLIME or ELI environments
+</ul>
+</p>
+<hr color="99CCCC">
+<h2><a name="id1">Prerequisites</a></h2>
+<p><ul class="tight"><li>The <nobr><code>tutorial-example.lisp</code></nobr> file created in the last
+exercise, containing:
+<pre>
+<font color="#667f66">  (in-package :gbbopen-user)
+
+  (define-unit-class location ()
+    (x y))</font>
+</pre>
+<br /><li>The <nobr><code>:gbbopen-user</code></nobr> module is loaded
+</ul>
+</p>
+<h2><a name="id2">Step 1: Add dimensions to the <code>location</code> unit class</a></h2><p>
+Edit your <nobr><code>tutorial-example.lisp</code></nobr> file, and change the
+<nobr><code>location</code></nobr> unit-class definition as follows:
+<pre class="pretop">
+<font color="#667f66">  (define-unit-class location ()
+    (x y)
+    <font color="#000000">(:dimensional-values
+      (x :point x)
+      (y :point y))</font>)</font>
+</pre>
+In this tutorial, we will highlight code additions and changes using a
+black font.
+</p>
+<p>The <nobr><code>:dimensional-values</code></nobr> unit-class option specifies that
+<nobr><code>location</code></nobr> unit instances have two ordered dimensions, <code>x</code>
+and <code>y</code>, and that the value of each dimension will be a single numeric
+value obtained from the slots <code>x</code> and <code>y</code>, respectively.
+</p>
+<p>Because we chose to use the same name for each dimension and its associated
+slot value, our <nobr><code>:dimensional-values</code></nobr> option might appear to be
+double-talk.  We could have defined our class as:
+<pre class="pretop">
+<font color="#667f66">  (define-unit-class location ()
+    (x-slot y-slot)
+    (:dimensional-values
+      (x :point x-slot)
+      (y :point y-slot)))</font>
+</pre>
+which clarifies the semantics of the <nobr><code>:dimensional-values</code></nobr>
+option.  Often, however, it is most convenient to use the same name
+for a slot and the dimension associated with the slot's value, so we
+will stick with our original definition.
+</p>
+<h2><a name="id3">Step 2: Compile and load the new definition</a></h2><p>
+We could compile and load the entire <nobr><code>tutorial-example.lisp</code></nobr> file
+just as we did in the last exercise.  However, as we develop our application
+it can be convenient to compile and load (and debug) each form as we write it.
+Your Common Lisp development environment should provide this capability.  In
+SLIME, the command to compile the current top-level form is <nobr><code>C-c
+C-c</code></nobr>.  In Allegro's ELI, the command is <nobr><code>C-c C-x</code></nobr>.  Try
+compiling and loading just the new <nobr><code>location</code></nobr> unit-class
+definition.
+</p>
+<h2><a name="id4">Step 3: Make  a <code>location</code> unit instance</a></h2><p>
+Let's test our new <nobr><code>location</code></nobr> unit class definition by making an
+instance.  Enter the following form in the REPL:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(defparameter ui (make-instance 'location :x 40 :y 60))</font>
+  ui
+  gbbopen-user&gt;</font>
+</pre>
+<a name="id5">and</a> display its description:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-instance ui)</font>
+  Location #&lt;location 1&gt;
+    Instance name: 1
+    Space instances: None
+    Dimensional values:
+      x:  40
+      y:  60
+    Non-link slots:
+      x:  40
+      y:  60
+    Link slots: None
+  gbbopen-user&gt;</font>
+</pre>
+Note the dimensional values for the <code>x</code> and <code>y</code> dimensions.
+</p>
+<h2><a name="id6">Step 4: Make  the <code>known-world</code> space instance</a></h2><p>
+Create the <nobr><code>known-world</code></nobr> space instance by evaluating:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(defparameter si (make-space-instance '(known-world)))</font>
+  si
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id7">Step 5: Add the unit instance to the space instance</a></h2><p>
+Now, add the <nobr><code>location</code></nobr> unit instance to the space instance:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(add-instance-to-space-instance ui si)</font>
+  Warning: In add-instance-to-space-instance: #&lt;location 1&gt;
+           does not share any dimensions with space instance 
+           #&lt;standard-space-instance (known-world)&gt;.
+  #&lt;location 1&gt;
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id8">GBBopen</a> has warned us that our <nobr><code>location</code></nobr> unit instance does not
+have any dimensions in common with the <nobr><code>known-world</code></nobr> space
+instance (because we didn't specify any dimensions for the
+<nobr><code>known-world</code></nobr>).  GBBopen dutifully added the unit instance, as
+shown by <nobr><b>describe-blackboard-repository</b></nobr>:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-blackboard-repository)</font>
+  
+  Space Instance                Contents
+  --------------                --------
+  known-world                   1 instance (1 location)
+
+  Unit Class                    Instances
+  ----------                    ---------
+  location                              1
+  standard-space-instance               1
+                                ---------
+                                        2 instances
+  gbbopen-user&gt;</font>
+</pre>
+but we cannot perform dimension-based retrieval of our <nobr><code>location</code></nobr>
+unit instance on the <nobr><code>known-world</code></nobr>.
+</p>
+<h2><a name="id9">Step 6: Create a dimensioned <code>known-world</code></a></h2><p>
+Let's delete the <nobr><code>known-world</code></nobr> and create another one&mdash;this time
+with <code>x</code> and <code>y</code> dimensions:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(delete-space-instance si)</font>
+  #&lt;deleted-unit-instance standard-space-instance (known-world)&gt;
+  gbbopen-user&gt; <font color="#000000">(setf si (make-space-instance '(known-world)
+              :dimensions '((x :ordered) (y :ordered))))</font>
+  #&lt;standard-space-instance (known-world)&gt;
+  gbbopen-user&gt;</font>
+</pre>
+We have specified <code>x</code> and <code>y</code> as ordered dimensions, making the
+<nobr><code>known-world</code></nobr> a two-dimensional Euclidean plane.  (Flatlanders
+would be proud!)
+</p>
+<p><a name="id10">Verify</a> the dimensionality of the <nobr><code>known-world</code></nobr> space instance by
+evaluating:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(describe-space-instance si)</font>
+  Standard-space-instance #&lt;standard-space-instance (known-world)&gt;
+    Allowed unit classes: t
+    Dimensions:
+      (x :ordered)
+      (y :ordered)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id11">Step 7: Add the <code>location</code> unit instance to the new
+<code>known-world</code></a></h2><p>
+Add the <nobr><code>location</code></nobr> unit instance to the new <nobr><code>known-world</code></nobr>
+space instance:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(add-instance-to-space-instance ui si)</font>
+  #&lt;location 1&gt;
+  gbbopen-user&gt;</font>
+</pre>
+The dimension warning is gone.
+</p>
+<h2><a name="id12">Step 8: Adding every <code>location</code> to the <code>known-world</code>
+automatically</a></h2><p>
+Up to this point, we have used <nobr><b>add-instance-to-space-instance</b></nobr>
+to add each <nobr><code>location</code></nobr> unit instance to the
+<nobr><code>known-world</code></nobr> space instance.  We can tell GBBopen to
+automatically add new unit instances to one or more space instances by using
+the <nobr><code>:initial-space-instances</code></nobr> class option in
+<nobr><b>define-unit-class</b></nobr>.
+</p>
+<p><a name="id13">Add</a> the following <nobr><code>:initial-space-instances</code></nobr> class option to the
+<nobr><code>location</code></nobr> unit-class definition in your
+<nobr><code>tutorial-example.lisp</code></nobr> file:
+<pre class="pretop">
+<font color="#667f66">  (define-unit-class location ()
+    (x y)
+    (:dimensional-values
+      (x :point x)
+      (y :point y))
+    <font color="#000000">(:initial-space-instances (known-world))</font>)</font>
+</pre>
+</p>
+<p>Compile and load the new <nobr><code>location</code></nobr> unit-class definition.
+</p>
+<h2><a name="id14">Step 9: Create more <code>location</code> unit instances</a></h2><p>
+Let's test our new <nobr><code>location</code></nobr> unit class definition by making
+another instance.  Enter the following form in the REPL:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(make-instance 'location :x 70 :y 30)</font>
+  #&lt;location 2&gt;
+  gbbopen-user&gt;</font>
+</pre>
+<a name="id15">and</a> confirm that the new <nobr><code>location</code></nobr> is on the
+<nobr><code>known-world</code></nobr>:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">:dsbb</font>
+  
+  Space Instance                Contents
+  --------------                --------
+  known-world                   2 instances (2 location)
+
+  Unit Class                    Instances
+  ----------                    ---------
+  location                              2
+  standard-space-instance               1
+                                ---------
+                                        3 instances
+  gbbopen-user&gt;</font>
+</pre>
+Here we used GBBopen's <code>:dsbb</code> REPL command, which is equivalent to
+evaluating <nobr><code>(describe-blackboard-repository)</code></nobr>.  Describing the
+repository is a useful check that our unit instances and space instances are
+being created and deleted as intended.
+</p>
+<p><a name="id16">Now,</a> let's populate the <nobr><code>known-world</code></nobr> with a few more locations:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(make-instance 'location :x 20 :y 20)</font>
+  #&lt;location 3&gt;
+  gbbopen-user&gt; <font color="#000000">(make-instance 'location :x 25 :y 25)</font>
+  #&lt;location 4&gt;
+  gbbopen-user&gt; <font color="#000000">(make-instance 'location :x 20 :y 30)</font>
+  #&lt;location 5&gt;
+  gbbopen-user&gt;</font>
+</pre>
+<a name="id17">
+and</a> verify that they are all on the <nobr><code>known-world</code></nobr>:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">:dsbb</font>
+  
+  Space Instance                Contents
+  --------------                --------
+  known-world                   5 instances (5 location)
+
+  Unit Class                    Instances
+  ----------                    ---------
+  location                              5
+  standard-space-instance               1
+                                ---------
+                                        6 instances
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id18">Step 10: Dimensional retrieval</a></h2><p>
+We have seen how we can use <nobr><b>find-instances</b></nobr> to retrieve all
+<nobr><code>location</code></nobr> unit instances from the <nobr><code>known-world</code></nobr>:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world) :all)</font>
+  (#&lt;location 5&gt; #&lt;location 4&gt; #&lt;location 3&gt; #&lt;location 2&gt; #&lt;location 1&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Now that we have added <code>x</code> and <code>y</code> dimensions to
+<nobr><code>location</code></nobr> unit instances and to the <nobr><code>known-world</code></nobr>, we
+can retrieve <nobr><code>location</code></nobr> unit instances using dimensional patterns.
+For example, let's retrieve the unit instance positioned at (20,20):
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(and (= x 20) (= y 20)))</font>
+   (#&lt;location 3&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id19">We</a> can use <nobr><b>describe-instance</b></nobr> to verify that we found the
+desired <nobr><code>location</code></nobr> unit instance:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(and (= x 20) (= y 20)))</font>
+   (#&lt;location 3&gt;)
+  gbbopen-user&gt; <font color="#000000">(describe-instance (first *))</font>
+  Location #&lt;location 3&gt;
+    Instance name: 3
+    Space instances: ((known-world))
+    Dimensional values:
+      x:  20
+      y:  20
+    Non-link slots:
+      x:  20
+      y:  20
+    Link slots: None
+  gbbopen-user&gt;</font>
+</pre>
+Note that we used Common Lisp's REPL <code>*</code> variable that is always set to
+the value returned by evaluating the last REPL expression (in this case, the
+result of <nobr><b>find-instances</b></nobr>).
+</p>
+<h2><a name="id20">Step 11: Customize the display of <code>location</code> unit instances</a></h2><p>
+It would be convenient if we could easily see the coordinates of
+<nobr><code>location</code></nobr> unit instances without having to describe them.
+Fortunately, GBBopen makes this is easy to do by providing the
+<nobr><b>print-instance-slots</b></nobr> generic function that allows us to extend
+how Common Lisp's <nobr><code>print-object</code></nobr> displays <nobr><code>location</code></nobr>
+unit instances.
+</p>
+<p>Add the following <nobr><b>print-instance-slots</b></nobr> method
+<u>after</u> the <nobr><code>location</code></nobr> unit-class definition in your
+<nobr><code>tutorial-example.lisp</code></nobr> file:
+<pre class="pretop">
+<font color="#667f66">  (define-unit-class location ()
+    (x y)
+    (:dimensional-values
+      (x :point x)
+      (y :point y))
+    (:initial-space-instances (known-world)))
+
+  <font color="#000000">(defmethod print-instance-slots ((location location) stream)
+    (call-next-method)
+    (when (and (slot-boundp location 'x)
+               (slot-boundp location 'y))
+      (format stream " (~s ~s)"
+              (x-of location)
+              (y-of location))))</font></font>
+</pre>
+<a name="id21">The</a> method first performs a <nobr><code>(call-next-method)</code></nobr> to produce the
+initial printed representation of the <nobr><code>location</code></nobr> unit instance.
+It then checks that both <code>x</code> and <code>y</code> slots are bound and, if so,
+writes the <nobr><code>location</code></nobr>'s coordinates to the output stream.
+Checking that the slots are bound is necessary to avoid generating an error in
+the <nobr><b>print-instance-slots</b></nobr> if the slots have not been given a
+value.  You should always perform this safety check in any
+<nobr><b>print-instance-slots</b></nobr> methods.  (GBBopen provides the generic
+function <nobr><b>print-instance-slot-value</b></nobr> for use in safely
+displaying a slot value in <nobr><b>print-instance-slots</b></nobr> methods.  We
+did not use <nobr><b>print-instance-slot-value</b></nobr> here, as our
+<nobr><b>print-instance-slots</b></nobr> method presents two slots, <code>x</code> and
+<code>y</code>, formatted together.)
+</p>
+<p><a name="id22">Now,</a> compile and load the <nobr><b>print-instance-slots</b></nobr> method and try
+it out:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(= (x y) (20 20)))</font>
+   (#&lt;location 3 (20 20)&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p>Note that this time we used a two-dimensional (<code>x</code>,<code>y</code>) retrieval
+pattern rather than the conjunction of two one-dimensional patterns that we
+used previously.  The two patterns are equivalent, but often a
+higher-dimensional pattern may be more convenient than a conjunction.  Also
+note that we can see immediately that we retrieved the desired
+<nobr><code>location</code></nobr>.
+</p>
+<h2><a name="id23">Step 12: More dimensional retrievals</a></h2><p>
+Let's try some additional dimensional retrievals.  First, find all
+<nobr><code>location</code></nobr> unit instances with an <code>x</code> position of 20:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(= x 20))</font>
+   (#&lt;location 5 (20 30)&gt; #&lt;location 3 (20 20)&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+Find all <nobr><code>location</code></nobr> unit instances whose <code>x</code> and <code>y</code>
+coordinates are less than or equal to 25:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(&lt;= (x y) (25 25)))</font>
+  (#&lt;location 4 (25 25)&gt; #&lt;location 3 (20 20)&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+Find all <nobr><code>location</code></nobr> unit instances whose <code>x</code> coordinates are
+between 0 and 40 (inclusive) and whose <code>y</code> coordinates are between 60 and
+100 (inclusive):
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(within (x y) ((0 40) (60 100))))</font>
+  (#&lt;location 1 (40 60)&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+Find all <nobr><code>location</code></nobr> unit instances whose coordinates are not
+within the above region:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(not (within (x y) ((0 40) (60 100)))))</font>
+  (#&lt;location 5 (20 30)&gt; #&lt;location 4 (25 25)&gt; #&lt;location 3 (20 20)&gt;
+   #&lt;location 2 (70 30)&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<h2><a name="id24">Step 13: Change a dimensional value</a></h2><p>
+Recall that we assigned <nobr><code>location</code></nobr> <code>1</code> to the global variable
+<code>ui</code>:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">ui</font>
+  #&lt;location 1 (40 60)&gt;
+  gbbopen-user&gt;</font>
+</pre>
+and we can retrieve it by its <code>x</code> and <code>y</code> coordinates:
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(= (x y) (40 60)))</font>
+  (#&lt;location 1 (40 60)&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+</p>
+<p><a name="id25">Let's</a> change its <code>x</code> position to <code>80</code> and try retrieving it again:
+<pre class="pretop">
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(setf (x-of ui) 80)</font>
+  80
+  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(= (x y) (40 60)))</font>
+  nil
+  gbbopen-user&gt;</font>
+</pre>
+It has moved on the <nobr><code>known-world</code></nobr>.  As expected, the
+<nobr><code>location</code></nobr> <code>1</code> unit instance is now at (80, 60):
+<pre>
+<font color="#667f66">  gbbopen-user&gt; <font color="#000000">(find-instances 'location '(known-world)
+                  '(= (x y) (80 60)))</font>
+  (#&lt;location 1 (80 60)&gt;)
+  gbbopen-user&gt;</font>
+</pre>
+Also note that the textual representation of <nobr><code>location</code></nobr> <code>1</code>
+shows the new <code>x</code> slot value.
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="tutorial-working-within-a-file.html"><img border="0" alt="Working Within a File" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial_0.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="tutorial-control-shell.html"><img border="0" alt="Using a Control Shell" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Adding Dimensions</b></td><td bgcolor="#99ccff"><a target="_top" href="tutorial.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

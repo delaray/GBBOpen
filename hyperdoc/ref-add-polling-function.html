@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- add-polling-function</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-polling-function-entities.html"><img border="0" alt="Polling Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-all-polling-functions.html"><img border="0" alt="describe-all-polling-functions" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">add-polling-function</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">add-polling-function</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>function</var> 
+<nobr><code>&#38;key</code> <var>priority</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Add a polling <a href="ref-glossary.html#gl:function">function</a> to the list of polling functions at
+the position indicated by <nobr><var>priority</var></nobr>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-tools</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:polling-functions</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a 
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of no arguments
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>priority</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code><a href="ref-glossary.html#gl:fixnum">fixnum</a></code> (default is <code>0</code>)
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Description</span> <br /><a name="id1">The</a> description is printed to the <b>*standard-output*</b> stream.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-describe-all-polling-functions.html"><b>describe-all-polling-functions</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-remove-all-polling-functions.html"><b>remove-all-polling-functions</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-remove-polling-function.html"><b>remove-polling-function</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-run-polling-functions.html"><b>run-polling-functions</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Add the <a href="ref-glossary.html#gl:function">function</a> <nobr><code>check-for-new-connection</code></nobr> to
+the list of polling functions (with priority -10):
+<pre class="pretop">
+  (add-polling-function #'check-for-new-connection
+     :priority -10)
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><img alt="" src="blank.png"/></td><td bgcolor="#99ccff"><a href="ref-polling-function-entities.html"><img border="0" alt="Polling Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-describe-all-polling-functions.html"><img border="0" alt="describe-all-polling-functions" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">add-polling-function</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

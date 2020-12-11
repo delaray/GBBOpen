@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- as-atomic-operation</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-all-threads.html"><img border="0" alt="all-threads" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-atomic-decf.html"><img border="0" alt="atomic-decf" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">as-atomic-operation</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">as-atomic-operation</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>form</var>*</nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>primary-value</var></nobr></td><td valign="baseline" align="right">[<i>Macro</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Execute <var>forms</var> as an atomic operation.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>primary-value</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> The first value returned by evaluating the last 
+<var>form</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The primary value returned by evaluating the last
+<nobr><var>form</var></nobr>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />This macro provides atomicity in the following entities (when
+the Common Lisp implementation does not support them directly):
+<nobr><b><a href="ref-atomic-decf.html">atomic-decf</a></b></nobr>,
+<nobr><b><a href="ref-atomic-decf-amp.html">atomic-decf&#38;</a></b></nobr>,
+<nobr><b><a href="ref-atomic-delete.html">atomic-delete</a></b></nobr>,
+<nobr><b><a href="ref-atomic-flush.html">atomic-flush</a></b></nobr>, 
+<nobr><b><a href="ref-atomic-incf.html">atomic-incf</a></b></nobr>,
+<nobr><b><a href="ref-atomic-incf-amp.html">atomic-incf&#38;</a></b></nobr>,
+<nobr><b><a href="ref-atomic-push.html">atomic-push</a></b></nobr>,
+<nobr><b><a href="ref-atomic-pushnew.html">atomic-pushnew</a></b></nobr>, and
+<nobr><b><a href="ref-atomic-pop.html">atomic-pop</a></b></nobr>.  
+It is intended only for implementing very brief atomic operations and should
+not be used for long computations or computations that wait or block.
+</p>
+<p>Note that <nobr><b>as-atomic-operation</b></nobr> is only guaranteed to return a
+single value, not multiple values.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-decf.html"><b>atomic-decf</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-decf-amp.html"><b>atomic-decf&#38;</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-delete.html"><b>atomic-delete</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-flush.html"><b>atomic-flush</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-incf.html"><b>atomic-incf</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-incf-amp.html"><b>atomic-incf&#38;</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-push.html"><b>atomic-push</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-pushnew.html"><b>atomic-pushnew</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-atomic-pop.html"><b>atomic-pop</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Define an atomic <nobr><b><a href="ref-nsorted-insert.html">nsorted-insert</a></b></nobr>:
+<pre class="pretop">
+  (defun atomic-nsorted-insert (&#38;rest args)
+    (declare (dynamic-extent args))
+    (as-atomic-operation (apply #'<a href="ref-nsorted-insert.html">nsorted-insert</a> args)))
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-all-threads.html"><img border="0" alt="all-threads" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-portable-thread-entities.html"><img border="0" alt="Portable Threads" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-atomic-decf.html"><img border="0" alt="atomic-decf" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">as-atomic-operation</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

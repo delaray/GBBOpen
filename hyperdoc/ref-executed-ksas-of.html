@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- executed-ksas-of</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-ensure-ks.html"><img border="0" alt="ensure-ks" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-agenda-shell-entities.html"><img border="0" alt="Agenda Control Shell" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-execution-cycle-of.html"><img border="0" alt="execution-cycle-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">executed-ksas-of</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">executed-ksas-of</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>control-shell</var> 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>ksa-queue</var></nobr></td><td valign="baseline" align="right">[<i>Generic&nbsp;Reader</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Returns the executed <a href="ref-glossary.html#gl:activations">KSAs</a> queue of
+<nobr><var>control-shell</var></nobr>.
+</p>
+<p><span class="fndoclabel">Method signatures</span><table class="tightertop" width="100%">
+<tr valign="top"><td valign="baseline" align="left"><nobr>executed-ksas-of</nobr></td><td valign="baseline">&nbsp; </td><td valign="baseline" align="left" width="99%">
+<code>(</code><var>control-shell</var> <code>control-shell)</code>
+<span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>ksa-queue</var>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:agenda-shell</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:agenda-shell</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>control-shell</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <code>control-shell</code> object
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>ksa-queue</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <b><a href="ref-ksa-queue.html">ksa-queue</a></b> object
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The executed <a href="ref-glossary.html#gl:activations">KSAs</a> queue object.
+</p>
+<p><span class="fndoclabel">Description</span> <br />This <a href="ref-glossary.html#id90">generic&nbsp;function</a> accesses the <nobr><b><a href="ref-ksa-queue.html">ksa-queue</a></b></nobr>
+stored in the <nobr><code>executed-ksas</code></nobr> link slot of <var>ksa</var>. This value
+is maintained by the Agenda Shell and should not be changed.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-clear-queue.html"><b>clear-queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-ksa.html"><b>ksa</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-ksa-queue.html"><b>ksa-queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-queue.html"><b>make-queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-obviated-ksas-of.html"><b>obviated-ksas-of</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-on-queue-p.html"><b>on-queue-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-pending-ksas-of.html"><b>pending-ksas-of</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-queue.html"><b>queue</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-queue-element.html"><b>queue-element</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-show-queue.html"><b>show-queue</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br /><a name="id1">Show</a> the control shell's pending <a href="ref-glossary.html#gl:activations">KSAs</a> queue (early in a
+<nobr><code>:tutorial-example</code></nobr> run):
+<pre class="pretop">
+  &gt;  (<a href="ref-show-queue.html">show-queue</a> (executed-ksas-of (<a href="ref-current-control-shell.html">current-control-shell</a>)))
+      0. #&lt;ksa 2 startup-ks 100&gt;
+      1. #&lt;ksa 3 random-walk-ks 100&gt;
+      2. #&lt;ksa 5 random-walk-ks 100&gt;
+      3. #&lt;ksa 6 random-walk-ks 100&gt;
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-ensure-ks.html"><img border="0" alt="ensure-ks" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-agenda-shell-entities.html"><img border="0" alt="Agenda Control Shell" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-execution-cycle-of.html"><img border="0" alt="execution-cycle-of" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">executed-ksas-of</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

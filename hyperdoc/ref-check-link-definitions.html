@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- check-link-definitions</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-check-all-instance-links.html"><img border="0" alt="check-all-instance-links" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-link-entities.html"><img border="0" alt="Links" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-direct-link-definition.html"><img border="0" alt="direct-link-definition" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">check-link-definitions</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">check-link-definitions</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><code>&#38;optional</code> <var>silentp errorp</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>boolean</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Check for consistency among <a href="ref-glossary.html#gl:link-slot">link-slot</a> definitions of
+<a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a>.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>silentp</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>errorp</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a> (default is <code>nil</code>) 
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>boolean</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />True if all <a href="ref-glossary.html#gl:link-slot">link-slot</a> definitions are consistent; <code>nil</code>
+otherwise.
+</p>
+<p><span class="fndoclabel">Description</span> <br />If a link inconsistency is found, details of the inconsistency
+are printed to <nobr><code>*standard-output*</code></nobr>.  For clarity, only the first
+inconsistency is displayed.  After the inconsistency has been repaired,
+<nobr><b>check-link-definitions</b></nobr> should be used again to check for
+additional inconsistencies.
+</p>
+<p>If <var>silentp</var> is true, warning and success printing or error signaling is
+supressed.  If <var>silentp</var> is <code>nil</code> and <var>errorp</var> is true, an error
+is signaled if a link inconsistency is found.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-unit-class.html"><b>define-unit-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-check-all-instance-links.html"><b>check-all-instance-links</b></a>
+</p>
+<p><span class="fndoclabel">Examples</span> <br />Check for consistency in <a href="ref-glossary.html#gl:link-slot">link-slot</a> definitions in all
+<a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a>:
+<pre class="pretop">
+  &gt; (check-link-definitions)
+  ;; All link definitions are consistent.
+  t
+  &gt;
+</pre>
+<a name="id1">Create</a> a <a href="ref-glossary.html#gl:link-slot">link-slot</a> inconsistency:
+<pre>
+  &gt; (<a href="ref-define-unit-class.html">define-unit-class</a> bad () 
+       ((mismatched-link :link (missing inverse))))
+  bad
+  &gt; (check-link-definitions)
+  ;; Warning: The inverse of link MISMATCHED-LINK in unit-class BAD refers
+  ;;          to unit-class MISSING, which is not defined.
+  nil
+  &gt;
+</pre>
+Check again, generating an error on the inconsistency:
+<pre>
+  &gt; (check-link-definitions nil 't)
+  Error: The inverse of link MISMATCHED-LINK in unit-class BAD refers
+         to unit-class MISSING, which is not defined.
+  &gt;&gt;
+</pre>
+Check again, silently:
+<pre>
+  &gt; (check-link-definitions 't)
+  nil
+  &gt;
+</pre>
+Define the missing <a href="ref-glossary.html#id254">unit&nbsp;class</a>, but incorrectly:
+<pre>
+  &gt; (<a href="ref-define-unit-class.html">define-unit-class</a> missing () ((mismatched-link :link (missing bad))))
+  missing
+  &gt; (check-link-definitions)
+  ;; Warning: The inverse of link MISMATCHED-LINK in unit-class MISSING
+  ;;          refers to link BAD which is not present in unit-class MISSING.
+  nil
+  &gt;
+</pre>
+Fix the definition and check again:
+<pre>
+  &gt; (<a href="ref-define-unit-class.html">define-unit-class</a> missing () ((inverse :link (bad mismatched-link))))
+  #&lt;standard-unit-class missing&gt;
+  &gt; (check-link-definitions)
+  ;; All link definitions are consistent.
+  t
+  &gt;
+</pre>
+Check again, silently:
+<pre>
+  &gt; (check-link-definitions 't)
+  t
+  &gt; 
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-check-all-instance-links.html"><img border="0" alt="check-all-instance-links" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-link-entities.html"><img border="0" alt="Links" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-direct-link-definition.html"><img border="0" alt="direct-link-definition" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">check-link-definitions</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

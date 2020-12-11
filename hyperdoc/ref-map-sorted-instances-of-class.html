@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- map-sorted-instances-of-class</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-map-instances-on-space-instances.html"><img border="0" alt="map-instances-on-space-instances" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-retrieval-entities.html"><img border="0" alt="Instance Retrieval" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-report-find-stats.html"><img border="0" alt="report-find-stats" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">map-sorted-instances-of-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">map-sorted-instances-of-class</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>function 
+<nobr>unit-classes-specifier</nobr>
+predicate</var>
+<nobr>&#38;key <var>key</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Apply a <a href="ref-glossary.html#gl:function">function</a> once to each <a href="ref-glossary.html#id256">unit&nbsp;instance</a>
+of the specified <a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a>, in sorted order.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen-core</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of one argument
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>unit-classes-specifier</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id73">extended&nbsp;unit-classes&nbsp;specification</a>
+(see below)
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>predicate</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a
+<a href="ref-glossary.html#id82">function&nbsp;object</a> of two arguments that returns a
+<a href="ref-glossary.html#id86">generalized&nbsp;boolean</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>key</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id80">function&nbsp;designator</a> specifying a <a href="ref-glossary.html#id82">function&nbsp;object</a>
+of one argument, or <code>nil</code> (default is <code>nil</code>)
+</p>
+</td></tr></table>
+<p><span class="fndoclabel">Detailed syntax</span><table class="tighttop"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>unit-classes-specifier</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <code>t</code> | 
+<var>single-unit-class-specifier</var> 
+| <code>(</code><var>single-unit-class-specifier</var><sup>+</sup><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+</p>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>single-unit-class-specifier</var> ::=</nobr> 
+</td><td valign="baseline" colspan="1" align="left"> <var>atomic-unit-class</var> |
+<code>(</code><var>atomic-unit-class subclassing-specifier</var><code>)</code></td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>atomic-unit-class</var> ::=</nobr> </td><td valign="baseline" colspan="1" align="left"> <var>unit-class</var> | 
+<var>unit-class-name</var> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<table class="tight"><tbody><tr>
+<td valign="baseline" colspan="1" align="left">
+<nobr><var>subclassing-specifier</var> ::=</nobr> 
+<a name="id1"></a></td><td valign="baseline" colspan="1" align="left"> <code>:plus-subclasses</code> | <code>:no-subclasses</code> | 
+<code>+</code> | <code>=</code> </td></tr>
+<tr>
+<td valign="baseline" colspan="1" align="left"></td></tr></tbody></table>
+<p>The shorthand <code>+</code> subclasses specifier is equivalent to
+<code>:plus-subclasses</code> and <code>=</code> to <code>:no-subclasses</code>.
+</p>
+<p><span class="fndoclabel">Description</span> <br />The specified <a href="ref-glossary.html#gl:function">function</a> is applied once to each
+<a href="ref-glossary.html#id256">unit&nbsp;instance</a> of the specified <a href="ref-glossary.html#gl:unit-class">unit&nbsp;classes</a>, whether
+or not the instances reside on any <a href="ref-glossary.html#gl:space-instance">space&nbsp;instances</a>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-do-sorted-instances-of-class.html"><b>do-sorted-instances-of-class</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-instances-of-class-vector.html"><b>make-instances-of-class-vector</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-map-instances-of-class.html"><b>map-instances-of-class</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Print a list of all <code>hyp</code> <a href="ref-glossary.html#gl:instance-name">instance&nbsp;names</a>, in ascending order:
+<pre class="pretop">
+  (map-sorted-instances-of-class 
+     #'(lambda (instance)
+         (print (<a href="ref-instance-name-of.html">instance-name-of</a> instance)))
+     'hyp #'&lt; :key #'<a href="ref-instance-name-of.html">instance-name-of</a>)
+</pre> 
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-map-instances-on-space-instances.html"><img border="0" alt="map-instances-on-space-instances" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-retrieval-entities.html"><img border="0" alt="Instance Retrieval" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-report-find-stats.html"><img border="0" alt="report-find-stats" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">map-sorted-instances-of-class</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+
+\usepackage{textcomp}
+\usepackage{fullpage}
+\pagestyle{empty}
+
+\newcommand{\group}[1]{\bigskip\par\noindent\textbf{\large#1}\medskip}
+\newcommand{\command}[3]{\par\noindent\textbf{#1} 
+  #2\hfill\parbox[t]{3.4in}{\raggedright #3}\vskip 2pt}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\var}[1]{\textit{#1}}
+\newcommand{\superstar}{\raisebox{2pt}{*}}
+\newcommand{\vbar}{$|$}
+
+\begin{document}
+
+%\twocolumn[\LARGE\centering{GBBopen REPL Commands Quick Reference Card}\vskip1cm]
+\begin{center}
+\LARGE GBBopen REPL Commands Quick Reference Card
+\end{center}
+
+\medskip
+
+\group{Global commands}
+
+\command{:commands}{\textrm{[}\var{system-name\/}\textrm{]}}%
+  {Show extended-REPL commands\\(filtered by \var{system-name})}%
+\command{:ds}{\var{object}}{Describe object}
+\command{:exit}{}{Exit Lisp}
+\command{:pa}{}{Show current package}%
+\command{:pa}{\var{package-designator}}{Set current package}%
+\command{:quit}{}{Exit Lisp}
+\command{:systems}{}{Show all systems}%
+\command{:undefine-system}{\var{system-name}}{Undefine a system}
+
+\group{Module Manager commands}
+\command{:cm}{\textrm{[}\var{module-name\/} 
+              \textrm{[}\var{option\/}\superstar\textrm{]]}}%
+  {Compile module (the last specified \var{module-name\/} and
+    \var{options\/} are remembered as default values)}%
+\command{:lm}{\textrm{[}\var{module-name\/} 
+              \textrm{[}\var{option\/}\superstar\textrm{]]}}%
+  {Load module (the last specified \var{module-name\/} and
+    \var{options\/} are remembered as default values)}% 
+\command{:lmf}{\textrm{[}\var{module-name file-name\/} 
+               \textrm{[}\var{option\/}\superstar\textrm{]]}}%
+  {Load module file (the last specified \var{module-name},
+    \var{file-name}, and \var{options\/} are remembered 
+    as default values)}%
+
+\group{GBBopen Tools commands}
+\command{:ot}{\var{offset-universal-time}}%
+  {Describe offset-universal-time value}%
+\command{:ut}{\var{universal-time}}{Describe universal-time value}%
+
+\group{GBBopen commands}
+\command{:di}{\parbox[t]{2.7in}{\var{instance\/} \vbar\\
+   \{\var{instance-name\/}
+   \textrm{[}\var{unit-classes-specifier\/}\textrm{]}\}}}%
+  {Describe unit instance (sets \code{=})}%
+\command{:dsbb}{}{Describe blackboard repository}%
+\command{:dsi}{\parbox[t]{2.7in}{\var{instance\/} \vbar\\
+   \{\var{instance-name\/}
+   \textrm{[}\var{unit-classes-specifier\/}\textrm{]}\}}}%
+  {Describe space instance (sets \code{=})}%
+\command{:dsis}{\parbox[t]{2.7in}{\var{instance\/} \vbar\\
+   \{\var{instance-name\/}
+   \textrm{[}\var{unit-classes-specifier\/}\textrm{]}\}}}%
+  {Describe space-instance storage (sets \code{=})}%
+\command{:fi}{\var{instance-name\/}
+   \textrm{[}\var{unit-classes-specifier\/}\textrm{]}}%
+  {Find unit instance by name (sets \code{=})}%
+\command{:fsi}{\parbox[t]{2.7in}{\var{instance\/} \vbar\\
+   \{\var{instance-name\/}
+   \textrm{[}\var{unit-classes-specifier\/}\textrm{]}\}}}%
+  {Find space instance by path (sets \code{=})}%
+\command{:pic}{\textrm{[}\var{unit-classes-specifier\/}\textrm{]}}%
+  {Print instances of class}%
+
+\end{document}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- scheduled-function-repeat-interval</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-scheduled-function-name-test.html"><img border="0" alt="scheduled-function-name-test" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-entities.html"><img border="0" alt="Scheduled and Periodic Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-scheduler-paused-p.html"><img border="0" alt="scheduled-function-scheduler-paused-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">scheduled-function-repeat-interval</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">scheduled-function-repeat-interval</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><nobr><var>scheduled-function</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>repeat-interval</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return the repeat interval of a <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>.
+</p>
+<p><span class="fndoclabel">Setf syntax</span><table class="tighttop" width="100%">
+<tr valign="top">
+<td valign="baseline" align="left">
+<nobr>(setf (scheduled-function-repeat-interval</nobr>
+</td>
+<td valign="baseline">&nbsp; </td>
+<td valign="baseline" align="left" width="99%">
+<var>scheduled-function</var>) <var>repeat-interval</var>) 
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>repeat-interval</var></nobr>
+</td>
+</tr>
+</table>
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:portable-threads</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>scheduled-function</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>repeat-interval</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A positive integer (representing seconds) or <code>nil</code></td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />The repeat interval of <var>scheduled-function</var>. 
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-all-scheduled-functions.html"><b>all-scheduled-functions</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-make-scheduled-function.html"><b>make-scheduled-function</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-schedule-function.html"><b>schedule-function</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-schedule-function-relative.html"><b>schedule-function-relative</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-marker.html"><b>scheduled-function-marker</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-marker-test.html"><b>scheduled-function-marker-test</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-name.html"><b>scheduled-function-name</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-scheduled-function-name-test.html"><b>scheduled-function-name-test</b></a>
+</p>
+<a name="id1"></a><p><span class="fndoclabel">Examples</span> <br />Display the <nobr><code>scheduled-function</code></nobr> object and its repeat interval
+for each currently scheduled <a href="ref-glossary.html#id206">scheduled&nbsp;function</a>:
+<pre class="pretop">
+  &gt; (dolist (scheduled-function (<a href="ref-all-scheduled-functions.html">all-scheduled-functions</a>))
+     (format t "~&amp;;; ~s ~s~&#37;"
+             scheduled-function
+             (scheduled-function-repeat-interval scheduled-function)))
+  ;; #&lt;scheduled-function quitting-time [17:00:00]&gt; 86400
+  nil
+  &gt;
+</pre>
+</p>
+<p>Define a <a href="ref-glossary.html#gl:function">function</a> to be used as a <a href="ref-glossary.html#id206">scheduled&nbsp;function</a> that
+randomly sets whether to reschedule itself (and at what interval):
+<pre class="pretop">
+  (defun complex-function (scheduled-function)
+    (let ((interval (random 100)))
+      (setf (scheduled-function-repeat-interval scheduled-function)
+            (if (plusp interval) 
+                ;; repeat 1-99 seconds from now:
+                interval
+                ;; don't repeat 1&#37; of the time:
+                nil)))
+    (do-some-stuff))
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-scheduled-function-name-test.html"><img border="0" alt="scheduled-function-name-test" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-entities.html"><img border="0" alt="Scheduled and Periodic Functions" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-scheduled-function-scheduler-paused-p.html"><img border="0" alt="scheduled-function-scheduler-paused-p" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">scheduled-function-repeat-interval</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>

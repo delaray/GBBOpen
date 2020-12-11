@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang=en>
+<!-- XML file produced from file: reference.tex
+     using Hyperlatex v 2.9-in-waiting-rk (c) Otfried Cheong -->
+<head>
+<meta charset=utf-8>
+<title>GBBopen 1.5 Reference -- open-network-streamer</title>
+</p>
+<link rel="SHORTCUT ICON" href="favicon.ico"><link rel=stylesheet
+        href="gbbopen.css" type="text/css" />
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-network-stream-server-running-p.html"><img border="0" alt="network-stream-server-running-p" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-network-streaming-entities.html"><img border="0" alt="Network Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-start-network-stream-server.html"><img border="0" alt="start-network-stream-server" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">open-network-streamer</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table>
+
+<p><table class="tight" width="100%">
+<tr valign="top"><td valign="baseline" align="left"%>
+<nobr><b><font color="#000000">open-network-streamer</font></b></nobr></td><td valign="baseline"> &nbsp; </td><td valign="baseline" align="left" width="99%"><var>streamer-node local-streamer-node</var> 
+<nobr><code>&#38;rest</code> <var>initargs</var></nobr>
+<nobr><span 
+    style="font-family: serif; font-style: normal">=&gt;</span> <var>network-streamer</var></nobr></td><td valign="baseline" align="right">[<i>Function</i>]
+</td></tr></table></p>
+<p><span class="fndoclabel">Purpose</span> <br />Return a connection to an external <a href="ref-glossary.html#id232">streamer&nbsp;node</a> (from the
+specified local <a href="ref-glossary.html#id232">streamer&nbsp;node</a>), establishing a new connection if one
+does not already exist.
+</p>
+<p><span class="fndoclabel">Package</span>&nbsp;&nbsp;&nbsp;<code>:gbbopen</code>
+</p>
+<p><span class="fndoclabel">Module</span>&nbsp;&nbsp;&nbsp;<code>:network-streaming</code>
+</p>
+<p><span class="fndoclabel">Arguments and values</span><table class="tighttop">
+<tr valign="top"><td valign="baseline" nowrap><i>streamer-node</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A non-local <a href="ref-glossary.html#id232">streamer&nbsp;node</a> or its name
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>local-streamer-node</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A local <a href="ref-glossary.html#id232">streamer&nbsp;node</a> or its name
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>initargs</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> An <a href="ref-glossary.html#id96">initialization&nbsp;argument&nbsp;list</a>
+</td></tr><tr valign="top"><td valign="baseline" nowrap><i>network-streamer</i></td><td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="baseline"> A <a href="ref-glossary.html#id144">network&nbsp;streamer</a>
+</td></tr></table>
+</p>
+<p><span class="fndoclabel">Returns</span> <br />An open <a href="ref-glossary.html#id144">network&nbsp;streamer</a> (either existing or newly
+created&mdash;see below).
+</p>
+<p><span class="fndoclabel">Description</span> <br />If an open <a href="ref-glossary.html#id144">network&nbsp;streamer</a> exists between
+<var>streamer-node</var> and <var>local-streamer-node</var>, that
+<a href="ref-glossary.html#id144">network&nbsp;streamer</a> is returned. Otherwise, a new connection to
+<var>streamer-node</var> is established and a new <a href="ref-glossary.html#id144">network&nbsp;streamer</a> is
+returned.
+</p>
+<p>The class of the created <a href="ref-glossary.html#id144">network&nbsp;streamer</a> is specified by
+the <code>streamer-class</code> slot of <var>streamer-node</var>.
+</p>
+<p><span class="fndoclabel">See also</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-close-streamer.html"><b>close-streamer</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-define-streamer-node.html"><b>define-streamer-node</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-find-streamer-node.html"><b>find-streamer-node</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-network-stream-server-running-p.html"><b>network-stream-server-running-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-open-streamer-p.html"><b>open-streamer-p</b></a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="ref-stream-of.html"><b>stream-of</b></a>
+</p>
+<p><span class="fndoclabel">Example</span> <br />Return a <a href="ref-glossary.html#id144">network&nbsp;streamer</a> connecting <a href="ref-glossary.html#id232">streamer&nbsp;node</a> <code>"me"</code>
+and <a href="ref-glossary.html#id232">streamer&nbsp;node</a> <code>"you"</code>:
+<pre class="pretop">
+  &gt; (open-network-streamer "me" "you")
+  #&lt;network-streamer 127.0.0.1:1969&gt;
+  &gt;
+</pre>
+</p>
+<hr /><address><a target="_top" class="address"
+    href="http://GBBopen.org/"><p>The GBBopen Project</a></address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="ref-network-stream-server-running-p.html"><img border="0" alt="network-stream-server-running-p" src="previous.png"/></a></td><td bgcolor="#99ccff"><a href="ref-network-streaming-entities.html"><img border="0" alt="Network Streaming" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="ref-start-network-stream-server.html"><img border="0" alt="start-network-stream-server" src="next.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b><font color="#000000">open-network-streamer</font></b></td><td bgcolor="#99ccff"><a target="_top" href="reference.html"><img border="0" alt="GoTo Top" src="top.png"/></a></td></tr></table></body></html>
